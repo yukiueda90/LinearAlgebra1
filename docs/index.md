@@ -47,9 +47,8 @@
 ---
 * 行列 $A = (a_{ij})\in\mathbb{R}^{m\times n}$ は, 
 \[
-    \bm{a}_i = (a_{i1},a_{i2},\dots, a_{in})
-\] 
-という行ベクトルたちを縦に並べたものと見なすことができる:
+    \bm a_i = (a_{i1},a_{i2},\dots, a_{in})
+\] という行ベクトルたちを縦に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
     a_{11}&a_{12}&\dots&a_{1n}\cr 
@@ -62,7 +61,7 @@
 \] このとき, 各 $\bm{a}_i$ を行列 $A$ の**第 $i$ 行ベクトル**という.
 * 同様に, 行列 $A\in\mathbb{R}^{m\times n}$ を
 \[
-    \bm{a}_j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
+    \bm a_j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
 \] という列ベクトルたちを横に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
@@ -204,5 +203,30 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の**転置行列** といい, $A^{\operatorname{T}}$ と表記する. 行列の転置行列をとる操作を**転置** (**transpose**) という.
 
 ##### <u>例</u>   
-* $A = \begin{pmatrix} a_{11}&a_{12}\cr a_{21}&a_{22} \end{pmatrix}$ ならば, $A^{\operatorname{T}} = \begin{pmatrix} a_{11}&a_{21}\cr a_{12}&a_{22}\end{pmatrix}$
-* $B = \begin{pmatrix}b_{11}&b_{12}&b_{13}\cr b_{21}&b_{22}&b_{23}\end{pmatrix}$ ならば, $B^{\operatorname{T}} = \begin{pmatrix}b_{11}&b_{21}\cr b_{12}&b_{22}\cr b_{13}&b_{23}\end{pmatrix}$.
+* $\bm x = (x_1,x_2)$ のとき, $\bm x^{\operatorname{T}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$
+* $A = \begin{pmatrix} a_{11}&a_{12}\cr a_{21}&a_{22} \end{pmatrix}$ のとき, $A^{\operatorname{T}} = \begin{pmatrix} a_{11}&a_{21}\cr a_{12}&a_{22}\end{pmatrix}$
+* $B = \begin{pmatrix}b_{11}&b_{12}&b_{13}\cr b_{21}&b_{22}&b_{23}\end{pmatrix}$ のとき, $B^{\operatorname{T}} = \begin{pmatrix}b_{11}&b_{21}\cr b_{12}&b_{22}\cr b_{13}&b_{23}\end{pmatrix}$.
+
+##### <u>命題</u> 
+\[
+    (A^{\operatorname{T}})^{\operatorname{T}}=A, \quad 
+    (A+B)^{\operatorname{T}} = A^{\operatorname{T}}+B^{\operatorname{T}}, \quad
+    (AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}.
+\]
+
+> 証明:
+最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, 行列 $AB\in\mathbb{R}^{m\times n}$ の $(i,j)$ 成分は
+\[
+    \sum_{k=1}^ma_{ik}b_{kj}
+\] なので, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は
+\[
+    \sum_{k=1}^ma_{jk}b_{ki}
+\] となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル $\bm{b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル $\bm{a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}}A^{\operatorname{T}}$ の $(i,j)$ 成分は
+\[
+    \bm b_i^{\operatorname{T}}\bm a_j^{\operatorname{T}} = (b_{1i},b_{2i},\dots,b_{mi})\begin{pmatrix}a_{j1}\cr a_{j2}\cr \cdots\cr a_{jm}\end{pmatrix} = \sum_{k=1}^ma_{jk}b_{ki}.
+\]
+従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.
+
+<a id="section1-3"></a>
+
+## 1.3： 特定の性質を満たす行列たち
