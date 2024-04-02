@@ -44,7 +44,8 @@ $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\\3&4\end{pma
 * 行列の型が異なるため $A\neq D$.
 
 ##### <u>定義</u> (行列の和)
-同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ に対し, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の和といい, $A+B$ と表記する.
+|同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ に対し, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の和といい, $A+B$ と表記する.|
+|:--|
 ##### <u>例</u>
 $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad C=\begin{pmatrix}1&2\\3&0\end{pmatrix},\quad D=\begin{pmatrix}1&2\\3&4\\0&0\end{pmatrix}.$$
 * $A+B = \begin{pmatrix}1&2\\3&4\end{pmatrix}+\begin{pmatrix}1&2\\3&4\end{pmatrix} = \begin{pmatrix}2&4\\6&8\end{pmatrix}$ 
@@ -59,7 +60,8 @@ $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix}, \quad C=\begin{pmatrix}1&2\\3&0\end{pm
 * $A - C = A + (-1)C = \begin{pmatrix}1&2\\3&4\end{pmatrix} + \begin{pmatrix}-1&-2\\-3&0\end{pmatrix} = \begin{pmatrix}0&0\\0&4\end{pmatrix}$
 
 ##### <u>定義</u> (行列の積)
-$\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に対し, $(i,j)$ 成分が $\displaystyle\sum_{k=1}^m a_{ik}b_{kj}$ である $\ell \times n$ 型行列を $A$ と $B$ の**積**といい, $AB$ と表記する. 
+|$\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に対し, $(i,j)$ 成分が $\displaystyle\sum_{k=1}^m a_{ik}b_{kj}$ である $\ell \times n$ 型行列を $A$ と $B$ の**積**といい, $AB$ と表記する. |
+|:--|
 ##### <u>注意</u>
 行列積 $AB$ は, 左側の行列 (この場合は$A$) の列の数と, 右側の行列 (この場合は$B$) の行の数が等しいこときに限り定義される.   
 ##### <u>例</u>
@@ -79,13 +81,20 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\t
 > * $BA = \begin{pmatrix}2\cdot1+3\cdot3&2\cdot2+3\cdot4\\4\cdot1+5\cdot3&4\cdot2+5\cdot4\end{pmatrix} = \begin{pmatrix}11&16\\19&28\end{pmatrix}$
 > * このように $AB$ と $BA$ は一般には等しくならない.
 
-> ##### <u>例</u>    
-> $$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3&0\\4&5&0\end{pmatrix}.$$
-> * $AB = \begin{pmatrix}10&13&0\\22&29&0\end{pmatrix}$.
-> * 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
+##### <u>例</u>    
+$$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3&0\\4&5&0\end{pmatrix}.$$
+* $AB = \begin{pmatrix}10&13&0\\22&29&0\end{pmatrix}$.
+* 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
 
 ##### <u>命題</u> (結合則)
-行列 $A$, $B$, $C$ がそれぞれ $(k,\ell)$ 型, $(\ell,m)$ 型, $(m,n)$ 型であるならば, $$(AB)C = A(BC)$$ が成立する.
+|行列 $A$, $B$, $C$ がそれぞれ $(k,\ell)$ 型, $(\ell,m)$ 型, $(m,n)$ 型であるならば, $$(AB)C = A(BC)$$ が成立する.|
+|:--|
 
-> 証明: 
-> $1$
+
+証明: 
+$1$
+```math
+\frac{1}{2}
+```
+|これはテスト|
+|:--|
