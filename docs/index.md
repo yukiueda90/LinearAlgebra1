@@ -73,13 +73,19 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\t
 * $AB = \begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\\a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}\end{pmatrix}$
 * $A$ の第 $i$ 行のみ取り出した行ベクトル $\bm{a}_i = (a_{i1},a_{i2})$と, $B$ の第 $j$ 列のみ取り出した $\bm{b}_j = \begin{pmatrix}b_{1j}\\b_{2j}\end{pmatrix}$ について, $AB$ の $(i,j)$ 成分が $\bm{a}_i\bm{b}_j$ となる: $$AB = \begin{pmatrix}\bm{a}_1\bm{b}_1&\bm{a}_1\bm{b}_2\\\bm{a}_2\bm{b}_1&\bm{a}_2\bm{b}_2\end{pmatrix}.$$
 
-##### <u>例</u>
-$$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3\\4&5\end{pmatrix}.$$
-* $AB = \begin{pmatrix}1\cdot2 + 2\cdot4 & 1\cdot3+2\cdot5\\3\cdot2+4\cdot4&3\cdot3+4\cdot5\end{pmatrix} = \begin{pmatrix}10&13\\22&29\end{pmatrix}$.
-* $BA = \begin{pmatrix}2\cdot1+3\cdot3&2\cdot2+3\cdot4\\4\cdot1+5\cdot3&4\cdot2+5\cdot4\end{pmatrix} = \begin{pmatrix}11&16\\19&28\end{pmatrix}$
-* このように $AB$ と $BA$ は一般には等しくならない.
+> ##### <u>例</u>
+> $$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B =  \begin{pmatrix}2&3\\4&5\end{pmatrix}.$$
+> * $AB = \begin{pmatrix}1\cdot2 + 2\cdot4 & 1\cdot3+2\cdot5\\3\cdot2+4\cdot4&3\cdot3+4\cdot5\end{pmatrix} = \begin{pmatrix}10&13\\22&29\end{pmatrix}$.
+> * $BA = \begin{pmatrix}2\cdot1+3\cdot3&2\cdot2+3\cdot4\\4\cdot1+5\cdot3&4\cdot2+5\cdot4\end{pmatrix} = \begin{pmatrix}11&16\\19&28\end{pmatrix}$
+> * このように $AB$ と $BA$ は一般には等しくならない.
 
-##### <u>例</u>
-$$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3&0\\4&5&0\end{pmatrix}.$$
-* $AB = \begin{pmatrix}10&13&0\\22&29&0\end{pmatrix}$.
-* 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
+> ##### <u>例</u>    
+> $$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3&0\\4&5&0\end{pmatrix}.$$
+> * $AB = \begin{pmatrix}10&13&0\\22&29&0\end{pmatrix}$.
+> * 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
+
+##### <u>命題</u> (結合則)
+行列 $A$, $B$, $C$ がそれぞれ $(k,\ell)$ 型, $(\ell,m)$ 型, $(m,n)$ 型であるならば, $$(AB)C = A(BC)$$ が成立する.
+
+> 証明: 
+> $1$
