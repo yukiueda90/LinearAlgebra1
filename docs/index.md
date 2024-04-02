@@ -10,7 +10,7 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix},\qquad B=\begin{p
 * 行列を構成する要素たちを横に並べた部分を**行** (**row**), 縦に並べた部分を**列** (**column**)という
 * 上から $i$ 番目の行を**第 $i$ 行**, 左から $j$ 番目の列を**第 $j$ 列**という.
 * 第 $i$ 行, 第 $j$ 列にある成分を **$(i,j)$ 成分**という.
-    * 以降, 断りの無い限り, 行列 $A$ の $(i,j)$ 成分を $a_{ij}$ と表す. 
+    * 以降, 断りの無い限り, 行列は大文字のアルファベットで表記し, 例えば行列 $A$ の $(i,j)$ 成分を $(A)_{ij}$, もしくは小文字のアルファベットを用いて $a_{ij}$ と表す. 
     * また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ と表す.
 
 ##### <u>例</u>
@@ -42,7 +42,7 @@ $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\\3&4\end{pma
 * 行列の型が異なるため $A\neq D$.
 
 ##### <u>定義</u> (行列の和)
-同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ について, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の和といい, $A+B$ と表記する.
+同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ に対し, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の和といい, $A+B$ と表記する.
 ##### <u>例</u>
 $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad C=\begin{pmatrix}1&2\\3&0\end{pmatrix},\quad D=\begin{pmatrix}1&2\\3&4\\0&0\end{pmatrix}.$$
 * $A+B = \begin{pmatrix}1&2\\3&4\end{pmatrix}+\begin{pmatrix}1&2\\3&4\end{pmatrix} = \begin{pmatrix}2&4\\6&8\end{pmatrix}$ 
@@ -52,7 +52,31 @@ $$A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\\3&4\end{pma
 ##### <u>定義</u> (行列のスカラー倍)
 行列 $A=(a_{ij})$ と複素数 $\lambda$ に対し, $(i,j)$ 成分が $\lambda a_{ij}$ である行列を $\lambda A$ と表記する.
 ##### <u>例</u>
-$$A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$$
+$$A=\begin{pmatrix}1&2\\3&4\end{pmatrix}, \quad C=\begin{pmatrix}1&2\\3&0\end{pmatrix}.$$
 * $2A = 2\begin{pmatrix}1&2\\3&4\end{pmatrix} = \begin{pmatrix}2&4\\6&8\end{pmatrix} = A+A$
+* $A - C = A + (-1)C = \begin{pmatrix}1&2\\3&4\end{pmatrix} + \begin{pmatrix}-1&-2\\-3&0\end{pmatrix} = \begin{pmatrix}0&0\\0&4\end{pmatrix}$
 
 ##### <u>定義</u> (行列の積)
+$\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に対し, $(i,j)$ 成分が $\displaystyle\sum_{k=1}^m a_{ik}b_{kj}$ である $\ell \times n$ 型行列を $A$ と $B$ の**積**といい, $AB$ と表記する. 
+##### <u>注意</u>
+行列積 $AB$ は, 左側の行列 (この場合は$A$) の列の数と, 右側の行列 (この場合は$B$) の行の数が等しいこときに限り定義される.   
+##### <u>例</u>
+$$\bm{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad \bm{y} = \begin{pmatrix}y_1\\y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.$$
+* $\bm{x}\bm{y} = x_1y_1+x_2y_2$.
+* これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 $$\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2$$ に等しい.
+
+##### <u>例</u>
+$$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad B = \begin{pmatrix}b_{11}&b_{12}\\b_{21}&b_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2}.$$
+* $AB = \begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\\a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}\end{pmatrix}$
+* $A$ の第 $i$ 行のみ取り出した行ベクトル $\bm{a}_i = (a_{i1},a_{i2})$と, $B$ の第 $j$ 列のみ取り出した $\bm{b}_j = \begin{pmatrix}b_{1j}\\b_{2j}\end{pmatrix}$ について, $AB$ の $(i,j)$ 成分が $\bm{a}_i\bm{b}_j$ となる: $$AB = \begin{pmatrix}\bm{a}_1\bm{b}_1&\bm{a}_1\bm{b}_2\\\bm{a}_2\bm{b}_1&\bm{a}_2\bm{b}_2\end{pmatrix}.$$
+
+##### <u>例</u>
+$$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3\\4&5\end{pmatrix}.$$
+* $AB = \begin{pmatrix}1\cdot2 + 2\cdot4 & 1\cdot3+2\cdot5\\3\cdot2+4\cdot4&3\cdot3+4\cdot5\end{pmatrix} = \begin{pmatrix}10&13\\22&29\end{pmatrix}$.
+* $BA = \begin{pmatrix}2\cdot1+3\cdot3&2\cdot2+3\cdot4\\4\cdot1+5\cdot3&4\cdot2+5\cdot4\end{pmatrix} = \begin{pmatrix}11&16\\19&28\end{pmatrix}$
+* このように $AB$ と $BA$ は一般には等しくならない.
+
+##### <u>例</u>
+$$A = \begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad B = \begin{pmatrix}2&3&0\\4&5&0\end{pmatrix}.$$
+* $AB = \begin{pmatrix}10&13&0\\22&29&0\end{pmatrix}$.
+* 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
