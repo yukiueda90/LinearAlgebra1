@@ -2,3 +2,8 @@ body {
     max-width: 1000px;
     margin: 0 auto; /* Center the body horizontally */
 }
+
+ul li {
+    padding-bottom: 10px;
+    line-height: 1.5;
+}
