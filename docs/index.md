@@ -34,7 +34,7 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix},\qquad B=\begin
 
 ##### <u>例</u>
 * $A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$
-* $\boldsymbol{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\boldsymbol{x}$ は行ベクトル.
+* $\bm{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\boldsymbol{x}$ は行ベクトル.
 * $\boldsymbol{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; $\boldsymbol{v}$ は列ベクトル.
 * $\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.
 
