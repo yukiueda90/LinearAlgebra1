@@ -25,11 +25,13 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix} = (a_{ij}).$$
     * 行列 $A$ が $m\times n$ 型の複素行列であるとき, $A\in \mathbb{C}^{m\times n}$ と表記する.
 * $1\times n$ 型の行列を**行ベクトル** (**row vector**)という.
 * $m\times 1$ 型の行列を**列ベクトル** (**column vector**)という.
+* $1\times 1$ 型の行列は, そのただ$１$つの成分である実数 (もしくは複素数) と同一視される.
 
 ##### <u>例</u>
-$$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$$
-    $$\bm{x} = (x_1,x_2,x_3), \qquad \bm{x}\text{は行ベクトル}.$$
-    $$\bm{v} = \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix},\qquad \bm{v}\text{は列ベクトル}.$$
+* $A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$
+* $\bm{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\bm{x}$ は行ベクトル.
+* $\bm{v} = \begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; $\bm{v}$ は列ベクトル.
+* $\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.
 
 ## 1.2 行列の演算
 ##### <u>定義</u>
@@ -62,7 +64,8 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 行列積 $AB$ は, 左側の行列 (この場合は$A$) の列の数と, 右側の行列 (この場合は$B$) の行の数が等しいこときに限り定義される.   
 ##### <u>例</u>
 $$\bm{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad \bm{y} = \begin{pmatrix}y_1\\y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.$$
-* $\bm{x}\bm{y} = x_1y_1+x_2y_2$.
+* $\bm{x}\bm{y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
+* つまり $\bm{x}\bm{y} = x_1y_1+x_2y_2$.
 * これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 $$\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2$$ に等しい.
 
 ##### <u>例</u>
