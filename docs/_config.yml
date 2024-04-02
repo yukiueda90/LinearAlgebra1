@@ -1,4 +1,3 @@
 theme: jekyll-theme-minimal
-#title: 線形代数I
-#description: lecture note
+title: {{page.title}}
 markdown: kramdown
