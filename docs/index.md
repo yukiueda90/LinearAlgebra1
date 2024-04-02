@@ -31,8 +31,8 @@
 
 ##### <u>例</u>
 * $A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$
-* $\bm{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\bm{x}$ は行ベクトル.
-* $\bm{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; $\bm{v}$ は列ベクトル.
+* $\boldsymbol{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\boldsymbol{x}$ は行ベクトル.
+* $\boldsymbol{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; $\boldsymbol{v}$ は列ベクトル.
 * $\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.
 
 ## 1.2 行列の演算
@@ -67,15 +67,15 @@ $2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ について, $A$ と $B$ が同じ�
 ##### <u>注意</u>
 行列積 $AB$ は, 左側の行列 (この場合は$A$) の列の数と, 右側の行列 (この場合は$B$) の行の数が等しいこときに限り定義される.   
 ##### <u>例</u>
-\[\bm{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad \bm{y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
-* $\bm{x}\bm{y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
-* つまり $\bm{x}\bm{y} = x_1y_1+x_2y_2$.
+\[\boldsymbol{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad \boldsymbol{y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
+* $\boldsymbol{x}\boldsymbol{y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
+* つまり $\boldsymbol{x}\boldsymbol{y} = x_1y_1+x_2y_2$.
 * これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 \[\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2\] に等しい.
 
 ##### <u>例</u>
 \[A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad B = \begin{pmatrix}b_{11}&b_{12}\cr b_{21}&b_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2}.\]
 * $AB = \begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\cr a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}\end{pmatrix}$
-* $A$ の第 $i$ 行のみ取り出した行ベクトル $\bm{a}_i = (a_{i1},a_{i2})$と, $B$ の第 $j$ 列のみ取り出した $\bm{b}_j = \begin{pmatrix}b_{1j}\cr b_{2j}\end{pmatrix}$ について, $AB$ の $(i,j)$ 成分が $\bm{a}_i\bm{b}_j$ となる: \[AB = \begin{pmatrix}\bm{a}_1\bm{b}_1&\bm{a}_1\bm{b}_2\cr \bm{a}_2\bm{b}_1&\bm{a}_2\bm{b}_2\end{pmatrix}.\]
+* $A$ の第 $i$ 行のみ取り出した行ベクトル $\boldsymbol{a}_i = (a_{i1},a_{i2})$と, $B$ の第 $j$ 列のみ取り出した $\boldsymbol{b}_j = \begin{pmatrix}b_{1j}\cr b_{2j}\end{pmatrix}$ について, $AB$ の $(i,j)$ 成分が $\boldsymbol{a}_i\boldsymbol{b}_j$ となる: \[AB = \begin{pmatrix}\boldsymbol{a}_1\boldsymbol{b}_1&\boldsymbol{a}_1\boldsymbol{b}_2\cr \boldsymbol{a}_2\boldsymbol{b}_1&\boldsymbol{a}_2\boldsymbol{b}_2\end{pmatrix}.\]
 
 > ##### <u>例</u>
 > \[A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\qquad B =  \begin{pmatrix}2&3\cr 4&5\end{pmatrix}.\]
