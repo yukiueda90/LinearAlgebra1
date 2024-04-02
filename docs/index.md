@@ -17,7 +17,7 @@ $$A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix},\qquad B=\begin
     * また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ と表す.
 
 ##### <u>例</u>
-$$A = \begin{pmatrix}a_{11}&a_{12} \cr a_{21}&a_{22}\end{pmatrix}.$$
+\[A = \begin{pmatrix}a_{11}&a_{12} \cr a_{21}&a_{22}\end{pmatrix}.\]
 * この行列 $A$ の第 $1$ 行は $(a_{11},a_{12})$.
 * この行列 $A$ の第 $2$ 列は $\begin{pmatrix}a_{12}\cr a_{22}\end{pmatrix}$.
 * この行列 $A$ の $(1,2)$ 成分は $a_{12}$.
