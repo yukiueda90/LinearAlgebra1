@@ -38,14 +38,14 @@
 
 ##### <u>例</u>
 * $A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$
-* $\bm{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; $\bm{x}$ は行ベクトル.
-* $\bm{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; $\bm{v}$ は列ベクトル.
+* ${\boldsymbol x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, &emsp; ${\boldsymbol x}$ は行ベクトル.
+* ${\boldsymbol v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, &emsp; ${\boldsymbol v}$ は列ベクトル.
 * $\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.
 
 ---
 * 行列 $A = (a_{ij})\in\mathbb{R}^{m\times n}$ は, 
 \[
-    \bm a_i = (a_{i1},a_{i2},\dots, a_{in})
+    {\boldsymbol a}_i = (a_{i1},a_{i2},\dots, a_{in})
 \] という行ベクトルたちを縦に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
@@ -54,12 +54,12 @@
     \vdots&\vdots&\ddots&\vdots\cr
     a_{m1}&a_{m2}&\dots&a_{mn}
     \end{pmatrix} = \begin{pmatrix}
-    \bm{a}_1 \cr \bm{a}_2 \cr \vdots \cr \bm{a}_m
+    {\boldsymbol a}_1 \cr {\boldsymbol a}_2 \cr \vdots \cr {\boldsymbol a}_m
     \end{pmatrix}.
-\] このとき, 各 $\bm{a}_i$ を行列 $A$ の**第 $i$ 行ベクトル**という.
+\] このとき, 各 ${\boldsymbol a}_i$ を行列 $A$ の**第 $i$ 行ベクトル**という.
 * 同様に, 行列 $A\in\mathbb{R}^{m\times n}$ を
 \[
-    \bm a_j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
+    {\boldsymbol a}_j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
 \] という列ベクトルたちを横に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
@@ -68,9 +68,9 @@
     \vdots&\vdots&\ddots&\vdots\cr
     a_{m1}&a_{m2}&\dots&a_{mn}
     \end{pmatrix} = \begin{pmatrix}
-    \bm{a}_1&\bm{a}_2&\dots&\bm{a}_n
+    {\boldsymbol a}_1&{\boldsymbol a}_2&\dots&{\boldsymbol a}_n
     \end{pmatrix}.
-\] このとき, 各 $\bm{a}_j$ を行列 $A$ の**第 $j$ 列ベクトル**という.
+\] このとき, 各 ${\boldsymbol a}_j$ を行列 $A$ の**第 $j$ 列ベクトル**という.
 ---
 
 <a id="section1-2"></a>
@@ -120,19 +120,23 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 行列積 $AB$ は, 左側の行列 (この場合は$A$) の列の数と, 右側の行列 (この場合は$B$) の行の数が等しいときに限り定義される.  
 
 ##### <u>例</u>
-\[\bm{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad \bm{y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
-* $\bm{x}\bm{y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
-* つまり $\bm{x}\bm{y} = x_1y_1+x_2y_2$.
+\[{\boldsymbol x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad {\boldsymbol y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
+* ${\boldsymbol x}{\boldsymbol y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
+* つまり ${\boldsymbol x}{\boldsymbol y} = x_1y_1+x_2y_2$ と同一視される.
 * これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 \[\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2\] に等しい.
+* 一方,
+\[
+    {\boldsymbol y}{\boldsymbol x} = \begin{pmatrix}y_1x_1&y_1x_2\cr y_2x_1&y_2x_2\end{pmatrix}\in\mathbb{R}^{2\times2 }
+\] であり, ベクトルの内積と同一視できない.
 
 ##### <u>例</u>
 \[A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad B = \begin{pmatrix}b_{11}&b_{12}\cr b_{21}&b_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2}.\]
 * $AB = \begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\cr a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}\end{pmatrix}$.
-* 行列 $AB$ の $(i,j)$ 成分は, $A$ の第 $i$ 行ベクトル $\bm{a}_i$ と $B$ の第 $j$ 列ベクトルの積となる：
+* 行列 $AB$ の $(i,j)$ 成分は, $A$ の第 $i$ 行ベクトル ${\boldsymbol a}_i$ と $B$ の第 $j$ 列ベクトルの積となる：
 \[
     AB = \begin{pmatrix}
-    \bm{a}_1\bm{b}_1&\bm{a}_1\bm{b}_2\cr 
-    \bm{a}_2\bm{b}_1&\bm{a}_2\bm{b}_2
+    {\boldsymbol a}_1{\boldsymbol b}_1&{\boldsymbol a}_1{\boldsymbol b}_2\cr 
+    {\boldsymbol a}_2{\boldsymbol b}_1&{\boldsymbol a}_2{\boldsymbol b}_2
     \end{pmatrix}.
 \]
 
@@ -147,6 +151,20 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 * $AB = \begin{pmatrix}10&13&0\cr 22&29&0\end{pmatrix}$.
 * 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
 
+---
+先ほど, 行列積 $AB$ を, $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルを用いて表現したが, これを一般化して行列の**区分け**による行列積の表現が可能である.
+
+##### <u>例</u>    
+$A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}$, &emsp;$B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}$, &emsp; $AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}$.
+* 例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び　$2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
+$ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hline6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
+* このとき, 
+\[
+    AB = \begin{pmatrix}A_{11}B_{11}+A_{12}B_{21}\cr A_{21}B_{11} + A_{22}B_{21}\end{pmatrix} = \begin{pmatrix}28&34\cr 64&79\cr\hline 100&124\end{pmatrix}
+\] と表現することができる. 実際に計算してみると,
+$A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
+$A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
+となる.
 ---
 
 ##### <u>命題</u> (結合則)
@@ -210,7 +228,7 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 * 転置は行と列を入れ替える (つまり $i$ と $j$ を入れ替える) 操作である.
 
 ##### <u>例</u>   
-* $\bm x = (x_1,x_2)$ のとき, $\bm x^{\operatorname{T}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$
+* ${\boldsymbol x} = (x_1,x_2)$ のとき, ${\boldsymbol x}^{\operatorname{T}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$
 * $A = \begin{pmatrix} a_{11}&a_{12}\cr a_{21}&a_{22} \end{pmatrix}$ のとき, $A^{\operatorname{T}} = \begin{pmatrix} a_{11}&a_{21}\cr a_{12}&a_{22}\end{pmatrix}$
 * $B = \begin{pmatrix}b_{11}&b_{12}&b_{13}\cr b_{21}&b_{22}&b_{23}\end{pmatrix}$ のとき, $B^{\operatorname{T}} = \begin{pmatrix}b_{11}&b_{21}\cr b_{12}&b_{22}\cr b_{13}&b_{23}\end{pmatrix}$.
 
@@ -228,9 +246,9 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 \] なので, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は
 \[
     \sum_{k=1}^ma_{jk}b_{ki}
-\] となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル $\bm{b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル $\bm{a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}}A^{\operatorname{T}}$ の $(i,j)$ 成分は
+\] となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル ${\boldsymbol b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル ${\boldsymbol a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}}A^{\operatorname{T}}$ の $(i,j)$ 成分は
 \[
-    \bm b_i^{\operatorname{T}}\bm a_j^{\operatorname{T}} = (b_{1i},b_{2i},\dots,b_{mi})\begin{pmatrix}a_{j1}\cr a_{j2}\cr \cdots\cr a_{jm}\end{pmatrix} = \sum_{k=1}^ma_{jk}b_{ki}.
+    {\boldsymbol b}_i^{\operatorname{T}}{\boldsymbol a}_j^{\operatorname{T}} = (b_{1i},b_{2i},\dots,b_{mi})\begin{pmatrix}a_{j1}\cr a_{j2}\cr \cdots\cr a_{jm}\end{pmatrix} = \sum_{k=1}^ma_{jk}b_{ki}.
 \]
 従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.
 
@@ -302,7 +320,7 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 * 以降,
 \[
     \delta_{ij} = \left\{\begin{array}{rl}
-    1&\text{if}\quad i=j,\\
+    1&\text{if}\quad i=j,\cr
     0&\text{if}\quad i\neq j
     \end{array}\right.
 \] という表記を用いる (これを**クロネッカーのデルタ記号**, **Kronecker delta** という). これを用いると, 対角行列は
@@ -338,6 +356,14 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 ##### <u>例</u> 
 * 零行列 $O\in\mathbb{R}^{n\times n}$ の逆行列は存在しない.
 * 単位行列 $I$ の逆行列は単位行列 $I$ である: $I^{-1}=I$. 
+* 対角行列
+\[
+    A = \begin{pmatrix}a_1&0&\dots&0\cr 0&a_2&\dots&0\cr \vdots&\vdots&\ddots&\vdots\cr 0&0&\dots&a_n\end{pmatrix}
+\] は, 任意の $i$ に対し $a_i\neq0$ が成立するならば正則行列であり, 逆行列は
+\[
+    A^{-1} = \begin{pmatrix}1/a_1&0&\dots&0\cr 0&1/a_2&\dots&0\cr \vdots&\vdots&\ddots&\vdots\cr 0&0&\dots&1/a_n\end{pmatrix}
+\] である.
+
 * $A=\begin{pmatrix}1&2\cr 3&4\end{pmatrix}$ とする. ここで,
 \[
     A\begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix} = I,\quad\begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}A = I 
@@ -346,9 +372,9 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
     B\begin{pmatrix}a&b\cr c&d\end{pmatrix} = I
     \] を満たす行列 $\begin{pmatrix}a&b\cr c&d\end{pmatrix}$ が存在したならば, 
     \[\left\{\begin{array}{rl}
-        a+2c &= 1,\\
-        b+2d &= 0,\\
-        2a+4c &= 0,\\
+        a+2c &= 1,\cr
+        b+2d &= 0,\cr
+        2a+4c &= 0,\cr
         2b+4d &= 1
     \end{array}\right.\] となり矛盾する.
 
@@ -360,7 +386,9 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 
 > 証明:
 >* \[
-    (AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AIA^{-1} = AA^{-1}=I,
+        (AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AIA^{-1} = AA^{-1}=I,
+    \]\[
+       (B^{-1}A^{-1})(AB) = B^{-1}A^{-1}AB = B^{-1}IB = B^{-1}B=I. 
     \] 従って, 逆行列の定義より $(AB)^{-1} = B^{-1}A^{-1}$.
 >* $I^{-1}=I$ と先ほどの結果から
     \[
@@ -388,14 +416,5 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
     AB = I
 \] となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
 * 同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的にみたされるため, $B=A^{-1}$ であることがわかる.
-
-##### <u>例</u> 
-* 対角行列
-\[
-    A = \begin{pmatrix}a_1&0&\dots&0\cr 0&a_2&\dots&0\cr \vdots&\vdots&\ddots&\vdots\cr 0&0&\dots&a_n\end{pmatrix}
-\] は, 任意の $i$ に対し $a_i\neq0$ が成立するならば正則行列であり, 逆行列は
-\[
-    A^{-1} = \begin{pmatrix}1/a_1&0&\dots&0\cr 0&1/a_2&\dots&0\cr \vdots&\vdots&\ddots&\vdots\cr 0&0&\dots&1/a_n\end{pmatrix}
-\] である.
 
 ---

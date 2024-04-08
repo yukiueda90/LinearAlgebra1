@@ -31,7 +31,7 @@
 この章では, 行列の**基本変形**と呼ばれる特定の変形, 及びそこから得られる行列の性質について解説し, またそれらの応用として連立 $1$ 次方程式を解く, すなわち逆行列を計算する手順について紹介する.
 
 <a id="section2-2"></a>
-## 2.1: 基本変形
+## 2.2: 基本変形
 ##### <u>定義</u> (基本変形)
 行列に対する基本的な操作として, 以下の $3$ つを**行基本変形** (**elementary row operations**) という:
 * 第 $i$ 行と第 $j$ 行を入れ替える.
@@ -57,3 +57,33 @@
 \[
     P_{i,j} = \begin{pmatrix}1&&&&&&\cr &\ddots&&&&&\cr &&0&&1&&\cr&&&\ddots&&&\cr&&1&&0&&\cr&&&&&\ddots&\cr&&&&&&1\end{pmatrix},
 \]
+\[
+    Q_{i,\lambda} = \begin{pmatrix}1&&&&&&\cr &\ddots&&&&&\cr &&1&&&&\cr&&&\lambda&&&\cr&&&&1&&\cr&&&&&\ddots&\cr&&&&&&1\end{pmatrix},
+\]
+\[
+    R_{i,j,\lambda} = \begin{pmatrix}1&&&&&&\cr &\ddots&&&&&\cr &&1&&\lambda&&\cr&&&\ddots&&&\cr&&&&1&&\cr&&&&&\ddots&\cr&&&&&&1\end{pmatrix}.
+\]
+
+* 行列 $A$ に対する行基本変形は, $A$ に基本行列を**左から**掛けることで表現できる.
+* 行列 $A$ に対する列基本変形は, $A$ に基本行列を**右から**掛けることで表現できる.
+
+##### <u>例</u>
+\[
+    A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}.
+\]
+* 行列 $A$ の第 $2$ 行に第 $1$ 行の $-2$ 倍を加える行基本変形は,
+\[
+    R_{2,1,-2}A = \begin{pmatrix}1&0\cr -2&1\end{pmatrix}A = \begin{pmatrix}1&2\cr 1&0\end{pmatrix}
+\] により表現することができる.
+
+##### <u>性質</u>
+基本変形行列は全て正則であり,
+\[
+    P_{ij}^{-1}=P_{ij},\quad Q_{i,\lambda}^{-1} = Q_{i,\lambda^{-1}},\quad R_{i,j,\lambda}^{-1} = R_{i,j,\lambda^{-1}}
+\] となる. 実際, 行 (および列) 基本変形を考えると,
+* $P_{ij}P_{ij}A = A$, &emsp; $AP_{ij}P_{ij}=A$
+* $Q_{i,\lambda^{-1}}Q_{i,\lambda}A = A$, &emsp; $AQ_{i,\lambda}Q_{i,\lambda^{-1}}=A$
+* $R_{i,j,\lambda^{-1}}R_{i,j,\lambda}A = A$, &emsp; $AR_{i,j,\lambda}R_{i,j,\lambda^{-1}} = A$
+
+となることは容易に想像できるし, 計算して確かめることもできる.
+
