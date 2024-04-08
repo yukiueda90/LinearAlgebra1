@@ -320,12 +320,6 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 ##### <u>注意</u> 
 * 以降,
 \[
-    \delta_{ij} = \left \{ \begin{array}{rl}
-    1&\text{if}\quad i=j,\cr
-    0&\text{if}\quad i\neq j
-    \end{array} \right .
-\] 
-\[
     \delta_{ij} = \cases{
     1 \quad\text{if}\quad i=j,\cr
     0 \quad\text{if}\quad i\neq j
@@ -379,12 +373,6 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 * $B = \begin{pmatrix}1&2\cr 2&4\end{pmatrix}$ の逆行列は存在しない. これは背理法で以下のように確かめられる: もしも \[
     B\begin{pmatrix}a&b\cr c&d\end{pmatrix} = I
     \] を満たす行列 $\begin{pmatrix}a&b\cr c&d\end{pmatrix}$ が存在したならば, 
-    \[ \left \{ \begin{array}{rl}
-        a+2c &= 1,\cr
-        b+2d &= 0,\cr
-        2a+4c &= 0,\cr
-        2b+4d &= 1
-    \end{array} \right. \]
     \[\cases{
         a+2c &= 1,\cr
         b+2d &= 0,\cr
