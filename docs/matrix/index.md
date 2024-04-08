@@ -165,6 +165,7 @@ $ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) =
 $A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
 $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
 となる.
+
 ---
 
 ##### <u>命題</u> (結合則)
@@ -246,9 +247,9 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 \] なので, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は
 \[
     \sum_{k=1}^ma_{jk}b_{ki}
-\] となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル ${\boldsymbol b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル ${\boldsymbol a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}}A^{\operatorname{T}}$ の $(i,j)$ 成分は
+\] となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル ${\boldsymbol b} _ i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル ${\boldsymbol a} _ j$ の転置である. 従って, 行列 $B^{\operatorname{T}} A^{\operatorname{T}}$ の $(i,j)$ 成分は
 \[
-    {\boldsymbol b}_i^{\operatorname{T}}{\boldsymbol a}_j^{\operatorname{T}} = (b_{1i},b_{2i},\dots,b_{mi})\begin{pmatrix}a_{j1}\cr a_{j2}\cr \cdots\cr a_{jm}\end{pmatrix} = \sum_{k=1}^ma_{jk}b_{ki}.
+    {\boldsymbol b} _ i^{\operatorname{T}}{\boldsymbol a} _ j^{\operatorname{T}} = (b _ {1i}, b _ {2i},\dots, b _ {mi})\begin{pmatrix}a_{j1}\cr a_{j2}\cr \cdots\cr a_{jm}\end{pmatrix} = \sum_{k=1}^m a_{jk} b_{ki}.
 \]
 従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.
 
@@ -319,10 +320,10 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 ##### <u>注意</u> 
 * 以降,
 \[
-    \delta_{ij} = \left\{\begin{array}{rl}
+    \delta_{ij} = \left \{ \begin{array}{rl}
     1&\text{if}\quad i=j,\cr
     0&\text{if}\quad i\neq j
-    \end{array}\right.
+    \end{array} \right .
 \] という表記を用いる (これを**クロネッカーのデルタ記号**, **Kronecker delta** という). これを用いると, 対角行列は
 \[
     A = (a_i\delta_{ij})
@@ -345,6 +346,7 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 \[
     \lambda IA = \lambda A,\quad A(\lambda I) = \lambda A,\quad (\lambda I)^n = \lambda^n I.
 \]
+
 ---
 
 ##### <u>定義</u> (正則行列と逆行列)
@@ -371,12 +373,12 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 * $B = \begin{pmatrix}1&2\cr 2&4\end{pmatrix}$ の逆行列は存在しない. これは背理法で以下のように確かめられる: もしも \[
     B\begin{pmatrix}a&b\cr c&d\end{pmatrix} = I
     \] を満たす行列 $\begin{pmatrix}a&b\cr c&d\end{pmatrix}$ が存在したならば, 
-    \[\left\{\begin{array}{rl}
+    \[ \left \{ \begin{array}{rl}
         a+2c &= 1,\cr
         b+2d &= 0,\cr
         2a+4c &= 0,\cr
         2b+4d &= 1
-    \end{array}\right.\] となり矛盾する.
+    \end{array} \right. \] となり矛盾する.
 
 ##### <u>命題</u> 
 逆行列について以下が成立する:
