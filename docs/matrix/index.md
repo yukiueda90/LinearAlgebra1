@@ -124,10 +124,6 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 * ${\boldsymbol x}{\boldsymbol y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
 * つまり ${\boldsymbol x}{\boldsymbol y} = x_1y_1+x_2y_2$ と同一視される.
 * これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 \[\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2\] に等しい.
-* 一方,
-\[
-    {\boldsymbol y}{\boldsymbol x} = \begin{pmatrix}y_1x_1&y_1x_2\cr y_2x_1&y_2x_2\end{pmatrix}\in\mathbb{R}^{2\times2 }
-\] であり, ベクトルの内積と同一視できない.
 
 ##### <u>例</u>
 \[A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad B = \begin{pmatrix}b_{11}&b_{12}\cr b_{21}&b_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2}.\]
@@ -137,8 +133,11 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
     AB = \begin{pmatrix}
     {\boldsymbol a}_1{\boldsymbol b}_1&{\boldsymbol a}_1{\boldsymbol b}_2\cr 
     {\boldsymbol a}_2{\boldsymbol b}_1&{\boldsymbol a}_2{\boldsymbol b}_2
-    \end{pmatrix}.
-\]
+    \end{pmatrix},
+\] ここで　${\boldsymbol{a}}_i = (a_{i1},a_{i2})$,&emsp; ${\boldsymbol{b}}_j = \begin{pmatrix}b_{1j}\cr b_{2j}\end{pmatrix}$ である. 実際に, 行列積 ${\boldsymbol{a}}_i {\boldsymbol{b}}_j$ (すなわち行列積 $AB$ の $(i,j)$ 成分) は
+\[
+    \vec{a}_ i = (a_{i1}, a_{i2}),\quad \vec{b}_ j = (b_{1j}, b_{2j})
+\] の内積と同一視することができるので $(a_{i1} b_{1j} + a_{i2} b_{2j})$ である. 
 
 ##### <u>例</u>
 \[A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\qquad B =  \begin{pmatrix}2&3\cr 4&5\end{pmatrix}.\]
@@ -151,20 +150,20 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 * $AB = \begin{pmatrix}10&13&0\cr 22&29&0\end{pmatrix}$.
 * 一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている). このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.
 
----
-先ほど, 行列積 $AB$ を, $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルを用いて表現したが, これを一般化して行列の**区分け**による行列積の表現が可能である.
+##### <u>例</u>
+\[A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\qquad {\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}.\]
 
-##### <u>例</u>    
-$A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}$, &emsp;$B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}$, &emsp; $AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}$.
-* 例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び　$2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
-$ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hline6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
-* このとき, 
+* $A{\boldsymbol{x}} = \begin{pmatrix}x_2+2x_2\cr 3x_1+4x_2\end{pmatrix}$.
+* このように, 行列と列ベクトルの積により列ベクトルが得られる.
+* 実は連立 $1$ 次方程式は, 『与えられた行列 $A$ と列ベクトル ${\boldsymbol{b}}$ に対し, $A{\boldsymbol{x}} = {\boldsymbol{b}}$ を満たす列ベクトル ${\boldsymbol{x}}$ を求めよ』 という問題と同一視することができる (後の章で改めて説明する).
+
+##### <u>例</u>
+\[{\boldsymbol x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad {\boldsymbol y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
+* いま,
 \[
-    AB = \begin{pmatrix}A_{11}B_{11}+A_{12}B_{21}\cr A_{21}B_{11} + A_{22}B_{21}\end{pmatrix} = \begin{pmatrix}28&34\cr 64&79\cr\hline 100&124\end{pmatrix}
-\] と表現することができる. 実際に計算してみると,
-$A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
-$A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
-となる.
+    {\boldsymbol y}{\boldsymbol x} = \begin{pmatrix}y_1x_1&y_1x_2\cr y_2x_1&y_2x_2\end{pmatrix}\in\mathbb{R}^{2\times2 }
+\] であり, これはベクトルの内積と同一視できない.
+* ベクトルの内積と同一視できるのは, $(\text{行ベクトル})(\text{列ベクトル})$ という形をしたベクトル同士の行列積であり, 上のように $(\text{列ベクトル})(\text{行ベクトル})$ という形の積に関してはこの限りでは無いので注意.
 
 ---
 
@@ -227,6 +226,7 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 
 ##### <u>注意</u>
 * 転置は行と列を入れ替える (つまり $i$ と $j$ を入れ替える) 操作である.
+* $m\times n$ 型行列の転置は $n\times m$ 型行列になる
 
 ##### <u>例</u>   
 * ${\boldsymbol x} = (x_1,x_2)$ のとき, ${\boldsymbol x}^{\operatorname{T}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$
@@ -347,6 +347,42 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
     \lambda IA = \lambda A,\quad A(\lambda I) = \lambda A,\quad (\lambda I)^n = \lambda^n I.
 \]
 
+##### <u>定義</u> (単位ベクトル)
+単位行列の各列ベクトルを**単位ベクトル**といい,
+\[
+    {\boldsymbol e}_1 = \begin{pmatrix}1\cr0\cr\vdots\cr0\end{pmatrix},\quad {\boldsymbol e}_2 = \begin{pmatrix}0\cr1\cr\vdots\cr0\end{pmatrix}, \quad \dots
+\]
+と表記する.
+
+---
+行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. これを一般化して行列の**区分け**による行列積の表現が可能である.
+
+##### <u>例</u>    
+$A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}$, &emsp;$B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}$, &emsp; $AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}$.
+* 例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び　$2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
+$ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hline6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
+    * この区分けを用いた場合, 形式的に $A$ は $2\times2$ 型, $B$ は $2\times1$ 型と思うことで行列積 $AB$ を計算できる.
+* このとき, 
+\[
+    AB = \begin{pmatrix}A_{11}B_{11}+A_{12}B_{21}\cr A_{21}B_{11} + A_{22}B_{21}\end{pmatrix} = \begin{pmatrix}28&34\cr 64&79\cr\hline 100&124\end{pmatrix}
+\] と表現することができる. 実際に計算してみると,
+$A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
+$A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
+となる.
+* 異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, $B = \left(\begin{array}{c|c}2&3\cr4&5\cr\hline6&7\end{array}\right) = \begin{pmatrix}B_{11}&B_{12}\cr B_{21}&B_{22}\end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
+\[
+    AB = \begin{pmatrix}A_{11}B_{11}+ A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}\end{pmatrix} = \left(\begin{array}{c|c}28&34\cr 64&79\cr\hline 100&124\end{array}\right)
+\] とみなすことができる.
+* 一方で, 例えば $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr  6&7\end{array}\right) = (B_{11},B_{12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
+
+区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:
+
+##### <u>例</u>   
+$A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}$.
+* 行列 $A$ に対して, $A=\left(\begin{array}{cc|c}2&0&0\cr 0&2&0\cr \hline1&2&3\end{array}\right) = \begin{pmatrix}2I&O\cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
+* 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr\hline x_3\end{pmatrix}$ という区分けを考える. 
+* このとき, $A{\boldsymbol{x}} = \begin{pmatrix}2I\begin{pmatrix}x_1\cr x_2\end{pmatrix} + Ox_3\cr A^\prime \begin{pmatrix}x_1\cr x_2\end{pmatrix}+3x_3\end{pmatrix} = \begin{pmatrix}2x_1\cr 2x_2\cr x _ 1+2x _ 2+3x _ 3\end{pmatrix}$
+
 ---
 
 ##### <u>定義</u> (正則行列と逆行列)
@@ -408,6 +444,7 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 \] これは $B\neq C$ に矛盾する. 従って, 背理法より $A$ の逆行列はただ $1$ つに定まる.
 
 ##### <u>注意</u> 
+* 上の結果より, 特に正則行列たちの積は正則行列になる.
 * 実は, 正方行列 $A$ に対し $AB=I$ を満たす $B$ が存在すれば, そのような $B$ は $BA=I$ も満たす (つまり $B=A^{-1}$ となる).
 * 同様に, $BA=I$ なる $B$ は, $B=A^{-1}$ となる.
 * (与えられた行列に対する逆行列の計算方法については, 後の章で改めて解説する)
