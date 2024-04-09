@@ -5,13 +5,15 @@
 <a id="section2-1"></a>
 ## 2.1: 導入
 例として, 以下の連立$1$次方程式を考える:
-\[\left\{\begin{array}{rll}
+\[\cases{\begin{array}{rll}
     x+2y &= 20, &\qquad (1)\\
     3x+4y &= 46. &\qquad (2)
-\end{array}\right.\] これは行列を用いて以下のように書き直すことができる:
+\end{array}}\] これは行列を用いると以下のように書き直すことができる:
 \[
     \begin{pmatrix}1&2\cr 3&4\end{pmatrix}\begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}20\cr 46\end{pmatrix}.
-\] ここで, 左辺にある行列 $A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}$ の逆行列は 
+\] このように, 連立 $1$ 次方程式を, 行列と列ベクトルの行列積により表現することは, 行列の基本的な応用の $1$ つである (以降, 上のようにして連立 $1$ 次方程式と同一視することができる $A{\boldsymbol{x}} = {\boldsymbol{b}}$ という形の方程式のことも連立 $1$ 次方程式と呼ぶことがある).
+
+ここで, 左辺にある行列 $A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}$ の逆行列が
 \[
     A^{-1}=\begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
 \] であることを用いると, 
@@ -20,10 +22,10 @@
 \] と計算することで, 連立$1$次方程式を解くことができる. すなわち, 連立 $1$ 次方程式を解くことと逆行列を求めることとを同一視することができる.
 
 一方で, この連立$1$次方程式は, 例えば $(2)$ 式から $(1)$ 式を $2$ 倍したものを引くことで $(1)$ 式から $y$ の項を消去する, といった操作を用いて解くこともできる. ここで例に挙げた操作を実際に適用すると,
-\[\left\{\begin{array}{rll}
+\[\cases{\begin{array}{rll}
     x+2y &= 20, &\qquad (1)\\
     x &= 6. &\qquad (2)'
-\end{array}\right.\] と変形することができるが, これは『行列 $A$ と右辺の列ベクトル の第 $2$ 行から第 $1$ 行の $2$ 倍を引く』という操作と同値である:
+\end{array}}\] と変形することができるが, これは『行列 $A$ と右辺の列ベクトル の第 $2$ 行から第 $1$ 行の $2$ 倍を引く』という操作と同値である:
 \[
     \begin{pmatrix}1&2\cr 1&0\end{pmatrix}\begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}20\cr 6\end{pmatrix}.
 \] 連立 $1$ 次方程式を解く際に用いられるこのような操作は, 行列に対しても, その性質を保ちつつ簡単な形に変形する操作としてしばしば用いられるものである. 
@@ -77,10 +79,10 @@
 \] と表現することができる.
 
 ##### <u>性質</u>
-基本変形行列は全て正則であり,
+基本行列は全て正則であり,
 \[
     P_{i,j}^{-1}=P_{i,j},\quad Q_{i,\lambda}^{-1} = Q_{i,\lambda^{-1}},\quad R_{i,j,\lambda}^{-1} = R_{i,j,\lambda^{-1}}
-\] となる. 実際, 行 (および列) 基本変形を考えると,
+\] となる, すなわち, 基本行列の逆行列は基本変形行列で表現できる. 実際, 行 (および列) 基本変形を考えると,
 * $P_{i,j}P_{i,j}A = A$, &emsp; $AP_{i,j}P_{i,j}=A$
 * $Q_{i,\lambda^{-1}}Q_{i,\lambda}A = A$, &emsp; $AQ_{i,\lambda}Q_{i,\lambda^{-1}}=A$
 * $R_{i,j,\lambda^{-1}}R_{i,j,\lambda}A = A$, &emsp; $AR_{i,j,\lambda}R_{i,j,\lambda^{-1}} = A$
@@ -88,6 +90,9 @@
 となることは容易に想像できるし, 計算して確かめることもできる.
 
 ---
+
+<a id="section2-3"></a>
+## 2.3: 階数と正則性
 
 基本行列を用いて, 実数の因数分解に相当するものを考えてみる: つまり, 与えられた行列 $A$ を, 基本行列と簡単な形をした行列たちの積によって表現する. 
 * 例えば, $6552 = 2^3\times 3^2\times 7\times 13$.
@@ -121,9 +126,10 @@
     R_{3,2,-3}R_{1,2,-2}Q_{2,1/2}AR_{2,1,-2}R_{3,1,-3} = \begin{pmatrix}1&0&0\cr0&-1&-2\cr0&1&2\end{pmatrix}.
 \]
 
+この結果を繰り返し適用することで, 第 $2$ 行, 第 $2$ 列以降も同様に変形することができる:
 
 ##### <u>定理 (階数)</u>
-任意の行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$, および
+任意の行列 $m\times n$ 型行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$, および $m\times n$ 型行列
 \[
     F(r) =\begin{pmatrix}I_r&O\cr O&O\end{pmatrix} = \begin{pmatrix}1\cr&1\cr&&\ddots\cr&&&1\cr&&&&0\cr&&&&&\ddots\end{pmatrix}   
 \] を用いて, $A=PF(r)Q$ と表される, ここで $I_r$ は $r\times r$ 型の単位行列である (この $r$ を行列 $A$ の**階数**(**rank**)という).
@@ -145,12 +151,195 @@
 \] という形が得られる, ただし $\widetilde{P}$, $\widetilde{Q}$ は基本行列の積で表される.
 > * 基本行列は正則かつ逆行列も基本行列で表されるので, $P=\widetilde{P}^{-1}$, $Q=\widetilde{Q}^{-1}$ とすれば, $P$, $Q$ は基本行列の積で表され,
 \[
-    A = P^{-1}F(r)Q^{-1}
+    A = PF(r)Q
 \] が成立する.
 
 ##### <u>注意</u>
-* (再掲) この $r$ を行列 $A$ の**階数**(**rank**)という.
+* この $r$ を行列 $A$ の**階数**(**rank**)といい, $\operatorname{rank} A = r$ と表記する. 
+* 行列 $F(r)$ を, 行列 $A$ の標準形と呼ぶことがある.
 * 本当は, このような $r$ が一意に定まることも示す必要があるが, ここでは証明は省略する.
+
+##### <u>例</u>
+(ここでのみ) 行及び列基本変形を $\longrightarrow$ により表すことにする. 例として, 
+\[\begin{pmatrix}0&2&4&6\cr 1&2&3&4\cr -2&-1&0&1\end{pmatrix}\] という行列のランクを計算してみる:
+\[\begin{array}{rll}\begin{pmatrix}0&2&4&6\cr 1&2&3&4\cr -2&-1&0&1\end{pmatrix} &\longrightarrow \begin{pmatrix}1&2&3&4\cr 0&2&4&6\cr -2&-1&0&1\end{pmatrix}\quad&\text{($1$ 行目と $2$ 行目を交換)} \cr
+&\longrightarrow \begin{pmatrix}1&2&3&4\cr 0&2&4&6\cr 0&3&6&9\end{pmatrix} &\text{($1$ 行目の $2$ 倍を $3$ 行目に加えた)} \cr
+&\longrightarrow \begin{pmatrix}1&0&0&0\cr 0&2&4&6\cr 0&3&6&9\end{pmatrix} &\text{($1$ 列目のスカラー倍を $2$, $3$, $4$ 列目に加えた)} \cr
+&\longrightarrow \begin{pmatrix}1&0&0&0\cr 0&1&2&3\cr 0&1&2&3\end{pmatrix} &\text{($2$ 行目と $3$ 行目をスカラー倍)} \cr
+&\longrightarrow \begin{pmatrix}1&0&0&0\cr 0&1&2&3\cr 0&0&0&0\end{pmatrix} &\text{($3$ 行目に $2$ 行目の $-1$ 倍を加えた)} \cr
+&\longrightarrow \begin{pmatrix}1&0&0&0\cr 0&1&0&0\cr 0&0&0&0\end{pmatrix} &\text{($2$ 列目のスカラー倍を $3$, $4$ 列目に加えた)}.
+\end{array}\] このことから $\operatorname{rank}A = 2$ であることがわかる.
 
 ---
 
+実は正方行列の階数と正則性 (すなわち逆行列の存在) とは密接に関連している.
+
+##### <u>定理</u>
+$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
+\[
+    \operatorname{rank}A = n \iff A \text{ は正則}.
+\]
+> 証明
+上の定理より, $A=PF(r)Q$ と表すことができるのであった, ただし $P$, $Q$ は基本行列の積で表される行列であり, $r=\operatorname{rank}A$に対し $F(r)\in\mathbb{R}^{n\times n}$ は
+\[
+    F(r) = \begin{pmatrix}I_r&O\cr O&O\end{pmatrix}
+\] という形の行列である. $P$, $Q$ は正則なので,
+\[A \text{ が正則} \iff F(r)\text{ が正則}\] が得られる.
+$(\implies)$ &emsp; $\operatorname{rank}A=n$ ならば, $F(r)$ は $n$ 次の単位行列となるため特に正則である;
+\[r=\operatorname{rank}A=n\implies F(r)\text{ が正則}.\] $(\impliedby)$ &emsp; 対偶を示す: $r<n$ のとき, $F(r)$ が正則でないことを示せば良い. 
+(背理法) &emsp; $F(r)$ が正則であると仮定する. いま, $r < n$ なので, $F(r)$ の 第 $r+1$ 行から第 $n$ 行の成分は全て $0$ である. 従って, $F(r)F(r)^{-1}$ の第 $r+1$ 行から第 $n$ 行の成分も全て $0$ となるため, $F(r)F(r)^{-1}\neq I$ となり矛盾する. 
+以上より 
+\[F(r) \text{ が正則} \implies r=\operatorname{rank}A=n\] が得られる.
+
+##### <u>注意</u>
+* $n$ 次正方行列 $A$ について, $\operatorname{rank}A=n$ のとき, $A$ は**フルランク** (**full rank**) であるということがある:
+\[A \text{ がフルランク}\iff A \text{ が正則}\]
+* $A$ がフルランクならば, 対応する標準形 $F(r)$ は単位行列になる.
+
+この定理より, 以下の結論が直ちに得られる:
+
+##### <u>系</u>
+$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
+\[
+    A\text{ が正則}\iff A\text{ は基本行列の積で表現される}.
+\]
+
+これは以下のように言い換えることもできる:
+
+##### <u>系</u>
+$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
+\[
+    A\text{ が正則} \iff A \text{ は行 (もしくは列) 基本変形だけで単位行列に変形できる}
+\]
+
+##### <u>注意</u>
+以降は, 特に行基本変形のみを考えることにする.
+
+##### <u>例</u>
+\[A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad B= \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}\] とすると, $A^{-1}=B$ を確かめることができるので $A$ は正則である. この行列 $A$ が行基本変形のみで単位行列に変形できることを確かめてみる. 以降, 行基本変形を矢印 ($\longrightarrow$) で表すことにする:
+\[\begin{array}{rll}A &= \begin{pmatrix}1&2\cr 3&4\end{pmatrix}\cr
+&\longrightarrow\begin{pmatrix}1&2\cr 0&-2\end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+&\longrightarrow\begin{pmatrix}1&0\cr 0&-2\end{pmatrix} \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+&\longrightarrow\begin{pmatrix}1&0\cr 0&1\end{pmatrix} \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}
+\end{array}\]
+
+これは $Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I$ と同じことを意味している.
+
+---
+
+一方で, 正則でない行列に対して行基本変形を行なっても単位行列にすることはできない.
+
+##### <u>例</u>
+\[C = \begin{pmatrix}1&2\cr 2&4\end{pmatrix}\] は逆行列を持たない. この行列に行基本変形を行うと,
+\[\begin{array}{rll}
+    C &= \begin{pmatrix}1&2\cr 2&4\end{pmatrix}\quad&\cr
+    &\longrightarrow \begin{pmatrix}1&2\cr 0&0\end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-2$ 倍を加えた)}
+\end{array}\] などとなり, 単位行列にすることはできない. 
+
+正則でない行列 (正方行列でない行列も含む) に対して行基本変形のみを施した場合は, 以下の性質を持つ行列に変形することができる (が, それ以上単位行列に"近づける"ことはできない) ことが知られている:
+* 全ての成分が $0$ となる行が, 行列の最下部に配置される.
+* 各行の**主成分** (行の最も左にある $0$ でない要素, **leading coefficient**) が, その行の上にある他の行の主成分よりも右側にある.
+
+このような性質を満たす行列を**行階段形** (**row echelon from**) であるという. 特に, 全ての主成分が $1$ である行階段形を**行簡約階段形** (**reduced row echelon form**) という. 単位行列は行簡約階段形である行列の一種である.
+
+##### <u>例</u>
+例えば,
+\[
+    \begin{pmatrix}2&2a&2b&2c+3\cr 1&a&b&c+4\cr 4&4a&4b&4c+5\end{pmatrix}    
+\] という行列に行基本変形を行うことで得られる
+\[\begin{pmatrix}1&a&b&c\cr 0&0&0&1\cr 0&0&0&0\end{pmatrix}\] という行列は行簡約階段形である.
+
+---
+
+<a id="section2-4"></a>
+## 2.4: 掃き出し法 (ガウスの消去法)
+
+上述のように, 行列に対して行基本変形を行うことで, 行階段簡約形 (単位行列を含む) に変形することができる. このような計算手順 (アルゴリズム) を**掃き出し法** (**row reduction**) もしくは **ガウスの消去法** (**Gaussian elimination**) という. 掃き出し法は, 先ほども紹介したように, 行列の階数を求めるテクニックとして応用できるが, 他にも連立 $1$ 次方程式の解法, もしくは逆行列を計算する方法としても用いられる. これらを説明するため, まず拡大行列を導入する.
+
+##### <u>定義</u> (拡大行列)
+行の数が等しい $2$ つの行列 $A$, $B$ に対して, それらを横に連結して得られる行列 $\left(\begin{array}{c:c}A&B\end{array}\right)$ を**拡大行列** (**augmented matrix**) という.
+
+拡大行列は, $2$ つの行列に同じ行基本変形を行うために記述の簡単のために用いられる.
+
+##### <u>例</u>
+\[A = \begin{pmatrix}1&2&3\cr 2&3&4\cr 1&3&5\end{pmatrix},\quad I = \begin{pmatrix}1&0&0\cr 0&1&0\cr 0&0&1\end{pmatrix},\quad {\boldsymbol{b}} = \begin{pmatrix}4\cr 7\cr 5\end{pmatrix}.\] このとき, 
+\[\left(\begin{array}{c:c}A&I\end{array}\right) = \left(\begin{array}{ccc:ccc}1&2&3&1&0&0\cr 2&3&4&0&1&0\cr 1&3&5&0&0&1\end{array}\right),\quad \left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right) = \left(\begin{array}{ccc:c}1&2&3&4\cr 2&3&4&7\cr 1&3&5&5\end{array}\right).\]
+
+---
+
+まず, 掃き出し法による逆行列の計算方法を紹介する. 
+
+例えば
+\[\begin{array}{rll}A &= \begin{pmatrix}1&2\cr 3&4\end{pmatrix}\cr
+&\longrightarrow\begin{pmatrix}1&2\cr 0&-2\end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+&\longrightarrow\begin{pmatrix}1&0\cr 0&-2\end{pmatrix} \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+&\longrightarrow\begin{pmatrix}1&0\cr 0&1\end{pmatrix} \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}
+\end{array}\] という行基本変形は, 
+\[Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I\] と同じことを意味しているのだった. これは
+\[A^{-1} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I\] ということに他ならない. 言い換えると, 次が成立する: 
+
+##### <u>命題 (掃き出し法による逆行列の計算)</u>
+行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を単位行列に対して行うことで $A^{-1}$ を得ることができる. 
+
+##### <u>例</u>
+これによる逆行列の計算を, 拡大行列を用いて記述してみよう:
+\[\begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) &= \left(\begin{array}{cc:cc}1&2&1&0\cr 3&4&0&1\end{array}\right)\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&2&1&0\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&1&3/2&-1/2\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
+\end{array}\] このように, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}$ となる.
+
+##### <u>注意</u>
+くどいようだが, この計算は基本行列たちの積 $P$ であって, 
+\[
+    PA = I \quad (\text{つまり } P=A^{-1})
+\] を満たすものは, 同時に
+\[
+    PI = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
+\] を満たす, ということを意味する筆算である. 
+
+##### <u>注意</u>
+もしも $A$ が正則行列でなかったならば, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. このことを利用すれば, $A$ が正則であるかどうかの判定も行うことができる.
+
+---
+
+次に, 掃き出し法を用いて連立 $1$ 次方程式を解く方法を紹介する. 
+
+**2.1: 導入** において挙げたものと同じ例を用いると,
+\[\cases{\begin{array}{rll}
+    x+2y &= 20, &\qquad (1)\\
+    3x+4y &= 46 &\qquad (2)
+\end{array}}\] という連立 $1$ 次方程式は $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視できる, ここで
+\[
+    A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad {\boldsymbol{x}}=\begin{pmatrix}x\cr y\end{pmatrix}, \quad {\boldsymbol{b}} = \begin{pmatrix}20\cr 46\end{pmatrix}.
+\] もしも $A$ が正則行列であるならば, ${\boldsymbol{x}} = A^{-1}A{\boldsymbol{x}} = A^{-1}{\boldsymbol{b}}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては
+\[Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I\] であるので,
+\[
+    {\boldsymbol{x}} = A^{-1}{\boldsymbol{b}} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}{\boldsymbol{b}}
+\] となる). 言い換えれば, 次が成立する:
+
+##### <u>命題 (掃き出し法による連立 $1$ 次方程式の解法)</u>
+行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を列ベクトル${\boldsymbol{b}}$に対して行うことで $A^{-1}{\boldsymbol{b}}$ を得ることができる. 
+
+##### <u>例</u>
+上に例として挙げた連立 $1$ 次方程式を掃き出し法を用いて解いてみる. 拡大行列を用いて記述すると,
+\[\begin{array}{rll}\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right) &= \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
+&\longrightarrow\left(\begin{array}{cc:c}1&2&20\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&1&7\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
+\end{array}\] このように, 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}{\boldsymbol{b}}$ となる.
+
+##### <u>注意</u>
+何度も同じことを書くが, この計算は基本行列たちの積 $P$ であって, 
+\[
+    PA = I \quad (\text{つまり } P=A^{-1})
+\] を満たすものは, 同時に
+\[
+    P{\boldsymbol{b}} = \begin{pmatrix}6\cr 7\end{pmatrix}
+\] を満たす, ということを意味する筆算である. 
+
+##### <u>注意</u>
+もしも $A$ が正則行列でなかったならば (正方行列でない場合も含む), 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. これは, 連立 $1$ 次方程式の解が一意に定まらないことを意味する.
+
+
+---

@@ -273,12 +273,12 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 * 行列積 $OA$ が定義されるなら $OA=O$, ただし両辺の $O$ が同じ型とは限らない.
 
 ##### <u>例</u>  
-$A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$.
+\[A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad {\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}.\]
 * $(A-A){\boldsymbol{x}} = \begin{pmatrix}0&0\cr 0&0\end{pmatrix}{\boldsymbol{x}} = O{\boldsymbol{x}} = \begin{pmatrix}0\cr 0\end{pmatrix} = O$.
 
 ---
 ##### <u>定義</u> (正方行列)
-$m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行と列の数が等しいとき) $A$ を**正方行列** (**square matrix**), という.
+$m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行と列の数が等しいとき) $A$ を**正方行列** (**square matrix**), もしくは $n$ 次正方行列という.
 
 ##### <u>注意</u> 
 * $A=(a_{ij})$ が正方行列ならば, $A$ の成分 $a_{ii}$ たちは行列の左上から右下にかけての対角線上に位置している. これらの成分を**対角成分** (**main diagonal**) という.
@@ -363,7 +363,7 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. これを一般化して行列の**区分け**による行列積の表現が可能である.
 
 ##### <u>例</u>    
-$A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}$, &emsp;$B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}$, &emsp; $AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}$.
+\[A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}, \quad B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}, \quad AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}.\]
 * 例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び　$2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
 $ A = \left(\begin{array}{cc:c}1&2&3\cr 4&5&6\cr\hdashline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hdashline 6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
     * この区分けを用いた場合, 形式的に $A$ は $2\times2$ 型, $B$ は $2\times1$ 型と思うことで行列積 $AB$ を計算できる.
@@ -383,7 +383,7 @@ $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin
 区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:
 
 ##### <u>例</u>   
-$A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}$.
+\[A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix},\quad {\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}.\]
 * 行列 $A$ に対して, $A=\left(\begin{array}{cc:c}2&0&0 \cr 0&2&0 \cr \hdashline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
 * 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_ 1\cr x_ 2\cr\hdashline x_ 3\end{pmatrix}$ という区分けを考える. 
 * このとき, $A{\boldsymbol{x}} = \begin{pmatrix}2I\begin{pmatrix}x_1\cr x_2\end{pmatrix} + Ox_3\cr A^\prime \begin{pmatrix}x_1\cr x_2\end{pmatrix}+3x_3\end{pmatrix} = \begin{pmatrix}2x_1\cr 2x_2\cr x _ 1+2x _ 2+3x _ 3\end{pmatrix}$
@@ -398,7 +398,7 @@ $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{
 
 ##### <u>例</u> 
 * 零行列 $O\in\mathbb{R}^{n\times n}$ の逆行列は存在しない.
-* 単位行列 $I$ の逆行列は単位行列 $I$ である: $I^{-1}=I$. 
+* 単位行列 $I$ の逆行列は単位行列 $I$ である: &emsp; $I^{-1}=I$. 
 * 対角行列
 \[
     A = \begin{pmatrix}a_1&0&\dots&0\cr 0&a_2&\dots&0\cr \vdots&\vdots&\ddots&\vdots\cr 0&0&\dots&a_n\end{pmatrix}
@@ -455,10 +455,10 @@ $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{
 * (与えられた行列に対する逆行列の計算方法については, 後の機会に改めて解説する)
 
 ##### <u>例</u> 
-* $A=\begin{pmatrix}1&2\cr 3&4\end{pmatrix}$,&emsp; $B= \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}$ とする. ここで,
 \[
-    AB = I
-\] となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
+    A=\begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad B= \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}.
+\]
+* いま, $AB = I$ となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
 * 同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
 
 ---
