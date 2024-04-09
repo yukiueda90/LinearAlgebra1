@@ -59,7 +59,7 @@
 \] このとき, 各 ${\boldsymbol a}_i$ を行列 $A$ の**第 $i$ 行ベクトル**という.
 * 同様に, 行列 $A\in\mathbb{R}^{m\times n}$ を
 \[
-    {\boldsymbol a}_j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
+    {\boldsymbol a}_ j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
 \] という列ベクトルたちを横に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
@@ -71,6 +71,7 @@
     {\boldsymbol a}_1&{\boldsymbol a}_2&\dots&{\boldsymbol a}_n
     \end{pmatrix}.
 \] このとき, 各 ${\boldsymbol a}_j$ を行列 $A$ の**第 $j$ 列ベクトル**という.
+
 ---
 
 <a id="section1-2"></a>
@@ -128,13 +129,13 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 ##### <u>例</u>
 \[A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad B = \begin{pmatrix}b_{11}&b_{12}\cr b_{21}&b_{22}\end{pmatrix}\in\mathbb{R}^{2\times 2}.\]
 * $AB = \begin{pmatrix}a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\cr a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}\end{pmatrix}$.
-* 行列 $AB$ の $(i,j)$ 成分は, $A$ の第 $i$ 行ベクトル ${\boldsymbol a}_i$ と $B$ の第 $j$ 列ベクトルの積となる：
+* 行列 $AB$ の $(i,j)$ 成分は, $A$ の第 $i$ 行ベクトル ${\boldsymbol a}_ i$ と $B$ の第 $j$ 列ベクトルの積となる：
 \[
     AB = \begin{pmatrix}
-    {\boldsymbol a}_1{\boldsymbol b}_1&{\boldsymbol a}_1{\boldsymbol b}_2\cr 
-    {\boldsymbol a}_2{\boldsymbol b}_1&{\boldsymbol a}_2{\boldsymbol b}_2
+    {\boldsymbol a}_ 1{\boldsymbol b}_ 1&{\boldsymbol a}_ 1{\boldsymbol b}_ 2\cr 
+    {\boldsymbol a}_ 2{\boldsymbol b}_ 1&{\boldsymbol a}_ 2{\boldsymbol b}_ 2
     \end{pmatrix},
-\] ここで　${\boldsymbol{a}}_i = (a_{i1},a_{i2})$,&emsp; ${\boldsymbol{b}}_j = \begin{pmatrix}b_{1j}\cr b_{2j}\end{pmatrix}$ である. 実際に, 行列積 ${\boldsymbol{a}}_i {\boldsymbol{b}}_j$ (すなわち行列積 $AB$ の $(i,j)$ 成分) は
+\] ここで　${\boldsymbol{a}}_ i = (a_ {i1},a_ {i2})$,&emsp; ${\boldsymbol{b}}_ j = \begin{pmatrix}b_ {1j}\cr b_ {2j}\end{pmatrix}$ である. 実際に, 行列積 ${\boldsymbol{a}}_ i {\boldsymbol{b}}_ j$ (すなわち行列積 $AB$ の $(i,j)$ 成分) は
 \[
     \vec{a}_ i = (a_{i1}, a_{i2}),\quad \vec{b}_ j = (b_{1j}, b_{2j})
 \] の内積と同一視することができるので $(a_{i1} b_{1j} + a_{i2} b_{2j})$ である. 
@@ -265,11 +266,15 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 
 ##### <u>性質</u>  
 任意の行列 $A$ に対して, 以下が成立する:
-* $A-A = O$. 
-* $A+O = A$.
-* $0A =O$.
+* $A-A = O$. この $O$ は $A$ と同じ型になる.
+* $A+O = A$, ただし $A$ と $O$ は同じ型とする.
+* $0A =O$, この $O$ は $A$ と同じ型になる.
 * 行列積 $AO$ が定義されるなら $AO=O$, ただし両辺の $O$ が同じ型とは限らない.
 * 行列積 $OA$ が定義されるなら $OA=O$, ただし両辺の $O$ が同じ型とは限らない.
+
+##### <u>例</u>  
+$A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\end{pmatrix}$.
+* $(A-A){\boldsymbol{x}} = \begin{pmatrix}0&0\cr 0&0\end{pmatrix}{\boldsymbol{x}} = O{\boldsymbol{x}} = \begin{pmatrix}0\cr 0\end{pmatrix} = O$.
 
 ---
 ##### <u>定義</u> (正方行列)
@@ -369,18 +374,18 @@ $ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) =
 $A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
 $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
 となる.
-* 異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, $B = \left(\begin{array}{c|c}2&3\cr4&5\cr\hline6&7\end{array}\right) = \begin{pmatrix}B_{11}&B_{12}\cr B_{21}&B_{22}\end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
+* 異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr\hline 6&7\end{array}\right) = \begin{pmatrix}B_{11}&B_{12}\cr B_{21}&B_{22}\end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
 \[
     AB = \begin{pmatrix}A_{11}B_{11}+ A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}\end{pmatrix} = \left(\begin{array}{c|c}28&34\cr 64&79\cr\hline 100&124\end{array}\right)
 \] とみなすことができる.
-* 一方で, 例えば $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr  6&7\end{array}\right) = (B_{11},B_{12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
+* 一方で, 例えば $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr 6&7\end{array}\right) = (B_{11}, B_{12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
 
 区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:
 
 ##### <u>例</u>   
 $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}$.
-* 行列 $A$ に対して, $A=\left(\begin{array}{cc|c}2&0&0\cr 0&2&0\cr \hline1&2&3\end{array}\right) = \begin{pmatrix}2I&O\cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
-* 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr\hline x_3\end{pmatrix}$ という区分けを考える. 
+* 行列 $A$ に対して, $A=\left(\begin{array}{cc|c}2&0&0 \cr 0&2&0 \cr \hline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
+* 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_ 1\cr x_ 2\cr\hline x_ 3\end{pmatrix}$ という区分けを考える. 
 * このとき, $A{\boldsymbol{x}} = \begin{pmatrix}2I\begin{pmatrix}x_1\cr x_2\end{pmatrix} + Ox_3\cr A^\prime \begin{pmatrix}x_1\cr x_2\end{pmatrix}+3x_3\end{pmatrix} = \begin{pmatrix}2x_1\cr 2x_2\cr x _ 1+2x _ 2+3x _ 3\end{pmatrix}$
 
 ---
@@ -447,13 +452,13 @@ $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{
 * 上の結果より, 特に正則行列たちの積は正則行列になる.
 * 実は, 正方行列 $A$ に対し $AB=I$ を満たす $B$ が存在すれば, そのような $B$ は $BA=I$ も満たす (つまり $B=A^{-1}$ となる).
 * 同様に, $BA=I$ なる $B$ は, $B=A^{-1}$ となる.
-* (与えられた行列に対する逆行列の計算方法については, 後の章で改めて解説する)
+* (与えられた行列に対する逆行列の計算方法については, 後の機会に改めて解説する)
 
 ##### <u>例</u> 
 * $A=\begin{pmatrix}1&2\cr 3&4\end{pmatrix}$,&emsp; $B= \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}$ とする. ここで,
 \[
     AB = I
 \] となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
-* 同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的にみたされるため, $B=A^{-1}$ であることがわかる.
+* 同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.
 
 ---
