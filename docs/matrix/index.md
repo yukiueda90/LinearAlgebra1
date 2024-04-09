@@ -378,13 +378,13 @@ $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin
 \[
     AB = \begin{pmatrix}A_{11}B_{11}+ A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}\end{pmatrix} = \left(\begin{array}{c|c}28&34\cr 64&79\cr\hline 100&124\end{array}\right)
 \] とみなすことができる.
-* 一方で, 例えば $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr 6&7\end{array}\right) = (B_{11}, B_{12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
+* 一方で, 例えば $B = \left(\begin{array}{c:c}2&3\cr 4&5\cr 6&7\end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
 
 区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:
 
 ##### <u>例</u>   
 $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}$.
-* 行列 $A$ に対して, $A=\left(\begin{array}{cc|c}2&0&0 \cr 0&2&0 \cr \hline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
+* 行列 $A$ に対して, $A=\left(\begin{array}{cc:c}2&0&0 \cr 0&2&0 \cr \hline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
 * 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_ 1\cr x_ 2\cr\hline x_ 3\end{pmatrix}$ という区分けを考える. 
 * このとき, $A{\boldsymbol{x}} = \begin{pmatrix}2I\begin{pmatrix}x_1\cr x_2\end{pmatrix} + Ox_3\cr A^\prime \begin{pmatrix}x_1\cr x_2\end{pmatrix}+3x_3\end{pmatrix} = \begin{pmatrix}2x_1\cr 2x_2\cr x _ 1+2x _ 2+3x _ 3\end{pmatrix}$
 
