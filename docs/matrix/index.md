@@ -365,18 +365,18 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
 ##### <u>例</u>    
 $A=\begin{pmatrix}1&2&3\cr 4&5&6\cr 7&8&9\end{pmatrix}$, &emsp;$B=\begin{pmatrix}2&3\cr4&5\cr6&7\end{pmatrix}$, &emsp; $AB = \begin{pmatrix}28&34\cr 64&79\cr 100&124\end{pmatrix}$.
 * 例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び　$2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
-$ A = \left(\begin{array}{cc|c}1&2&3\cr 4&5&6\cr\hline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hline6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
+$ A = \left(\begin{array}{cc:c}1&2&3\cr 4&5&6\cr\hdashline 7&8&9\end{array}\right) = \begin{pmatrix}A_{11}&A_{12}\cr A_{21}&A_{22}\end{pmatrix}$, &emsp; $B=\begin{pmatrix}2&3\cr4&5\cr\hdashline 6&7\end{pmatrix} = \begin{pmatrix}B_{11}\cr B_{21}\end{pmatrix}$ 
     * この区分けを用いた場合, 形式的に $A$ は $2\times2$ 型, $B$ は $2\times1$ 型と思うことで行列積 $AB$ を計算できる.
 * このとき, 
 \[
-    AB = \begin{pmatrix}A_{11}B_{11}+A_{12}B_{21}\cr A_{21}B_{11} + A_{22}B_{21}\end{pmatrix} = \begin{pmatrix}28&34\cr 64&79\cr\hline 100&124\end{pmatrix}
+    AB = \begin{pmatrix}A_{11}B_{11}+A_{12}B_{21}\cr A_{21}B_{11} + A_{22}B_{21}\end{pmatrix} = \begin{pmatrix}28&34\cr 64&79\cr\hdashline 100&124\end{pmatrix}
 \] と表現することができる. 実際に計算してみると,
 $A_{11}B_{11} = \begin{pmatrix}10&13\cr 28&37\end{pmatrix}$, &emsp; $A_{12}B_{21} = \begin{pmatrix}18&21\cr 36&42\end{pmatrix},$
 $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin{pmatrix}54&63\end{pmatrix}$
 となる.
-* 異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, $B = \left(\begin{array}{c|c}2&3\cr 4&5\cr\hline 6&7\end{array}\right) = \begin{pmatrix}B_{11}&B_{12}\cr B_{21}&B_{22}\end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
+* 異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, $B = \left(\begin{array}{c:c}2&3\cr 4&5\cr\hdashline 6&7\end{array}\right) = \begin{pmatrix}B_{11}&B_{12}\cr B_{21}&B_{22}\end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
 \[
-    AB = \begin{pmatrix}A_{11}B_{11}+ A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}\end{pmatrix} = \left(\begin{array}{c|c}28&34\cr 64&79\cr\hline 100&124\end{array}\right)
+    AB = \begin{pmatrix}A_{11}B_{11}+ A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}\end{pmatrix} = \left(\begin{array}{c:c}28&34\cr 64&79\cr\hdashline 100&124\end{array}\right)
 \] とみなすことができる.
 * 一方で, 例えば $B = \left(\begin{array}{c:c}2&3\cr 4&5\cr 6&7\end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と行ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.
 
@@ -384,8 +384,8 @@ $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin
 
 ##### <u>例</u>   
 $A = \begin{pmatrix}2&0&0\cr 0&2&0\cr 1&2&3\end{pmatrix}$, &emsp; ${\boldsymbol{x}} = \begin{pmatrix}x_1\cr x_2\cr x_3\end{pmatrix}$.
-* 行列 $A$ に対して, $A=\left(\begin{array}{cc:c}2&0&0 \cr 0&2&0 \cr \hline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
-* 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_ 1\cr x_ 2\cr\hline x_ 3\end{pmatrix}$ という区分けを考える. 
+* 行列 $A$ に対して, $A=\left(\begin{array}{cc:c}2&0&0 \cr 0&2&0 \cr \hdashline 1&2&3\end{array}\right) = \begin{pmatrix}2I&O \cr A^\prime & 3\end{pmatrix}$ という区分けを考える, ここで　$A'=(1,2)$. 
+* 対応して, ${\boldsymbol{x}} = \begin{pmatrix}x_ 1\cr x_ 2\cr\hdashline x_ 3\end{pmatrix}$ という区分けを考える. 
 * このとき, $A{\boldsymbol{x}} = \begin{pmatrix}2I\begin{pmatrix}x_1\cr x_2\end{pmatrix} + Ox_3\cr A^\prime \begin{pmatrix}x_1\cr x_2\end{pmatrix}+3x_3\end{pmatrix} = \begin{pmatrix}2x_1\cr 2x_2\cr x _ 1+2x _ 2+3x _ 3\end{pmatrix}$
 
 ---
