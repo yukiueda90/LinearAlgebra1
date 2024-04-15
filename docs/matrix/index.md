@@ -34,7 +34,7 @@
     * 行列 $A$ が $m\times n$ 型の複素行列であるとき, $A\in \mathbb{C}^{m\times n}$ と表記する.
 * $1\times n$ 型の行列を**行ベクトル** (**row vector**)という.
 * $m\times 1$ 型の行列を**列ベクトル** (**column vector**)という.
-* $1\times 1$ 型の行列は, そのただ$１$つの成分である実数 (もしくは複素数) と同一視される.
+* $1\times 1$ 型の行列は, そのただ $1$ つの成分である実数 (もしくは複素数) と同一視される.
 
 ##### <u>例</u>
 * $A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$
@@ -45,7 +45,7 @@
 ---
 * 行列 $A = (a_{ij})\in\mathbb{R}^{m\times n}$ は, 
 \[
-    {\boldsymbol a}_i = (a_{i1},a_{i2},\dots, a_{in})
+    {\boldsymbol a} _ i = (a _ {i1},a _ {i2},\dots, a _ {in})
 \] という行ベクトルたちを縦に並べたものと見なすことができる:
 \[
     A = \begin{pmatrix}
@@ -95,9 +95,9 @@ $2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ について, $A$ と $B$ が同じ�
 \[A=\begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad B=\begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad C=\begin{pmatrix}1&2\cr 3&0\end{pmatrix},\quad D=\begin{pmatrix}1&2\cr 3&4\cr 0&0\end{pmatrix}.\]
 * $A+B = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}+\begin{pmatrix}1&2\cr 3&4\end{pmatrix} = \begin{pmatrix}2&4\cr 6&8\end{pmatrix}$ 
 * $A+C = \begin{pmatrix}1&2\cr 3&4\end{pmatrix} + \begin{pmatrix}1&2\cr 3&0\end{pmatrix} = \begin{pmatrix}2&4\cr 6&4\end{pmatrix}$
-* 行列の型が異なるため, $A+D$ は定義されていない. 
+* 行列の型が異なるため, $A+D$ は定義されない. 
 
-##### <u>性質</u>  
+##### <u>性質 (行列の和の可換性)</u>  
 行列 $A$, $B$ の型が等しいならば, $A+B$ も $B+A$ も定義され,
 \[
     A+B = B+A
@@ -123,7 +123,7 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 ##### <u>例</u>
 \[{\boldsymbol x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad {\boldsymbol y} = \begin{pmatrix}y_1\cr y_2\end{pmatrix}\in\mathbb{R}^{2\times1}.\]
 * ${\boldsymbol x}{\boldsymbol y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.
-* つまり ${\boldsymbol x}{\boldsymbol y} = x_1y_1+x_2y_2$ と同一視される.
+* つまり行列 ${\boldsymbol x}{\boldsymbol y}$ は, そのただ $1$ つの成分である $x _ 1y _ 1+x _ 2y _ 2$ と同一視される.
 * これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 \[\vec{x}\cdot\vec{y} = x_1y_1+x_2y_2\] に等しい.
 
 ##### <u>例</u>
