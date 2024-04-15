@@ -290,7 +290,7 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 \end{array}\] このように, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}$ となる.
 
 ##### <u>注意</u>
-くどいようだが, この計算は基本行列たちの積 $P$ であって, 
+この計算は基本行列たちの積 $P$ であって, 
 \[
     PA = I \quad (\text{つまり } P=A^{-1})
 \] を満たすものは, 同時に
@@ -303,17 +303,35 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 
 ---
 
-次に, 掃き出し法を用いて連立 $1$ 次方程式を解く方法を紹介する. 
+掃き出し法を用いて連立 $1$ 次方程式を解く方法を紹介する. 
 
-**2.1: 導入** において挙げたものと同じ例を用いると,
+**2.1: 導入** において挙げたものと同じ例を用いる:
 \[\cases{\begin{array}{rll}
     x+2y &= 20, &\qquad (1)\\
-    3x+4y &= 46 &\qquad (2)
-\end{array}}\] という連立 $1$ 次方程式は $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視できる, ここで
+    3x+4y &= 46. &\qquad (2)
+\end{array}}\] まず, この連立 $1$ 次方程式をそのまま解いてみる, 例えば以下のような式変形を考えよう:
+\[
+    \begin{array}{rl}\longrightarrow&\cases{\begin{array}{rll}
+    x+2y &= 20, &\qquad (1)\\
+    -2y &= -14. &\qquad (2)^\prime = (2) - 3\times (1)
+    \end{array}}\\
+    \longrightarrow&\cases{\begin{array}{rll}
+    x &= 6, &\qquad (1)^\prime = (1) + (2)^\prime\\
+    -2y &= -14. &\qquad (2)^\prime
+    \end{array}}\\
+    \longrightarrow&\cases{\begin{array}{rll}
+    x &= 6, &\qquad (1)^\prime\\
+    y &= 7. &\qquad (2)^{\prime \prime} = -1/2\times (2)^\prime
+    \end{array}}
+    \end{array}
+\]
+このような式変形により, 解 $x=6$, $y=7$ が得られる.
+
+次に, 同じ連立 $1$ 次方程式を $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視する, ここで
 \[
     A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad {\boldsymbol{x}}=\begin{pmatrix}x\cr y\end{pmatrix}, \quad {\boldsymbol{b}} = \begin{pmatrix}20\cr 46\end{pmatrix}.
-\] もしも $A$ が正則行列であるならば, ${\boldsymbol{x}} = A^{-1}A{\boldsymbol{x}} = A^{-1}{\boldsymbol{b}}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては
-\[Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I\] であるので,
+\] もしも $A$ が正則行列であるならば, ${\boldsymbol{x}} = A^{-1}A{\boldsymbol{x}} = A^{-1}{\boldsymbol{b}}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては, 上の連立 $1$ 次方程式を解く際に用いた変形は
+\[Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I\] と同一視でき, これを用いると
 \[
     {\boldsymbol{x}} = A^{-1}{\boldsymbol{b}} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}{\boldsymbol{b}}
 \] となる). 言い換えれば, 次が成立する:
@@ -322,12 +340,14 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を列ベクトル${\boldsymbol{b}}$に対して行うことで $A^{-1}{\boldsymbol{b}}$ を得ることができる. 
 
 ##### <u>例</u>
-上に例として挙げた連立 $1$ 次方程式を掃き出し法を用いて解いてみる. 拡大行列を用いて記述すると,
+上に例として挙げた連立 $1$ 次方程式の解法と同じ計算を, 拡大行列に対する掃き出し法を用いて記述してみる:
 \[\begin{array}{rll}\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right) &= \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&2&20\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&1&7\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
-\end{array}\] このように, 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}{\boldsymbol{b}}$ となる.
+\end{array}\] ここで用いた行基本変形は, 連立 $1$ 次方程式に対する各操作と同一視できることに注意 (例えば上の連立 $1$ 次方程式の解法において, $(1)^\prime = (1) - 3\times (2)$ という式変形を用いたが, これは第 $2$ 行に第 $1$ 行の $-3$ 倍を加える行基本変形と同値である).
+
+このように, 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}{\boldsymbol{b}}$ となる.
 
 ##### <u>注意</u>
 何度も同じことを書くが, この計算は基本行列たちの積 $P$ であって, 
