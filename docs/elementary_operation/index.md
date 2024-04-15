@@ -5,7 +5,24 @@
 <a id="section2-1"></a>
 ## 2.1: 導入
 例として, 以下の連立$1$次方程式を考える:
-test $\mathbf{abc}$.
+
+\begin{array}{rll}
+    x+2y &= 20, &(1) \cr
+    3x+4y &= 46. &(2)
+\end{array}
+
+\[\left\lbrace
+\begin{array}{rll}
+    x+2y &= 20, &(1) \cr
+    3x+4y &= 46. &(2)
+\end{array}
+\right.\]
+
+
+\[\cases{
+    x+2y &= 20,    (1) \cr
+    3x+4y &= 46.    (2)
+}\]
 
 \[
     \left\{
