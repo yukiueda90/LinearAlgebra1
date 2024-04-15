@@ -5,10 +5,10 @@
 <a id="section2-1"></a>
 ## 2.1: 導入
 例として, 以下の連立$1$次方程式を考える:
-\[\cases{\begin{array}{rll}
-    x+2y &= 20, &\qquad (1)\\
-    3x+4y &= 46. &\qquad (2)
-\end{array}}\] これは行列を用いると以下のように書き直すことができる:
+\[\cases{
+    x+2y &= 20,    (1)\\
+    3x+4y &= 46.    (2)}
+\] これは行列を用いると以下のように書き直すことができる:
 \[
     \begin{pmatrix}1&2\cr 3&4\end{pmatrix}\begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}20\cr 46\end{pmatrix}.
 \] このように, 連立 $1$ 次方程式を, 行列と列ベクトルの行列積により表現することは, 行列の基本的な応用の $1$ つである (以降, 上のようにして連立 $1$ 次方程式と同一視することができる $A{\boldsymbol{x}} = {\boldsymbol{b}}$ という形の方程式のことも連立 $1$ 次方程式と呼ぶことがある).
@@ -22,10 +22,10 @@
 \] と計算することで, 連立$1$次方程式を解くことができる. すなわち, 連立 $1$ 次方程式を解くことと逆行列を求めることとを同一視することができる.
 
 一方で, この連立$1$次方程式は, 例えば $(2)$ 式から $(1)$ 式を $2$ 倍したものを引くことで $(1)$ 式から $y$ の項を消去する, といった操作を用いて解くこともできる. ここで例に挙げた操作を実際に適用すると,
-\[\cases{\begin{array}{rll}
-    x+2y &= 20, &\qquad (1)\\
-    x &= 6. &\qquad (2)'
-\end{array}}\] と変形することができるが, これは『行列 $A$ と右辺の列ベクトル の第 $2$ 行から第 $1$ 行の $2$ 倍を引く』という操作と同値である:
+\[\cases{
+    x+2y &= 20,    (1)\\
+    x &= 6.      (2)'}
+\] と変形することができるが, これは『行列 $A$ と右辺の列ベクトル の第 $2$ 行から第 $1$ 行の $2$ 倍を引く』という操作と同値である:
 \[
     \begin{pmatrix}1&2\cr 1&0\end{pmatrix}\begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}20\cr 6\end{pmatrix}.
 \] 連立 $1$ 次方程式を解く際に用いられるこのような操作は, 行列に対しても, その性質を保ちつつ簡単な形に変形する操作としてしばしば用いられるものである. 
@@ -185,9 +185,10 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     F(r) = \begin{pmatrix}I_r&O\cr O&O\end{pmatrix}
 \] という形の行列である. $P$, $Q$ は正則なので,
 \[A \text{ が正則} \iff F(r)\text{ が正則}\] が得られる.
-$(\implies)$ &emsp; $\operatorname{rank}A=n$ ならば, $F(r)$ は $n$ 次の単位行列となるため特に正則である;
-\[r=\operatorname{rank}A=n\implies F(r)\text{ が正則}.\] $(\impliedby)$ &emsp; 対偶を示す: $r<n$ のとき, $F(r)$ が正則でないことを示せば良い. 
-(背理法) &emsp; $F(r)$ が正則であると仮定する. いま, $r < n$ なので, $F(r)$ の 第 $r+1$ 行から第 $n$ 行の成分は全て $0$ である. 従って, $F(r)F(r)^{-1}$ の第 $r+1$ 行から第 $n$ 行の成分も全て $0$ となるため, $F(r)F(r)^{-1}\neq I$ となり矛盾する. 
+> $(\implies)$ &emsp; $\operatorname{rank}A=n$ ならば, $F(r)$ は $n$ 次の単位行列となるため特に正則である;
+\[r=\operatorname{rank}A=n\implies F(r)\text{ が正則}.\] 
+> $(\impliedby)$ &emsp; 対偶を示す: &emsp; $r<n$ のとき, $F(r)$ が正則でないことを示せば良い.
+> (背理法) &emsp; $F(r)$ が正則であると仮定する. いま, $r < n$ なので, $F(r)$ の 第 $r+1$ 行から第 $n$ 行の成分は全て $0$ である. 従って, $F(r)F(r)^{-1}$ の第 $r+1$ 行から第 $n$ 行の成分も全て $0$ となるため, $F(r)F(r)^{-1}\neq I$ となり矛盾する. 
 以上より 
 \[F(r) \text{ が正則} \implies r=\operatorname{rank}A=n\] が得られる.
 
@@ -306,28 +307,28 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 掃き出し法を用いて連立 $1$ 次方程式を解く方法を紹介する. 
 
 **2.1: 導入** において挙げたものと同じ例を用いる:
-\[\cases{\begin{array}{rll}
-    x+2y &= 20, &\qquad (1)\\
-    3x+4y &= 46. &\qquad (2)
-\end{array}}\] まず, この連立 $1$ 次方程式をそのまま解いてみる, 例えば以下のような式変形を考えよう:
+\[\cases{
+    x+2y &= 20,     (1)\\
+    3x+4y &= 46.     (2)}
+\] まず, この連立 $1$ 次方程式をそのまま解いてみる, 例えば以下のような式変形を考えよう:
 \[
-    \begin{array}{rl}\longrightarrow&\cases{\begin{array}{rll}
-    x+2y &= 20, &\qquad (1)\\
-    -2y &= -14. &\qquad (2)^\prime = (2) - 3\times (1)
-    \end{array}}\\
-    \longrightarrow&\cases{\begin{array}{rll}
-    x &= 6, &\qquad (1)^\prime = (1) + (2)^\prime\\
-    -2y &= -14. &\qquad (2)^\prime
-    \end{array}}\\
-    \longrightarrow&\cases{\begin{array}{rll}
-    x &= 6, &\qquad (1)^\prime\\
-    y &= 7. &\qquad (2)^{\prime \prime} = -1/2\times (2)^\prime
-    \end{array}}
-    \end{array}
-\]
-このような式変形により, 解 $x=6$, $y=7$ が得られる.
+    \longrightarrow\cases{
+    x+2y &= 20,       (1)\\
+    -2y &= -14.      (2)' = (2) - 3(1)
+    }
+\] \[
+    \longrightarrow\cases{
+    x &= 6,         (1)' = (1) + (2)'\\
+    -2y &= -14.      (2)'
+    }
+\] \[
+    \longrightarrow\cases{
+    x &= 6,      (1)'\\
+    y &= 7.      ($2)^{\prime \prime}$ = $-$1/2(2)'
+    }
+\] このような式変形により, 解 $x=6$, $y=7$ が得られる.
 
-次に, 同じ連立 $1$ 次方程式を $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視する, ここで
+次に, この連立 $1$ 次方程式を $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視してみる, ここで
 \[
     A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad {\boldsymbol{x}}=\begin{pmatrix}x\cr y\end{pmatrix}, \quad {\boldsymbol{b}} = \begin{pmatrix}20\cr 46\end{pmatrix}.
 \] もしも $A$ が正則行列であるならば, ${\boldsymbol{x}} = A^{-1}A{\boldsymbol{x}} = A^{-1}{\boldsymbol{b}}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては, 上の連立 $1$ 次方程式を解く際に用いた変形は
@@ -362,10 +363,10 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 もしも $A$ が正則行列でなかったならば (正方行列でない場合も含む), 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. これは, 連立 $1$ 次方程式の解が存在しない, もしくは一意に定まらないことを意味する.
 
 ##### <u>例</u>
-\[\cases{\begin{array}{rll}
-    x+2y &= a, &\qquad (1)\\
-    2x+4y &= b. &\qquad (2)
-\end{array}}\] という連立 $1$ 次方程式, もしくはこれと同値な問題
+\[\cases{
+    x+2y &= a,     (1)\\
+    2x+4y &= b.     (2)}
+\] という連立 $1$ 次方程式, もしくはこれと同値な問題
 \[\begin{pmatrix}1&2\cr 2&4\end{pmatrix} \begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}a\cr b\end{pmatrix}\] を考える. 拡大係数行列に対する掃き出し法により
 \[
     \left(\begin{array}{cc:c}1&2&a\cr 2&4&b
@@ -373,10 +374,10 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     \end{array}\right)
 \] という行簡約階段形が得られるが, この左側はこれ以上単位行列に"近づける"ことはできない. この行簡約階段形は,
 \[
-    \cases{\begin{array}{rll}
-        x+2y &= a, &\qquad (1)\\
-        0 &= b-2a. &\qquad (2)^\prime
-    \end{array}}
+    \cases{
+        x+2y &= a,             (1)\\
+        0 &= $b-2a$.     (2)'
+    }
 \] と同値であるが, この問題は $2a=b$ ならば $x+2y=a$ を満たす全ての $x$, $y$ が解となり, 一方で $2a\neq b$ ならば 解は存在しない. 
 
 ---
