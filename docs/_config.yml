@@ -1,2 +1,4 @@
+# theme
 theme: jekyll-theme-minimal
+# for use mathjax
 markdown: kramdown
