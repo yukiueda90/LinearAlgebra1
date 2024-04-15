@@ -352,12 +352,11 @@ $m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行�
     \lambda IA = \lambda A,\quad A(\lambda I) = \lambda A,\quad (\lambda I)^n = \lambda^n I.
 \]
 
-##### <u>定義</u> (単位ベクトル)
-単位行列の各列ベクトルを**単位ベクトル**といい,
+##### <u>定義</u> (標準基底)
+単位行列の各列ベクトル
 \[
     {\boldsymbol e}_1 = \begin{pmatrix}1\cr0\cr\vdots\cr0\end{pmatrix},\quad {\boldsymbol e}_2 = \begin{pmatrix}0\cr1\cr\vdots\cr0\end{pmatrix}, \quad \dots
-\]
-と表記する.
+\] を**標準基底** (**canonical basis**) という.
 
 ---
 行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. これを一般化して行列の**区分け**による行列積の表現が可能である.
