@@ -254,6 +254,12 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
 \]
 従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.
 
+##### <u>例</u>
+\[A = \begin{pmatrix}1&2&3\cr 4&5&6\end{pmatrix},\quad B=\begin{pmatrix}2&4\cr 6&8\cr 10&12\cr \end{pmatrix}.\]
+* $AB = \begin{pmatrix}44& 56\cr 98&128\end{pmatrix}$.
+* $A^{\mathrm{T}} = \begin{pmatrix}1&4\cr 2&5\cr 3&6\end{pmatrix}$, &emsp; $B^{\operatorname{T}} = \begin{pmatrix}2&6&10\cr 4&8&12\end{pmatrix}$.
+* 従って, $B^{\operatorname{T}}A^{\operatorname{T}} = \begin{pmatrix}44&98\cr 56&128\end{pmatrix} = (AB)^{\operatorname{T}}$.
+
 <a id="section1-3"></a>
 
 ## 1.3： 正方行列など
