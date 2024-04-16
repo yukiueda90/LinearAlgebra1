@@ -219,12 +219,11 @@ $ A=(a_{ip}) $, $ B=(b_{pq}) $, $ C=(c_{qj}) $ とする.
     \overline{A+B} = \overline{A}+\overline{B}, \quad
     \overline{\lambda A} = \overline{\lambda}\ \overline{A}, \quad
     \overline{AB} = \overline{A}\ \overline{B}.
-\]
-証明略
+\] 証明略
 
 ---
 #### <u>定義</u> (転置行列)
-行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の**転置行列** といい, $A^{\operatorname{T}}$, もしくは ${}^tA$ と表記する. 行列の転置行列をとる操作を**転置** (**transpose**) という.
+行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の**転置行列** といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を**転置** (**transpose**) という.
 
 #### <u>注意</u>
 * 転置は行と列を入れ替える (つまり $i$ と $j$ を入れ替える) 操作である.
@@ -428,16 +427,16 @@ $A_{21}B_{11} = \begin{pmatrix}46&61\end{pmatrix}$,&emsp; $A_{22}B_{21} = \begin
 * $B = \begin{pmatrix}1&2\cr 2&4\end{pmatrix}$ の逆行列は存在しない. これは背理法で以下のように確かめられる: もしも \[
     B\begin{pmatrix}a&b\cr c&d\end{pmatrix} = I
     \] を満たす行列 $\begin{pmatrix}a&b\cr c&d\end{pmatrix}$ が存在したならば, 
-    \[\cases{
+    \[\left\lbrace\begin{array}{rl}
         a+2c &= 1,\cr
         b+2d &= 0,\cr
         2a+4c &= 0,\cr
         2b+4d &= 1
-    } \] となり矛盾する.
+    \end{array}\right.\] となり矛盾する.
 
 #### <u>命題</u> 
 逆行列について以下が成立する:
-* $A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$  
+* 同じ型の正方行列 $A$, $B$ に対し, $A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$  
 * $A^{-1}$ が存在するならば, $(A^{-1})^{-1} = A$.
 * $A^{-1}$ は存在するならばただ$1$つに定まる.
 
