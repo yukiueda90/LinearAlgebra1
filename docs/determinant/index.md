@@ -81,6 +81,8 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 \[
     \det A\neq 0\iff \operatorname{rank}A = n \iff A \text{ は正則}.
 \]
+> 証明 <br>
+> 証明  
 > 証明
 > 正方行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$ を用いて $A = PF(r)Q$ と表されるのだった. これと行列式の性質より, 
 \[
@@ -393,7 +395,7 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 同じ型の $2$ つの正方行列 $A$, $B$ に対して\[\det (AB) = \det A\det B\] が成立する.
 
 > 証明
-> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e}_i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{{i_j}=1}^n b _ {{i_j}j} \mathbf{e} _ {i_j}$ とする. このとき,
+> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e}_i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{ {i _ j} =1}^n b _ { { i _ j } j} \mathbf{e} _ {i _ j}$ とする. このとき,
 \[\det (AB) = \det (A\mathbf{b}_1, \dots, A\mathbf{b}_n).\] 多重線形性より
 \[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i_1}^n b_{{i_1}1}\det (A\mathbf{e}_{i_1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
 & =\dots\cr 
