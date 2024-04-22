@@ -397,16 +397,16 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 > 証明
 > 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e}_i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{ {i _ j} =1}^n b _ { { i _ j } j} \mathbf{e} _ {i _ j}$ とする. このとき,
 \[\det (AB) = \det (A\mathbf{b}_1, \dots, A\mathbf{b}_n).\] 多重線形性より
-\[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{{i _ 1}1}\det (A\mathbf{e}_{i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
+\[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{{i _ 1}1}\det (A\mathbf{e} _ {i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
 & =\dots\cr 
 &= \displaystyle\sum_{i _ 1}^n\dots\sum_{i_n}^n b _ {{i _ 1}1}\dots b _ {{i _ n}n} \det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}).
 \end{array}\] ここで, もしも $i_1,\dots, i_n$ の内に同じものが複数あったならば, $2$ つの列が一致することになるため $\det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}) = 0$ となる. 一方, $i_1, \dots, i_n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S_n$ が存在する. まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S_n$ を用いて表すことができるもののみであり, 具体的には
 \[
-    \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) = \displaystyle\sum_{\sigma\in S_n} b _ {\sigma(1)1} \dots b _ {\sigma(n)n} \det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)})
+    \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) = \displaystyle\sum _ {\sigma\in S _ n} b _ {\sigma(1)1} \dots b _ {\sigma(n)n} \det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)})
 \] となる. ここで, 交代性より
 \[\begin{array}{rl}\det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)}) &= (\operatorname{sgn}\sigma) \det(A\mathbf{e} _ 1, \dots, A\mathbf{e} _ n)\cr 
 &= (\operatorname{sgn}\sigma) \det A\end{array}\] となり, 以上より
-\[\det (AB) = \det A \displaystyle\sum_{\sigma\in S_n} (\operatorname{sgn}\sigma) b_{\sigma(1)1} \dots b_{\sigma(n)n} = \det A\det B\] が得られる.
+\[\det (AB) = \det A \displaystyle\sum _ {\sigma\in S _ n} (\operatorname{sgn}\sigma) b _ {\sigma(1)1} \dots b _ {\sigma(n)n} = \det A\det B\] が得られる.
 
 ---
 
@@ -444,33 +444,33 @@ $n$ 次正方行列 $A$ に対し, その第 $i$ 行と第 $j$ 列を取り除�
 
 特に余因子は, 行列式の定義の計算から一部分のみを切り取ったものになっており, これを用いて行列式の計算を簡略化できることがある. 
 
-以降, 行列 $A$ の第 $(i,j)$ 小行列式を $d_{ij}$ と表記し, 第 $(i,j)$ 余因子を $\widetilde{a} _ {ij}$ と表記することにする.
+以降, 行列 $A$ の第 $(i,j)$ 小行列式を $d _ {ij}$ と表記し, 第 $(i,j)$ 余因子を $\widetilde{a} _ {ij}$ と表記することにする.
 
 #### <u>補題</u>
-$n$ 次正方行列 $A=(a_{ij})$ の第 $(1,1)$ 余因子を $\widetilde{a}_{11}$ とする, つまり
-\[\widetilde{a} _ {11} = (-1)^2 d_{11} = \det \begin{pmatrix}
-    a_{22} & \dots & a_{2n} \cr
+$n$ 次正方行列 $A=(a_{ij})$ の第 $(1,1)$ 余因子を $\widetilde{a} _ {11}$ とする, つまり
+\[\widetilde{a} _ {11} = (-1)^2 d _ {11} = \det \begin{pmatrix}
+    a _ {22} & \dots & a _ {2n} \cr
     \vdots & \ddots & \vdots \cr
-    a_{n2} & \dots & a_{nn}    
+    a _ {n2} & \dots & a _ {nn}    
     \end{pmatrix}.
 \] このとき
-* $A=\begin{pmatrix}a_{11} & a_{12} & \dots & a_{1n} \cr
-0 & a_{22} & \dots & a_{2n} \cr
+* $A=\begin{pmatrix}a _ {11} & a _ {12} & \dots & a _ {1n} \cr
+0 & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-0 & a_{n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a_{11}\widetilde{a} _ {11}$.
-* $A=\begin{pmatrix}a_{11} & 0 & \dots & 0 \cr
-a_{21} & a_{22} & \dots & a_{2n} \cr
+0 & a _ {n2} & \dots & a _ {nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a _ {11}\widetilde{a} _ {11}$.
+* $A=\begin{pmatrix}a _ {11} & 0 & \dots & 0 \cr
+a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-a_{n1} & a_{n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a_{11}\widetilde{a} _ {11}$.
+a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a _ {11}\widetilde{a} _ {11}$.
 
 > 証明:
 > 行列 $A$ が上のいずれかの形をしている場合,
-\[\det A = \sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)}\] の足し合わせの項は, $\sigma(1) = 1$ である場合を除き $0$ となる. いま, $\sigma\in S_n$ であって $\sigma(1)=1$ であるものは, $\widetilde{\sigma}\in S_{n-1}$ と同一視することができる (ただし, $\widetilde{\sigma}$ は $\lbrace2,\dots,n\rbrace$ の置換とみなすことにする). この同一視に基づくと,
-\[\det A = a_{11}\sum_{\widetilde{\sigma}\in S_{n-1}}(\operatorname{sgn}\widetilde{\sigma}) a_{2\widetilde{\sigma}(2)} \dots a_{n\widetilde{\sigma}(n)}\] となり, \[\displaystyle\sum_{\widetilde{\sigma}\in S_{n-1}}(\operatorname{sgn}\widetilde{\sigma}) a_{2\widetilde{\sigma}(2)} \dots a_{n\widetilde{\sigma}(n)}\] は \[\det\begin{pmatrix}
-    a_{22} & \dots & a_{2n} \cr
+\[\det A = \sum _ {\sigma\in S _ n}(\operatorname{sgn}\sigma) a _ {1\sigma(1)} a _ {2\sigma(2)} \dots a _ {n\sigma(n)}\] の足し合わせの項は, $\sigma(1) = 1$ である場合を除き $0$ となる. いま, $\sigma\in S _ n$ であって $\sigma(1)=1$ であるものは, $\widetilde{\sigma}\in S_{n-1}$ と同一視することができる (ただし, $\widetilde{\sigma}$ は $\lbrace2,\dots,n\rbrace$ の置換とみなすことにする). この同一視に基づくと,
+\[\det A = a _ {11}\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}\] となり, \[\displaystyle\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}\] は \[\det\begin{pmatrix}
+    a _ {22} & \dots & a _ {2n} \cr
     \vdots & \ddots & \vdots \cr
-    a_{n2} & \dots & a_{nn}    
-    \end{pmatrix} = d_{11} = (-1)^2d_{11},\] つまり $A$ の第 $(1,1)$ 余因子 $\widetilde{a} _ {11}$ と一致する.
+    a _ {n2} & \dots & a _ {nn}    
+    \end{pmatrix} = d _ {11} = (-1)^2d _ {11},\] つまり $A$ の第 $(1,1)$ 余因子 $\widetilde{a} _ {11}$ と一致する.
 
 #### <u>注意</u>
 この結果は, 直感的には『正方行列 $A$ がたとえ巨大なサイズの行列であっても, その要素の多くが $0$ であるならば, よりサイズの小さい行列の行列式の計算に帰着できる (つまり $A$ の行列式の計算はそれほど大変ではない)』ことを意味しており, 非常に有用である.
@@ -529,9 +529,9 @@ a_{n1} & a_{n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a_{
 \end{array}\] などと計算できる.
 
 #### <u>定理 (余因子展開)</u>
-$n$ 次正方行列 $A=(a_{ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ とおく, このとき
-* 任意の $j$ に対し, $\det A = a_{1j} \widetilde{a} _ {1j} + \dots + a_{nj} \widetilde{a} _ {nj} = \displaystyle\sum_{i=1}^n a_{ij} \widetilde{a} _ {ij},$
-* 任意の $i$ に対し, $\det A = a_{i1} \widetilde{a} _ {i1} + \dots + a_{in} \widetilde{a} _ {in} = \displaystyle\sum_{j=1}^n a_{ij} \widetilde{a} _ {ij}$
+$n$ 次正方行列 $A=(a _ {ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ とおく, このとき
+* 任意の $j$ に対し, $\det A = a _ {1j} \widetilde{a} _ {1j} + \dots + a _ {nj} \widetilde{a} _ {nj} = \displaystyle\sum _ {i=1}^n a _ {ij} \widetilde{a} _ {ij},$
+* 任意の $i$ に対し, $\det A = a _ {i1} \widetilde{a} _ {i1} + \dots + a _ {in} \widetilde{a} _ {in} = \displaystyle\sum _ {j=1}^n a _ {ij} \widetilde{a} _ {ij}$
 
 が, それぞれ成立する.
 
@@ -540,43 +540,43 @@ $n$ 次正方行列 $A=(a_{ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ �
 > * $j=1$ のとき:
 > 多重線形性より,
 \[\begin{array}{rl}\det A &= \det\begin{pmatrix}
-a_{11} & a_{12} & \dots & a_{1n} \cr
-0 & a_{22} & \dots & a_{2n} \cr
+a _ {11} & a _ {12} & \dots & a _ {1n} \cr
+0 & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-0 & a_{n2} & \dots & a_{nn} 
+0 & a _ {n2} & \dots & a _ {nn} 
 \end{pmatrix} \cr
 &\qquad + 
 \det\begin{pmatrix}
-0 & a_{12} & \dots & a_{1n} \cr
-a_{21} & a_{22} & \dots & a_{2n} \cr
+0 & a _ {12} & \dots & a _ {1n} \cr
+a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-0 & a_{n2} & \dots & a_{nn} 
+0 & a _ {n2} & \dots & a _ {nn} 
 \end{pmatrix} \cr
 & \qquad \qquad + \dots +
 \det\begin{pmatrix}
-0 & a_{12} & \dots & a_{1n} \cr
-0 & a_{22} & \dots & a_{2n} \cr
+0 & a _ {12} & \dots & a _ {1n} \cr
+0 & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-a_{n1} & a_{n2} & \dots & a_{nn} 
+a _ {n1} & a _ {n2} & \dots & a _ {nn} 
 \end{pmatrix}
-\end{array}\] となる. 第 $1$ 項は先の補題より $a_{11} d_{11}$, すなわち $a_{11}\widetilde{a} _ {11}$ に等しい. 第 $2$ 項は交代性を用いて
+\end{array}\] となる. 第 $1$ 項は先の補題より $a _ {11} d _ {11}$, すなわち $a _ {11}\widetilde{a} _ {11}$ に等しい. 第 $2$ 項は交代性を用いて
 \[\begin{array}{rl}\det\begin{pmatrix}
-0 & a_{12} & \dots & a_{1n} \cr
-a_{21} & a_{22} & \dots & a_{2n} \cr
+0 & a _ {12} & \dots & a _ {1n} \cr
+a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-0 & a_{n2} & \dots & a_{nn} 
+0 & a _ {n2} & \dots & a _ {nn} 
 \end{pmatrix} &= - \det\begin{pmatrix}
-a_{21} & a_{22} & \dots & a_{2n} \cr
-0 & a_{12} & \dots & a_{1n} \cr
+a _ {21} & a _ {22} & \dots & a _ {2n} \cr
+0 & a _ {12} & \dots & a _ {1n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
-0 & a_{n2} & \dots & a_{nn} 
+0 & a _ {n2} & \dots & a _ {nn} 
 \end{pmatrix} \cr
-&= -a_{21} d_{21} \cr
-& = (-1)^3 a_{21} d_{21} = a_{21}\widetilde{a} _ {21}.\end{array}\] 同様に, 第 $i$ 項は $(-1)^{i+1}a_{i1} d_{i1}$, すなわち $a_{i1}\widetilde{a} _ {i1}$ に等しいので欲しい式が得られる. 
+&= -a _ {21} d _ {21} \cr
+& = (-1)^3 a _ {21} d _ {21} = a _ {21}\widetilde{a} _ {21}.\end{array}\] 同様に, 第 $i$ 項は $(-1)^{i+1}a _ {i1} d _ {i1}$, すなわち $a _ {i1}\widetilde{a} _ {i1}$ に等しいので欲しい式が得られる. 
 > * $j\neq1$ のとき:
 > 第 $j$ 列と第 $j-1$ 列を入れ換え, その後に第 $j-1$ 列を第 $j-2$ 列と入れ換え, ... , 最後に第 $2$ 列と第 $1$ 列を入れ換えるという操作により, 第 $j$ 列を第 $1$ 列に移動することができ, またこの行列の行列式は $(-1)^{j-1}\det A$ となる. あとは上と同様に計算すると, 
-\[(-1)^{j-1}\det A  = a_{1j}d_{1j} - a_{2j}d_{2j} + \dots + (-1)^n a_{nj}d_{nj}.\] 両辺を $(-1)^{j+1}$ 倍することで,
-\[\begin{array}{rl}\det A &= (-1)^{2j}\det A \cr &= (-1)^{j+1} a_{1j} d_{1j} + (-1)^{j+2} a_{2j} d_{2j} + \dots + (-1)^{j+n} a_{nj} d_{nj} \cr &= a_{1j} \widetilde{a} _ {1j} + \dots + a_{nj} \widetilde{a} _ {nj} \end{array}\] となり欲しい式が得られる.
+\[(-1)^{j-1}\det A  = a _ {1j}d _ {1j} - a_{2j}d _ {2j} + \dots + (-1)^n a _ {nj}d _ {nj}.\] 両辺を $(-1)^{j+1}$ 倍することで,
+\[\begin{array}{rl}\det A &= (-1)^{2j}\det A \cr &= (-1)^{j+1} a _ {1j} d _ {1j} + (-1)^{j+2} a _ {2j} d _ {2j} + \dots + (-1)^{j+n} a _ {nj} d _ {nj} \cr &= a _ {1j} \widetilde{a} _ {1j} + \dots + a _ {nj} \widetilde{a} _ {nj} \end{array}\] となり欲しい式が得られる.
 
 #### <u>注意</u>
 実際の行列式の手計算においては, この定理よりもむしろ先の補題の方が使い勝手が良いだろう.
@@ -584,16 +584,16 @@ a_{21} & a_{22} & \dots & a_{2n} \cr
 ---
 
 #### <u>定義 (余因子行列)</u>
-$n$ 次正方行列 $A$ に対し, 第 $(i,j)$ 成分が $A$ の第 $(j,i)$ 余因子 $\widetilde{a}_{ji}$ である $n$ 次正方行列を $A$ の**余因子行列** (**adjugate matrix**) といい, $\operatorname{adj} A$ と表記する.
+$n$ 次正方行列 $A$ に対し, 第 $(i,j)$ 成分が $A$ の第 $(j,i)$ 余因子 $\widetilde{a} _ {ji}$ である $n$ 次正方行列を $A$ の**余因子行列** (**adjugate matrix**) といい, $\operatorname{adj} A$ と表記する.
 
 #### <u>注意</u>
-$A$ の余因子行列は $\widetilde{A}$ と表記することも多いが, **このメモでは, 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a}_{ij}$ である行列を $\widetilde{A}$ と表すことにする**. このとき, $\operatorname{adj} A = \widetilde{A}^{\operatorname{T}}$ である.
+$A$ の余因子行列は $\widetilde{A}$ と表記することも多いが, **このメモでは, 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a} _ {ij}$ である行列を $\widetilde{A}$ と表すことにする**. このとき, $\operatorname{adj} A = \widetilde{A}^{\operatorname{T}}$ である.
 
 #### <u>補題</u>
 $n$ 次正方行列 $A$ に対し, 
 \[A(\operatorname{adj}A) =(\operatorname{adj}A)A = (\det A)I.\] が成立する.
 
-> 証明
+> 証明  
 > 行列 $A(\operatorname{adj}A)$ の第 $(i,j)$ 成分は
 \[\displaystyle\sum_{k=1}^n a_{ik} \widetilde{a} _ {jk}\] となり, $i=j$ ならば余因子展開より $\det A$ と一致する. もしも $i\neq j$ ならば, これは $A$ の第 $j$ 行を第 $i$ 行で置き換えた行列の余因子展開と一致するが, そのような行列は第 $i$ 行と第 $j$ 行が等しいため行列式が $0$ になる. 従って $A(\operatorname{adj}A) = (\det A)I$ が得られる. $(\operatorname{adj}A)A = (\det A)I$ も同様にして証明される.
 
