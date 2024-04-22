@@ -172,7 +172,7 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
 #### <u>命題</u> (結合則)
 行列 $A$, $B$, $C$ がそれぞれ $k\times\ell$ 型, $\ell\times m$ 型, $m\times n$ 型であるならば, \[(AB)C = A(BC)\] が成立する.
 
-> 証明:
+> 証明: <br>
 > $A=(a_{ip})$, $B=(b_{pq})$, $C=(c_{qj})$ とする. 
 行列 $(AB)\in\mathbb{R}^{k\times m}$ の $ (i,q) $ 成分は 
 \[
@@ -200,7 +200,7 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
     (A+B)C = AC+BC
 \] が成立する.
 
-> 証明:
+> 証明: <br>
 上のみ証明する: $ A=(a_{ik}) $, $ B=(b_{kj}) $, $C=(c_{kj}) $ とする. このとき, 行列 $A(B+C) $ の $ (i,j)$ 成分は
 \[
     \sum_{k=1}^ma_{ik}(b_{kj}+c_{kj})
@@ -241,7 +241,7 @@ $\ell\times m$ 型行列 $A=(a_{ij})$と, $m\times n$ 型行列 $B=(b_{ij})$ に
     (AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}.
 \]
 
-> 証明:
+> 証明: <br>
 > 最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, 行列 $AB\in\mathbb{R}^{m\times n}$ の $(i,j)$ 成分は
 \[
     \sum_{k=1}^ma_{ik}b_{kj}
