@@ -81,9 +81,7 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 \[
     \det A\neq 0\iff \operatorname{rank}A = n \iff A \text{ は正則}.
 \]
-> 証明 <br>
-> 証明  
-> 証明
+> 証明: <br>
 > 正方行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$ を用いて $A = PF(r)Q$ と表されるのだった. これと行列式の性質より, 
 \[
     \det A\neq 0 \iff \det F(r)\neq 0 \iff \operatorname{rank} A=n
@@ -251,7 +249,7 @@ $4$ 次以上の正方行列に対しても上と同様にして行列式を計�
 #### <u>命題</u>
 対角行列の行列式は, その対角成分の積に等しい.
 
-> 証明
+> 証明: <br>
 > $A = (a_{ij})$ を対角行列とする, このとき
 \[a_{ij} = 0 \quad \text{ if }\quad i\neq j\] である. 従って, 行列式の定義
 \[
@@ -285,7 +283,7 @@ $4$ 次以上の正方行列に対しても上と同様にして行列式を計�
 $n$ 次正方行列 $A$ と複素数 $\lambda$ に対し,
 \[\det(\lambda A) = \lambda^n \det A\] が成立する.
 
-> 証明
+> 証明: <br>
 > 行列 $\lambda A$ の $(i,j)$ 成分は, $A$ の $(i,j)$ 成分の $\lambda$ 倍なので,
 \[\begin{array}{rl}\det (\lambda A) &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) (\lambda a_{1\sigma(1)}) (\lambda a_{2\sigma(2)})\dots (\lambda a_{n\sigma(n)})\cr
 &= \lambda^n \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)} = \lambda^n\det A
@@ -300,7 +298,7 @@ $n$ 次正方行列 $A$ と複素数 $\lambda$ に対し,
 正方行列 $A$ に対し,
 \[\det A^{\operatorname{T}} = \det A\] が成立する.
 
-> 証明
+> 証明: <br>
 > 全ての $\sigma\in S_n$ に対し, 対応する $\sigma^{-1}\in S_n$ が存在する. これと $\operatorname{sgn}\sigma = \operatorname{sgn}\sigma^{-1}$ を用いると,
 \[\begin{array}{rl}\det A &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)} \cr
 &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma^{-1}) a_{1\sigma^{-1}(1)} a_{2\sigma^{-1}(2)} \dots a_{n\sigma^{-1}(n)} \cr
@@ -336,16 +334,17 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 置換 $\tau\in S_n$ に対し,
 \[\det (\mathbf{a} _ {\tau(1)}, \dots, \mathbf{a} _ {\tau(n)}) = (\operatorname{sgn}\tau) \det (\mathbf{a}_1, \dots, \mathbf{a}_n)\]
 
+> 証明: <br>
 > 全ての置換は互換の積として表されるため, $i$ 番目と $j$ 番目を入れ替える互換 $\tau$ を考えた際に
 \[
-    \det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) = - \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n)
+    \det (\mathbf{a} _ 1, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ n) = - \det (\mathbf{a} _ 1, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ n)
 \] となることを示せば良い. 互換 $\sigma\in S_n$ に対し, $\widetilde{\sigma} = \tau\sigma$ とおくと,
 \[\begin{array}{rl}
-    &\det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n) \cr
-    &\quad= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\tau\sigma(1)} \dots a_{n\tau\sigma(n)} \cr
-    &\quad= (\operatorname{sgn}\tau)\displaystyle\sum_{\widetilde{\sigma}\in S_n}(\operatorname{sgn}\widetilde{\sigma}) a_{1\widetilde{\sigma}(1)} \dots a_{n\widetilde{\sigma}(n)} \cr
-    &\quad = - \det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n),
-\end{array}\] ここで全ての $\sigma\in S_n$ についての足し合わせは, 全ての $\widetilde{\sigma}\in S_n$ についての足し合わせに等しいことを用いた.
+    &\det (\mathbf{a} _ 1, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ n) \cr
+    &\quad= \displaystyle\sum _ {\sigma\in S _ n}(\operatorname{sgn}\sigma) a _ {1\tau\sigma(1)} \dots a _ {n\tau\sigma(n)} \cr
+    &\quad= (\operatorname{sgn}\tau)\displaystyle\sum _ {\widetilde{\sigma}\in S _ n}(\operatorname{sgn}\widetilde{\sigma}) a _ {1\widetilde{\sigma}(1)} \dots a _ {n\widetilde{\sigma}(n)} \cr
+    &\quad = - \det (\mathbf{a} _ 1, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ n),
+\end{array}\] ここで全ての $\sigma\in S _ n$ についての足し合わせは, 全ての $\widetilde{\sigma}\in S _ n$ についての足し合わせに等しいことを用いた.
 
 #### <u>注意</u>
 * 上の証明中にも言及しているが, ある正方行列 $A$ の第 $i$ 列と第 $j$ 列を入れ換えた行列を $\widetilde{A}$ とすると,
@@ -357,14 +356,14 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 #### <u>系</u>
 正方行列 $A$ の 異なる $2$ つの列 (もしくは行) が一致するならば $\det A=0$.
 
-> 証明
+> 証明: <br>
 > 第 $i$ 列ベクトルと第 $j$ 列ベクトルが等しいならば, それらを入れ換えた行列が $A$ に一致することから $\det A = -\det A$ が得られる.
 
 #### <u>系</u>
 正方行列 $A$ の第 $i$ 行 (もしくは列) に第 $j$ 行 (もしくは列) の $\lambda$ 倍を加えて得られる行列 $\widetilde{A}$ に対し, 
 \[\det\widetilde{A} = \det A\] が成立する.
 
-> 証明
+> 証明 <br>
 > 列の場合のみ証明する. 行列 $A = (\mathbf{a}_1, \dots, \mathbf{a}_n)$ に対し, 
 \[\widetilde{A} = (\mathbf{a}_1, \dots, \mathbf{a}_i + \lambda\mathbf{a}_j, \dots, \mathbf{a}_n)\] となるので,
 \[\begin{array}{rl}
@@ -394,13 +393,13 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 #### <u>定理</u>
 同じ型の $2$ つの正方行列 $A$, $B$ に対して\[\det (AB) = \det A\det B\] が成立する.
 
-> 証明
-> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{ {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. このとき,
+> 証明: <br>
+> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b} _ j$ とする. また, 標準規定 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum _ { {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. このとき,
 \[\det (AB) = \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n).\] 多重線形性より
 \[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{ {i _ 1} 1}\det (A\mathbf{e} _ {i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
 & =\dots\cr 
 &= \displaystyle\sum _ {i _ 1}^n\dots\sum _ {i _ n}^n b _ { {i _ 1 } 1}\dots b _ { {i _ n} n} \det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}).
-\end{array}\] ここで, もしも $i_1,\dots, i_n$ の内に同じものが複数あったならば, $2$ つの列が一致することになるため $\det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}) = 0$ となる. 一方, $i_1, \dots, i_n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S_n$ が存在する. まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S_n$ を用いて表すことができるもののみであり, 具体的には
+\end{array}\] ここで, もしも $i _ 1,\dots, i _ n$ の中に同じものが複数あったならば, $2$ つの列が一致することになるため $\det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}) = 0$ となる. 一方, $i _ 1, \dots, i _ n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S _ n$ が存在する. まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S _ n$ を用いて表すことができるもののみであり, 具体的には
 \[
     \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) = \displaystyle\sum _ {\sigma\in S _ n} b _ {\sigma(1)1} \dots b _ {\sigma(n)n} \det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)})
 \] となる. ここで, 交代性より
@@ -463,7 +462,7 @@ a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 \vdots & \vdots & \ddots & \vdots \cr
 a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A = a _ {11}\widetilde{a} _ {11}$.
 
-> 証明:
+> 証明: <br>
 > 行列 $A$ が上のいずれかの形をしている場合,
 \[\det A = \sum _ {\sigma\in S _ n}(\operatorname{sgn}\sigma) a _ {1\sigma(1)} a _ {2\sigma(2)} \dots a _ {n\sigma(n)}\] の足し合わせの項は, $\sigma(1) = 1$ である場合を除き $0$ となる. いま, $\sigma\in S _ n$ であって $\sigma(1)=1$ であるものは, $\widetilde{\sigma}\in S_{n-1}$ と同一視することができる (ただし, $\widetilde{\sigma}$ は $\lbrace2,\dots,n\rbrace$ の置換とみなすことにする). この同一視に基づくと,
 \[\det A = a _ {11}\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}\] となり, \[\displaystyle\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}\] は \[\det\begin{pmatrix}
@@ -535,7 +534,7 @@ $n$ 次正方行列 $A=(a _ {ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$
 
 が, それぞれ成立する.
 
-> 証明
+> 証明: <br>
 > 上のみ証明する.
 > * $j=1$ のとき:
 > 多重線形性より,
@@ -593,7 +592,7 @@ $A$ の余因子行列は $\widetilde{A}$ と表記することも多いが, **�
 $n$ 次正方行列 $A$ に対し, 
 \[A(\operatorname{adj}A) =(\operatorname{adj}A)A = (\det A)I.\] が成立する.
 
-> 証明  
+> 証明: <br>
 > 行列 $A(\operatorname{adj}A)$ の第 $(i,j)$ 成分は
 \[\displaystyle\sum_{k=1}^n a_{ik} \widetilde{a} _ {jk}\] となり, $i=j$ ならば余因子展開より $\det A$ と一致する. もしも $i\neq j$ ならば, これは $A$ の第 $j$ 行を第 $i$ 行で置き換えた行列の余因子展開と一致するが, そのような行列は第 $i$ 行と第 $j$ 行が等しいため行列式が $0$ になる. 従って $A(\operatorname{adj}A) = (\det A)I$ が得られる. $(\operatorname{adj}A)A = (\det A)I$ も同様にして証明される.
 
@@ -602,6 +601,13 @@ $n$ 次正方行列 $A$ に対し,
 #### <u>定理 (クラメルの公式)</u>
 正則行列 $A$ に対し,
 \[A^{-1} = \dfrac{1}{\det A}\operatorname{adj} A\] が成立する.
+
+#### <u>例</u>
+\[A = \begin{pmatrix}a & b \cr c & d\end{pmatrix}.\]
+* 行列 $A$ が正則行列であるとする, つまり $\det A = ad-bc\neq 0 $ とする.
+* このとき, クラメルの公式より
+\[A^{-1} = \dfrac{1}{ad-bc}\begin{pmatrix}d & -b \cr -c & a\end{pmatrix}\]
+* 実際に, $AA^{-1} = I$ や $A^{-1}A = I$ となることを確かめることができる.
 
 #### <u>注意</u>
 クラメルの公式は, 行列の成分に数値ではなく記号が含まれている場合などに有用である. 一方で, 具体的な数値を成分とする行列に対する逆行列の計算方法として実用的とは言い難い. 
