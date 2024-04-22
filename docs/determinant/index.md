@@ -374,7 +374,7 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 
 #### <u>注意</u>
 この結果は, 基本行列 $R_{i,j,\lambda}$ に対して
-\[\det(R_{i,j,\lambda} A) = \det A,\qquad \det(AR_{i,j,\lambda}) = \det A\] であることを意味している.
+\[\det(R _ {i,j,\lambda} A) = \det A,\qquad \det(AR _ {i,j,\lambda}) = \det A\] であることを意味している.
 
 #### <u>例</u>
 \[A = \begin{pmatrix}1 & 11 & 111 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix}.\] このとき, 
@@ -395,11 +395,11 @@ $\qquad = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (
 同じ型の $2$ つの正方行列 $A$, $B$ に対して\[\det (AB) = \det A\det B\] が成立する.
 
 > 証明
-> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e}_i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{ {i _ j} =1}^n b _ { { i _ j } j} \mathbf{e} _ {i _ j}$ とする. このとき,
-\[\det (AB) = \det (A\mathbf{b}_1, \dots, A\mathbf{b}_n).\] 多重線形性より
-\[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{{i _ 1}1}\det (A\mathbf{e} _ {i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
+> 行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. また, 標準規定 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum_{ {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. このとき,
+\[\det (AB) = \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n).\] 多重線形性より
+\[\begin{array}{rl}\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{ {i _ 1} 1}\det (A\mathbf{e} _ {i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
 & =\dots\cr 
-&= \displaystyle\sum_{i _ 1}^n\dots\sum_{i_n}^n b _ {{i _ 1}1}\dots b _ {{i _ n}n} \det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}).
+&= \displaystyle\sum _ {i _ 1}^n\dots\sum _ {i _ n}^n b _ {{i _ 1}1}\dots b _ {{i _ n}n} \det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}).
 \end{array}\] ここで, もしも $i_1,\dots, i_n$ の内に同じものが複数あったならば, $2$ つの列が一致することになるため $\det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}) = 0$ となる. 一方, $i_1, \dots, i_n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S_n$ が存在する. まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S_n$ を用いて表すことができるもののみであり, 具体的には
 \[
     \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) = \displaystyle\sum _ {\sigma\in S _ n} b _ {\sigma(1)1} \dots b _ {\sigma(n)n} \det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)})
