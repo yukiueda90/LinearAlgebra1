@@ -69,10 +69,10 @@ $2$ つの集合 $A$, $B$ に対して, $B\subset A$ の定義は \[a\in B\impli
 
 #### <u>例</u>
 * 複素数全体のことを $\mathbb{C}$ と表記する. 実数は特に複素数であるため, \[\mathbb{R}\subset \mathbb{C}\] である.
-* $A$ を非負の実数全体とすると, $A$ の全ての元は特に実数であるので$A\subset\mathbb{R}$ である. また, このとき例えば \[ A=\lbrace a\in\mathbb{R}\mid a\ge 0\rbrace\] と表記できる.
-* $B = \lbrace a\in\mathbb{R}\mid a=|a|\rbrace$ とする, このとき, 上の集合 $A$ に対して, $A=B$ が成立する. 
-    * 実際, $a\in A$ ならば $a=|a|$ なので $A\subset B$ である.
-    * また, $a\in B$ ならば $a=|a|$ を満たす実数 $a$ は非負のものに限られるので $B\subset A$ である.
+* $A$ を非負の実数全体とすると, $A$ の全ての元は特に実数であるので$A\subset\mathbb{R}$ である. また, このとき例えば \[ A=\lbrace a \in\mathbb{R} \mid a\ge 0 \rbrace\] と表記できる.
+* $B = \lbrace a\in\mathbb{R}\mid a=\lvert a\rvert \rbrace$ とする, このとき, 上の集合 $A$ に対して, $A=B$ が成立する. 
+    * 実際, $a\in A$ ならば $a=\lvert a\rvert|$ なので $A\subset B$ である.
+    * また, $a\in B$ ならば $a=\lvert a\rvert$ を満たす実数 $a$ は非負のものに限られるので $B\subset A$ である.
 
 
 また, ベクトル空間についても簡単に言及しておく. ある性質を満たす集合を**ベクトル空間**と呼ぶのだが, ここではその性質については説明はしない.
