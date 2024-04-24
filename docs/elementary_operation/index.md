@@ -15,7 +15,7 @@
 \right.\] これは行列を用いると以下のように書き直すことができる:
 \[
     \begin{pmatrix}1&2\cr 3&4\end{pmatrix}\begin{pmatrix}x\cr y\end{pmatrix} = \begin{pmatrix}20\cr 46\end{pmatrix}.
-\] このように, 連立 $1$ 次方程式を, 行列と列ベクトルの行列積により表現することは, 行列の基本的な応用の $1$ つである (以降, 上のようにして連立 $1$ 次方程式と同一視することができる $A{\boldsymbol{x}} = {\boldsymbol{b}}$ という形の方程式のことも連立 $1$ 次方程式と呼ぶことがある).
+\] このように, 連立 $1$ 次方程式を, 行列と列ベクトルの行列積により表現することは, 行列の基本的な応用の $1$ つである (以降, 上のようにして連立 $1$ 次方程式と同一視することができる $A\mathbf{x} = \mathbf{b}$ という形の方程式のことも連立 $1$ 次方程式と呼ぶことがある).
 
 ここで, 左辺にある行列 $A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}$ の逆行列が
 \[
@@ -97,6 +97,9 @@
 
 となることは容易に想像できるし, 計算して確かめることもできる.
 
+#### <u>注意</u>
+我々は基本行列がどのような形であるかに興味があるというよりも, 単に行列に対してどのような基本変形を行なったかを簡単に記述するために用いたい. 例えば, 行列 $A$ に対して『第 $2$ 行に第 $1$ 行の $-2$ 倍を加える』という基本変形は, 『$A$ を $R_{2,1,-2}A$ に置き換える』ということと同じことを意味しているため, 記述を簡単にしたい場合に後者の表現を用いることがある. 
+
 ---
 
 <a id="section2-3"></a>
@@ -135,7 +138,15 @@
     R_{3,2,-3}R_{1,2,-2}Q_{2,1/2}AR_{2,1,-2}R_{3,1,-3} = \begin{pmatrix}1&0&0\cr0&-1&-2\cr0&1&2\end{pmatrix}.
 \]
 
-この結果を繰り返し適用することで, 第 $2$ 行, 第 $2$ 列以降も同様に変形することができる:
+この結果を繰り返し適用することで, 第 $2$ 行, 第 $2$ 列以降も同様に変形することができる.
+
+#### <u>注意</u>
+掃き出しによる結果は, どのような順序で基本変形を行うかに依存しない. しかしながら, 上で計算しているように, 第 $(i,j)$ 成分に注目して
+1. 第 $(i,j)$ 成分を $1$ にする.
+2. 他の行の第 $j$ 列を全て $0$ にする.
+3. 他の列の第 $i$ 行を全て $0$ にする.
+
+という手順で計算することを推奨する.
 
 #### <u>定理 (階数)</u>
 任意の行列 $m\times n$ 型行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$, および $m\times n$ 型行列
@@ -179,6 +190,14 @@
 &\longrightarrow \begin{pmatrix}1&0&0&0\cr 0&1&0&0\cr 0&0&0&0\end{pmatrix} &\text{($2$ 列目のスカラー倍を $3$, $4$ 列目に加えた)}.
 \end{array}\] このことから $\operatorname{rank}A = 2$ であることがわかる.
 
+#### <u>注意</u>
+階数を求める上の計算も, やはりどのような順序で基本変形を行うかに依存しない. しかしながら, $i = 1, 2, \dots, n$ の順に, 
+1. 第 $(i,i)$ 成分を $1$ にする.
+2. 他の行の第 $i$ 列を全て $0$ にする.
+3. 他の列の第 $i$ 行を全て $0$ にする.
+
+という手順で計算することを推奨する.
+
 ---
 
 実は正方行列の階数と正則性 (すなわち逆行列の存在) とは密接に関連している.
@@ -204,7 +223,7 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 #### <u>注意</u>
 * $n$ 次正方行列 $A$ について, $\operatorname{rank}A=n$ のとき, $A$ は**フルランク** (**full rank**) であるということがある:
 \[A \text{ がフルランク}\iff A \text{ が正則}\]
-* $A$ がフルランクならば, 対応する標準形 $F(r)$ は単位行列になる.
+* 正方行列 $A$ がフルランクならば, 対応する標準形 $F(r)$ は単位行列になる.
 
 この定理より, 以下の結論が直ちに得られる:
 
@@ -265,16 +284,16 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 
 ## 2.4: 掃き出し法 (ガウスの消去法)
 
-上述のように, 行列に対して行基本変形を行うことで, 行階段簡約形 (単位行列を含む) に変形することができる. このような計算手順 (アルゴリズム) を**掃き出し法** (**row reduction**) もしくは **ガウスの消去法** (**Gaussian elimination**) という. 掃き出し法は, 先ほども紹介したように, 行列の階数を求めるテクニックとして応用できるが, 他にも連立 $1$ 次方程式の解法, もしくは逆行列を計算する方法としても有用である. これらを説明するため, まず**拡大行列**という概念を導入する.
+上述のように, 行列に対して行基本変形を行うことで, 行階段簡約形 (単位行列を含む) に変形することができる. このような計算手順 (アルゴリズム) を**掃き出し法** (**row reduction**) もしくは **ガウスの消去法** (**Gaussian elimination**) という. 掃き出し法は, 先ほども紹介したように, 行列の階数を求めるテクニックとして応用できるが, 他にも連立 $1$ 次方程式の解法, もしくは逆行列を計算する方法としても応用することができる. これらを説明するため, まず**拡大行列**という概念を導入する.
 
 #### <u>定義</u> (拡大行列)
 行の数が等しい $2$ つの行列 $A$, $B$ に対して, それらを横に連結して得られる行列 $\left(\begin{array}{c:c}A&B\end{array}\right)$ を**拡大行列** (**augmented matrix**) という.
 
-拡大行列は, $2$ つの行列に同じ行基本変形を行うために記述の簡単のために用いられる.
+拡大行列は, $2$ つの行列に同じ行基本変形を行う際に, 記述を簡単にするために用いられる.
 
 #### <u>例</u>
-\[A = \begin{pmatrix}1&2&3\cr 2&3&4\cr 1&3&5\end{pmatrix},\quad I = \begin{pmatrix}1&0&0\cr 0&1&0\cr 0&0&1\end{pmatrix},\quad {\boldsymbol{b}} = \begin{pmatrix}4\cr 7\cr 5\end{pmatrix}.\] このとき, 
-\[\left(\begin{array}{c:c}A&I\end{array}\right) = \left(\begin{array}{ccc:ccc}1&2&3&1&0&0\cr 2&3&4&0&1&0\cr 1&3&5&0&0&1\end{array}\right),\quad \left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right) = \left(\begin{array}{ccc:c}1&2&3&4\cr 2&3&4&7\cr 1&3&5&5\end{array}\right).\]
+\[A = \begin{pmatrix}1&2&3\cr 2&3&4\cr 1&3&5\end{pmatrix},\quad I = \begin{pmatrix}1&0&0\cr 0&1&0\cr 0&0&1\end{pmatrix},\quad \mathbf{b} = \begin{pmatrix}4\cr 7\cr 5\end{pmatrix}.\] このとき, 
+\[\left(\begin{array}{c:c}A&I\end{array}\right) = \left(\begin{array}{ccc:ccc}1&2&3&1&0&0\cr 2&3&4&0&1&0\cr 1&3&5&0&0&1\end{array}\right),\quad \left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) = \left(\begin{array}{ccc:c}1&2&3&4\cr 2&3&4&7\cr 1&3&5&5\end{array}\right).\]
 
 ---
 
@@ -307,7 +326,20 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 \] を満たすものは, 同時に
 \[
     PI = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
-\] を満たす, ということを意味する筆算である. 
+\] を満たす, ということを意味する筆算である. 上のような変形により $P=A^{-1}$ が得られるのは, (繰り返すが) 以下の $2$ つが同じ計算を意味しているからである:
+
+\[\begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) &= \left(\begin{array}{cc:cc}1&2&1&0\cr 3&4&0&1\end{array}\right)\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&2&1&0\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&1&3/2&-1/2\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
+\end{array}\]
+|
+\[\begin{array}{rll} & A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad I = \begin{pmatrix}1&0\cr 0&1\end{pmatrix}\cr 
+\iff & R_{2,1,-3}A = \begin{pmatrix}1&2\cr 0&-2\end{pmatrix},\qquad R_{2,1,-3}I = \begin{pmatrix}1&0\cr -3&1\end{pmatrix}\cr
+\iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&-2\end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}-2&1\cr -3&1\end{pmatrix}\cr
+\iff & Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&1\end{pmatrix},\qquad Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}\
+\end{array}\]
+
 
 #### <u>注意</u>
 もしも $A$ が正則行列でなかったならば, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. このことを利用すれば, $A$ が正則であるかどうかの判定も行うことができる.
@@ -339,27 +371,27 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     \end{array}\right.
 \] このような式変形により, 解 $x=6$, $y=7$ が得られる.
 
-次に, この連立 $1$ 次方程式を $A{\boldsymbol{x}} = {\boldsymbol{b}}$ と同一視してみる, ここで
+次に, この連立 $1$ 次方程式を $A\mathbf{x} = \mathbf{b}$ と同一視してみる, ここで
 \[
-    A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad {\boldsymbol{x}}=\begin{pmatrix}x\cr y\end{pmatrix}, \quad {\boldsymbol{b}} = \begin{pmatrix}20\cr 46\end{pmatrix}.
-\] もしも $A$ が正則行列であるならば, ${\boldsymbol{x}} = A^{-1}A{\boldsymbol{x}} = A^{-1}{\boldsymbol{b}}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては, 上の連立 $1$ 次方程式を解く際に用いた変形は
+    A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}, \quad \mathbf{x}=\begin{pmatrix}x\cr y\end{pmatrix}, \quad \mathbf{b} = \begin{pmatrix}20\cr 46\end{pmatrix}.
+\] もしも $A$ が正則行列であるならば, $\mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{b}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる. (この例に対しては, 上の連立 $1$ 次方程式を解く際に用いた変形は
 \[Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I\] と同一視でき, これを用いると
 \[
-    {\boldsymbol{x}} = A^{-1}{\boldsymbol{b}} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}{\boldsymbol{b}}
+    \mathbf{x} = A^{-1}\mathbf{b} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}\mathbf{b}
 \] となる). 言い換えれば, 次が成立する:
 
 #### <u>命題 (掃き出し法による連立 $1$ 次方程式の解法)</u>
-行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を列ベクトル${\boldsymbol{b}}$に対して行うことで $A^{-1}{\boldsymbol{b}}$ を得ることができる. 
+行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を列ベクトル$\mathbf{b}$に対して行うことで $A^{-1}\mathbf{b}$ を得ることができる. 
 
 #### <u>例</u>
 上に例として挙げた連立 $1$ 次方程式の解法と同じ計算を, 拡大行列に対する掃き出し法を用いて記述してみる:
-\[\begin{array}{rll}\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right) &= \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
+\[\begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) &= \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&2&20\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
 &\longrightarrow\left(\begin{array}{cc:c}1&0&6\cr 0&1&7\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
 \end{array}\] ここで用いた行基本変形は, 連立 $1$ 次方程式に対する各操作と確かに同一視できる (例えば上の連立 $1$ 次方程式の解法において, $(1)^\prime = (1) - 3\times (2)$ という式変形を用いたが, これは第 $2$ 行に第 $1$ 行の $-3$ 倍を加える行基本変形と同値である).
 
-このように, 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}{\boldsymbol{b}}$ となる.
+このように, 拡大行列 $\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}\mathbf{b}$ となる.
 
 #### <u>注意</u>
 何度も同じことを書くが, この計算は基本行列たちの積 $P$ であって
@@ -367,11 +399,45 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     PA = I \quad (\text{つまり } P=A^{-1})
 \] を満たすものは, 同時に
 \[
-    P{\boldsymbol{b}} = \begin{pmatrix}6\cr 7\end{pmatrix}
-\] を満たす, ということを意味する筆算である. 
+    P\mathbf{b} = \begin{pmatrix}6\cr 7\end{pmatrix}
+\] を満たす, ということを意味する筆算であり, また以下の $3$ つは全て同じ計算を意味している:
+
+\[\begin{array}{rl}
+    & \left\lbrace\begin{array}{rll}
+    x+2y &= 20, &(1)\cr
+    3x+4y &= 46. &(2)
+    \end{array}\right.\cr
+    \longrightarrow & \left\lbrace\begin{array}{rll}
+    x+2y &= 20, &(1)\cr
+    -2y &= -14. &(2)^{\prime} = (2) - 3\times(1)
+    \end{array}\right.\cr
+    \longrightarrow & \left\lbrace\begin{array}{rll}
+    x &= 6, &(1)^{\prime} = (1) + (2)^{\prime}\cr
+    -2y &= -14. &(2)^{\prime}
+    \end{array}\right.\cr
+    \longrightarrow & \left\lbrace\begin{array}{rll}
+    x &= 6, &(1)'\cr
+    y &= 7. &(2)^{\prime \prime} = -1/2\times (2)^{\prime}
+    \end{array}\right.
+    \end{array}
+\]
+|
+\[\begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) =& \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
+\longrightarrow & \left(\begin{array}{cc:c}1&2&20\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+\longrightarrow & \left(\begin{array}{cc:c}1&0&6\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+\longrightarrow & \left(\begin{array}{cc:c}1&0&6\cr 0&1&7\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
+\end{array}\]
+|
+\[\begin{array}{rl}
+&A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\qquad \mathbf{b} = \begin{pmatrix}20\cr 40\end{pmatrix}\cr
+\iff & R_{2,1,-3}A = \begin{pmatrix}1&2\cr 0&-2\end{pmatrix},\qquad R_{2,1,-3}\mathbf{b} = \begin{pmatrix}20\cr -14\end{pmatrix}\cr
+\iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&-2\end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}\mathbf{b} = \begin{pmatrix}6\cr -14\end{pmatrix}\cr
+\iff & Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&1\end{pmatrix},\qquad Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}\mathbf{b} = \begin{pmatrix}6\cr 7\end{pmatrix}
+\end{array}\]
+
 
 #### <u>注意</u>
-もしも $A$ が正則行列でなかったならば (正方行列でない場合も含む), 拡大行列 $\left(\begin{array}{c:c}A&{\boldsymbol{b}}\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. これは, 連立 $1$ 次方程式の解が存在しない, もしくは一意に定まらないことを意味する.
+もしも $A$ が正則行列でなかったならば (正方行列でない場合も含む), 拡大行列 $\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. これは, 連立 $1$ 次方程式の解が存在しない, もしくは一意に定まらないことを意味する.
 
 #### <u>例</u>
 \[\left\lbrace\begin{array}{rll}
