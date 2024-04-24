@@ -143,8 +143,8 @@
 #### <u>注意</u>
 掃き出しによる結果は, どのような順序で基本変形を行うかに依存しない. しかしながら, 上で計算しているように, 第 $(i,j)$ 成分に注目して
 1. 第 $(i,j)$ 成分を $1$ にする.
-2. 他の行の第 $j$ 列を全て $0$ にする.
-3. 他の列の第 $i$ 行を全て $0$ にする.
+2. 第 $i$ 行の定数倍を加えることで, 他の行の第 $j$ 列を全て $0$ にする.
+3. 第 $j$ 列の定数倍を加えることで, 他の列の第 $i$ 行を全て $0$ にする.
 
 という手順で計算することを推奨する.
 
@@ -193,8 +193,8 @@
 #### <u>注意</u>
 階数を求める上の計算も, やはりどのような順序で基本変形を行うかに依存しない. しかしながら, $i = 1, 2, \dots, n$ の順に, 
 1. 第 $(i,i)$ 成分を $1$ にする.
-2. 他の行の第 $i$ 列を全て $0$ にする.
-3. 他の列の第 $i$ 行を全て $0$ にする.
+2. 第 $i$ 行の定数倍を加えることで, 他の行の第 $i$ 列を全て $0$ にする.
+3. 第 $i$ 列の定数倍を加えることで, 他の列の第 $i$ 行を全て $0$ にする.
 
 という手順で計算することを推奨する.
 
@@ -320,6 +320,13 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 \end{array}\] このように, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}$ となる.
 
 #### <u>注意</u>
+この計算の結果も, (階数を求める上の計算などと同様に) 行基本変形の順序に依存しない. しかしながら, $i = 1, 2, \dots, n$ の順に, 
+1. 第 $(i,i)$ 成分を $1$ にする.
+2. 第 $i$ 行の定数倍を加えることで他の行の第 $i$ 列を全て $0$ にする.
+
+という手順で計算することを推奨する.
+
+#### <u>注意</u>
 この計算は, 基本行列たちの積 $P$ であって
 \[
     PA = I \quad (\text{つまり } P=A^{-1})
@@ -328,13 +335,13 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     PI = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
 \] を満たす, ということを意味する筆算である. 上のような変形により $P=A^{-1}$ が得られるのは, (繰り返すが) 以下の $2$ つが同じ計算を意味しているからである:
 
-\[\begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) &= \left(\begin{array}{cc:cc}1&2&1&0\cr 3&4&0&1\end{array}\right)\cr
-&\longrightarrow\left(\begin{array}{cc:cc}1&2&1&0\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-&\longrightarrow\left(\begin{array}{cc:cc}1&0&-2&1\cr 0&1&3/2&-1/2\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
+> \[\begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) =& \left(\begin{array}{cc:cc}1&2&1&0\cr 3&4&0&1\end{array}\right)\cr
+\longrightarrow & \left(\begin{array}{cc:cc}1&2&1&0\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
+\longrightarrow & \left(\begin{array}{cc:cc}1&0&-2&1\cr 0&-2&-3&1\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
+\longrightarrow & \left(\begin{array}{cc:cc}1&0&-2&1\cr 0&1&3/2&-1/2\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
 \end{array}\]
-|
-\[\begin{array}{rll} & A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad I = \begin{pmatrix}1&0\cr 0&1\end{pmatrix}\cr 
+
+> \[\begin{array}{rll} & A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\quad I = \begin{pmatrix}1&0\cr 0&1\end{pmatrix}\cr 
 \iff & R_{2,1,-3}A = \begin{pmatrix}1&2\cr 0&-2\end{pmatrix},\qquad R_{2,1,-3}I = \begin{pmatrix}1&0\cr -3&1\end{pmatrix}\cr
 \iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&-2\end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}-2&1\cr -3&1\end{pmatrix}\cr
 \iff & Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&1\end{pmatrix},\qquad Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}\
@@ -402,7 +409,7 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     P\mathbf{b} = \begin{pmatrix}6\cr 7\end{pmatrix}
 \] を満たす, ということを意味する筆算であり, また以下の $3$ つは全て同じ計算を意味している:
 
-\[\begin{array}{rl}
+> \[\begin{array}{rl}
     & \left\lbrace\begin{array}{rll}
     x+2y &= 20, &(1)\cr
     3x+4y &= 46. &(2)
@@ -421,14 +428,14 @@ $A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
     \end{array}\right.
     \end{array}
 \]
-|
-\[\begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) =& \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
+
+> \[\begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) =& \left(\begin{array}{cc:c}1&2&20\cr 3&4&46\end{array}\right)\cr
 \longrightarrow & \left(\begin{array}{cc:c}1&2&20\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
 \longrightarrow & \left(\begin{array}{cc:c}1&0&6\cr 0&-2&-14\end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
 \longrightarrow & \left(\begin{array}{cc:c}1&0&6\cr 0&1&7\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.
 \end{array}\]
-|
-\[\begin{array}{rl}
+
+> \[\begin{array}{rl}
 &A = \begin{pmatrix}1&2\cr 3&4\end{pmatrix},\qquad \mathbf{b} = \begin{pmatrix}20\cr 40\end{pmatrix}\cr
 \iff & R_{2,1,-3}A = \begin{pmatrix}1&2\cr 0&-2\end{pmatrix},\qquad R_{2,1,-3}\mathbf{b} = \begin{pmatrix}20\cr -14\end{pmatrix}\cr
 \iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}1&0\cr 0&-2\end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}\mathbf{b} = \begin{pmatrix}6\cr -14\end{pmatrix}\cr
