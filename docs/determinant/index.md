@@ -523,7 +523,7 @@ a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ &emsp;なら &emsp; $\det A =
 -1 & -3 & -2 \cr
 0 & 1 & -1 \cr
 0 & 4 & 2
-\end{pmatrix} & \text{(第 $3$, $4$ 行に第 $2$ 行のスカラー倍を加えた)} \cr
+\end{pmatrix} & \text{(第 $2$, $3$ 行に第 $1$ 行のスカラー倍を加えた)} \cr
 &= \det\begin{pmatrix}1&-1\cr 4&2\end{pmatrix} = 6
 \end{array}\] などと計算できる.
 
@@ -586,7 +586,7 @@ a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 $n$ 次正方行列 $A$ に対し, 第 $(i,j)$ 成分が $A$ の第 $(j,i)$ 余因子 $\widetilde{a} _ {ji}$ である $n$ 次正方行列を $A$ の**余因子行列** (**adjugate matrix**) といい, $\operatorname{adj} A$ と表記する.
 
 #### <u>注意</u>
-$A$ の余因子行列は $\widetilde{A}$ と表記することも多いが, **このメモでは, 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a} _ {ij}$ である行列を $\widetilde{A}$ と表すことにする**. このとき, $\operatorname{adj} A = \widetilde{A}^{\operatorname{T}}$ である.
+$A$ の余因子行列 $\operatorname{adj} A$ は $\widetilde{A}$ と表記されることも多いが, **ここでは, 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a} _ {ij}$ である行列を $\widetilde{A}$ と表すことにする**. このとき, $\operatorname{adj} A = \widetilde{A}^{\operatorname{T}}$ である.
 
 #### <u>補題</u>
 $n$ 次正方行列 $A$ に対し, 
