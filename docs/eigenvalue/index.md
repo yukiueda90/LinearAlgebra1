@@ -23,47 +23,48 @@
 
 ---
 
-さて, 上の例では標準基底 $\mathbf{e} _ 1$, $\mathbf{e} _ 2$ に対して,  $\mathbf{x} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2$ であることを用いたが, ここでは一般の列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ を用いてみよう: もしも $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ であれば, $A\mathbf{v} _ 1$ と $A\mathbf{v} _ 2$ を計算することで
+さて, 上の例では標準基底 $\mathbf{e} _ 1$, $\mathbf{e} _ 2$ に対して,  $\mathbf{x} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2$ であることを用いたが, ここでは一般の列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ を用いてみよう: 
+
+もしも $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ となるならば, $A\mathbf{v} _ 1$ と $A\mathbf{v} _ 2$ を計算することで
 \[A\mathbf{x} = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2\] が得られる. ここで, $\mathbf{v} _ 1$ と $\mathbf{v} _ 2$ として, どのようなものを用いるのが便利だろうか. 
 
 この問題に対する答えの一つは, $A$ を左から掛けても, 定数倍しか変わらないベクトルを用いるというものである: もしもある $\lambda _ i$ に対して
 \[A\mathbf{v} _ i = \lambda _ i\mathbf{v} _ i \qquad (i=1,2)\] とできるならば, $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ に対して
-\[A\mathbf{x} = A(a\mathbf{v} _ 1 + b\mathbf{v}_ 2) = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2 = a\lambda _ 1\mathbf{v} _ 1 + b\lambda _ 2\mathbf{v} _ 2\] が得られる. このような性質を満たすベクトル $\mathbf{v} _ i$ を行列 $A$ の**固有ベクトル**, 対応する $\lambda_i$ を**固有値** という.
+\[A\mathbf{x} = A(a\mathbf{v} _ 1 + b\mathbf{v}_ 2) = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2 = a\lambda _ 1\mathbf{v} _ 1 + b\lambda _ 2\mathbf{v} _ 2\] が得られる. このような性質を満たすベクトル $\mathbf{v} _ i$ を正方行列 $A\in\mathbb{R}^{2\times 2}$ の**固有ベクトル**, 対応する $\lambda_i$ を**固有値** という.
 
 ---
 
-固有値及び固有ベクトルは, より一般に**線型写像**と呼ばれるものに対して定義され, 様々な応用を持つものであるが, ここでは行列 $A\in\mathbb{R}^{2\times 2}$ に対する固有値及び固有ベクトルのみを考えることにする:
+固有値及び固有ベクトルは, より一般に**線型写像**と呼ばれるものに対して定義され, 様々な応用を持つものであるが, ここでは正方行列 $A\in\mathbb{R}^{2\times 2}$ に対する固有値及び固有ベクトルのみを考えることにする:
 
 #### <u>定義</u> (行列の固有値と固有ベクトル)
-行列 $A\in\mathbb{R}^{2\times 2}$ に対して, 
+正方行列 $A\in\mathbb{R}^{2\times 2}$ に対して, 
 \[A\mathbf{v} = \lambda\mathbf{v}\] を満たす, ゼロでない列ベクトル $\mathbf{v}\in \mathbb{C}^{2\times 1}$ と $\lambda\in \mathbb{C}$ のペアが存在するならば, $\mathbf{v}$ を**固有ベクトル** (**eigenvector**), $\lambda$ を**固有値** (**eigenvalue**) という. また, これらのペア $(\lambda,\mathbf{v})$ を**固有対** (**eigenpair**) と呼ぶことがある.
 
-固有値及び固有ベクトルは, 実数でなくとも構わない点に注意. ここでは, 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の**固有値**と**固有ベクトル**について, それが行列 $A$ の特徴と関係していることに言及する.
+固有値及び固有ベクトルは, 実数でなくとも構わない点に注意. ここでは, 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 正方行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の**固有値**と**固有ベクトル**について, それが $A$ の特徴と関係していることに言及する.
 
 ---
 
 <a id="section4-2"></a>
 
-## 4.2: 行列によるベクトルの変換
+## 4.2: 行列による変換と固有値
 
 以降, 列ベクトル $\begin{pmatrix}a\cr b\end{pmatrix}\in\mathbb{R}^{2\times 1}$ を, 高校数学で学ぶベクトル (これを**幾何ベクトル**という) と同一視する. また, このベクトルを $xy$ 平面上の点 $(a,b)\in\mathbb{R}^2$ と同一視することにする. このとき, 列ベクトルの左から行列を掛けるという操作は,
 * 原点 $(0,0)$ を始点とする矢印を矢印に変換する操作,
 * $(x,y)$ 平面上の点を点に変換する操作
 
-であるとみなすことができる. この同一視により, 行列による作用を図示することができるようになる. 以降, 列ベクトル $\mathbf{v}\in\mathbb{R}^{2\times 1}$ に対して単に $\mathbf{v}\in\mathbb{R}^2$ と表記することがある.
+であるとみなすことができる. この同一視により, 行列によるベクトルの変換を図示することができるようになる. 以降, 列ベクトル $\mathbf{v}\in\mathbb{R}^{2\times 1}$ に対して単に $\mathbf{v}\in\mathbb{R}^2$ と表記することがある.
 
 #### <u>例</u>
 \[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix},\qquad \mathbf{v} = \begin{pmatrix}a\cr b\end{pmatrix}\in\mathbb{R}^2.\]
 * $A\mathbf{v} = \begin{pmatrix}a+b/2\cr a/2+b\end{pmatrix}\in\mathbb{R}^2$.
-* $\mathbf{v}$ および $A\mathbf{v}$ を幾何ベクトルや $xy$ 平面上の点と同一視すると, 行列 $A$ の作用は例えば以下の図のように解釈できる:
+* $\mathbf{v}$ および $A\mathbf{v}$ を幾何ベクトルや $xy$ 平面上の点と同一視すると, 行列 $A$ による変換は例えば以下の図のように解釈できる:
 
 <img src='../images/linear_transform_by_matrix_1.png'>
 <img src='../images/linear_transform_by_matrix_2.png'>
 
 左側の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 右側の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである. 
 
-
-
+---
 
 次に, 固有値と固有ベクトルについて具体例を見てみる:
 
@@ -78,7 +79,55 @@
 ここで, 固有ベクトルを図示するとどのようになるか見てみよう. ただし, ここでは実ベクトルであり大きさが $1$ である固有ベクトルのみを図示することにする. 上の例においては, 
 \[\mathbf{v} _ 1 = \begin{pmatrix}1/\sqrt{2}\cr -1/\sqrt{2}\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}1/\sqrt{2}\cr 1/\sqrt{2}\end{pmatrix}\] が大きさ $1$ の固有ベクトルとなる.
 
-(ここに図)
+<img src='../images/linear_transform_by_matrix_3.png'>
+
+上の図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる. 
+
+ただし, 行列 $A$ が実行列であったとしても, 固有値 (と固有ベクトル) が実数であるとは限らない.
+
+#### <u>例</u>
+\[A = \begin{pmatrix}\cos\alpha & -\sin\alpha\cr \sin\alpha & \cos\alpha\end{pmatrix}.\]
+* いま, ベクトル $\mathbf{v} = \begin{pmatrix}a \cr b\end{pmatrix}$ の極座標表示が \[\mathbf{v} = \begin{pmatrix}r\cos\theta\cr r\sin\theta\end{pmatrix}\] と与えられていたとする. このとき, 三角関数の加法定理より
+\[A\mathbf{v} = \begin{pmatrix}\cos\alpha & -\sin\alpha\cr \sin\alpha & \cos\alpha\end{pmatrix}\begin{pmatrix}r\cos\theta\cr r\sin\theta\end{pmatrix} = \begin{pmatrix}r(\cos\theta\cos\alpha-\sin\theta\sin\alpha)\cr r(\sin\theta\cos\alpha + \cos\theta\sin\alpha)\end{pmatrix} = \begin{pmatrix}r\cos(\theta+\alpha)\cr r\sin(\theta+\alpha)\end{pmatrix}\] が得られる. つまり, この行列 $A$ はベクトル $\mathbf{v}$ を $\alpha$ だけ回転させる変換を表している.
+* このような行列 $A$ を**回転行列**と呼ぶ. 
+* いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが異なってしまう). 
+
+<img src='../images/linear_transform_by_matrix_4.png'> 
+
+---
+
+## 4.3: 特性多項式を用いた行列固有値の計算
+
+ここでは, 行列の (複素数も含む) 固有値および固有ベクトルを計算する方法を紹介する. 先ほどの例では, 行列 $A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}$ の固有値が $\lambda _ 1 = 1/2$, $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix}$, $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ であったが, これらをどのようにして導出するか具体的な手順を述べる.
+
+まず, 正方行列 $A$ の固有値 $\lambda$ と固有ベクトル $\mathbf{v}$ は, 定義より
+\[A\mathbf{v} = \lambda \mathbf{v}\] を満たすのであった. ここで, 右辺は単位行列 $I$ を用いて $\lambda I \mathbf{v}$ と一致するので, $A$ の固有値 $\lambda$ と固有ベクトル $\mathbf{v}$ に対して
+\[(\lambda I-A)\mathbf{v}=\mathbf{0}\] が成立する. いま, 固有ベクトル $\mathbf{v}$ はゼロでないもののみ考えているため, そのような $\mathbf{v}$ が存在するためには $\det(\lambda I-A)=\mathbf{0}$ でなければならない. 実際, もしも $\det(\lambda I-A)\neq0$ であるならば, $\lambda I-A$ の逆行列が存在するため, これを両辺に左から掛けることで
+\[\mathbf{v} = (\lambda I-A)^{-1}(\lambda I-A)\mathbf{v} = (\lambda I-A)^{-1}\mathbf{0} = \mathbf{0}\] となってしまう. 一方で, $\lambda I-A$ が正則でない場合には, 連立 $1$ 次方程式 \[(\lambda I-A)\mathbf{v} = 0\] の右辺が $\mathbf{0}$ であることから, (解 $\mathbf{v}$ は必ず存在し) ある条件を満たす $\mathbf{v}$ 全てが解となる.
+これらより,
+\[\det(\lambda I-A)=0 \iff \text{固有ベクトル } \mathbf{v} \text{ が存在する}.\] が得られる. ここで, $A\in\mathbb{R}^{2\times 2}$ の場合は,
+\[\det(\lambda I-A) = \det\begin{pmatrix}\lambda - a _ {11} & -a _ {12}\cr -a _ {21}&\lambda-a _ {22}\end{pmatrix} = (\lambda-a _ {11})(\lambda - a _ {22}) - a _ {12} a _ {21}\] となるため, \[\det(\lambda I-A) = 0\] は $\lambda$ についての $2$ 次方程式となり, 複素数の解や重解を許せば必ず解が $2$ つ存在する. これらの解が行列 $A$ の固有値となる. 固有値 $\lambda$ が得られたならば, あとは
+\[(\lambda I-A)\mathbf{v} = 0\] を満たすような $\mathbf{v}$ を (必要なら掃き出し方やクラメルの公式を用いて) 見つければ, それが対応する固有ベクトルとなる.
+
+#### <u>注意</u>
+正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを**特性多項式** (**characteristic polynomial**) という.
+
+#### <u>例</u>
+\[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}.\]
+* 特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda + 3/4 = (\lambda-1/2)(\lambda-3/2)$.
+* 従って \[\det(\lambda I-A)=0\iff \lambda = 1/2,\ 3/2\] となり, $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ が行列 $A$ の固有値となる.
+* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}-1/2 & -1/2\cr -1/2&-1/2\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ として, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
+* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}1/2 & -1/2\cr -1/2&1/2\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ として, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
+
+次に, 固有値が実数にならない例も見てみる:
+
+#### <u>例</u>
+\[A = \begin{pmatrix}\cos\alpha & -\sin\alpha\cr \sin\alpha & \cos\alpha\end{pmatrix} \qquad (\alpha\neq n\pi).\]
+* 特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda\cos\alpha + 1$.
+* 従って ($2$ 次方程式の解の公式を用いて) \[\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha\] となり, $\lambda _ 1 = \cos\alpha+i\sin\alpha$ と $\lambda _ 2 = \cos\alpha-i\sin\alpha$ が行列 $A$ の固有値となる, ただし $i=\sqrt{-1}$ は虚数単位.
+* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}i\sin\alpha & \sin\alpha\cr -\sin\alpha & i\sin\alpha\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ として, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -i\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
+* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}1/2 & -1/2\cr -1/2&1/2\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ として, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
+
 
 
 ---
