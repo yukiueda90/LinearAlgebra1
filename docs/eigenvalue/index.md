@@ -216,7 +216,7 @@ $n$ 次正方行列 $A$ が, 対角行列と相似であるならば $A$ は**�
 相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることがわかる. 実は, 行列の行列式は固有値たちの積に等しくなる (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).
 </div>
 
-<fieldset style="border: 3px solid #333333; font-size: 100%; padding: 5px 15px; background-color: #eeeeee;">
+<fieldset style="border: 3px solid #333333; font-size: 100%; padding: 0px 15px 10px; background-color: #eeeeee;">
     <legend>
         <span style="font-weight:bold; font-size:120%">
             注意
