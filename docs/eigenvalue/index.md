@@ -62,7 +62,7 @@
 <img src='../images/linear_transform_by_matrix_1.png'>
 <img src='../images/linear_transform_by_matrix_2.png'>
 
-左側の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 右側の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである. 
+上の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 下の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである. 
 
 ---
 
@@ -71,8 +71,8 @@
 #### <u>例</u>
 \[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}.\]
 * 例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix}$ とすると, $A\mathbf{v} _ 1 = \dfrac{1}{2}\mathbf{v} _ 1$ となるため $\mathbf{v} _ 1$ は固有ベクトルであり, 対応する固有値は $1/2$ である. 
-* 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ とすると, $A\mathbf{v} _ 2 = \dfrac{3}{2}\mathbf{v} _ 2$ となるため $\mathbf{v} _ 2$ は固有ベクトルである, 対応する固有値は $5$ である.
-* 例えば $\widetilde{\mathbf{v}} _ 1 = \begin{pmatrix}2i\cr -2i\end{pmatrix}$ とすると, $A\widetilde{\mathbf{v}} _ 1 = \dfrac{1}{2}\widetilde{\mathbf{v}} _ 1$ となるため $\widetilde{\mathbf{v}} _ 1$ も固有ベクトルであり, 対応する固有値は $-1$ である. 
+* 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ とすると, $A\mathbf{v} _ 2 = \dfrac{3}{2}\mathbf{v} _ 2$ となるため $\mathbf{v} _ 2$ は固有ベクトルである, 対応する固有値は $3/2$ である.
+* 例えば $\widetilde{\mathbf{v}} _ 1 = \begin{pmatrix}2i\cr -2i\end{pmatrix}$ とすると, $A\widetilde{\mathbf{v}} _ 1 = \dfrac{1}{2}\widetilde{\mathbf{v}} _ 1$ となるため $\widetilde{\mathbf{v}} _ 1$ も固有ベクトルであり, 対応する固有値は $1/2$ である. 
 
 このように, ある列ベクトル $\mathbf{v}$ が固有ベクトルであるならば, その複素数倍もやはり固有ベクトルとなる. 
 
@@ -105,9 +105,9 @@
 まず, 正方行列 $A$ の固有値 $\lambda$ と固有ベクトル $\mathbf{v}$ は, 定義より
 \[A\mathbf{v} = \lambda \mathbf{v}\] を満たすのであった. ここで, 右辺は単位行列 $I$ を用いて $\lambda I \mathbf{v}$ と一致するので, $A$ の固有値 $\lambda$ と固有ベクトル $\mathbf{v}$ に対して
 \[(\lambda I-A)\mathbf{v}=\mathbf{0}\] が成立する. いま, 固有ベクトル $\mathbf{v}$ はゼロでないもののみ考えているため, そのような $\mathbf{v}$ が存在するためには $\det(\lambda I-A)=\mathbf{0}$ でなければならない. 実際, もしも $\det(\lambda I-A)\neq0$ であるならば, $\lambda I-A$ の逆行列が存在するため, これを両辺に左から掛けることで
-\[\mathbf{v} = (\lambda I-A)^{-1}(\lambda I-A)\mathbf{v} = (\lambda I-A)^{-1}\mathbf{0} = \mathbf{0}\] となってしまう. 一方で, $\lambda I-A$ が正則でない場合には, 連立 $1$ 次方程式 \[(\lambda I-A)\mathbf{v} = 0\] の右辺が $\mathbf{0}$ であることから, (解 $\mathbf{v}$ は必ず存在し) ある条件を満たす $\mathbf{v}$ 全てが解となる.
+\[\mathbf{v} = (\lambda I-A)^{-1}(\lambda I-A)\mathbf{v} = (\lambda I-A)^{-1}\mathbf{0} = \mathbf{0}\] となってしまう. 一方で, $\lambda I-A$ が正則でない場合には, 連立 $1$ 次方程式 \[(\lambda I-A)\mathbf{v} = 0\] の右辺が $\mathbf{0}$ であることから, (解 $\mathbf{v}$ は必ず存在し) ある条件を満たす全ての $\mathbf{v}$ が解となる.
 これらより,
-\[\det(\lambda I-A)=0 \iff \text{固有ベクトル } \mathbf{v} \text{ が存在する}.\] が得られる. ここで, $A\in\mathbb{R}^{2\times 2}$ の場合は,
+\[\det(\lambda I-A)=0 \iff \text{$\lambda$ は固有値であり, 対応する固有ベクトル } \mathbf{v} \text{ が存在する}\] が得られる. ここで, $A\in\mathbb{R}^{2\times 2}$ の場合は,
 \[\det(\lambda I-A) = \det\begin{pmatrix}\lambda - a _ {11} & -a _ {12}\cr -a _ {21}&\lambda-a _ {22}\end{pmatrix} = (\lambda-a _ {11})(\lambda - a _ {22}) - a _ {12} a _ {21}\] となるため, \[\det(\lambda I-A) = 0\] は $\lambda$ についての $2$ 次方程式となり, 複素数の解や重解を許せば必ず解が $2$ つ存在する. これらの解が行列 $A$ の固有値となる. 固有値 $\lambda$ が得られたならば, あとは
 \[(\lambda I-A)\mathbf{v} = 0\] を満たすような $\mathbf{v}$ を (必要なら掃き出し方を用いて) 見つければ, それの複素数倍は全て対応する固有ベクトルとなる.
 
@@ -124,7 +124,7 @@ cx + dy &= 0 & (2)
 \[\left\lbrace\begin{array}{rll}
 adx + bdy & = 0 & (1)^\prime,\cr
 bcx + bdy &= 0 & (2)^\prime 
-\end{array}\right.\] となり, $ad-bc=0$ よりこれらは一致してしまう. つまり, これら $2$ つの式はどちらも \[ax+by=0\] を表していることになり, これを満たす $\mathbf{v} = \begin{pmatrix}x\cr y\end{pmatrix}$ は全て解である. これは, $ax+by=0$ により表される向きを持つ幾何ベクトルは, その大きさに依らず固有値となることを意味している.
+\end{array}\right.\] となり, $ad-bc=0$ よりこれらは一致してしまう. つまり, これら $2$ つの式はどちらも \[ax+by=0\] を表していることになり, これを満たす $\mathbf{v} = \begin{pmatrix}x\cr y\end{pmatrix}$ は全て解である. これは, $a=b=0$ であれば, 全ての $\mathbf{v}$ が固有ベクトルになることを意味している. 一方で, もしも $a$, $b$ の少なくとも一方が $0$ でなければ, $ax+by=0$ により表される向きを持つ幾何ベクトルは, その大きさに依らず固有値となり, かつ固有値 $\lambda$ に対応する固有ベクトルはそのようなものしか存在しないことを意味している.
 ここでの計算は, もちろん拡大行列に対するガウスの消去法でも構わない.
 
 ---
@@ -207,6 +207,8 @@ $n$ 次正方行列 $A$ が, 対角行列と相似であるならば $A$ は**�
 行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ を持つとき, 対応する固有ベクトルを横に並べた行列 $P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf {v} _ 2\end{pmatrix}$ を用いて
 \[P^{-1}AP = P^{-1}P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix} = \begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] と対角化できる.
 
+#### <u>注意</u>
+相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることがわかる. 実は, 行列の行列式は固有値たちの積に等しくなる (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).
 
 #### <u>注意</u>
 この場合に固有ベクトルを並べた行列 $P$ が正則であることは, 以下のように確かめられる: 異なる $2$ つの固有値 $\lambda _ 1\neq \lambda _ 2$ に対する固有ベクトルを
