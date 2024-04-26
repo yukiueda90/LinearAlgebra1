@@ -210,13 +210,7 @@ $n$ 次正方行列 $A$ が, 対角行列と相似であるならば $A$ は**�
 #### <u>注意</u>
 相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることがわかる. 実は, 行列の行列式は固有値たちの積に等しくなる (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).
 
-
-#### <u>注意</u>
-<div style="padding: 10px; margin-bottom: 10px; border: 3px dashed #333333; border-radius: 5px; background-color: #cccccc;">
-相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることがわかる. 実は, 行列の行列式は固有値たちの積に等しくなる (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).
-</div>
-
-<fieldset style="border: 3px solid #333333; font-size: 100%; padding: 0px 15px 10px; background-color: #eeeeee;">
+<fieldset style="border: 3px solid #333333; font-size: 100%; padding: 0px 15px 10px;">
     <legend>
         <span style="font-weight:bold; font-size:120%">
             注意
