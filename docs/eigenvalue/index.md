@@ -40,7 +40,7 @@
 正方行列 $A\in\mathbb{R}^{2\times 2}$ に対して, 
 \[A\mathbf{v} = \lambda\mathbf{v}\] を満たす, ゼロでない列ベクトル $\mathbf{v}\in \mathbb{C}^{2\times 1}$ と $\lambda\in \mathbb{C}$ のペアが存在するならば, $\mathbf{v}$ を**固有ベクトル** (**eigenvector**), $\lambda$ を**固有値** (**eigenvalue**) という. また, これらのペア $(\lambda,\mathbf{v})$ を**固有対** (**eigenpair**) と呼ぶことがある.
 
-固有値及び固有ベクトルは, 実数でなくとも構わない点に注意. ここでは, 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 正方行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の**固有値**と**固有ベクトル**について, それが $A$ の特徴と関係していることに言及する.
+固有値及び固有ベクトルは, 実数でなくとも構わない点に注意. ここでは, 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 正方行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の**固有値**と**固有ベクトル**の導出について具体的な計算方法を紹介し, またこれらを用いて行列の**対角化**が可能であることを述べる.
 
 ---
 
@@ -96,6 +96,8 @@
 
 ---
 
+<a id="section4-3"></a>
+
 ## 4.3: 特性多項式を用いた行列固有値の計算
 
 ここでは, 行列の (複素数も含む) 固有値および固有ベクトルを計算する方法を紹介する. 先ほどの例では, 行列 $A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}$ の固有値が $\lambda _ 1 = 1/2$, $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix}$, $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ であったが, これらをどのようにして導出するか具体的な手順を述べる.
@@ -107,17 +109,36 @@
 これらより,
 \[\det(\lambda I-A)=0 \iff \text{固有ベクトル } \mathbf{v} \text{ が存在する}.\] が得られる. ここで, $A\in\mathbb{R}^{2\times 2}$ の場合は,
 \[\det(\lambda I-A) = \det\begin{pmatrix}\lambda - a _ {11} & -a _ {12}\cr -a _ {21}&\lambda-a _ {22}\end{pmatrix} = (\lambda-a _ {11})(\lambda - a _ {22}) - a _ {12} a _ {21}\] となるため, \[\det(\lambda I-A) = 0\] は $\lambda$ についての $2$ 次方程式となり, 複素数の解や重解を許せば必ず解が $2$ つ存在する. これらの解が行列 $A$ の固有値となる. 固有値 $\lambda$ が得られたならば, あとは
-\[(\lambda I-A)\mathbf{v} = 0\] を満たすような $\mathbf{v}$ を (必要なら掃き出し方やクラメルの公式を用いて) 見つければ, それが対応する固有ベクトルとなる.
+\[(\lambda I-A)\mathbf{v} = 0\] を満たすような $\mathbf{v}$ を (必要なら掃き出し方を用いて) 見つければ, それの複素数倍は全て対応する固有ベクトルとなる.
 
 #### <u>注意</u>
-正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを**特性多項式** (**characteristic polynomial**) という.
+正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを**特性多項式** (**characteristic polynomial**) という. 方程式 $\det(\lambda I-A)= 0$ のことは**固有方程式**と呼ぶことがある.
+
+#### <u>注意</u>
+斉次方程式 $(\lambda I-A)\mathbf{v}=\mathbf{0}$ について, $A\in\mathbb{R}^2$ のときに限って解がどのようになるか考えてみよう. いま $\det(\lambda I-A)\neq0$ ならば $\mathbf{v} = \mathbf{0}$ となることは既に述べた. もしも $\det(\lambda I-A)=0$ ならば, 
+\[\lambda I-A = \begin{pmatrix}a & b\cr c & d\end{pmatrix},\qquad \mathbf{v} = \begin{pmatrix}x\cr y\end{pmatrix}\] とおくと, $\det(\lambda I-A) = ad-bc=0$ と
+\[\left\lbrace\begin{array}{rll}
+ax + by & = 0 & (1),\cr
+cx + dy &= 0 & (2) 
+\end{array}\right.\] が得られるが, $(1)$ 式を $d$ 倍し, $(2)$ 式を $b$ 倍すると,
+\[\left\lbrace\begin{array}{rll}
+adx + bdy & = 0 & (1)^\prime,\cr
+bcx + bdy &= 0 & (2)^\prime 
+\end{array}\right.\] となり, $ad-bc=0$ よりこれらは一致してしまう. つまり, これら $2$ つの式はどちらも \[ax+by=0\] を表していることになり, これを満たす $\mathbf{v} = \begin{pmatrix}x\cr y\end{pmatrix}$ は全て解である. これは, $ax+by=0$ により表される向きを持つ幾何ベクトルは, その大きさに依らず固有値となることを意味している.
+ここでの計算は, もちろん拡大行列に対するガウスの消去法でも構わない.
+
+---
+
+固有値と固有ベクトルを求める計算の具体例をいくつか挙げる. まず, $2$ つの実数の固有値が得られる場合を見てみる.
 
 #### <u>例</u>
 \[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}.\]
 * 特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda + 3/4 = (\lambda-1/2)(\lambda-3/2)$.
 * 従って \[\det(\lambda I-A)=0\iff \lambda = 1/2,\ 3/2\] となり, $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ が行列 $A$ の固有値となる.
-* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}-1/2 & -1/2\cr -1/2&-1/2\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ として, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
-* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}1/2 & -1/2\cr -1/2&1/2\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ として, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
+* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}-1/2 & -1/2\cr -1/2&-1/2\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}1\cr -1\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).
+* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}1/2 & -1/2\cr -1/2&1/2\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}1\cr 1\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).
+
+---
 
 次に, 固有値が実数にならない例も見てみる:
 
@@ -125,107 +146,113 @@
 \[A = \begin{pmatrix}\cos\alpha & -\sin\alpha\cr \sin\alpha & \cos\alpha\end{pmatrix} \qquad (\alpha\neq n\pi).\]
 * 特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda\cos\alpha + 1$.
 * 従って ($2$ 次方程式の解の公式を用いて) \[\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha\] となり, $\lambda _ 1 = \cos\alpha+i\sin\alpha$ と $\lambda _ 2 = \cos\alpha-i\sin\alpha$ が行列 $A$ の固有値となる, ただし $i=\sqrt{-1}$ は虚数単位.
-* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}i\sin\alpha & \sin\alpha\cr -\sin\alpha & i\sin\alpha\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ として, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}1\cr -i\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
-* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}1/2 & -1/2\cr -1/2&1/2\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ として, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}$ と選べば, これが対応する固有ベクトルとなる.
-
-
+* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}i\sin\alpha & \sin\alpha\cr -\sin\alpha & i\sin\alpha\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}1\cr -i\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).
+* 同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}-i\sin\alpha & \sin\alpha\cr -\sin\alpha & -i\sin\alpha\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}1\cr i\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).
 
 ---
 
-
-まず, **集合**および**写像**という概念について簡単に紹介する.
-
-#### <u>定義</u> (集合)
-* ものの集まりを**集合** (**set**) といい, 集合に含まれる "もの" のことを**元** (**element**) もしくは要素という. 
-* ある集合 $A$ が $a _ 1$, $a _ 2$, $\dots$, $a _ n$ という $n$ 個の元から構成される場合, 
-\[A = \lbrace a _ 1, a _ 2, \dots, a _ n\rbrace\] と表記する. 
-* 集合 $A$ が, ある特定の性質を満たすものを全て集めた集合であるならば,
-\[A = \lbrace a \mid \text{($a$ が満たす条件)} \rbrace\] と表記する.
-* $a$ が集合 $A$ の元であるなら $a\in A$ と表記し, そうでないなら $a\not\in A$ と表記する.
+最後に, 固有方程式 $\det(\lambda I-A) = 0$ が重解を持つ場合も見てみよう.
 
 #### <u>例</u>
-* 実数全体のことを $\mathbb{R}$ と表記する. $a$ が実数ならば $a\in \mathbb{R}$ であり, $a$ が実数でないならば (例えば $a$ が純虚数のとき) $a\not\in\mathbb{R}$ である.
-* $A$ を偶数全体とすると, 例えば $A = \lbrace a\mid a\text{ は偶数}\rbrace$ などと表記できる.
+\[A = \begin{pmatrix}1&1\cr 0&1\end{pmatrix}.\]
+* 特性多項式は $\det(\lambda I-A) = (\lambda-1)^2$.
+* 従って \[\det(\lambda I-A)=0\iff \lambda = 1\] となり, 固有値は $\lambda _ 1= 1$ のみ.
+* $(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}0& -1\cr 0 & 0\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}1\cr 0\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).
 
-#### <u>定義</u> (部分集合)
-* 集合 $B$ の全ての元が, 集合 $A$ の元でもあるならば, $B$ は $A$ の**部分集合** (**subset**) であるといい, $B\subset A$ と表記する.
-* 特に集合 $B$ が, 集合 $A$ の元のうち特定の性質を満たすもののみ集めたものであるとき, \[B= \lbrace a\in A\mid \text{($a$ が満たす条件)}\rbrace\] と表記する.
-* $2$ つの集合 $A$, $B$ に対して, $A\subset B$ かつ $B\subset A$ であるとき, 集合 $A$ と $B$ は等しいといい, $A=B$ と表記する.
+---
+
+<a id="section4-4"></a>
+
+## 4.4: 対角化
+
+まず, 行列の相似について述べる:
+#### <u>定義</u> (行列の相似)
+$2$ つの $n$ 次正方行列 $A$, $B$ に対して, ある正則行列 $P$ が存在して,
+\[B = P^{-1}AP\] となるとき, $A$ と $B$ は**相似** (**similar**) であるという.
+
+ここで, 相似な $2$ つの行列 $A$ と $P^{-1}AP$ の関係を調べてみる. 行列式の重要な性質として, $2$ つの正方行列 $A$, $B$ に対して
+\[\det (AB) = (\det A)(\det B)\] が成立する, というものがあった. この性質を用いると,
+\[\begin{array}{rl}\det(\lambda I - P^{-1}AP) &= \det(\lambda P^{-1}IP - P^{-1}AP) \cr
+&= \det(P^{-1}(\lambda I-A)P) \cr
+& = (\det P^{-1})(\det(\lambda I-A))(\det P)\cr
+&= (\det P^{-1})(\det P)(\det(\lambda I-A))\cr
+&= \det(P^{-1}P)(\det(\lambda I-A))\cr
+&= (\det I)(\det(\lambda I-A))\cr
+&= \det(\lambda I-A)
+\end{array}\] という等式が得られる. つまり, 任意の正則行列 $P$ に対し, 正方行列 $A$ と $P^{-1}AP$ の特性多項式は等しいことがわかる. そして特性多項式が等しいので固有値も等しいということになる (ただし対応する固有ベクトルが等しいとは限らない).
+
+さらに, 先ほどと同様に計算することで,
+\[\det(P^{-1}AP) = (\det P^{-1})(\det P)(\det A) = \det A\] であることもわかる. つまり, 相似な $2$ つの行列は, 行列式も固有値も等しいということがわかる. 
+
+---
+
+#### <u>定義</u> (対角化)
+$n$ 次正方行列 $A$ が, 対角行列と相似であるならば $A$ は**対角化可能** (**diagonalizable**) という. 正方行列 $A$ が対角行列と相似である場合に, その対角行列を求める操作を行列の**対角化** (**diagonalization**) という. 
 
 #### <u>注意</u>
-$2$ つの集合 $A$, $B$ に対して, $B\subset A$ の定義は \[a\in B\implies a\in A\] という意味である.
+対角化の際には, $A$ と相似な行列を求めるために, ある正則行列 $P$ を用いて左から $P^{-1}$, 右から $P$ を掛けることで
+\[P^{-1}AP\] を計算する. 一方で, 行列の階数を求める際の基本変形は, 基本行列たちの積 $P$, $Q$ を用いて
+\[F(r) = PAQ\] と表していたが, これとは異なる操作であることに注意.
+
+まず, 対角化を計算するための具体的な計算手順を紹介する. あらかじめ触れておくと, 以下の操作は正方行列 $A\in\mathbb{R}^{2\times 2}$ の固有方程式が重解を持たない場合のみ可能である. つまり行列 $A\in\mathbb{R}^{2\times 2}$ に対して, 異なる $2$ つの固有値が得られる場合のみ考えることになる.
+
+まず, 行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ に対し, 対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ とする (固有ベクトルの大きさは問わない). このとき, 列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^{2\times 1}$ を横に並べることで
+\[P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix}\in\mathbb{R}^{2\times 2}\] とする (行列の区分けによる表記を用いている). この行列 $P$ を, 行列 $A$ の右から掛けると, $P$ の各列が固有ベクトルであることから,
+\[AP = A\begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix} = \begin{pmatrix}A\mathbf{v} _ 1&A\mathbf{v} _ 2\end{pmatrix} = \begin{pmatrix}\lambda _ 1\mathbf{v} _ 1&\lambda _ 2\mathbf{v} _ 2\end{pmatrix} = \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix}\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] となる, ただし, ここでも行列の区分けによる表記を用いている. 一番右に, 行列 $P$ が再び現れているため, 
+\[AP = P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] が得られる. ここで, 両辺の左から $P^{-1}$ を掛けると, 
+\[P^{-1}AP = \begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] となり, 対角成分に固有値を持つような対角行列に変形することができる. この操作を行列の**対角化**という.
+
+この結果を, 定理として参照できるようにしておく.
+#### <u>定理</u> ($2$ 次正方行列の対角化)
+行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ を持つとき, 対応する固有ベクトルを横に並べた行列 $P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf {v} _ 2\end{pmatrix}$ を用いて
+\[P^{-1}AP = P^{-1}P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix} = \begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] と対角化できる.
+
+
+#### <u>注意</u>
+この場合に固有ベクトルを並べた行列 $P$ が正則であることは, 以下のように確かめられる: 異なる $2$ つの固有値 $\lambda _ 1\neq \lambda _ 2$ に対する固有ベクトルを
+\[\mathbf{v} _ 1 = \begin{pmatrix}a\cr b\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix} c\cr d\end{pmatrix}\] とおく. $\lambda _ 1$ と $\lambda _ 2$ の少なくとも一方は $0$ ではないため, $\lambda _ 1\neq0$ とする. また, 固有ベクトルは $\mathbf{0}$ ではないため, $c$ と $d$ のうち少なくとも一方は $0$ でないことにも注意しておく. $P=\begin{pmatrix}a & c\cr b&d\end{pmatrix}$ となるため, $\det P = ad-bc$ である. ここで, もしも $\det P = 0$ であるならば, 
+\[a\mathbf{v} _ 2 = \begin{pmatrix}ac\cr ad\end{pmatrix} = \begin{pmatrix}ac\cr bc\end{pmatrix} = c\mathbf{v} _ 1,\qquad b\mathbf{v} _ 2 = d\mathbf{v} _ 1\] となるため, 
+\[\left\lbrace\begin{array}{rl}&c\lambda _ 1\mathbf{v} _ 1 = A(c\mathbf{v} _ 1) = A(a\mathbf{v} _ 2) = a\lambda _ 2\mathbf{v} _ 2 = c\lambda _ 2\mathbf{v} _ 1 \cr
+&d\lambda _ 1\mathbf{v} _ 1 = A(d\mathbf{v} _ 1) = A(b\mathbf{v} _ 2) = b\lambda _ 2\mathbf{v} _ 2 = d\lambda _ 2\mathbf{v} _ 1 \end{array}\right.\] となるが, $c$ と $d$ の少なくとも一方は $0$ でないため, これは $\lambda _ 1\neq \lambda _ 2$ に矛盾する. 従って, 背理法より $\det P \neq 0$ である.
+
+#### <u>注意</u>
+一般に, $A$ が $n$ 次正方行列あった場合には, $P$ が正則行列か確認することはさらに複雑になるが, 実は以下の性質が成り立つ:
+\[A \text{ の固有値が全て異なる} \implies A \text{ の固有ベクトルを並べた行列 $P$ は正則} \] 固有方程式が重解を持つような行列であっても (つまり行列 $A$ が重複する固有値を持つ場合であっても), $P$ が正則となり対角化可能な場合は存在する. ただし,  $A$ が $2$ 次正方行列の場合は, そのような行列 $A$ は $A = \lambda I$ に限られる. ここではこのような状況には興味がないため, $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの固有値を持つ場合のみを考えることにする.
 
 #### <u>例</u>
-* 複素数全体のことを $\mathbb{C}$ と表記する. 実数は特に複素数であるため, \[\mathbb{R}\subset \mathbb{C}\] である.
-* $A$ を非負の実数全体とすると, $A$ の全ての元は特に実数であるので$A\subset\mathbb{R}$ である. また, このとき例えば \[ A=\lbrace a \in\mathbb{R} \mid a\ge 0 \rbrace\] と表記できる.
-* $B = \lbrace a\in\mathbb{R}\mid a=\lvert a\rvert \rbrace$ とする, このとき, 上の集合 $A$ に対して, $A=B$ が成立する. 
-    * 実際, $a\in A$ ならば $a=\lvert a\rvert|$ なので $A\subset B$ である.
-    * また, $a\in B$ ならば $a=\lvert a\rvert$ を満たす実数 $a$ は非負のものに限られるので $B\subset A$ である.
-
-
-また, ベクトル空間についても簡単に言及しておく. ある性質を満たす集合を**ベクトル空間**と呼ぶのだが, ここではその性質については説明はしない.
-* $n$ 個の実数の組たち全体からなる集合を $\mathbb{R}^n$ と表記する.
-* $n$ 個の複素数の組たち全体からなる集合を $\mathbb{C}^n$ と表記する.
-* $\mathbb{R}^n$, $\mathbb{C}^n$ は**ベクトル空間** (**vector space**) もしくは**線形空間** (**linear space**) と呼ばれるものの一種である.
-* ベクトル空間の元を**ベクトル**という. 
-* $\mathbb{R}^n$ の元が点の位置 (座標) を指定しているとみなすとき, $\mathbb{R}^n$ を**座標空間** (**coordinate space**) という (つまり座標空間はベクトル空間の一種).
-* 以降, 高校数学で学ぶベクトル (これを幾何ベクトルという) $\vec{x} = (a,b)$ や, 列ベクトル $\begin{pmatrix}a\cr b\end{pmatrix}$ を, $x$ 座標が $a$ であり $y$ 座標が $b$ である点 $(a,b)\in\mathbb{R}^2$ と同一視することにする.
+\[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}.\]
+* 固有値は $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは, 例えば \[\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}\] であった. 
+* これを用いて, \[P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix} = \begin{pmatrix}1&1\cr -1&1\end{pmatrix}\] とすると, \[AP = P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix},\qquad P^{-1}AP = \begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}\] が得られる. 実際, $P^{-1} = \begin{pmatrix}1/2&-1/2\cr 1/2&1/2\end{pmatrix}$ であり,
+\[P^{-1}AP = P^{-1}\begin{pmatrix}1/2&3/2\cr -1/2&3/2\end{pmatrix} = P^{-1}\begin{pmatrix}1&1\cr -1&1\end{pmatrix}\begin{pmatrix}1/2&0\cr 0&3/2\end{pmatrix} = \begin{pmatrix}1/2&0\cr 0&3/2\end{pmatrix}\] であることを確かめられる.
+* 対角化が固有ベクトルの大きさに依存しない (固有ベクトルの向きにのみ依存する) ことを確かめてみる. 例えば, 対応する固有ベクトルを
+\[\mathbf{v} _ 1 = \begin{pmatrix}2\cr -2\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}1/2\cr 1/2\end{pmatrix}\] としたときには,
+\[P = \begin{pmatrix}2&1/2\cr -2&1/2\end{pmatrix},\qquad P^{-1}=\begin{pmatrix}1/4&-1/4\cr 1&1\end{pmatrix}\] となり, 
+\[P^{-1}AP = P^{-1}\begin{pmatrix}1&3/4\cr -1&3/4\end{pmatrix} = P^{-1}\begin{pmatrix}2&1/2\cr -2&1/2\end{pmatrix}\begin{pmatrix}1/2&0\cr 0&3/2\end{pmatrix} = \begin{pmatrix}1/2 & 0\cr 0&3/2\end{pmatrix}\] が得られる.
 
 ---
 
-#### <u>定義</u> (写像)
-* 二つの集合 $A$, $B$ に対し, $A$の元 を $B$ の元に対応させる関係を**写像** (**mapping**) という. 
-* $T$ が $A$ の元 を $B$ の元に対応させる写像であるとき, 
-\[T:A\to B\] と表記する. また, $a\in A$ に対応する $B$ の元を $Ta$ もしくは $T(a)$ と表記する.
-* $B$ が数からなる集合であるとき, 写像 $T$ は**関数** (**function**) という.
+対角化の典型的な応用例として, 対角化可能行列 $A$ に対して $A^k$ を計算してみる. まず, 対角行列 $\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}$ に対し,
+\[\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}^k = \begin{pmatrix}\lambda _ 1^k&0\cr 0&\lambda _ 2^k\end{pmatrix}\] が成立する. 従って, $P^{-1}AP = \begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}$ と対角化が可能な行列 $A$ に対して,
+\[\begin{array}{rl}A^k &= P(P^{-1}AP)(P^{-1}AP) \dots (P^{-1}AP)P^{-1}\cr
+&= P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}^k P^{-1}\cr
+&= P\begin{pmatrix}\lambda _ 1^k&0\cr 0&\lambda _ 2^k\end{pmatrix}P^{-1}
+\end{array}\] と計算することができる. 
 
-#### <u>定義</u> (線形写像)
-$2$ つのベクトル空間 $V$, $W$ に対して, 写像 $T:V\to W$ が以下を満たすとき, $T$ を**線形写像** (**linear mapping**) もしくは**線形変換** (**linear transform**) という:
-* 任意の $x$, $y\in V$ に対して $T(x+y) = Tx+Ty$.
-* 任意のスカラー値 $a$ と $x\in V$ に対して $T(ax) = aTx$.
-
-線形写像が関数ならば, それを**線形関数** (**linear function**) と呼ぶ.
-
-
----
-
-<a id="section4-3"></a>
-
-## 4.3: 線型関数の表現行列
-
-まず, ベクトルに『左からある行列 $A\in\mathbb{R}^{2\times 2}$ を掛ける』という操作が線形関数になっていることを確認しよう. 簡単のため, ここでは $A\in\mathbb{R}^{2\times 2}$ の場合のみを考える:
-* 任意の $\mathbf{v} _ 1$, $\mathbf{v} _ 2 \in\mathbb{R}^2$ に対して $A(\mathbf{v} _ 1 + \mathbf{v} _ 2) = A\mathbf{v} _ 1 + A\mathbf{v} _ 2$.
-* 任意のスカラー値 $\lambda$ と $\mathbf{v}\in\mathbb{R}^2$ に対して $A(\lambda\mathbf{v}) = \lambda A\mathbf{v}$.
-
-これらが成立することは行列積の定義から得られる ($\mathbf{v}\in\mathbb{R}^2$ を列ベクトルと同一視していることに注意).
-
-
- 次に, ベクトル $\mathbb{R}^2$ を $\mathbb{R}^2$ に移す線形写像 (線形関数) は, 『左からある行列 $A\in\mathbb{R}^{2\times 2}$ を掛ける』というものに限られることを示す.
-
-#### <u>定理</u> (表現行列)
-任意の線形関数 $T:\mathbb{R}^2\to\mathbb{R}^2$ に対して, (対応する) ある行列 $A\in\mathbb{R}^{2\times 2}$ が存在し, 任意の $\mathbf{v}\in\mathbb{R}^2$ に対し
-\[T\mathbf{v} = A\mathbf{v}\] を満たす.
-
-> 証明 <br>
-ベクトル $\mathbf{v} = (v _ 1, v _ 2)$ に対して, 例えば標準基底 \[\mathbf{e} _ 1 = (1,0),\quad \mathbf{e} _ 2 = (0,1)\] を用いて $\mathbf{v} = v _ 1\mathbf{e} _ 1 + v _ 2\mathbf{e} _ 2$ と表すことにする. ここで, $T:\mathbb{R}^2\to\mathbb{R}^2$ は線形なので, 
-\[T\mathbf{v} = v _ 1T\mathbf{e} _ 1 + v _ 2T\mathbf{e} _ 2\] である. ここで, 行列 $A$ として, 第 $i$ 列ベクトルが $T\mathbf{e} _ i$ である (と同一視できる) ものを取ると, $T\mathbf{e} _ i = A\mathbf{e} _ i$ となるので, \[\begin{array}{rl}T\mathbf{v} &= v _ 1A\mathbf{e} _ 1 + v _ 2A\mathbf{e} _ 2\cr &= A(v _ 1\mathbf{e} _ 1) + A(v _ 2\mathbf{e} _ 2)\cr &= A(v _ 1\mathbf{e} _ 1 + v _ 2\mathbf{e} _ 2) = A\mathbf{v}\end{array}\] が得られる, ここで, 式変形中に行列 $A$ を左から掛ける操作の線形性を用いた.
-
-以上より, 我々は $T: \mathbb{R}^2\to \mathbb{R}^2$ という線型写像を, 対応する行列 $A\in\mathbb{R}^2$ と同一視することにする. このとき, 先に述べた固有値, 固有ベクトルの定義は以下のようになる:
-
-#### <u>定義</u> (行列の固有値と固有ベクトル)
-行列 $A\in\mathbb{R}^{2\times 2}$ に対して, 
-\[A\mathbf{v} = \lambda\mathbf{v}\] を満たす, ゼロでないベクトル $\mathbf{v}\in \mathbb{R}^2$ とスカラー値 $\lambda$ のペアが存在するならば, $\mathbf{v}$ を**固有ベクトル** (**eigenvector**), $\lambda$ を**固有値** (**eigenvalue**) という. また, これらのペア $(\lambda,\mathbf{v})$ を**固有対** (**eigenpair**) と呼ぶことがある.
+#### <u>例</u>
+\[A = \begin{pmatrix}1&1/2\cr 1/2&1\end{pmatrix}, \qquad \mathbf{v} = \begin{pmatrix}a\cr b\end{pmatrix}.\]
+行列 $A$ の固有値は $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは, 例えば \[\mathbf{v} _ 1 = \begin{pmatrix}1\cr -1\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}1\cr 1\end{pmatrix}\] であった. いま, $A^k\mathbf{v}$ を $2$ 通りの方法で計算してみよう.
+* まず, $\mathbf{v} = \dfrac{a-b}{2}\mathbf{v} _ 1 + \dfrac{a+b}{2}\mathbf{v} _ 2$ であることに注目して計算してみる. \[\begin{array}{rl}A^k\mathbf{v} &= \dfrac{a-b}{2}A^k\mathbf{v} _ 1 + \dfrac{a+b}{2}A^k\mathbf{v} _ 2\cr
+&= \dfrac{a-b}{2}\lambda _ 1^k\mathbf{v} _ 1 + \dfrac{a+b}{2}\lambda _ 2^k\mathbf{v} _ 2\cr
+&= \dfrac{1}{2}\begin{pmatrix}\lambda _ 1^k(a-b)+\lambda _ 2^k(a+b)\cr -\lambda _ 1^k(a-b) + \lambda _ 2^k(a+b)\end{pmatrix}.
+\end{array}\]
+* 次に, 行列 $A$ の対角化を用いて計算してみる. 
+\[P = \begin{pmatrix}1&1\cr -1&1\end{pmatrix},\qquad P^{-1} = \begin{pmatrix}1/2 & -1/2\cr 1/2&1/2\end{pmatrix}\] を用いて,
+\[A^k = P\begin{pmatrix}\lambda _ 1^k&0\cr 0&\lambda _ 2^k\end{pmatrix}P^{-1} = \dfrac{1}{2}\begin{pmatrix}\lambda _ 1^k+\lambda _ 2^k & -\lambda _ 1^k+\lambda _ 2^k\cr -\lambda _ 1^k+\lambda _ 2^k& \lambda _ 1^k+\lambda _ 2^k\end{pmatrix}\] が得られるため,
+\[A^k\mathbf{v} = \dfrac{1}{2}\begin{pmatrix}a(\lambda _ 1^k+\lambda _ 2^k) + b(-\lambda _ 1^k+\lambda _ 2^k)\cr a(-\lambda _ 1^k+\lambda _ 2^k) + b(\lambda _ 1^k+\lambda _ 2^k)\end{pmatrix}.\]
+* どちらも同じ結果が得られる.
 
 ---
 
-ここでは, $2$ 次正方行列 $A$ をベクトルの左から掛ける, という変換のみを考えることにする:
-
-#### <u>注意</u> (固有値と固有ベクトル)
-$2$ 次正方行列 $A$ に対して,
-\[A\mathbf{v} = \lambda\mathbf{v}\] を満たす, ゼロでないベクトル $\mathbf{v}\in\mathbb{R}^2$ とスカラー値 $\lambda$ のペアが存在するならば, $\mathbf{v}$ が固有ベクトル, $\lambda$ が固有値となる. 
-
-固有値と固有ベクトルについて, より抽象的な定義を紹介する. 以下の定義で言及されているベクトル空間とは, (大雑把に言えば) ベクトルを元として持つ集合であり, $\mathbf{v}\in V$ とは $\mathbf{v}$ がベクトルであるということを意味している. 一方で, 線型写像とは何か現時点では説明していないことに注意:
-
-#### <u>定義</u> (固有値と固有ベクトル)
-$V$ をベクトル空間, $T:V\to V$ を線形写像とする. このとき, 
-\[T\mathbf{v} = \lambda\mathbf{v}\] を満たす, ゼロでない $\mathbf{v}\in V$ とスカラー値 $\lambda$ のペアが存在するならば, $\mathbf{v}$ を**固有ベクトル** (**eigenvector**), $\lambda$ を**固有値** (**eigenvalue**) という. また, これらのペア $(\lambda,\mathbf{v})$ を**固有対** (**eigenpair**) と呼ぶことがある.
+#### <u>まとめ</u>
+* $A\in\mathbb{R}^{2\times 2}$ の場合に限定して, 固有値と固有ベクトルの定義を述べ, 具体的に計算する手順を紹介した.
+* 行列 $A$ の固有値が全て異なる場合に, 対応する固有ベクトルを横に並べた行列 $P$ を用いて $P^{-1}AP$ を計算することで対角化が可能であることを示した. 
