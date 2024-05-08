@@ -97,10 +97,8 @@ h1 {
 }
 
 .block, .definition, .theorem, .lemma {
-    width:95%;
+    width:90%;
     margin-top:10px;
-    margin-left:5px;
-    margin-right:5px;
     margin-bottom:10px;
     padding-top:0px;
     padding-left:15px;
@@ -111,10 +109,11 @@ h1 {
 }
 
 .statement, .example, .remark, .proof {
+    width:90%;
     margin-top:15px;
-    margin-left:20px;
+    margin-left:15px;
     margin-bottom:15px;
-    padding-left: 20px;
+    padding-left: 15px;
     border-left:solid 5px #cccccc;
 }
 
@@ -144,10 +143,16 @@ main ul li {
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {
     body {
+        margin:20px;
         padding-left:0;
         padding-right:0;
     }
     
+    .wrapper {
+        width:auto;
+        margin:0;
+    }
+
     .page_title {
         margin-top:50px;
         margin-bottom:0px;
