@@ -403,21 +403,21 @@
                     <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
                         \[
                             \begin{array}{rl} 
-                                \left(\begin{array}{ccc|c}
+                                \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     1&1&1&b\cr 
                                     0&1&1&c    
-                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc|c}
+                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     0&1&0&b-a\cr 
                                     0&1&1&c    
                                 \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                & \longrightarrow \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     0&1&0&b-a\cr 
                                     0&0&1&a-b+c    
                                 \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                & \longrightarrow \left(\begin{array}{ccc:c}
                                     1&0&0&b-c\cr 
                                     0&1&0&b-a\cr 
                                     0&0&1&a-b+c    
@@ -477,16 +477,16 @@
                     <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
                         \[
                             \begin{array}{rl} 
-                                \left(\begin{array}{ccc|c}
+                                \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     1&1&2&b\cr 
                                     0&1&1&c    
-                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc|c}
+                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     0&1&1&b-a\cr 
                                     0&1&1&c    
                                 \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                & \longrightarrow \left(\begin{array}{ccc:c}
                                     1&0&1&a\cr 
                                     0&1&1&b-a\cr 
                                     0&0&0&a-b+c    
@@ -528,17 +528,10 @@
                         となることが確かめられる.
                     </p>
                 </div><!-- / #example -->
-
-
-
-
             </section>
-            
-
-
+        
     </article></main>
     </div>
-
 </body>
 
 <!-- javascript -->
