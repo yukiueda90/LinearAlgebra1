@@ -32,33 +32,33 @@
     
     <!-- main -->
     <main role="main"><article id="section4"><h1>4: 線形結合</h1>
-        <p>以降, 単にベクトルといった場合には列ベクトルのことを指すものとする. 
-        単純な例として, $2\times 1$ 型の列ベクトルを考えてみよう. 
-        標準基底 
-        \[
-            \mathbf{e} _ 1 = \begin{pmatrix} 
-                1\cr 
-                0 
-            \end{pmatrix}, \quad \mathbf{e} _ 2 = \begin{pmatrix} 
-                0\cr 
-                1
-            \end{pmatrix}
-        \]
-        を用いると, 任意のベクトル $\begin{pmatrix}a\cr b\end{pmatrix}$ は,
-        \[
-            \begin{pmatrix} 
-                a\cr 
-                b 
-            \end{pmatrix} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2
-        \]
-        と表すことができる. 
-        このように, あるベクトルを特定のベクトルたちの足し合わせ (<b>線型結合</b>) で表現することは, ベクトルを扱う際に重要な考え方となる.
-        ここでは <b>線型独立</b>という概念を導入し, 行列に対する簡単な応用を紹介する.
-        また, 線型独立なベクトルたちの線型結合を用いた計算例を紹介する.</p>
-
-        <p>本来は, より抽象的に<b>ベクトル空間</b>を導入するところから始めるべきであろうが, ここでは簡単のため線型結合および線型独立に限定して紹介することにする.</p>
-
         <section id="section4-1"><h2>4.1: 線形結合, 線型独立の定義</h2>
+            <p>以降, 単にベクトルといった場合には列ベクトルのことを指すものとする. 
+            単純な例として, $2\times 1$ 型の列ベクトルを考えてみよう. 
+            標準基底 
+            \[
+                \mathbf{e} _ 1 = \begin{pmatrix} 
+                    1\cr 
+                    0 
+                \end{pmatrix}, \quad \mathbf{e} _ 2 = \begin{pmatrix} 
+                    0\cr 
+                    1
+                \end{pmatrix}
+            \]
+            を用いると, 任意のベクトル $\begin{pmatrix}a\cr b\end{pmatrix}$ は,
+            \[
+                \begin{pmatrix} 
+                    a\cr 
+                    b 
+                \end{pmatrix} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2
+            \]
+            と表すことができる. 
+            このように, あるベクトルを特定のベクトルたちの足し合わせ (<b>線型結合</b>) で表現することは, ベクトルを扱う際に重要な考え方となる.
+            ここでは <b>線型独立</b>という概念を導入し, 行列に対する簡単な応用を紹介する.
+            また, 線型独立なベクトルたちの線型結合を用いた計算例を紹介する.</p>
+
+            <p>本来は, より抽象的に<b>ベクトル空間</b>を導入するところから始めるべきであろうが, ここでは簡単のため線型結合および線型独立に限定して紹介することにする.</p>
+
             <div class="definition" data-name="線型結合">
                 ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ に対して,
                 \[
@@ -507,7 +507,7 @@
                             \end{array}\right.
                         \]
                         を満たす $c _ 1$, $c _ 2$, $c _ 3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ を成立させる. 
-                        実際, $a-b+c=0$ ならば,
+                        実際, 
                         \[  
                             \begin{array}{rl}
                                 c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3 
