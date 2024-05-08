@@ -85,7 +85,7 @@
 				<li>$A$ の階数を計算する,</li>
 				<li>$A$ と単位行列 $I$ を並べた拡大行列に対し, 掃き出し法を適用する</li>
 			</ul>
-			<p>を紹介した (ちなみに, 階数の計算は拡大行列に対する掃き出し法とほぼ同じ計算であり, 逆行列が存在するときにそれを具体的に計算できるかどうかだけ異なる).</p>
+			<p>を紹介した (ちなみに, 階数の計算は掃き出し法とほぼ同じ計算であり, 逆行列が存在するときにそれを具体的に計算できるかどうかだけ異なる).</p>
 			
 			<p>ここでは, 逆行列の存在判定 (及び逆行列の具体的な計算) に用いられる基準として, <b>行列式</b> (<b>determinant</b>) を導入する. 
 			その定義, 性質や応用は改めて紹介するが, その内いくつかをあらかじめ簡単に述べておく:</p>
@@ -284,7 +284,7 @@
 						-1&\text{if }\sigma \text{ が奇置換}
 					\end{array}\right.
 				\] 
-				を置換 $\sigma$ の<b>符号</b>という.</p>
+				を置換 $\sigma$ の<b>符号</b> (<b>sign</b>, <b>signature</b>) という.</p>
 			</div><!-- / #definition -->
 
 			<p>つまり, 置換 $\sigma$ が $n$ 個の互換の積として表現されるならば
@@ -345,32 +345,36 @@
 			<div class="example">
 				<p>$3$ 次正方行列 $A = (a_{ij}) = \begin{pmatrix}a&b&c\cr d&e&f\cr g&h&i\end{pmatrix}$ を考える. いま $S_3$ は先の例に挙げた
 				\[
-					\begin{array}{c}\begin{bmatrix}
+					\begin{array}{c}\sigma _ 1 = \begin{bmatrix}
 						1& 2& 3\cr 
 						1 & 2 & 3
-					\end{bmatrix},\quad \begin{bmatrix}
+					\end{bmatrix},\quad \sigma _ 2 = \begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 1 & 3
-					\end{bmatrix},\quad \begin{bmatrix}
+					\end{bmatrix},\quad \sigma _ 3 = \begin{bmatrix}
 						1& 2& 3\cr 
 						1 & 3 & 2
 					\end{bmatrix},\cr
-					\begin{bmatrix}
+					\sigma _ 4 = \begin{bmatrix}
 						1& 2& 3\cr 
 						3 & 2 & 1
-					\end{bmatrix},\quad 
-					\begin{bmatrix}
+					\end{bmatrix},\quad \sigma _ 5 = \begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 3 & 1
-					\end{bmatrix},\quad 
-					\begin{bmatrix}
+					\end{bmatrix},\quad \sigma _ 6 = \begin{bmatrix}
 						1& 2& 3\cr 
 						3 & 1 & 2
 					\end{bmatrix}.\end{array}
 				\] 
 				の$6$ つであり, それらを用いて計算すると
 				\[
-					\begin{array}{rl}\det A &= a_{11} a_{22} a_{33} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32} \cr
+					\begin{array}{rl}\det A &= \operatorname{sgn}\sigma _ 1 a _ {1\sigma _ 1(1)}a _ {2\sigma _ 1(2)}a _ {3\sigma _ 1(3)} + 
+						\operatorname{sgn}\sigma _ 2 a _ {1\sigma _ 2(1)}a _ {2\sigma _ 2(2)}a _ {3\sigma _ 2(3)} +
+						\operatorname{sgn}\sigma _ 3 a _ {1\sigma _ 3(1)}a _ {2\sigma _ 3(2)}a _ {3\sigma _ 3(3)} \cr
+						&\qquad + \operatorname{sgn}\sigma _ 4 a _ {1\sigma _ 4(1)}a _ {2\sigma _ 4(2)}a _ {3\sigma _ 4(3)} +
+						\operatorname{sgn}\sigma _ 5 a _ {1\sigma _ 5(1)}a _ {2\sigma _ 5(2)}a _ {3\sigma _ 5(3)} + 
+						\operatorname{sgn}\sigma _ 6 a _ {1\sigma _ 6(1)}a _ {2\sigma _ 6(2)}a _ {3\sigma _ 6(3)}\cr
+						&= a_{11} a_{22} a_{33} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32} \cr
 						&\qquad - a_{13} a_{22} a_{31} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32}  \cr
 						&= aei + bfg + cdh - ceg - bdi - afh
 					\end{array}
@@ -530,7 +534,7 @@
 			
 			<hr>
 			
-			<p>上の結果より, $A$ の行列式を考える際に $A$ の列に関する性質は, $A$ の行対しても同様に成立することが言える. 
+			<p>上の結果より, $A$ の行列式を考える際に $A$ の列に関する性質は, $A$ の行に対しても同様に成立することが言える. 
 			そこで, 行列 $A$ を列ベクトル $\mathbf{a}_j$ を横に並べたものとみなして行列式を考えてみる:
 			\[
 				\det A = \det (\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n).
@@ -543,7 +547,7 @@
 				</ul>
 			</div><!-- / #proof -->
 
-			<p>証明略</p>
+			<p>証明略 (行に対しても同様の性質が成り立つことに注意)</p>
 
 			<div class="example">
 				<ul>
@@ -562,7 +566,15 @@
 							\lambda c&\lambda d 
 						\end{pmatrix} = \lambda\det\begin{pmatrix} 
 							a&b\cr 
-							c&d\end{pmatrix} = \lambda(ad-bc)$
+							c&d\end{pmatrix} = \lambda(ad-bc)$.
+					</li>
+					<li>$\det\begin{pmatrix} 
+							a&b\cr 
+							0&0 
+						\end{pmatrix} = 0\det\begin{pmatrix} 
+							a&b\cr 
+							\ast&\ast 
+						\end{pmatrix} = 0$.
 					</li>
 				</ul>
 			</div><!-- / #example -->
@@ -602,17 +614,16 @@
 
 			<div class="remark">
 				<ul>
-					<li>上の証明中にも言及しているが, ある正方行列 $A$ の第 $i$ 列と第 $j$ 列を入れ換えた行列を $\widetilde{A}$ とすると,
+					<li>上の証明中にも言及しているが, ある正方行列 $A$ の第 $i$ 列と第 $j$ 列 (もしくは第 $i$ 行と第 $j$ 行) を入れ換えた行列を $\widetilde{A}$ とすると,
 					\[
 						\det \widetilde{A} = -\det A
 					\] 
 					が成立する.</li>
-					<li>また, 上の結果は, 列に対する入れ換えを $k$ 回行った行列 $\widehat{A}$ に対して
+					<li>また, 上の結果は, 列 (もしくは行) に対する入れ換えを $k$ 回行った行列 $\widehat{A}$ に対して
 						\[
 							\det\widehat{A} = (-1)^k \det A
 						\] 
 						となることを意味している.</li>
-					<li>転置を考えることで, 同様のことが行を入れ換えた場合にも成立することがわかる.</li>
 					<li>基本行列 $P_{i,j}$ に対して, $\det P_{i,j} = -\det I = -1\neq 0$ を確かめることができる</li>
 				</ul>
 			</div><!-- / #remark -->
@@ -636,7 +647,7 @@
 			</div><!-- / #proof -->
 
 			<div class="theorem">
-				<p>正方行列 $A$ の第 $i$ 行 (もしくは列) に第 $j$ 行 (もしくは列) の $\lambda$ 倍を加えて得られる行列 $\widetilde{A}$ に対し,
+				<p>正方行列 $A$ の第 $i$ 列に第 $j$ 列の (もしくは第 $i$ 行に第 $j$ 行の) $\lambda$ 倍を加えて得られる行列 $\widetilde{A}$ に対し,
 					\[
 						\det\widetilde{A} = \det A
 					\] 
@@ -719,7 +730,7 @@
 
 			<div class="proof">
 				<p>行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b} _ j$ とする. 
-				また, 標準規定 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum _ { {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. 
+				また, 標準基底 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum _ { {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. 
 				このとき,
 				\[
 					\det (AB) = \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n).
@@ -847,7 +858,7 @@
 			<p>以降, 行列 $A$ の第 $(i,j)$ 小行列式を $d _ {ij}$ と表記し, 第 $(i,j)$ 余因子を $\widetilde{a} _ {ij}$ と表記することにする.</p>
 			
 			<div class="lemma">
-				<p>$n$ 次正方行列 $A=(a_{ij})$ の第 $(1,1)$ 余因子を $\widetilde{a} _ {11}$ とする, つまり
+				<p>$n$ 次正方行列 $A=(a_{ij})$ の第 $(1,1)$ 小行列式を $d _ {11}$, 第 $(1,1)$ 余因子を $\widetilde{a} _ {11}$ とする, つまり
 				\[
 					\widetilde{a} _ {11} = (-1)^2 d _ {11} = \det \begin{pmatrix}
 						a _ {22} & \dots & a _ {2n} \cr
@@ -861,12 +872,12 @@
 							a _ {11} & a _ {12} & \dots & a _ {1n} \cr
 							0 & a _ {22} & \dots & a _ {2n} \cr
 							\vdots & \vdots & \ddots & \vdots \cr
-							0 & a _ {n2} & \dots & a _ {nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11}$.</li>
+							0 & a _ {n2} & \dots & a _ {nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11}$.</li>
 					<li>$A=\begin{pmatrix}
 							a _ {11} & 0 & \dots & 0 \cr
 							a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 							\vdots & \vdots & \ddots & \vdots \cr
-							a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11}$.</li>
+							a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11}$.</li>
 					</ul>		
 			</div><!-- / #lemma -->
 
