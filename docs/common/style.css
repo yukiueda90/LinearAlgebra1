@@ -75,7 +75,7 @@ a:hover, a:focus {
     cursor: pointer;
     font-size:40px;
     margin-top:0px;
-    margin-left:-15px;
+    margin-left:px;
     margin-right:10px;
 }
 
@@ -143,6 +143,21 @@ main ul li {
 
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {
+    body {
+        padding-left:0;
+        padding-right:0;
+    }
+    
+    .page_title {
+        margin-top:50px;
+        margin-bottom:0px;
+        margin-left:0px;
+        padding-bottom:0px;
+        font-size:34px;
+        font-weight:bold;
+        color: #222;
+    }
+    
     .side {
         width: 0; /* Initially hide sidebar */
         overflow:hidden;
@@ -155,6 +170,12 @@ main ul li {
 
     .hamburger {
         display: block;
+        position:fixed;
+        padding-left:20px;
+    }
+
+    main {
+        margin-top:50px;
     }
 
     /* Show sidebar when hamburger menu is clicked */
