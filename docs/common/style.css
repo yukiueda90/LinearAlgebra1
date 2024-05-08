@@ -1,0 +1,132 @@
+body {
+    background-color: #fff;
+    padding-left:30px;
+    padding-right:30px;
+    display:flex;
+    min-height: 100vh;
+    font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#727272;
+    font-weight:400;
+}
+
+.wrapper {
+    display:flex;
+}
+
+/* sidebar */
+
+.side {
+    min-width:300px;
+    max-width:300px;
+    background-color: #fff;
+    padding:10px;
+    position:sticky;
+    top:1vh;
+    height:85vh;
+    overflow-y:scroll;
+    font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#727272;
+    font-weight:400;
+}
+
+.page_title {
+    margin-top:0px;
+    margin-bottom:20px;
+    margin-left:0px;
+    padding-bottom:20px;
+    font-size:34px;
+    font-weight:bold;
+    color: #222;
+}
+
+nav a {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: #267CB9;
+    text-decoration: none;
+    display: block;        
+}
+
+a:hover, a:focus {
+    color:#069;
+    font-weight: bold;
+}
+
+.side p, ul{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+    
+.side ul li {
+    border-right:1px solid #ffffff;
+    margin-left: 10px;
+}
+
+footer {
+    width:270px;
+    float:left;
+    position:fixed;
+    bottom:20px;
+    -webkit-font-smoothing:subpixel-antialiased;
+}
+
+/* main contents */
+
+main {
+    margin-bottom:30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color:#222;
+    margin:20px 0 20px;
+  }
+
+h1 {
+    font-size:30px
+}
+
+.block, .definition, .theorem, .lemma {
+    width:95%;
+    margin-top:10px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:10px;
+    padding-top:0px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:10px;
+    border: 2px solid #888888; 
+    font-size: 100%; 
+}
+
+.statement, .example, .remark, .proof {
+    margin-top:15px;
+    margin-left:20px;
+    margin-bottom:15px;
+    padding-left: 20px;
+    border-left:solid 5px #cccccc;
+}
+
+.title {
+    font-size:120%;
+    font-weight:bold; 
+    text-decoration:underline;
+}
+
+.legend_title {
+    font-size:120%;
+    font-weight:bold; 
+    text-decoration:underline;
+}
+
+hr {
+    margin-top:15px;
+    margin-bottom:15px;
+    border-top: 2px solid #cccccc;
+}
+
+main ul li {
+    padding-bottom: 1px;
+    line-height: 1.5;
+}

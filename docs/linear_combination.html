@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線形代数1</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./common/style.css">
+    <!-- mathjax -->
+    <script src="./common/import_mathjax.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- (no header) -->
+    </header>
+
+    <!-- contents -->
+    <div class="wrapper">
+
+    <!-- sidebar -->
+    <script>
+        // Fetch and inject the entire side content (including styles)
+        fetch('./common/side.html')
+            .then(response => response.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('afterbegin', html);
+            })
+            .catch(error => console.error('Error loading sidebar:', error));
+    </script>
+    
+    <!-- main -->
+    <main role="main"><article id="section4"><h1>4: 線形結合</h1>
+        <p>以降, 単にベクトルといった場合には列ベクトルのことを指すものとする. 
+        単純な例として, $2\times 1$ 型の列ベクトルを考えてみよう. 
+        標準基底 
+        \[
+            \mathbf{e} _ 1 = \begin{pmatrix} 
+                1\cr 
+                0 
+            \end{pmatrix}, \quad \mathbf{e} _ 2 = \begin{pmatrix} 
+                0\cr 
+                1
+            \end{pmatrix}
+        \]
+        を用いると, 任意のベクトル $\begin{pmatrix}a\cr b\end{pmatrix}$ は,
+        \[
+            \begin{pmatrix} 
+                a\cr 
+                b 
+            \end{pmatrix} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2
+        \]
+        と表すことができる. 
+        このように, あるベクトルを特定のベクトルたちの足し合わせ (<b>線型結合</b>) で表現することは, ベクトルを扱う際に重要な考え方となる.
+        ここでは <b>線型独立</b>という概念を導入し, 行列に対する簡単な応用を紹介する.
+        また, 線型独立なベクトルたちの線型結合を用いた計算例を紹介する.</p>
+
+        <p>本来は, より抽象的に<b>ベクトル空間</b>を導入するところから始めるべきであろうが, ここでは簡単のため線型結合および線型独立に限定して紹介することにする.</p>
+
+        <section id="section4-1"><h2>4.1: 線形結合, 線型独立の定義</h2>
+            <div class="definition" data-name="線型結合">
+                ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ に対して,
+                \[
+                    c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + \dots + c _ n\mathbf{v} _ n
+                \]
+                という形のベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ の<b>線型結合</b> (<b>linear combination</b>) という.
+            </div><!-- / #definition -->
+
+            <div class="example">
+                <ul>
+                    <li>$\mathbf{v} _ 1 = \begin{pmatrix} 
+                        1\cr 
+                        0
+                    \end{pmatrix}, \ \mathbf{v} _ 2 = \begin{pmatrix} 
+                        0\cr 
+                        1 
+                    \end{pmatrix}$ のとき, $\begin{pmatrix} 
+                        a\cr 
+                        b 
+                    \end{pmatrix} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ は $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ の線型結合.
+                    </li>
+                    <li>$\mathbf{v} _ 1 = \begin{pmatrix} 
+                        1\cr 
+                        0
+                    \end{pmatrix}, \ \mathbf{v} _ 2 = \begin{pmatrix} 
+                        1\cr 
+                        1 
+                    \end{pmatrix}$ のとき, $\begin{pmatrix} 
+                        a\cr 
+                        b 
+                    \end{pmatrix} = (a-b)\mathbf{v} _ 1 + b\mathbf{v} _ 2$ は $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ の線型結合.
+                    </li>
+                </ul>
+            </div><!-- / #example -->
+
+            <p>上の例と同様に,
+            \[
+                \mathbf{v} _ 1 = \begin{pmatrix} 
+                    1\cr 
+                    0 
+                \end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix} 
+                    0\cr 
+                    1
+                \end{pmatrix},\qquad \mathbf{v} _ 3 = \begin{pmatrix} 
+                    1\cr 
+                    1 
+                \end{pmatrix}
+            \]
+            というベクトルの組を考えてみる. このとき, 例えば
+            \[
+                \begin{pmatrix} 
+                    a\cr 
+                    b 
+                \end{pmatrix} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2 + 0\mathbf{v} _ 3 = (a-b)\mathbf{v} _ 1 + 0\mathbf{v} _ 2 + b\mathbf{v} _ 3
+            \]
+            のように, 同じベクトルを表現する方法が複数存在することになる. これは, $\mathbf{v} _ 3$ が
+            \[
+                \mathbf{v} _ 3 = \mathbf{v} _ 1 + \mathbf{v} _ 2
+            \]
+            という線型結合で表現されることが原因である. 
+            この場合, 例えば $\mathbf{v} _ 3$ を除外したとしても, $\mathbf{v}$ はベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ だけの線型結合で表現できる.
+            このように, あるベクトルの組に対する線型結合を考える際には, ベクトルの組の中から他のベクトルの線型結合で表現できるものを除外しても構わない, ということになる.</p>
+            
+            <hr>
+
+            <p>一方で, ベクトルの組 $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ を考えたとき, 任意の $k$ に対して $\mathbf{v} _ k$ がそれ以外のベクトルの線型結合で表現することができないならば, そのようなベクトルの組 $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ は<b>線形独立</b>であるという.
+            この定義は以下と同値である:</p>
+
+            <div class="definition" data-name="線型独立">
+                ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ に対し,
+                \[
+                    c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + \dots + c _ n\mathbf{v} _ n = \mathbf{0} \iff c _ 1 = c _ 2 = \dots = c _ n = 0
+                \]
+                が成立するとき, $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ は<b>線形独立</b> (<b>linearly independent</b>) であるという.
+            </div><!-- / #definition -->
+
+            <div class="example">
+                <p>\[
+                    \mathbf{v} _ 1 = \begin{pmatrix} 
+                        1\cr 
+                        0 
+                    \end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix} 
+                        0\cr 
+                        1
+                    \end{pmatrix},\qquad \mathbf{v} _ 3 = \begin{pmatrix} 
+                        1\cr 
+                        1 
+                    \end{pmatrix},\qquad \mathbf{v} _ 4 = \begin{pmatrix} 
+                        0\cr 
+                        0 
+                    \end{pmatrix}.
+                \]</p>
+                <ul>
+                    <li>$\mathbf{v} _ 1$, $\mathbf{v} _ 2$ は線型独立.</li>
+                    <li>$\mathbf{v} _ 1$, $\mathbf{v} _ 3$ は線型独立.</li>
+                    <li>$\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\mathbf{v} _ 3$ は線型独立ではない. 
+                        実際, 例えば $c _ 1=-1$, $c _ 2=-1$, $c _ 3=1$ に対して, 以下が成立する: 
+                        \[
+                            c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3 = \mathbf{0}.
+                        \]</li>
+                    <li>$\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\mathbf{v} _ 4$ は線型独立ではない.
+                        実際, 任意の $c _ 4\neq0$ に対して以下が成立する:
+                        \[
+                            0\mathbf{v} _ 1 + 0\mathbf{v} _ 2 + c _ 4\mathbf{v} _ 4 = \mathbf{0}
+                        \]
+                    </li>
+                </ul>
+            </div><!-- / #example -->
+
+            </section>
+
+            <hr>
+
+            <section id="section4-2"><h2>4.2: 線型独立と行列の正則性</h2>
+            <p>ベクトル $\mathbf{v} _ j$ を第 $j$ 列ベクトルとする行列を $V$ とおき, また $c _ 1$, $c _ 2$, $\dots$, $c _ n$ たちを並べた列ベクトルを $\mathbf{c}$ とおく:
+                \[
+                    V = \begin{pmatrix} 
+                        \mathbf{v} _ 1 & \mathbf{v} _ 2 & \dots & \mathbf{v} _ n 
+                    \end{pmatrix},\qquad \mathbf{c} = \begin{pmatrix} 
+                        c _ 1\cr 
+                        c _ 2\cr 
+                        \vdots\cr 
+                        c _ n 
+                    \end{pmatrix}
+                \]
+                このとき, $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ が線形独立であることの定義は, 以下のように書き直すことができる:
+                \[
+                    V\mathbf{c} = \mathbf{0} \iff \mathbf{c} = \mathbf{0}
+                \]
+                ここで斉次 $1$ 次方程式系の議論を思い出すと, $V$ が正方行列であるときに上が成立することは $V$ が正則行列であることと同値である. 実際, $V^{-1}$ が存在するならば
+                \[
+                    V\mathbf{c} = \mathbf{0}\implies \mathbf{c} = V^{-1}V\mathbf{c} = V^{-1}\mathbf{0} = \mathbf{0}
+                \]
+                である. 一方で $V$ が正則でない場合は, ある条件を満たす全ての $\mathbf{c}$ が $V\mathbf{c}=\mathbf{0}$ の解となってしまうのだった. 
+                そのような $\mathbf{c}$ には, $\mathbf{0}$ でないものも含まれるため, $V$ が正則でないならば $V$ の各列ベクトルは線形独立ではない.
+            </p>
+            <p>以上の事実を, 後から参照しやすいようにまとめておく:</p>
+
+            <div class="theorem">
+                $n$ 次正方行列 $A = \begin{pmatrix}\mathbf{a} _ 1&\mathbf{a} _ 2&\dots&\mathbf{a} _ n\end{pmatrix}$ に対して,
+                \[
+                    A\text{ が正則} \iff \mathbf{a} _ 1,\ \mathbf{a} _ 2,\ \dots, \ \mathbf{a} _ n\in\mathbb{R}^{n\times 1}\text{ が線型独立}
+                \]
+                が成立する, ここで各 $\mathbf{a} _ j$ は $A$ の第 $j$ 列ベクトルである.
+            </div><!-- / #theorem -->
+
+            <div class="remark">
+                <p>$\det A^{\operatorname{T}} = \det A$ であることから, 以下も成立する:</p>
+                <p>$n$ 次正方行列 $A = \begin{pmatrix}\mathbf{a} _ 1\cr \mathbf{a} _ 2\cr\vdots\cr\mathbf{a} _ n\end{pmatrix}$ に対して,
+                    \[
+                        A\text{ が正則} \iff \mathbf{a} _ 1,\ \mathbf{a} _ 2,\ \dots, \ \mathbf{a} _ n\in\mathbb{R}^{1\times n}\text{ が線型独立}
+                    \]
+                    が成立する, ここで各 $\mathbf{a} _ i$ は $A$ の第 $i$ 行ベクトルである.</p> 
+            </div><!-- / #remark -->
+
+            <div class="example">
+                \[
+                    A = \begin{pmatrix} 
+                        1&2\cr 
+                        2&4 
+                    \end{pmatrix},\qquad B = \begin{pmatrix} 
+                        1&2&0\cr 
+                        0&4&3\cr
+                        -2&0&3\cr
+                    \end{pmatrix} 
+                \]
+                <ul>
+                    <li>$A$ の第 $i$ 行ベクトルを $\mathbf{a} _ i$ とおくと, $2\mathbf{a} _ 1 - \mathbf{a} _ 2 = \mathbf{0}$ なのでこれらは線型独立でない. 
+                        従って, $A$ は正則行列ではない (実際, $\det A = 0$ を確かめることができる).</li>
+                    <li>$B$ の第 $i$ 行べクトルを $\mathbf{b} _ i$ とおくと, $-2\mathbf{b} _ 1 + \mathbf{b} _ 2 - \mathbf{b} _ 3 = \mathbf{0}$ なのでこれらは線型独立でない. 
+                        従って, $B$ は正則行列ではない (実際, $\det B=0$ を確かめることができる).</li>
+                </ul>
+            </div><!-- / #example -->
+
+            <div class="example">
+                <p>\[
+                    \mathbf{v} _ 1 = \begin{pmatrix} 
+                        1\cr 
+                        1\cr 
+                        0 
+                    \end{pmatrix}, \qquad \mathbf{v} _ 2 = \begin{pmatrix} 
+                        0\cr 
+                        1\cr 
+                        1 
+                    \end{pmatrix},\qquad \mathbf{v} _ 3 = \begin{pmatrix} 
+                        1\cr 
+                        a\cr 
+                        1 
+                    \end{pmatrix}.  
+                \]
+                これらが線型独立となる条件を求めてみる. ベクトル $\mathbf{v} _ j$ たちを横に並べた行列 
+                \[
+                    V = \begin{pmatrix} 
+                        \mathbf{v} _ 1&\mathbf{v} _ 2&\mathbf{v} _ 3 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        1&0&1\cr 
+                        1&1&a\cr 
+                        0&1&1 
+                    \end{pmatrix}
+                \]
+                は正方行列となり, また $\det V = 2-a$ なので, $a\neq2$ であれば $V$ は正則であり, 従って $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\mathbf{v} _ 3$ は線型独立である.
+            </p>
+            </div>
+
+            <hr>
+
+            ついでに行列の性質のいくつかを振り返り, 線型独立性との関連を考察してみる:
+
+            <div class="theorem">
+				<p>正方行列 $A$ の 異なる $2$ つの列 (もしくは行) が一致するならば $\det A=0$.</p>	
+			</div><!-- / #theorem -->
+
+            <p>このことは, 線型独立性を用いて以下のように説明することができる:</p> 
+            <p>異なる $2$ つの列 (もしくは行) が等しいならば, 行列 $A$ の各列ベクトル (もしくは各行ベクトル) が線形独立ではないため, $A$ は正則ではない. 
+            従って $\det A =0$ である.</p>
+
+            <div class="theorem">
+                <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
+                \[
+                    \operatorname{rank}A = n \iff A \text{ は正則}.
+                \]</p>
+            </div><!-- / #theorem -->
+            
+            <p>このことは, 線型独立性を用いて以下のように説明することができる:</p> 
+            <p>$\operatorname{rank}A = n$, すなわち正方行列 $A$ がフルランクであることは, 行基本変形のみ (もしくは列基本変形のみ) で行列 $A$ を単位行列にすることができることを意味しているのだった. 
+                行基本変形は
+                <ul>
+                    <li>第 $i$ 行と第 $j$ 行を入れ替える.</li>
+                    <li>第 $i$ 行に $0$ でない数を掛ける.</li>
+                    <li>第 $i$ 行に第 $j$ 行のスカラー倍を加える.</li>
+                </ul>
+                という操作の組み合わせであったが, これは行列 $A$ の各第 $i$ 行ベクトル $\mathbf{a} _ i$ を 
+                \[
+                    c _ 1\mathbf{a} _ 1 + c _ 2\mathbf{a} _ 2 + \dots + c _ n\mathbf{a} _ n
+                \]
+                に取り替える操作と対応している, ただし $c _ 1 = c _ 2 = \dots = c _ n = 0$ とすることは, 行基本変形では認められない.
+                従って, 先ほどの結果も用いると 
+                \[
+                    \begin{array}{l}
+                        &\text{$A$ が正則} \cr
+                        \iff &\mathbf{a} _ 1,\ \mathbf{a} _ 2, \ \dots, \ \mathbf{a} _ n\text{ が線型独立}\cr 
+                        \iff & \left(c _ 1\mathbf{a} _ 1 + c _ 2\mathbf{a} _ 2 + \dots + c _ n\mathbf{a} _ n = \mathbf{0} \iff c _ 1 = c _ 2 = \dots c _ n = 0\right)\cr
+                        \iff & \text{行列 $A$ に対する行基本変形により $\mathbf{0}$ は現れない}
+                    \end{array}
+                \] 
+                となる. つまり, $\operatorname{rank}A \lt n$ となることはないので, $\operatorname{rank}A=n$ と同値になることがわかる.
+            </p>
+
+            <p>
+                逆に, $m\times n$ 型行列 $A$ の階数が $m$ よりも小さくなるなら, $A$ の行ベクトルのいくつかは行基本変形で $\mathbf{0}$ となってしまう, すなわち他の行の線型結合で表すことができる, ということを意味している.
+                $m\times n$ 型行列 $A$ の階数が $n$ より小さい場合は, 列ベクトルに対して同様のことが言える.
+            </p>
+
+            <div class="example">
+                \[
+                    A = \begin{pmatrix} 
+                        1&2\cr 
+                        2&4 
+                    \end{pmatrix},\qquad B = \begin{pmatrix} 
+                        1&2&0\cr 
+                        0&4&3\cr
+                        -2&0&3\cr
+                    \end{pmatrix} 
+                \]
+                <ul>
+                    <li>$A$ の第 $i$ 行ベクトルを $\mathbf{a} _ i$ とおくと, $2\mathbf{a} _ 1 - \mathbf{a} _ 2 = \mathbf{0}$ なのでこれらは線型独立でない. 
+                        つまり, 第 $2$ 行に第 $1$ 行の $-2$ 倍を加える, という行基本変形により
+                        \[
+                            R_{2,1,-2}A = \begin{pmatrix} 
+                                1&2\cr 
+                                0&0 
+                            \end{pmatrix}
+                        \]
+                        となり, $\mathbf{0}$ となる行が現れる. 従って, $\operatorname{rank}A = 1$ である.</li>
+                    <li>$B$ の第 $i$ 行べクトルを $\mathbf{b} _ i$ とおくと, $-2\mathbf{b} _ 1 + \mathbf{b} _ 2 - \mathbf{b} _ 3 = \mathbf{0}$ なのでこれらは線型独立でない. 
+                        つまり, 第 $3$ 行に第 $1$ 行の $2$ 倍を加え, さらに第 $3$ 行に第 $2$ 行の $-1$ 倍を加える, という行基本変形を考えると
+                        \[
+                            R_{3,2,-1}R_{3,1,2}B = \begin{pmatrix} 
+                                1&2&0\cr 
+                                0&4&3\cr 
+                                0&0&0
+                            \end{pmatrix}
+                        \]
+                        となり, $\mathbf{0}$ となる行が現れる. 従って, $\operatorname{rank}B \lt 3$ である. (なお, $\mathbf{b} _ 1$ と $\mathbf{b} _ 2$ は線型独立なので, これ以上 $\mathbf{0}$ となる行を増やすことはできない, これは $\operatorname{rank}B = 2$ を意味する)</li>
+                </ul>
+            </div><!-- / #example -->
+
+
+            </section>
+
+            <hr>
+
+            <section id="section4-3"><h2>4.3: 線型結合によるベクトルの表現</h2>
+                <p>あるベクトル $\mathbf{v}$ を, 線型独立なベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ の線型結合で表したい:
+                    \[
+                        \mathbf{v} = c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + \dots + c _ n\mathbf{v} _ n.
+                    \]
+                    先ほどと同じ記号を用いると, 右辺は$V\mathbf{c}$ となるため, 上の式は
+                    \[
+                        V\mathbf{c} = \mathbf{v}
+                    \]
+                    という連立 $1$ 次方程式とみなすことができ, これを解くことで等号を成立させる $c _ 1$, $c _ 2$, $\dots$, $c _ n$ を求めることができる.</p>
+                <p>特に, $\mathbf{v} _ i\in\mathbb{R}^{n\times 1}$ ならば, $V$ は $n$ 次正方行列となり, 先ほどの結果より正則行列となる, 従って, $V^{-1}$ が存在して $\mathbf{c} = V^{-1}\mathbf{v}$ が一意に定まる. 
+                    このことは, 以下のように言い換えることもできる:</p>
+
+                <div class="theorem">
+                    $\mathbf{v} _ 1,\ \mathbf{v} _ 2,\ \dots,\ \mathbf{v} _ n\in\mathbb{R}^{n\times 1}$ が線型独立ならば, 任意のベクトル $\mathbf{v}\in\mathbb{R}^{n\times 1}$ は $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ の線型結合で表すことができる.
+                </div><!-- / #theorem-->
+
+                <div class="example">
+                    <p>\[
+                        \mathbf{v} = \begin{pmatrix} 
+                            a\cr 
+                            b\cr 
+                            c
+                        \end{pmatrix},\qquad \mathbf{v} _ 1 = \begin{pmatrix} 
+                            1\cr 
+                            1\cr 
+                            0 
+                        \end{pmatrix}, \qquad \mathbf{v} _ 2 = \begin{pmatrix} 
+                            0\cr 
+                            1\cr 
+                            1 
+                        \end{pmatrix}, \qquad \mathbf{v} _ 3 = \begin{pmatrix} 
+                            1\cr 
+                            1\cr 
+                            1 
+                        \end{pmatrix}.
+                    \]
+                    このとき,
+                    \[
+                        \mathbf{v} = c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3
+                    \]
+                    を満たす $c _ 1$, $c _ 2$, $c _ 3$ を求める.</p>
+                    <p>まず, $V = \begin{pmatrix} 
+                            \mathbf{v} _ 1&\mathbf{v} _ 2&\mathbf{v} _ 3 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            1&0&1\cr 
+                            1&1&1\cr
+                            0&1&1 
+                        \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (なお, $\det V = 1\neq0$ なので $V$ は正則行列である).</p>
+                    <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
+                        \[
+                            \begin{array}{rl} 
+                                \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    1&1&1&b\cr 
+                                    0&1&1&c    
+                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    0&1&0&b-a\cr 
+                                    0&1&1&c    
+                                \end{array}\right) \cr
+                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    0&1&0&b-a\cr 
+                                    0&0&1&a-b+c    
+                                \end{array}\right) \cr
+                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                    1&0&0&b-c\cr 
+                                    0&1&0&b-a\cr 
+                                    0&0&1&a-b+c    
+                                \end{array}\right)
+                            \end{array}
+                        \]
+                        と変形すると, 左側を単位行列にすることができるため, 右側が
+                        \[
+                            \begin{pmatrix} 
+                                c _ 1\cr 
+                                c _ 2\cr 
+                                c _ 3 
+                            \end{pmatrix} = \mathbf{c} = V^{-1}\mathbf{v} = \begin{pmatrix} 
+                                b-c\cr 
+                                b-a\cr
+                                a-b+c 
+                            \end{pmatrix}
+                        \]
+                        を意味している.
+                    </p>
+                </div><!-- / #example -->
+
+                <p>一方で, $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ 3$ が線型独立でないならば, $\mathbf{v}$ は線型結合で表せないか, もしくは複数の表現が存在する:</p>
+
+                <div class="example">
+                    <p>\[
+                        \mathbf{v} = \begin{pmatrix} 
+                            a\cr 
+                            b\cr 
+                            c
+                        \end{pmatrix},\qquad \mathbf{v} _ 1 = \begin{pmatrix} 
+                            1\cr 
+                            1\cr 
+                            0 
+                        \end{pmatrix}, \qquad \mathbf{v} _ 2 = \begin{pmatrix} 
+                            0\cr 
+                            1\cr 
+                            1 
+                        \end{pmatrix}, \qquad \mathbf{v} _ 3 = \begin{pmatrix} 
+                            1\cr 
+                            2\cr 
+                            1 
+                        \end{pmatrix}.
+                    \]
+                    このとき,
+                    \[
+                        \mathbf{v} = c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3
+                    \]
+                    を満たす $c _ 1$, $c _ 2$, $c _ 3$ を求める.</p>
+                    <p>まず, $V = \begin{pmatrix} 
+                            \mathbf{v} _ 1&\mathbf{v} _ 2&\mathbf{v} _ 3 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            1&0&1\cr 
+                            1&1&2\cr
+                            0&1&1 
+                        \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (ただし, $\det V = 0$ なので $V$ は正則行列ではない).</p>
+                    <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
+                        \[
+                            \begin{array}{rl} 
+                                \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    1&1&2&b\cr 
+                                    0&1&1&c    
+                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    0&1&1&b-a\cr 
+                                    0&1&1&c    
+                                \end{array}\right) \cr
+                                & \longrightarrow \left(\begin{array}{ccc|c}
+                                    1&0&1&a\cr 
+                                    0&1&1&b-a\cr 
+                                    0&0&0&a-b+c    
+                                \end{array}\right)
+                            \end{array}
+                        \]
+                        と変形すると, 拡大行列を行階段形にすることができる.
+                        ここで, 一番下の行は
+                        \[
+                            0\cdot c _ 1+0\cdot c _ 2+0\cdot c _ 3 = a-b+c
+                        \]
+                        を意味しているため, $a-b+c\neq0$ のときこれを満たす $\mathbf{c}$ は存在しない. 
+                        一方で, もしも $a-b+c=0$ ならば, 
+                        \[
+                            \left\lbrace\begin{array}{rl}
+                                c _ 1+c _ 3 &= a\cr
+                                c _ 2+c _ 3 &= b-a 
+                            \end{array}\right.
+                        \]
+                        を満たす $c _ 1$, $c _ 2$, $c _ 3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ を成立させる. 
+                        実際, $a-b+c=0$ ならば,
+                        \[  
+                            \begin{array}{rl}
+                                c _ 1\mathbf{v} _ 1 + c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3 
+                                &= (a-c _ 3)\mathbf{v} _ 1 + (b-a-c _ 3)\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3 \cr 
+                                &= \begin{pmatrix} 
+                                    a-c _ 3+c _ 3\cr
+                                    a-c _ 3+b-a-c _ 3+2c _ 3\cr 
+                                    b-a-c _ 3+c _ 3 
+                                \end{pmatrix} \cr 
+                                &= \begin{pmatrix} 
+                                    a\cr 
+                                    b\cr 
+                                    c 
+                                \end{pmatrix} \qquad (\because a-b+c=0)\cr 
+                                &=\mathbf{v}
+                            \end{array} 
+                        \]
+                        となることが確かめられる.
+                    </p>
+                </div><!-- / #example -->
+
+
+
+
+            </section>
+            
+
+
+    </article></main>
+    </div>
+
+</body>
+
+<!-- javascript -->
+<script src="./common/create_statement_block.js"></script>
+
+</html>

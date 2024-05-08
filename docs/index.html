@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線形代数1</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./common/style.css">
+</head>
+
+<body>
+    <!-- sidebar -->
+    <script>
+        // Fetch and inject the entire side content (including styles)
+        fetch('./common/side.html')
+            .then(response => response.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('afterbegin', html);
+            })
+            .catch(error => console.error('Error loading sidebar:', error));
+    </script>
+    <!-- main -->
+    <main>
+    <p>
+        講義用の個人的なメモです. 内容の正確さは保証しません.
+    </p>
+    </main>
+</body>
+

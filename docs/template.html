@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./_layouts/style.css">
+    <!-- mathjax -->
+    <script>
+        MathJax = {
+            tex: {
+            inlineMath: [              // start/end delimiter pairs for in-line math
+                ['$', '$']
+            ],
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</head>
+
+<body>
+    <!-- sidebar -->
+    <script>
+        // Fetch and inject the entire side content (including styles)
+        fetch('./_layouts/side.html')
+            .then(response => response.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('afterbegin', html);
+            })
+            .catch(error => console.error('Error loading sidebar:', error));
+    </script>
+    
+    <!-- main -->
+    <main>
+
+        <div class="block">
+            <p class="title">タイトル</p>
+            内容
+        <!-- / #block --></div>
+
+        <div class="statement">
+            <p class="title">タイトル</p>
+            内容
+        <!-- / #statement --></div>
+
+    </main>
+</body>
