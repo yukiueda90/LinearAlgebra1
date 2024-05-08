@@ -16,13 +16,13 @@ body {
 /* sidebar */
 
 .side {
-    min-width:300px;
+    width:300px;
     max-width:300px;
     background-color: #fff;
-    padding:10px;
+    padding:0px;
     position:sticky;
     top:1vh;
-    height:85vh;
+    height:95vh;
     overflow-y:scroll;
     font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color:#727272;
@@ -53,17 +53,15 @@ a:hover, a:focus {
 }
 
 .side p, ul{
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin:0;
 }
     
 .side ul li {
-    border-right:1px solid #ffffff;
+    border-right:1px solid white;
     margin-left: 10px;
 }
 
-footer {
+.side footer {
     width:270px;
     float:left;
     position:fixed;
@@ -71,9 +69,21 @@ footer {
     -webkit-font-smoothing:subpixel-antialiased;
 }
 
+/* Styles for hamburger menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size:40px;
+    margin-top:0px;
+    margin-left:-15px;
+    margin-right:10px;
+}
+
 /* main contents */
 
 main {
+    flex:1;
+    margin-left:10px;
     margin-bottom:30px;
 }
 
@@ -129,4 +139,39 @@ hr {
 main ul li {
     padding-bottom: 1px;
     line-height: 1.5;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .side {
+        width: 0; /* Initially hide sidebar */
+        overflow:hidden;
+    }
+
+    .side footer {
+    width:0;
+    position:relative;
+}
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Show sidebar when hamburger menu is clicked */
+    .side.open {
+        min-width: 300px;
+        width: 300px;
+        overflow-y:scroll;
+        margin-right:10px;
+    }
+
+    .side.open footer {
+        width:270px;
+        position:fixed;
+    }  
+
+    main.hidden {
+        display:none;
+    }
+
 }
