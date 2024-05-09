@@ -150,7 +150,7 @@ main ul li {
 }
 
 .resizeImage {
-    max-width:100%;
+    max-width:40%;
     height:auto;
 }
 
