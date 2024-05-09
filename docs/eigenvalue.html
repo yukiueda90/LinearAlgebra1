@@ -173,8 +173,8 @@
 					<li>$A\mathbf{v} = \begin{pmatrix}a+b/2\cr a/2+b\end{pmatrix}\in\mathbb{R}^2$.</li>
 					<li>$\mathbf{v}$ および $A\mathbf{v}$ を幾何ベクトルや $xy$ 平面上の点と同一視すると, 行列 $A$ による変換は例えば以下の図のように解釈できる:</li>
 				</ul>
-				<img src='./images/linear_transform_by_matrix_1.png'>
-				<img src='./images/linear_transform_by_matrix_2.png'>
+				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_1.png'></div>
+				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_2.png'></div>
 				<p>左の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 
 				右の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである.</p>
 			</div><!-- / #example -->
@@ -215,7 +215,7 @@
 						1/\sqrt{2}\end{pmatrix}
 				\] 
 				が大きさ $1$ の固有ベクトルとなる.</p>
-				<img src='./images/linear_transform_by_matrix_3.png'>
+				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_3.png'></div>
 				<p>図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
 			</div><!-- / #example -->
 
@@ -261,7 +261,7 @@
 				<li>いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが異なってしまう).</li>
 				<li>(実は, 複素数まで認めればこの行列の固有値と固有ベクトルは存在する)</li>
 				</ul>
-				<img src='./images/linear_transform_by_matrix_4.png'> 	
+				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_4.png'></div>
 			</div><!-- / #example -->
 
 		</section>
@@ -356,23 +356,36 @@
 					\end{pmatrix}.
 				\]</p>
 				<ul>
-					<li>特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda + 3/4 = (\lambda-1/2)(\lambda-3/2)$.</li>
+					<li>特性多項式は 
+						\[
+							\det(\lambda I-A) = \lambda^2 - 2\lambda + 3/4 = (\lambda-1/2)(\lambda-3/2).
+						\]</li>
 					<li>従って 
 						\[
 							\det(\lambda I-A)=0\iff \lambda = 1/2,\ 3/2
 						\] 
 						となり, $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ が行列 $A$ の固有値となる.</li>
-					<li>$(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
-							-1/2 & -1/2\cr 
-							-1/2&-1/2
-						\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+					<li>\[
+							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+								-1/2 & -1/2\cr 
+								-1/2&-1/2
+							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+						\] 
+						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
 							1\cr 
 							-1
 						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
-					<li>同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
-							1/2 & -1/2\cr 
-							-1/2&1/2
-						\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}1\cr 1\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
+					<li>同様に, 
+						\[
+							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
+								1/2 & -1/2\cr 
+								-1/2&1/2
+							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
+						\] 
+						を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+							1\cr 
+							1
+						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
 				</ul>	
 			</div><!-- / #example -->
 			
@@ -394,14 +407,27 @@
 							\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha
 						\] 
 						となり, $\lambda _ 1 = \cos\alpha+i\sin\alpha$ と $\lambda _ 2 = \cos\alpha-i\sin\alpha$ が行列 $A$ の固有値となる, ただし $i=\sqrt{-1}$ は虚数単位.</li>
-					<li>$(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
-							i\sin\alpha & \sin\alpha\cr 
-							-\sin\alpha & i\sin\alpha
-						\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}1\cr -i\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
-					<li>同様に, $(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
-							-i\sin\alpha & \sin\alpha\cr 
-							-\sin\alpha & -i\sin\alpha
-						\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}$ を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}1\cr i\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
+					<li>\[
+							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+								i\sin\alpha & \sin\alpha\cr 
+								-\sin\alpha & i\sin\alpha
+							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+						\] 
+						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}
+							1\cr 
+							-i
+						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
+					<li>同様に, 
+						\[
+							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
+								-i\sin\alpha & \sin\alpha\cr 
+								-\sin\alpha & -i\sin\alpha
+							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
+						\] 
+						を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+							1\cr 
+							i
+						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
 				</ul>
 			</div><!-- / #example -->
 
