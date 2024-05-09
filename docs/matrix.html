@@ -20,15 +20,11 @@
     <div class="wrapper">
 
     <!-- sidebar -->
-    <script>
-        // Fetch and inject the entire side content (including styles)
-        fetch('./common/side.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.insertAdjacentHTML('afterbegin', html);
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-    </script>
+    <div class="side" id="sidebar"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        ☰
+    </div>
     
     <!-- main -->
     <main role="main"><article id="section1"><h1>1: 行列</h1>
@@ -41,7 +37,7 @@
         
             <div class="definition" data-name="行列">
                 <p>縦に$m$個, 横に$n$個の数を長方形状に並べたものを$m\times n$ 型の<b>行列</b> (<b>matrix</b>) という.</p>
-            </div><!-- / #definition-->
+            </div><!-- /definition-->
 
             <div class="example">
                 \[
@@ -63,7 +59,7 @@
                     <li>行列 $A$ の $(i,j)$ 成分は $(A)_{ij}$ と表記されることもある.</li>
                     <li>また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ と表す.</li>
                 </ul>
-            </div><!-- / #example-->
+            </div><!-- /example-->
 
             <div class="example">
                 \[
@@ -77,7 +73,7 @@
                     <li>この行列 $A$ の第 $2$ 列は $\begin{pmatrix}a_{12}\cr a_{22}\end{pmatrix}$.</li>
                     <li>この行列 $A$ の $(1,2)$ 成分は $a_{12}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
 
@@ -102,7 +98,7 @@
                     <li>$\mathbf{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, $\mathbf{v}$ は列ベクトル.</li>
                     <li>$\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
 
@@ -164,7 +160,7 @@
                     A=B
                 \] 
                 と表記する. $A=B$ でない場合は, $A\neq B$ と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 \[
@@ -191,19 +187,17 @@
                     <li>$(2,2)$ 成分が異なるため $A\neq C$.</li>
                     <li>行列の型が異なるため $A\neq D$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
             
             <hr>
 
             <p>行列の和は, 成分ごとに足し合わせることで定義される:</p>
 
-            <div class="block">
-                <p class="title">定義 (行列の和)</p>
+            <div class="definition" data-name="行列の和">
                 同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ に対し, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の<b>和</b>といい, $A+B$ と表記する.
-            <!-- / #block --></div>
+            </div><!-- /definition -->
 
-            <div class="statement">
-                <p class="title">例</p>
+            <div class="example">
                 \[
                     A=\begin{pmatrix}
                         1&2\cr 
@@ -228,7 +222,7 @@
                     <li>$A+C = \begin{pmatrix}1&2\cr 3&4\end{pmatrix} + \begin{pmatrix}1&2\cr 3&0\end{pmatrix} = \begin{pmatrix}2&4\cr 6&4\end{pmatrix}$</li>
                     <li>行列の型が異なるため, $A+D$ は定義されない.</li>
                 </ul>
-            <!-- / #statement --></div>
+            </div><!-- /example -->
 
             <p>定義より次は明らかである:</p>
 
@@ -238,7 +232,7 @@
                     A+B = B+A
                 \] 
                 が成立する.
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <hr>
 
@@ -246,7 +240,7 @@
 
             <div class="definition" data-name="行列のスカラー倍">
                 <p>行列 $A=(a_{ij})$ と複素数 $\lambda$ に対し, $(i,j)$ 成分が $\lambda a_{ij}$ である行列を $\lambda A$ と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 \[
@@ -282,7 +276,7 @@
                             \end{pmatrix}
                         \]</li>
                 </ul>     
-            </div><!-- / #example -->
+            </div><!-- /example -->
             
             <hr>
 
@@ -294,11 +288,11 @@
                     \displaystyle\sum_{k=1}^m a_{ik}b_{kj}
                 \] 
                 である $\ell \times n$ 型行列を $A$ と $B$ の<b>積</b>といい, $AB$ と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="remark">
                 <p>行列積 $AB$ は, 左側の行列 $A$ の列の数と, 右側の行列 $B$ の行の数が等しいときに限り定義される.</p>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <div class="example">
                 \[
@@ -316,7 +310,7 @@
                             \vec{x}\cdot\vec{y} = x_1y_1+x_2y_2
                         \] に等しい.</li>
                 </ul>    
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="example">
                 \[
@@ -349,7 +343,7 @@
                         \vec{a}_ i = (a_{i1}, a_{i2}),\quad \vec{b}_ j = (b_{1j}, b_{2j})
                     \] の内積と同一視することができ, $(a_{i1} b_{1j} + a_{i2} b_{2j})$ である.</li>
                 </ul>      
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="example">
                 \[
@@ -383,7 +377,7 @@
                         \]</li>
                     <li>このように, 一般には $AB\neq BA$ となる.</li>
                 </ul>    
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="example">
                 \[
@@ -404,7 +398,7 @@
                     <li>一方, $BA$ は定義できない ($B$ の列の数は$3$, $A$ の行の数は $2$ で異なっている).</li>
                     <li>このように, $AB$ が定義されたとしても $BA$ が定義されるとは限らない.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="example">
                 \[
@@ -423,7 +417,7 @@
                     <li>実は連立 $1$ 次方程式は, 『与えられた行列 $A$ と列ベクトル ${\boldsymbol{b}}$ に対し, $A{\boldsymbol{x}} = {\boldsymbol{b}}$ を満たす列ベクトル ${\boldsymbol{x}}$ を求めよ』 という形で表記することができる.
                         これは行列の重要な応用の $1$ つである.</li>
                 </ul>    
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="example">
                 \[
@@ -444,7 +438,7 @@
                         であり, これはベクトルの内積と一致しない.</li>
                     <li>ベクトルの内積と一致するのは, $(\text{行ベクトル})(\text{列ベクトル})$ という形をしたベクトル同士の行列積であり, 上のように $(\text{列ベクトル})(\text{行ベクトル})$ という形の積に関してはこの限りでは無い.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
 
@@ -456,7 +450,7 @@
                     (AB)C = A(BC)
                 \] 
                 が成立する.
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <div class="proof">
                 $A=(a_{ip})$, $B=(b_{pq})$, $C=(c_{qj})$ とする. 
@@ -477,7 +471,7 @@
                     \sum_{p=1}^{\ell}a_{ip}\left(\sum_{q=1}^mb_{pq}c_{qj}\right) = \sum_{p=1}^{\ell}\sum_{q=1}^ma_{ip}b_{pq}c_{qj}
                 \] 
                 となる. 従って, $(AB)C = A(BC)$ が得られる. 
-            </div><!-- / #proof -->
+            </div><!-- /proof -->
             
             <div class="theorem" data-name="分配則">
                 <ul>
@@ -492,7 +486,7 @@
                         \] 
                         が成立する.</li>
                 </ul>
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <div class="proof">
                 上のみ証明する: $A=(a_{ik})$, $B=(b_{kj})$, $C=(c_{kj})$ とする. このとき, 行列 $A(B+C)$ の $(i,j)$成分は
@@ -504,7 +498,7 @@
                     \sum_{k=1}^ma_{ik}b_{kj},\qquad \sum_{k=1}^ma_{ik}c_{kj}
                 \] 
                 なので $A(B+C) = AB+AC$ が得られる.
-            </div><!-- / #proof -->
+            </div><!-- /proof -->
 
             <hr>
 
@@ -512,7 +506,7 @@
 
             <div class="definition" data-name="複素共役行列">
                 <p>行列 $A$ の各成分を, その複素共役で置き換えた行列を<b>複素共役行列</b>といい, $\overline{A}$ と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <p>定義より次は明らかである:</p>
 
@@ -523,7 +517,7 @@
                     \overline{\lambda A} = \overline{\lambda}\ \overline{A}, \quad
                     \overline{AB} = \overline{A}\ \overline{B}.
                 \]
-                <!-- / #theorem --></div>
+                <!-- /theorem --></div>
                 
             <hr>
 
@@ -531,7 +525,7 @@
 
             <div class="definition" data-name="転置行列">
                 <p>行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の<b>転置行列</b> といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を<b>転置</b> (<b>transpose</b>) という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="remark">
                 <ul>
@@ -539,7 +533,7 @@
                     <li>$m\times n$ 型行列の転置は $n\times m$ 型行列になる.</li>
                     <li>特に, 列ベクトルの転置は行ベクトルになり, 行ベクトルの転置は列ベクトルになる.</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <div class="example">
                 <ul>
@@ -563,7 +557,7 @@
                             b_{13}&b_{23}
                         \end{pmatrix}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="theorem">
                 \[
@@ -571,7 +565,7 @@
                     (A+B)^{\operatorname{T}} = A^{\operatorname{T}}+B^{\operatorname{T}}, \quad
                     (AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}.
                 \]
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <div class="proof">
                 <p>最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, 行列 $AB\in\mathbb{R}^{m\times n}$ の $(i,j)$ 成分は
@@ -592,7 +586,7 @@
                     \end{pmatrix} = \sum_{k=1}^m a_{jk} b_{ki}.
                 \]
                 従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.</p>
-            </div><!-- / #proof -->
+            </div><!-- /proof -->
 
             <div class="example">
                 \[
@@ -624,7 +618,7 @@
                             56&128
                         \end{pmatrix} = (AB)^{\operatorname{T}}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
         
@@ -636,14 +630,14 @@
 
             <div class="definition" data-name="零行列">
                 <p>全ての成分が $0$ である行列を<b>零行列</b> (<b>zero matrix</b>) といい, $O$ と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 <ul>
                     <li>$O = \begin{pmatrix}0\end{pmatrix}\in\mathbb{R}^{1\times 1}$. これは $0\in\mathbb{R}$ と同一視される.</li>
                     <li>$O=\begin{pmatrix}0&0\cr 0&0\end{pmatrix}\in\mathbb{R}^{2\times 2}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="theorem">
                 <p>任意の行列 $A$ に対して, 以下が成立する:</p>
@@ -654,7 +648,7 @@
                     <li>行列積 $AO$ が定義されるなら $AO=O$, ただし両辺の $O$ が同じ型とは限らない.</li>
                     <li>行列積 $OA$ が定義されるなら $OA=O$, ただし両辺の $O$ が同じ型とは限らない.</li>
                 </ul>
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <div class="remark">
                 零行列が列ベクトルである場合, 代わりに $\mathbf{0}$ と表記することがある.
@@ -681,13 +675,13 @@
                         \end{pmatrix} = O$.</li>
                     <li>$A(\mathbf{x}-\mathbf{x}) = A\mathbf{0} = \mathbf{0}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
 
             <div class="definition" data-name="正方行列">
                 <p>$m\times n$ 型の行列 $A$ について, $m=n$ であるとき (つまり行と列の数が等しいとき) $A$ を<b>正方行列</b> (<b>square matrix</b>), もしくは $n$ 次正方行列という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="remark">
                 <ul>
@@ -696,7 +690,7 @@
                     <li>$A$ が正方行列ならば, 行列積 $AA$ が定義できる. これを $A^2$ と表記する.</li>
                     <li>同様に, $k$ 個の $A$ を掛け合わせた行列積 $A\cdots A$ を $A^k$ と表記する.</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <hr>
             
@@ -706,7 +700,7 @@
                     A=A^{\mathrm{T}}
                 \] 
                 が成立するとき, $A$ を<b>対称行列</b> (<b>symmetric matrix</b>) という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="remark">
                 <p>行列 $A$ の転置 $A^{\mathrm{T}}$ の定義より, 正方行列 $A = (a_{ij})$ が対称行列であることは, 任意の $i$, $j$ に対して
@@ -714,7 +708,7 @@
                     a_{ij} = a_{ji}
                 \] 
                 が成立することと同値である.</p>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <hr>
 
@@ -724,7 +718,7 @@
                     A=-A^{\mathrm{T}}
                 \] 
                 が成立するとき, $A$ を<b>歪対称行列</b> (<b>skew-symmetric matrix</b>) もしくは<b>交代行列</b> (<b>alternating matrix</b>) という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="remark">
                 <ul>
@@ -739,13 +733,13 @@
                         \] 
                         が成立する. つまり, 歪対称行列の対角成分は必ず $0$ である.</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <hr>
 
             <div class="definition" data-name="対角行列">
                 <p>正方行列 $A$ について, その対角成分以外が $0$ であるとき, $A$ を<b>対角行列</b> (<b>diagonal matrix</b>) という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 <ul>
@@ -755,7 +749,7 @@
                             0&0&a_3
                         \end{pmatrix}$ は正方行列であり, 非対角成分が全て $0$ なので対角行列である.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="remark">
                 <ul>
@@ -771,20 +765,20 @@
                             A = (a_i\delta_{ij})
                         \] と表記できる.</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <hr>
 
             <div class="definition">
                 <p>対角成分が全て $1$ である対角行列を<b>単位行列</b> (<b>identity matrix</b>) といい, $I$ ( もしくは $E$ ) と表記する.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 <ul>
                     <li>$I = \begin{pmatrix}1\end{pmatrix}\in\mathbb{R}^{1\times 1}$. これは $1\in\mathbb{R}$ と同一視される.</li>
                     <li>$I=\begin{pmatrix}1&0\cr 0&1\end{pmatrix}\in\mathbb{R}^{2\times2}$.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="remark">
                 <ul>
@@ -798,7 +792,7 @@
                             \lambda IA = \lambda A,\quad A(\lambda I) = \lambda A,\quad (\lambda I)^k = \lambda^k I.
                         \]</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <div class="definition">
                 単位行列の各列ベクトル
@@ -817,7 +811,7 @@
                     \end{pmatrix}, \quad \dots
                 \] 
                 を<b>標準基底</b> (<b>canonical basis</b>) という.
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <hr>
             
@@ -933,7 +927,7 @@
                             6&7
                         \end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と列ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <p>区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:</p>
 
@@ -984,7 +978,7 @@
                             \end{pmatrix}.
                         \]</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <hr>
 
@@ -997,7 +991,7 @@
                 \] 
                 を満たすものが存在するならば, $B$ を $A$ の<b>逆行列</b> (<b>inverse matrix</b>) といい, $B=A^{-1}$ と表記する. 
                 正方行列 $A$ の逆行列が存在するならば, $A$ を<b>正則行列</b> (<b>regular matrix</b>) もしくは<b>可逆行列</b> (<b>invertible matrix</b>) という.</p>
-            </div><!-- / #definition -->
+            </div><!-- /definition -->
 
             <div class="example">
                 <ul>
@@ -1054,7 +1048,7 @@
                         \] 
                         となり矛盾する.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
             <div class="theorem">
                 <p>逆行列について以下が成立する:</p>
@@ -1063,7 +1057,7 @@
                     <li>$A^{-1}$ が存在するならば, $(A^{-1})^{-1} = A$.</li>
                     <li>$A^{-1}$ は存在するならばただ$1$つに定まる.</li>
                 </ul>
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
             <div class="proof">
                 <ul>
@@ -1092,7 +1086,7 @@
                         これは $B\neq C$ に矛盾する. 
                         従って, 背理法より $A$ の逆行列はただ $1$ つに定まる.</li>
                 </ul>
-            </div><!-- / #proof -->
+            </div><!-- /proof -->
 
             <div class="remark">
                 <ul>
@@ -1100,7 +1094,7 @@
                     <li>実は, 正方行列 $A$ に対し $AB=I$ を満たす $B$ が存在すれば, そのような $B$ は $BA=I$ も満たす (つまり $B=A^{-1}$ となる).</li>
                     <li>同様に, $BA=I$ なる $B$ は, $B=A^{-1}$ となる.</li>
                 </ul>
-            </div><!-- / #remark -->
+            </div><!-- /remark -->
 
             <div class="example">
                 \[
@@ -1117,7 +1111,7 @@
                     <li>いま, $AB = I$ となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.</li>
                     <li>同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.</li>
                 </ul>
-            </div><!-- / #example -->
+            </div><!-- /example -->
 
         </section>
             
@@ -1128,5 +1122,6 @@
 <!-- javascript -->
 <script src="./common/create_statement_block.js"></script>
 <script src="./common/function_toggleSidebar.js"></script>
+<script src="./common/import_sidebar.js"></script>
 
 </html>
