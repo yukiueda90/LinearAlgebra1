@@ -483,13 +483,15 @@
 			<div class="example">
 				<ul>
 					<li>単位行列 $I\in\mathbb{R}^{n\times n}$ に対して $\det (-I) = (-1)^n$.</li>
-					<lI>$\det\begin{pmatrix} 
-							\lambda a&\lambda b\cr 
-							\lambda c&\lambda d 
-						\end{pmatrix} = (\lambda a)(\lambda d) - (\lambda b)(\lambda c) = \lambda^2(ad-bc) = \lambda^2\det\begin{pmatrix} 
-							a&b\cr 
-							c&d 
-						\end{pmatrix}$.</lI>
+					<lI>\[
+							\det\begin{pmatrix} 
+								\lambda a&\lambda b\cr 
+								\lambda c&\lambda d 
+							\end{pmatrix} = (\lambda a)(\lambda d) - (\lambda b)(\lambda c) = \lambda^2(ad-bc) = \lambda^2\det\begin{pmatrix} 
+								a&b\cr 
+								c&d 
+							\end{pmatrix}.
+						\]</lI>
 				</ul>
 			</div><!-- / #example -->
 				
@@ -542,8 +544,15 @@
 
 			<div class="lemma" data-name="多重線形性">
 				<ul>
-					<li>$\det (\mathbf{a}_1, \dots, \mathbf{a}_j + \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n) = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) + \det (\mathbf{a}_1, \dots, \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n)$,</li>
-					<li>$\det (\mathbf{a}_1, \dots, \lambda\mathbf{a}_j, \dots, \mathbf{a}_n) = \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n)$</li>
+					<li>\[
+							\det (\mathbf{a}_1, \dots, \mathbf{a}_j + \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n) 
+							= \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) 
+							+ \det (\mathbf{a}_1, \dots, \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n),
+						\]</li>
+					<li>\[
+							\det (\mathbf{a}_1, \dots, \lambda\mathbf{a}_j, \dots, \mathbf{a}_n) 
+							= \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n)
+						\]</li>
 				</ul>
 			</div><!-- / #proof -->
 
@@ -551,31 +560,36 @@
 
 			<div class="example">
 				<ul>
-					<li>$\det\begin{pmatrix}
-							a&b\cr
-							c_1+c_2&d_1+d_2	
-						\end{pmatrix} = \det\begin{pmatrix} 
-							a&b\cr 
-							c_1&d_1 
-						\end{pmatrix} + \det\begin{pmatrix} 
-							a&b \cr 
-							c_2&d_2 
-						\end{pmatrix} = ad_1-bc_1 + ad_2-bc_2 = a(d_1+d_2)-b(c_1+c_2)$.</li>
-					<li>$\det\begin{pmatrix} 
-							a&b\cr 
-							\lambda c&\lambda d 
-						\end{pmatrix} = \lambda\det\begin{pmatrix} 
-							a&b\cr 
-							c&d\end{pmatrix} = \lambda(ad-bc)$.
-					</li>
-					<li>$\det\begin{pmatrix} 
-							a&b\cr 
-							0&0 
-						\end{pmatrix} = 0\det\begin{pmatrix} 
-							a&b\cr 
-							\ast&\ast 
-						\end{pmatrix} = 0$.
-					</li>
+					<li>\[
+							\det\begin{pmatrix}
+								a&b\cr
+								c_1+c_2&d_1+d_2	
+							\end{pmatrix} = \det\begin{pmatrix} 
+								a&b\cr 
+								c_1&d_1 
+							\end{pmatrix} + \det\begin{pmatrix} 
+								a&b \cr 
+								c_2&d_2 
+							\end{pmatrix} = ad_1-bc_1 + ad_2-bc_2 = a(d_1+d_2)-b(c_1+c_2).
+						\]</li>
+					<li>\[
+							\det\begin{pmatrix} 
+								a&b\cr 
+								\lambda c&\lambda d 
+							\end{pmatrix} = \lambda\det\begin{pmatrix} 
+								a&b\cr 
+								c&d
+							\end{pmatrix} = \lambda(ad-bc).
+						\]</li>
+					<li>\[
+							\det\begin{pmatrix} 
+								a&b\cr 
+								0&0 
+							\end{pmatrix} = 0\det\begin{pmatrix} 
+								a&b\cr 
+								\ast&\ast 
+							\end{pmatrix} = 0.
+						\]</li>
 				</ul>
 			</div><!-- / #example -->
 
@@ -629,13 +643,15 @@
 			</div><!-- / #remark -->
 
 			<div class="example">
-				$\det\begin{pmatrix} 
-					c&d \cr
-					a&b 
-				\end{pmatrix} = bc - ad = -(ad-bc) = -\det\begin{pmatrix} 
-					a&b \cr
-					c&d 
-				\end{pmatrix}$.
+				\[
+					\det\begin{pmatrix} 
+						c&d \cr
+						a&b 
+					\end{pmatrix} = bc - ad = -(ad-bc) = -\det\begin{pmatrix} 
+						a&b \cr
+						c&d 
+					\end{pmatrix}.
+				\]
 			</div><!-- / #example -->
 
 			<div class="theorem">
