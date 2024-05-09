@@ -20,15 +20,11 @@
     <div class="wrapper">
 
     <!-- sidebar -->
-    <script>
-        // Fetch and inject the entire side content (including styles)
-        fetch('./common/side.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.insertAdjacentHTML('afterbegin', html);
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-    </script>
+    <div class="side" id="sidebar"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        ☰
+    </div>
     
     <!-- main -->
     <main role="main"><article id="section4"><h1>4: 線形結合</h1>
@@ -537,5 +533,6 @@
 <!-- javascript -->
 <script src="./common/create_statement_block.js"></script>
 <script src="./common/function_toggleSidebar.js"></script>
+<script src="./common/import_sidebar.js"></script>
 
 </html>
