@@ -260,8 +260,27 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>$2A = 2\begin{pmatrix}1&2\cr 3&4\end{pmatrix} = \begin{pmatrix}2&4\cr 6&8\end{pmatrix} = A+A$</li>
-                    <li>$A - C = A + (-1)C = \begin{pmatrix}1&2\cr 3&4\end{pmatrix} + \begin{pmatrix}-1&-2\cr -3&0\end{pmatrix} = \begin{pmatrix}0&0\cr 0&4\end{pmatrix}$</li>
+                    <li>\[
+                            2A = 2\begin{pmatrix}
+                                1&2\cr 
+                                3&4
+                            \end{pmatrix} = \begin{pmatrix}
+                                2&4\cr 
+                                6&8
+                            \end{pmatrix} = A+A
+                        \]</li>
+                    <li>\[
+                            A - C = A + (-1)C = \begin{pmatrix}
+                                1&2\cr 
+                                3&4
+                            \end{pmatrix} + \begin{pmatrix}
+                                -1&-2\cr 
+                                -3&0
+                            \end{pmatrix} = \begin{pmatrix}
+                                0&0\cr 
+                                0&4
+                            \end{pmatrix}
+                        \]</li>
                 </ul>     
             </div><!-- / #example -->
             
@@ -344,20 +363,24 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>$AB = \begin{pmatrix}
-                            1\cdot2+2\cdot4 & 1\cdot3+2\cdot5\cr 
-                            3\cdot2+4\cdot4 & 3\cdot3+4\cdot5
-                        \end{pmatrix} = \begin{pmatrix}
-                            10&13\cr 
-                            22&29
-                        \end{pmatrix}$.</li>
-                    <li>$BA = \begin{pmatrix}
-                            2\cdot1+3\cdot3 & 2\cdot2+3\cdot4\cr 
-                            4\cdot1+5\cdot3 & 4\cdot2+5\cdot4
-                        \end{pmatrix} = \begin{pmatrix}
-                            11&16\cr 
-                            19&28
-                        \end{pmatrix}$</li>
+                    <li>\[
+                            AB = \begin{pmatrix}
+                                1\cdot2+2\cdot4 & 1\cdot3+2\cdot5\cr 
+                                3\cdot2+4\cdot4 & 3\cdot3+4\cdot5
+                            \end{pmatrix} = \begin{pmatrix}
+                                10&13\cr 
+                                22&29
+                            \end{pmatrix}.
+                        \]</li>
+                    <li>\[
+                            BA = \begin{pmatrix}
+                                2\cdot1+3\cdot3 & 2\cdot2+3\cdot4\cr 
+                                4\cdot1+5\cdot3 & 4\cdot2+5\cdot4
+                            \end{pmatrix} = \begin{pmatrix}
+                                11&16\cr 
+                                19&28
+                            \end{pmatrix}
+                        \]</li>
                     <li>このように, 一般には $AB\neq BA$ となる.</li>
                 </ul>    
             </div><!-- / #example -->
@@ -821,24 +844,28 @@
                 \]
                 <ul>
                     <li>例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び $2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
-                        $A=\left(\begin{array}{cc:c}
-                            1&2&3\cr 
-                            4&5&6\cr
-                            \hdashline 
-                            7&8&9
-                        \end{array}\right) = \begin{pmatrix}
-                            A_{11}&A_{12}\cr 
-                            A_{21}&A_{22}
-                        \end{pmatrix}$, &emsp; 
-                        $B=\begin{pmatrix}
-                            2&3\cr
-                            4&5\cr
-                            \hdashline 
-                            6&7
-                        \end{pmatrix} = \begin{pmatrix}
-                            B_{11}\cr 
-                            B_{21}
-                        \end{pmatrix}$.
+                        \[
+                            A=\left(\begin{array}{cc:c}
+                                1&2&3\cr 
+                                4&5&6\cr
+                                \hdashline 
+                                7&8&9
+                            \end{array}\right) = \begin{pmatrix}
+                                A_{11}&A_{12}\cr 
+                                A_{21}&A_{22}
+                            \end{pmatrix},
+                        \] 
+                        \[
+                            B=\begin{pmatrix}
+                                2&3\cr
+                                4&5\cr
+                                \hdashline 
+                                6&7
+                            \end{pmatrix} = \begin{pmatrix}
+                                B_{11}\cr 
+                                B_{21}
+                            \end{pmatrix}.
+                        \]
                     </li>
                     <ul>
                         <li>この区分けを用いた場合, 形式的に $A$ は $2\times2$ 型, $B$ は $2\times1$ 型と思うことで行列積 $AB$ を計算できる.</li>
@@ -856,20 +883,29 @@
                             \end{pmatrix}
                         \] 
                         と表現することができる. 実際に計算してみると,
-                        $A_{11}B_{11} = \begin{pmatrix}
-                            10&13\cr 
-                            28&37
-                        \end{pmatrix}$, &emsp; 
-                        $A_{12}B_{21} = \begin{pmatrix}
-                            18&21\cr 
-                            36&42
-                        \end{pmatrix},$
-                        $A_{21}B_{11} = \begin{pmatrix}
-                            46&61
-                        \end{pmatrix}$,&emsp; 
-                        $A_{22}B_{21} = \begin{pmatrix}
-                            54&63
-                        \end{pmatrix}$ となる.</li>
+                        \[
+                            A_{11}B_{11} = \begin{pmatrix}
+                                10&13\cr 
+                                28&37
+                            \end{pmatrix},
+                        \]  
+                        \[
+                            A_{12}B_{21} = \begin{pmatrix}
+                                18&21\cr 
+                                36&42
+                            \end{pmatrix},
+                        \]
+                        \[
+                            A_{21}B_{11} = \begin{pmatrix}
+                                46&61
+                            \end{pmatrix},
+                        \]
+                        \[
+                            A_{22}B_{21} = \begin{pmatrix}
+                                54&63
+                            \end{pmatrix}
+                        \] 
+                        となる.</li>
                     <li>異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, 
                         $B = \left(\begin{array}{c:c}
                             2&3\cr 
@@ -930,20 +966,23 @@
                             \hdashline 
                             x_ 3
                         \end{pmatrix}$ という区分けを考える.</li>
-                    <li>このとき, $A\mathbf{x} = \begin{pmatrix}
-                            2I\begin{pmatrix}
-                                x_1\cr 
-                                x_2
-                            \end{pmatrix} + Ox_3\cr 
-                            A^\prime\begin{pmatrix}
-                                x_1\cr 
-                                x_2
-                            \end{pmatrix}+3x_3
-                        \end{pmatrix} = \begin{pmatrix}
-                            2x_1\cr 
-                            2x_2\cr 
-                            x _ 1+2x _ 2+3x _ 3
-                        \end{pmatrix}$.</li>
+                    <li>このとき, 
+                        \[
+                            A\mathbf{x} = \begin{pmatrix}
+                                2I\begin{pmatrix}
+                                    x_1\cr 
+                                    x_2
+                                \end{pmatrix} + Ox_3\cr 
+                                A^\prime\begin{pmatrix}
+                                    x_1\cr 
+                                    x_2
+                                \end{pmatrix}+3x_3
+                            \end{pmatrix} = \begin{pmatrix}
+                                2x_1\cr 
+                                2x_2\cr 
+                                x _ 1+2x _ 2+3x _ 3
+                            \end{pmatrix}.
+                        \]</li>
                 </ul>
             </div><!-- / #example -->
 
