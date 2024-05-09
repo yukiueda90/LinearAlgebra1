@@ -149,6 +149,11 @@ main ul li {
     line-height: 1.5;
 }
 
+.resizeImage {
+    max-width:100%;
+    height:auto;
+}
+
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {
     body {
