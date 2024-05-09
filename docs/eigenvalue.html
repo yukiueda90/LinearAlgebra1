@@ -20,25 +20,30 @@
     <div class="wrapper">
 
     <!-- sidebar -->
-    <script>
-        // Fetch and inject the entire side content (including styles)
-        fetch('./common/side.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.insertAdjacentHTML('afterbegin', html);
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-    </script>
+    <div class="side" id="sidebar"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        ☰
+    </div>
     
     <!-- main -->
     <main role="main"><article id="section5"><h1>5: 固有値と固有ベクトル</h1>
         <section id="section5-1"><h2>5.1: 導入</h2>
 			<p>行列積の性質を思い出せば, 行列 $A\in\mathbb{R}^{n\times m}$ を列ベクトルの左から掛けるという操作は, 以下の<b>線形性</b>と呼ばれる性質を満たすことがわかる:</p>
 			<ul>
-				<li>任意の列ベクトル $\mathbf{v} _ 1, \mathbf{v} _ 2\in\mathbb{R}^{m\times 1}$ に対し, $A(\mathbf{v} _ 1 + \mathbf{v} _ 2) = A\mathbf{v} _ 1 + A\mathbf{v} _ 2$.</li>
-				<li>任意の列ベクトル $\mathbf{v}\in \mathbb{R}^{m\times 1}$ と任意のスカラー値 $\lambda$ に対し, $A(\lambda\mathbf{v}) = \lambda A\mathbf{v}$.</li>
+				<li>任意の列ベクトル $\mathbf{v} _ 1, \mathbf{v} _ 2\in\mathbb{R}^{m\times 1}$ に対し, 
+					\[
+						A(\mathbf{v} _ 1 + \mathbf{v} _ 2) = A\mathbf{v} _ 1 + A\mathbf{v} _ 2.
+					\]</li>
+				<li>任意の列ベクトル $\mathbf{v}\in \mathbb{R}^{m\times 1}$ と任意のスカラー値 $\lambda$ に対し, 
+					\[
+						A(\lambda\mathbf{v}) = \lambda A\mathbf{v}.
+					\]</li>
 			</ul>
-			<p>この性質を用いると, 正方行列 $A\in\mathbb{R}^{2\times 2}$ と列ベクトル $\mathbf{x} = \begin{pmatrix}a\cr b\end{pmatrix}$ に対し, $A\mathbf{x}$ という行列積は, 例えば以下のように計算することができる: 
+			<p>この性質を用いると, 正方行列 $A\in\mathbb{R}^{2\times 2}$ と列ベクトル $\mathbf{x} = \begin{pmatrix}
+					a\cr 
+					b
+				\end{pmatrix}$ に対し, $A\mathbf{x}$ という行列積は, 例えば以下のように計算することができる: 
 			標準基底
 			\[
 				\mathbf{e} _ 1 = \begin{pmatrix}
@@ -173,8 +178,8 @@
 					<li>$A\mathbf{v} = \begin{pmatrix}a+b/2\cr a/2+b\end{pmatrix}\in\mathbb{R}^2$.</li>
 					<li>$\mathbf{v}$ および $A\mathbf{v}$ を幾何ベクトルや $xy$ 平面上の点と同一視すると, 行列 $A$ による変換は例えば以下の図のように解釈できる:</li>
 				</ul>
-				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_1.png'></div>
-				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_2.png'></div>
+				<div class="resize"><img src='./images/linear_transform_by_matrix_1.png'></div>
+				<div class="resize"><img src='./images/linear_transform_by_matrix_2.png'></div>
 				<p>左の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 
 				右の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである.</p>
 			</div><!-- / #example -->
@@ -215,7 +220,7 @@
 						1/\sqrt{2}\end{pmatrix}
 				\] 
 				が大きさ $1$ の固有ベクトルとなる.</p>
-				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_3.png'></div>
+				<div class="resize"><img src='./images/linear_transform_by_matrix_3.png'></div>
 				<p>図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
 			</div><!-- / #example -->
 
@@ -261,7 +266,7 @@
 				<li>いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが異なってしまう).</li>
 				<li>(実は, 複素数まで認めればこの行列の固有値と固有ベクトルは存在する)</li>
 				</ul>
-				<div class="resizeImage"><img src='./images/linear_transform_by_matrix_4.png'></div>
+				<div class="resize"><img src='./images/linear_transform_by_matrix_4.png'></div>
 			</div><!-- / #example -->
 
 		</section>
@@ -401,7 +406,10 @@
 					\end{pmatrix} \qquad (\alpha\neq n\pi).
 				\]</p>
 				<ul>
-					<li>特性多項式は $\det(\lambda I-A) = \lambda^2 - 2\lambda\cos\alpha + 1$.</li>
+					<li>特性多項式は
+						\[
+							\det(\lambda I-A) = \lambda^2 - 2\lambda\cos\alpha + 1.
+						\]</li>
 					<li>従って ($2$ 次方程式の解の公式を用いて) 
 						\[
 							\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha
@@ -443,16 +451,23 @@
 					\end{pmatrix}.
 				\]</p>
 				<ul>
-					<li>特性多項式は $\det(\lambda I-A) = (\lambda-1)^2$.</li>
+					<li>特性多項式は 
+						\[
+							\det(\lambda I-A) = (\lambda-1)^2.
+						\]</li>
 					<li>従って 
 					\[
 						\det(\lambda I-A)=0\iff \lambda = 1
 					\] 
 					となり, 固有値は $\lambda _ 1= 1$ のみ.</li>
-					<li>$(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
-							0& -1\cr 
-							0 & 0
-						\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}$ を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+					<li>
+						\[
+							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+								0& -1\cr 
+								0 & 0
+							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+						\] 
+						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
 							1\cr 
 							0
 						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
@@ -814,5 +829,6 @@
 <!-- javascript -->
 <script src="./common/create_statement_block.js"></script>
 <script src="./common/function_toggleSidebar.js"></script>
+<script src="./common/import_sidebar.js"></script>
 
 </html>
