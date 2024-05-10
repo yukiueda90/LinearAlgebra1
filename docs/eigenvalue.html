@@ -125,7 +125,7 @@
 			\[
 				A\mathbf{v} _ i = \lambda _ i\mathbf{v} _ i \qquad (i=1,2)
 			\] 
-			とできるならば, $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ に対して
+			が成立するならば, $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ に対して
 			\[
 				A\mathbf{x} = A(a\mathbf{v} _ 1 + b\mathbf{v}_ 2) = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2 = a\lambda _ 1\mathbf{v} _ 1 + b\lambda _ 2\mathbf{v} _ 2
 			\] 
@@ -144,8 +144,14 @@
 				また, これらのペア $(\lambda,\mathbf{v})$ を<b>固有対</b> (<b>eigenpair</b>) と呼ぶことがある.</p>
 			</div><!-- / #definition -->
 
-			<p>固有値及び固有ベクトルは, 実数でなくとも構わない点に注意. 
-			ここでは, (特に $n=2$ の場合に注目し) 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 正方行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の<b>固有値</b>と<b>固有ベクトル</b>の導出について具体的な計算方法を紹介し, またこれらを用いて行列の<b>対角化</b>が可能であることを述べる.</p>
+			<div class="remark">
+				<ul>
+					<li>成分が全て $0$ であるベクトル $\mathbf{0}$ は, $A\mathbf{0} = \lambda\mathbf{0}$ を満たすものの, 固有ベクトルとは認めない.</li>
+					<li>固有値及び固有ベクトルは, 実数でなくとも構わない.</li>
+				</ul>
+			</div><!-- /remark -->
+
+			<p>ここでは, (特に $n=2$ の場合に注目し) 列ベクトル $\mathbf{v}\in\mathbb{C}^{2\times 1}$ に対し, 正方行列 $A\in\mathbb{R}^{2\times 2}$ を左から掛けるという操作の<b>固有値</b>と<b>固有ベクトル</b>の導出について具体的な計算方法を紹介し, またこれらを用いて行列の<b>対角化</b>が可能であることを述べる.</p>
 			
 			<hr>
 
@@ -180,8 +186,8 @@
 				</ul>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_1.png'></div>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_2.png'></div>
-				<p>左の図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 
-				右の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである.</p>
+				<p> $1$ つ目図は, ベクトル $\mathbf{v}\in\mathbb{R}^2$ を矢印で表現し, 対応する $A\mathbf{v}$ もやはり矢印で表している. 
+				$2$ つ目の図は, 半径 $1$ の円周上にある $\mathbf{v}\in\mathbb{R}^2$ を丸で, 対応する $A\mathbf{v}$ を三角でプロットしたものである.</p>
 			</div><!-- / #example -->
 
 			<hr>
@@ -261,7 +267,7 @@
 							r\sin(\theta+\alpha)
 						\end{pmatrix}
 					\] 
-					が得られる. つまり, この行列 $A$ はベクトル $\mathbf{v}$ を $\alpha$ だけ回転させる変換を表している.</li>
+					が得られる. つまり, この行列 $A$ はベクトル $\mathbf{v}$ を $\alpha$ だけ回転する変換を表している.</li>
 				<li>このような行列 $A$ を<b>回転行列</b>と呼ぶ.</li>
 				<li>いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが異なってしまう).</li>
 				<li>(実は, 複素数まで認めればこの行列の固有値と固有ベクトルは存在する)</li>
@@ -618,7 +624,8 @@
 			<div class="remark">
 				<p>このように, 行列の対角化により得られる対角行列は, その対角成分に行列固有値を持つ. 
 				また, 相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることがわかる. 
-				すなわち, $2$ 次正方行列の行列式は固有値たちの積に等しくなる (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).</p>
+				すなわち, $2$ 次正方行列の行列式は固有値たちの積に等しい (固有方程式が重解を持つ場合は, 固有値 $\lambda$ の $2$ 乗に等しくなる).</p>
+				<p>また, 正則でない行列は $0$ を固有値として持つこともわかる.</p>
 			</div><!-- / #remark -->
 
 			<div class="remark">
