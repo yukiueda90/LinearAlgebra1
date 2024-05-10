@@ -53,7 +53,7 @@
             ここでは <b>線型独立</b>という概念を導入し, 行列に対する簡単な応用を紹介する.
             また, 線型独立なベクトルたちの線型結合を用いた計算例を紹介する.</p>
 
-            <p>本来は, より抽象的に<b>ベクトル空間</b>を導入するところから始めるべきであろうが, ここでは簡単のため線型結合および線型独立に限定して紹介することにする.</p>
+            <p>本来は, より抽象的に<b>ベクトル空間</b>を導入するところから始めるべきであろうが, ここでは簡単のため列ベクトルの線型結合および線型独立に限定して紹介することにする.</p>
 
             <div class="definition" data-name="線型結合">
                 ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ に対して,
@@ -297,7 +297,7 @@
                         &\text{$A$ が正則} \cr
                         \iff &\mathbf{a} _ 1,\ \mathbf{a} _ 2, \ \dots, \ \mathbf{a} _ n\text{ が線型独立}\cr 
                         \iff & \left(c _ 1\mathbf{a} _ 1 + c _ 2\mathbf{a} _ 2 + \dots + c _ n\mathbf{a} _ n = \mathbf{0} \iff c _ 1 = c _ 2 = \dots c _ n = 0\right)\cr
-                        \iff & \text{行列 $A$ に対する行基本変形により $\mathbf{0}$ は現れない}
+                        \iff & \text{行列 $A$ に対する行基本変形により $\mathbf{0}$ となる行は現れない}
                     \end{array}
                 \] 
                 となる. つまり, $\operatorname{rank}A \lt n$ となることはないので, $\operatorname{rank}A=n$ と同値になることがわかる.
@@ -361,7 +361,7 @@
                     このことは, 以下のように言い換えることもできる:</p>
 
                 <div class="theorem">
-                    $\mathbf{v} _ 1,\ \mathbf{v} _ 2,\ \dots,\ \mathbf{v} _ n\in\mathbb{R}^{n\times 1}$ が線型独立ならば, 任意のベクトル $\mathbf{v}\in\mathbb{R}^{n\times 1}$ は $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ の線型結合で表すことができる.
+                    $n$ 個の $n\times 1$ 型列ベクトル $\mathbf{v} _ 1,\ \mathbf{v} _ 2,\ \dots,\ \mathbf{v} _ n\in\mathbb{R}^{n\times 1}$ が線型独立ならば, 任意のベクトル $\mathbf{v}\in\mathbb{R}^{n\times 1}$ は $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ n$ の線型結合で表すことができる.
                 </div><!-- / #theorem-->
 
                 <div class="example">
@@ -502,7 +502,7 @@
                                 c _ 2+c _ 3 &= b-a 
                             \end{array}\right.
                         \]
-                        を満たす $c _ 1$, $c _ 2$, $c _ 3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ を成立させる. 
+                        を満たす $c _ 1$, $c _ 2$, $c _ 3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ を満たす. 
                         実際, 
                         \[  
                             \begin{array}{rl}
@@ -521,7 +521,7 @@
                                 &=\mathbf{v}
                             \end{array} 
                         \]
-                        となることが確かめられる.
+                        などと計算することで $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ となることが確かめられる.
                     </p>
                 </div><!-- / #example -->
             </section>
