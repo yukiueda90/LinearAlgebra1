@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線形代数1</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./common/style.css">
+    <!-- mathjax -->
+    <script src="./common/import_mathjax.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- (no header) -->
+    </header>
+
+    <!-- contents -->
+    <div class="wrapper">
+
+    <!-- sidebar -->
+    <div class="side" id="sidebar"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        ☰
+    </div>
+    
+    <!-- main -->
+    <main role="main"><article id="Appendix"><h1>補足: 平面の線形変換</h1>
+        <section id="Appendix-1"><h2>A.1: 表現行列</h2>
+            <p>ベクトル $\mathbf{v}$ をベクトル $\mathbf{w}$ に移す<b>写像</b> $f$ を考える, つまり $\mathbf{w} = f(\mathbf{v})$. 
+                本来であれば, より抽象的にベクトル空間を導入するところから始めるべきであろうが, ここではベクトルとして列ベクトル (およびそれと同一視できる幾何ベクトル) のみを考える. 
+                このとき, 写像 $f$ のことを<b>関数</b>と呼ぶことがある. </p>
+            <p>写像 (関数) $f$ が次の性質を満たすとき, $f$ を<b>線形変換</b> (<b>linear transform</b>) もしくは<b>線形写像</b> (<b>linear mapping</b>), <b>線形関数</b> (<b>linear function</b>) という:</p>
+            <ul>
+                <li>任意の $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ に対し, 
+                    \[
+                        f(\mathbf{v} _ 1+\mathbf{v} _ 2) = f(\mathbf{v} _ 1) + f(\mathbf{v} _ 2).
+                    \]</li>
+                <li>任意のベクトル $\mathbf{v}$ と任意のスカラー値 $\lambda$ に対し, 
+                    \[
+                        f(\lambda\mathbf{v}) = \lambda f(\mathbf{v}).
+                    \]</li>
+            </ul>
+
+            <div class="remark">
+                <p>特に, 任意のベクトルを $\mathbf{0}$ に移す変換 (零写像) は線形変換である. </p>
+                <p>線形変換 $f$ が零写像でないならば
+                \[
+                    f(\mathbf{v}) = \mathbf{0} \iff \mathbf{v} = \mathbf{0}
+                \]
+                が成立する.</p>
+            </div><!-- /remark -->
+
+            <div class="example">
+                <p>いま, &quot;行列を列ベクトルの左から掛ける&quot;という操作はこの性質を満たすので, ある行列 $A$ を用いて
+                \[
+                    f(\mathbf{v}) = A\mathbf{v}
+                \]
+                と表すことができる写像 $f$ は線形変換である.</p>
+            </div><!-- /example -->
+
+            <hr>
+            
+            <p>ところで, 行列を用いて表すことができないような線形変換が存在するかというと, 答えは否である. 
+                つまり, ベクトルをベクトルに移す任意の線形変換 $f$ に対して, 必ず対応する行列 $A$ が存在し $f(\mathbf{v}) = A\mathbf{v}$ が成り立つ.</p>
+            
+            <p>このことを (大雑把にではあるが) 解説する: まず, ベクトル $\mathbf{v}\in\mathbb{R}^m$ と $\mathbf{w}\in\mathbb{R}^n$ は 
+                \[
+                    \mathbf{v} = \begin{pmatrix} 
+                        v _ 1\cr 
+                        v _ 2\cr 
+                        \vdots\cr 
+                        v _ m 
+                    \end{pmatrix} = v _ 1\mathbf{e} _ 1 + v _ 2\mathbf{e} _ 2 + \dots + v _ m\mathbf{e} _ m,\qquad \mathbf{w} = \begin{pmatrix} 
+                        w _ 1\cr 
+                        w _ 2\cr 
+                        \vdots\cr 
+                        w _ n 
+                    \end{pmatrix} = w _ 1\widetilde{\mathbf{e}} _ 1 + w _ 2\widetilde{\mathbf{e}} _ 2 + \dots + w _ n\widetilde{\mathbf{e}} _ n
+                \]
+                と表すことができる, ここで $\mathbf{e} _ j\in\mathbb{R}^m$, $\widetilde{\mathbf{e}} _ i\in\mathbb{R}^n$ は標準基底である.</p>
+            <p>さて, 写像 $f$ の線形性を用いると
+                \[
+                    \begin{array}{rl}
+                        f(\mathbf{v}) &= v _ 1f(\mathbf{e} _ 1) + v _ 2f(\mathbf{e} _ 2) + \dots + v _ mf(\mathbf{e} _ m)\cr
+                        &= \begin{pmatrix}f(\mathbf{e} _ 1)&f(\mathbf{e} _ 2)&\dots&f(\mathbf{e} _ m)\end{pmatrix}\mathbf{v} 
+                    \end{array}
+                \]
+                が成り立つ, ここで $f(\mathbf{e} _ j) \in\mathbb{R}^n$ は列ベクトルであり, これら $m$ 個を横に並べた
+                \[
+                    \begin{pmatrix}f(\mathbf{e} _ 1)&f(\mathbf{e} _ 2)&\dots&f(\mathbf{e} _ m)\end{pmatrix}
+                \]
+                は $n\times m$ 型行列である. 
+                そこで, この行列を $A$ とおくと,
+                \[
+                    f(\mathbf{v}) = \begin{pmatrix}f(\mathbf{e} _ 1)&f(\mathbf{e} _ 2)&\dots&f(\mathbf{e} _ m)\end{pmatrix}\mathbf{v} = A\mathbf{v}
+                \] 
+                が得られるのである. このように, ベクトルをベクトルに移す線形変換は行列と同一視することができる. この行列 $A$ を<b>表現行列</b>という.</p>
+
+            <div class="remark">
+                <p>上では標準基底を用いた場合のみ言及している. 
+                    異なる<b>基底</b>を用いた場合には, 同じ線形変換 $f$ に対する表現行列であっても, 標準基底を用いた場合と異なるものになるが, ここでは深入りしない. </p>
+            </div><!-- /remark -->
+
+            <hr>
+
+            <p>線形変換は, 幾何ベクトルを幾何ベクトルに移す変換とみることで, 図形的な解釈が可能であるが, その前に線形変換の性質をいくつか確認しておく. </p>
+            <p>まず, $2$ つの線形変換 $f$, $g$ に対し, これらの<b>和</b> $h = f+g$ を,
+                \[
+                    h(\mathbf{v}) = f(\mathbf{v}) + g(\mathbf{v})
+                \]
+                と定めると, $h$ も線形変換となる.  
+                また, $f$ の表現行列を $A$, $g$ の表現行列を $B$ とおくと, $h=f+g$ の表現行列は $A+B$ となる.
+            </p>
+            <p>次に, $2$ つの線形変換 $f$, $g$ に対し, これらの<b>合成</b> $h = f\circ g$ を,
+                \[
+                    h(\mathbf{v}) = f(g(\mathbf{v}))
+                \]
+                と定めると, $h$ も線形変換となる. 
+                例えば, ある幾何ベクトルを線形変換 $g$ で変換し, それをさらに線形変換 $f$ で変換することを考えると, これにより構成される変換もまた線形となる, ということを意味している. 
+                また, $f$ の表現行列を $A$, $g$ の表現行列を $B$ とおくと, $h=f\circ g$ の表現行列は $AB$ となる.</p>
+            <p>最後に<b>逆変換</b>を紹介する. 線形変換 $f$ の表現行列は (標準基底を用いた場合) 
+            \[
+                A = \begin{pmatrix}f(\mathbf{e} _ 1)&f(\mathbf{e} _ 2)&\dots&f(\mathbf{e} _ m)\end{pmatrix}
+            \]
+            と表すことができるが, ここで $\mathbf{e} _ 1$, $\mathbf{e} _ 2$, $\dots$, $\mathbf{e} _ m$ は線型独立なので 
+            \[
+                c _ 1\mathbf{e} _ 1 + c _ 2\mathbf{e} _ 2 + \dots + c _ m\mathbf{e} _ m = \mathbf{0} \iff c _ 1=c _ 2=\dots=c _ m
+            \]
+            が成立する. ここで線形変換 $f$ が零写像でないとすると,
+            \[
+                c _ 1f(\mathbf{e} _ 1) + c _ 2f(\mathbf{e} _ 2) + \dots + c _ mf(\mathbf{e} _ m) = \mathbf{0} \iff c _ 1=c _ 2=\dots=c _ m
+            \]
+            となるため, $f(\mathbf{e} _ 1)$, $f(\mathbf{e} _ 2)$, $\dots$, $f(\mathbf{e} _ m)$ も線型独立である. 
+            従って, もしも $n=m$ ならば正方行列 $A$ は正則になる.
+            そのため, $g(\mathbf{v}) = A^{-1}\mathbf{v}$ という線形変換は, 
+            \[
+                f(g(\mathbf{v})) = \mathbf{v},\qquad g(f(\mathbf{v})) = \mathbf{v}
+            \]
+            となる. このような線形変換 $g$ を $f$ の逆変換という. 上の構成から, $f$ があるベクトルを同じサイズのベクトルに移す線形変換であれば, 必ず逆変換が存在する. 
+            </p>
+
+        </section>
+
+        <hr>
+
+        <section id="Appendix-2"><h2>A.2: 部分集合を用いた図形の表現</h2>
+            <p>以降, 簡単のため $2\times 1$ 型の列ベクトル $\mathbf{x}$ に対する変換のみを考えることにする. 
+                いま, このベクトル $\mathbf{x}$ は, $xy$ 平面上の点と同一視することができる.
+                これを用いると, $xy$ 平面上の図形は, ある性質を満たすベクトル $\mathbf{x}$ たちの<b>集合</b>として表すことができる. </p>
+            
+            <div class="definition">
+                <ul>
+                    <li>ものの集まりを<b>集合</b> (<b>set</b>) といい, 集合に含まれる &quot;もの&quot; のことを<b>元</b> (<b>element</b>) もしくは要素という. </li>
+                    <li>ある集合 $A$ が $a _ 1$, $a _ 2$, $\dots$, $a _ n$ という $n$ 個の元から構成される場合, 
+                        \[
+                            A = \lbrace a _ 1, a _ 2, \dots, a _ n\rbrace
+                        \] 
+                        と表記する.</li>
+                    <li>集合 $A$ が, ある特定の性質を満たすものを全て集めた集合であるならば,
+                        \[
+                            A = \lbrace a \mid \text{($a$ が満たす条件)} \rbrace \quad \text{もしくは} \quad A = \lbrace a : \text{($a$ が満たす条件)} \rbrace
+                        \] 
+                        と表記する.</li>
+                    <li>$a$ が集合 $A$ の元であるなら $a\in A$ と表記し, そうでないなら $a\not\in A$ と表記する.</li>
+                </ul>
+            </div><!-- /definition -->
+
+            <div class="example">
+                <ul>
+                    <li>実数全体のことを $\mathbb{R}$ と表記する. 
+                        $a$ が実数ならば $a\in \mathbb{R}$ であり, $a$ が実数でないならば (例えば $a$ が純虚数のとき) $a\not\in\mathbb{R}$ である.</li>
+                    <li>$A$ を偶数全体とすると, 例えば $A = \lbrace a\mid a\text{ は偶数}\rbrace$ などと表記できる.</li>
+                    <li>実数を $2$ つ並べた組の全体を $\mathbb{R}^2$ と表記する. 
+                        $2\times 1$ 型の列ベクトル $\mathbf{x}\in\mathbb{R}^{2\times 1}$ は, $\mathbf{R}^2$ の元と同一視することができるため, $\mathbf{x}\in\mathbb{R}^2$ と表記することがある. 
+                        また, $\mathbf{x}$ と同一視することができる, 幾何ベクトルや $xy$ 平面上の点もやはり $\mathbb{R}^2$ の元と同一視することができる.
+                    </li>
+                </ul>
+            </div><!-- /example -->
+
+            <div class="definition">
+                <ul>
+                    <li>集合 $B$ の全ての元が, 集合 $A$ の元でもあるならば, $B$ は $A$ の**部分集合** (**subset**) であるといい, $B\subset A$ と表記する.</li>
+                    <li>特に集合 $B$ が, 集合 $A$ の元のうち特定の性質を満たすもののみ集めたものであるとき, 
+                        \[
+                            B= \lbrace a\in A\mid \text{($a$ が満たす条件)}\rbrace\quad\text{もしくは}\quad B= \lbrace a\in A: \text{($a$ が満たす条件)}\rbrace
+                        \] 
+                        などと表記する.</li>
+                    <li>$2$ つの集合 $A$, $B$ に対して, $A\subset B$ かつ $B\subset A$ であるとき, 集合 $A$ と $B$ は等しいといい, $A=B$ と表記する.</li>
+                </ul>
+            </div><!-- /definition -->
+
+            <div class="remark">
+                $2$ つの集合 $A$, $B$ に対して, $B\subset A$ の定義は 
+                \[
+                    a\in B\implies a\in A
+                \] を意味している.
+            </div><!-- /remark -->
+
+            <div class="example">
+                <ul>
+                    <li>複素数全体のことを $\mathbb{C}$ と表記する. 実数は特に複素数であるため, 
+                        \[
+                            \mathbb{R}\subset \mathbb{C}
+                        \] 
+                        である.</li>
+                    <li>$A$ を非負の実数全体とすると, $A$ の全ての元は特に実数であるので$A\subset\mathbb{R}$ である. 
+                        また, このとき例えば 
+                        \[ 
+                            A=\lbrace a\in\mathbb{R}\mid a\ge 0\rbrace
+                        \] 
+                        と表記できる.</li>
+                    <li>$xy$ 平面上の半径 $1$ の円の内部は
+                        \[
+                            U = \lbrace(x,y)\in\mathbb{R}^2 \mid x^2+y^2 \lt 1\rbrace
+                        \]
+                        などと表記できる.</li>
+
+                </ul>
+            </div>
+
+        </section>
+
+        <section id="Appendix-3"><h2>A.3: アフィン変換</h2>
+            
+            <div class="definition" data-name="アフィン変換">
+
+            </div><!-- /definition -->
+            <p>
+            </p>
+
+        
+        </section>
+        
+    </article></main>
+    </div>
+</body>
+
+<!-- javascript -->
+<script src="./common/create_statement_block.js"></script>
+<script src="./common/function_toggleSidebar.js"></script>
+<script src="./common/import_sidebar.js"></script>
+
+</html>
