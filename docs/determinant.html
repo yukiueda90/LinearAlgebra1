@@ -1167,9 +1167,43 @@
 				</ul>
 			</div><!-- / #example-->
 
+			次をクラメルの公式ということもある:
+			<div class="theorem" data-name="クラメルの公式">
+				正則行列 $A$ に対し, 連立 $1$ 次方程式
+				\[
+					A\mathbf{x} = \mathbf{b}
+				\]
+				の (ただ一つの) 解 $\mathbf{x}$ の各成分 $x_i$ は次で与えられる:
+				\[
+					x_i = \dfrac{\det A_i}{\det A},
+				\]
+				ここで, $A_i$ は行列 $A$ の第 $i$ 列を $\mathbf{b}$ に置き換えた行列である.
+			</div><!-- /theorem -->
+
+			<div class="proof">
+				上の結果より,
+				\[
+					\mathbf{x} = A^{-1}\mathbf{b} = \dfrac{1}{\det A}(\operatorname{adj}A)\mathbf{b}
+				\]
+				である. ここで, 余因子行列 $\operatorname{adj}A$ の $ij$ 成分は, $n$ 次正方行列 $A$ の $ji$ 余因子 $\widetilde{a}_{ji}$ なので, 右辺の行列積を計算することで
+				\[
+					x_i = \dfrac{1}{\det A}\displaystyle\sum_{j=1}^n\widetilde{a}_{ji}b_j
+				\]
+				が得られる. 一方で, $A$ の第 $i$ 列を $\mathbf{b}$ に置き換えた行列 $A_i$ の余因子展開より
+				\[
+					\det A_i = \sum_{j=1}^n b_{j}\widetilde{a}_{ji}
+				\]
+				である. 
+				上 $2$ つの式を組み合わせることで,
+				\[
+					x_i = \dfrac{\det A_i}{\det A}
+				\]
+				が示される.
+			</div><!-- /proof -->
+
 			<div class="remark">
 				<p>クラメルの公式は, 行列の成分に数値ではなく記号が含まれている場合などに有用である. 
-				一方で, 具体的な数値を成分とする行列に対する逆行列の計算方法として実用的とは言い難い.</p>
+				一方で, 具体的な数値を成分とする行列に対する逆行列や連立 $1$ 次方程式の計算方法として実用的とは言い難い.</p>
 			</div><!-- / #remark -->
 
 			
