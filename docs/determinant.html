@@ -1087,9 +1087,60 @@
 					</ul>
 			</div><!-- / #proof -->
 
+			<div class="example">
+				\[
+					A = (a_{ij}) = \begin{pmatrix} 
+						a&b&c \cr
+						d&e&f \cr
+						g&h&i 
+					\end{pmatrix}.
+				\]
+				<ul>
+					<li>このとき, $\det A = aei+bfg+cdh-ceg-bdi-afh$ であった.</li>
+					<li>これを余因子展開により確かめてみる: 例えば第 $1$ 列に注目すると
+						\[
+							\det A = \displaystyle\sum_{i=1}^3 a_{i1}\widetilde{a}_{i1}
+						\]
+						である. これを用いて計算してみると,
+						\[
+							\begin{array}{rl}
+								\det A &= a (-1)^{1+1}\det\begin{pmatrix} 
+									\square & \square & \square \cr
+									\square & e & f \cr
+									\square & h & i
+								\end{pmatrix} + d (-1)^{2+1}\det\begin{pmatrix} 
+									\square & b & c \cr
+									\square & \square & \square \cr
+									\square & h & i
+								\end{pmatrix} + g(-1)^{3+1}\det\begin{pmatrix} 
+									\square & b & c \cr
+									\square & e & f \cr
+									\square & \square & \square 
+								\end{pmatrix} \cr
+								&= a\det\begin{pmatrix} 
+									e&f \cr 
+									h&i 
+								\end{pmatrix} - d\det\begin{pmatrix} 
+									b&c \cr 
+									h&i 
+								\end{pmatrix} + g\det\begin{pmatrix} 
+									b&c \cr 
+									e&f 
+								\end{pmatrix} \cr
+								&= a(ei-fh) - d(bi-ch) + g(bf-ce) \cr
+								&= aei + bfg + cdh - ceg - bdi - afh
+							\end{array}
+						\]
+						となり, 確かに $\det A$ が得られる.
+					</li>
+				</ul>
+			</div><!-- /example -->
+
 			<div class="remark">
-				<p>この定理は, 各余因子が簡単に計算できる場合には有用であるものの, この定理よりもむしろ先の補題の方が使い勝手が良い場面も多いだろう.</p>
-			</div>
+				<p>この定理は, 各余因子が簡単に計算できる場合や, 行列の成分に文字が含まれている場合には有用である. 
+					一方で, この定理よりもむしろ先の補題の方が使い勝手が良い場面も多いだろう.
+				</p>
+			</div><!-- /remark -->
 
 			<hr>
 
