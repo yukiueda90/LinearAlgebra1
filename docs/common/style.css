@@ -140,6 +140,7 @@ hr {
 
 /* resize */
 .resize img {
+    float:left;
     max-width:100%;
     height:auto;
 }
