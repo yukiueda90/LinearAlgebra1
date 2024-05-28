@@ -66,21 +66,16 @@
             <p>ところで, 行列を用いて表すことができないような線形変換が存在するかというと, 答えは否である. 
                 つまり, ベクトルをベクトルに移す任意の線形変換 $f$ に対して, 必ず対応する行列 $A$ が存在し $f(\mathbf{v}) = A\mathbf{v}$ が成り立つ.</p>
             
-            <p>このことを (大雑把にではあるが) 解説する: まず, ベクトル $\mathbf{v}\in\mathbb{R}^m$ と $\mathbf{w}\in\mathbb{R}^n$ は 
+            <p>このことを (大雑把にではあるが) 解説する: まず, ベクトル $\mathbf{v}\in\mathbb{R}^m$ は 
                 \[
                     \mathbf{v} = \begin{pmatrix} 
                         v _ 1\cr 
                         v _ 2\cr 
                         \vdots\cr 
                         v _ m 
-                    \end{pmatrix} = v _ 1\mathbf{e} _ 1 + v _ 2\mathbf{e} _ 2 + \dots + v _ m\mathbf{e} _ m,\qquad \mathbf{w} = \begin{pmatrix} 
-                        w _ 1\cr 
-                        w _ 2\cr 
-                        \vdots\cr 
-                        w _ n 
-                    \end{pmatrix} = w _ 1\widetilde{\mathbf{e}} _ 1 + w _ 2\widetilde{\mathbf{e}} _ 2 + \dots + w _ n\widetilde{\mathbf{e}} _ n
+                    \end{pmatrix} = v _ 1\mathbf{e} _ 1 + v _ 2\mathbf{e} _ 2 + \dots + v _ m\mathbf{e} _ m
                 \]
-                と表すことができる, ここで $\mathbf{e} _ j\in\mathbb{R}^m$, $\widetilde{\mathbf{e}} _ i\in\mathbb{R}^n$ は標準基底である.</p>
+                と表すことができる, ここで $\mathbf{e} _ j\in\mathbb{R}^m$ は標準基底である.</p>
             <p>さて, 写像 $f$ の線形性を用いると
                 \[
                     \begin{array}{rl}
@@ -127,11 +122,15 @@
             \]
             と表すことができるが, ここで $\mathbf{e} _ 1$, $\mathbf{e} _ 2$, $\dots$, $\mathbf{e} _ m$ は線型独立なので 
             \[
-                c _ 1\mathbf{e} _ 1 + c _ 2\mathbf{e} _ 2 + \dots + c _ m\mathbf{e} _ m = \mathbf{0} \iff c _ 1=c _ 2=\dots=c _ m
+                c _ 1\mathbf{e} _ 1 + c _ 2\mathbf{e} _ 2 + \dots + c _ m\mathbf{e} _ m = \mathbf{0} \iff c _ 1=c _ 2=\dots=c _ m = 0
             \]
             が成立する. ここで線形変換 $f$ が零写像でないとすると,
             \[
-                c _ 1f(\mathbf{e} _ 1) + c _ 2f(\mathbf{e} _ 2) + \dots + c _ mf(\mathbf{e} _ m) = \mathbf{0} \iff c _ 1=c _ 2=\dots=c _ m
+                \begin{array}{rl}
+                    c _ 1f(\mathbf{e} _ 1) + c _ 2f(\mathbf{e} _ 2) + \dots + c _ mf(\mathbf{e} _ m) = \mathbf{0} &\iff f(c _ 1\mathbf{e} _ 1 + c _ 2\mathbf{e} _ 2 + \dots + c _ m\mathbf{e} _ m) = \mathbf{0} \cr
+                    &\iff c _ 1\mathbf{e} _ 1 + c _ 2\mathbf{e} _ 2 + \dots + c _ m\mathbf{e} _ m = \mathbf{0} \cr
+                    &\iff c _ 1=c _ 2=\dots=c _ m=0
+                \end{array}
             \]
             となるため, $f(\mathbf{e} _ 1)$, $f(\mathbf{e} _ 2)$, $\dots$, $f(\mathbf{e} _ m)$ も線型独立である. 
             従って, もしも $n=m$ ならば正方行列 $A$ は正則になる.
@@ -139,7 +138,7 @@
             \[
                 f(g(\mathbf{v})) = \mathbf{v},\qquad g(f(\mathbf{v})) = \mathbf{v}
             \]
-            となる. このような線形変換 $g$ を $f$ の逆変換という. 上の構成から, $f$ があるベクトルを同じサイズのベクトルに移す線形変換であれば, 必ず逆変換が存在する. 
+            を満たす. このような線形変換 $g$ を $f$ の逆変換という. 上の構成から, $f$ があるベクトルを同じサイズのベクトルに移す, 零写像でない線形変換であれば, 必ず逆変換が存在する. 
             </p>
 
         </section>
@@ -182,7 +181,7 @@
 
             <div class="definition">
                 <ul>
-                    <li>集合 $B$ の全ての元が, 集合 $A$ の元でもあるならば, $B$ は $A$ の**部分集合** (**subset**) であるといい, $B\subset A$ と表記する.</li>
+                    <li>集合 $B$ の全ての元が, 集合 $A$ の元でもあるならば, $B$ は $A$ の<b>部分集合</b> (<b>subset</b>) であるといい, $B\subset A$ と表記する.</li>
                     <li>特に集合 $B$ が, 集合 $A$ の元のうち特定の性質を満たすもののみ集めたものであるとき, 
                         \[
                             B= \lbrace a\in A\mid \text{($a$ が満たす条件)}\rbrace\quad\text{もしくは}\quad B= \lbrace a\in A: \text{($a$ が満たす条件)}\rbrace
@@ -219,19 +218,168 @@
                         などと表記できる.</li>
 
                 </ul>
-            </div>
+            </div><!-- /example -->
+
+            <p>上の例にもあるように, $xy$ 平面上の図形は $\mathbb{R}^2$ の部分集合として記述することが可能である.
+                特に, 図形に対する線形変換を考える際には, しばしば以下のような図形を用いる:
+                \[
+                    \Delta^n = \left\{(x_1,\dots, x_n)\in\mathbb{R}^n \mid x_1,\dots,x_n>0,\ \displaystyle\sum_{i=1}^nx_i < 1\right\}.
+                \]
+                $n=2$ の場合は, $\Delta^2$ は $xy$ 平面上の $3$ つの直線 $x=0$, $y=0$, $x+y=1$ で囲まれる部分であり, つまり 
+                \[
+                    P_0 = (0,0),\quad P_1 = (1,0),\quad P_2=(0,1)
+                \]
+                を頂点とする直角 $2$ 等辺三角形の内部となる. このような図形 $\Delta^n\subset\mathbb{R}^n$ を<b>標準単体</b> (<b>standard simplex</b>), <b>単位単体</b> (<b>unit simplex</b>) もしくは単に<b>単体</b> (<b>simplex</b>) という.
+            </p>
 
         </section>
 
         <section id="Appendix-3"><h2>A.3: アフィン変換</h2>
             
             <div class="definition" data-name="アフィン変換">
-
+                ベクトル $\mathbf{x}\in\mathbb{R}^n$ に対して, 行列 $A\in\mathbb{R}^{n\times n}$ とベクトル $\mathbf{b}\in\mathbb{R}^n$ を用いて
+                \[
+                    f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}
+                \]
+                と表される写像 $f$ を<b>アフィン変換</b> (<b>affine transform</b>) という.
             </div><!-- /definition -->
             <p>
+                アフィン変換は $xy$ 平面上のベクトル $\mathbf{x}$ を, やはり $xy$ 平面上のベクトル $f(\mathbf{x})$ に移す写像である.
+                そこで, ある図形を表す集合 $K\subset\mathbb{R}^2$ について, $\mathbf{x}\in K$ を アフィン変換により移したものを考えてみる:
+                \[
+                    K' = \{f(\mathbf{x})\in\mathbb{R}^2 \mid \mathbf{x}\in K\}
+                \]
+                この $K'$ も $xy$ 平面上の図形を表しているとみなせるため, これによりアフィン変換は『図形を図形に移す』とみなすことにする.
+                このとき, 以下の変形は全てアフィン変換により表現することができる. 
+                <ul>
+                    <li>回転: 
+                        \[
+                            \begin{pmatrix} 
+                                \cos\varphi & -\sin\varphi \cr
+                                \sin\varphi & \cos\varphi 
+                            \end{pmatrix}\begin{pmatrix} 
+                                r\cos\theta\cr
+                                r\sin\theta 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                r\cos(\theta+\varphi) \cr 
+                                r\sin(\theta+\varphi) 
+                            \end{pmatrix}.
+                        \]
+                    </li>
+                    <li>拡大, 縮小:
+                        \[
+                            \begin{pmatrix} 
+                                \alpha & 0 \cr 
+                                0 & \beta 
+                            \end{pmatrix}\begin{pmatrix} 
+                                x \cr 
+                                y 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                \alpha x \cr 
+                                \beta y 
+                            \end{pmatrix}.
+                        \]
+                    </li>
+                    <li>せん断 (例えば長方形を平行四辺形にするように, 傾きを加える変換):
+                        \[
+                            \begin{pmatrix} 
+                                1 & \gamma \cr 
+                                0 & 1 
+                            \end{pmatrix}\begin{pmatrix} 
+                                x \cr 
+                                y 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                x + \gamma y \cr 
+                                y 
+                            \end{pmatrix}, \text{ もしくは }\begin{pmatrix} 
+                                1 & 0 \cr 
+                                \gamma & 1 
+                            \end{pmatrix}\begin{pmatrix} 
+                                x \cr 
+                                y 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                x \cr 
+                                \gamma x + y 
+                            \end{pmatrix}
+                            \]
+                    </li>
+                    <li>並行移動: 
+                        \[
+                            \begin{pmatrix} 
+                                x \cr 
+                                y 
+                            \end{pmatrix}\begin{pmatrix} 
+                                b_1 \cr 
+                                b_2 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                x+b_1 \cr 
+                                y+b_2 
+                            \end{pmatrix}.
+                        \]
+                    </li>
+                </ul>
+                単体 $\Delta^2$ をアフィン変換により変形したものを以下に図示する: それぞれ点線で描かれた三角形が変形前の単体を表しており, 実線で描かれたものが変形後の図形である.
             </p>
+            
+            <div class="resize"><img src='./images/affine_rotation.png'></div>
+            <div class="resize"><img src='./images/affine_scaling.png'></div>
+            <div class="resize"><img src='./images/affine_shearing.png'></div>
+            <div class="resize"><img src='./images/affine_parallel.png'></div>
 
-        
+            <p style="clear:both">
+                いま, 簡単のため $n=2$ の場合に
+                \[
+                    \mathbf{x} = \begin{pmatrix} 
+                        x_1 \cr 
+                        x_2 
+                    \end{pmatrix},\quad f(\mathbf{x}) = \begin{pmatrix} 
+                        f_1 \cr 
+                        f_2 
+                    \end{pmatrix},\quad A = \begin{pmatrix} 
+                        a_{11} & a_{12} \cr 
+                        a_{21} & a_{22} 
+                    \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+                        b_1 \cr 
+                        b_2 
+                    \end{pmatrix}
+                \]
+                と表記する. 
+                このとき, アフィン変換は
+                \[
+                    \begin{pmatrix}
+                        f_1 \cr
+                        f_2 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        a_{11} & a_{12} \cr 
+                        a_{21} & a_{22} 
+                    \end{pmatrix}\begin{pmatrix} 
+                        x_1 \cr 
+                        x_2 
+                    \end{pmatrix} + \begin{pmatrix} 
+                        b_1 \cr
+                        b_2 
+                    \end{pmatrix}
+                \]
+                と表されるが, これは以下と同値となる:
+                \[
+                    \begin{pmatrix} 
+                        f_1 \cr 
+                        f_2 \cr 
+                        1 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        a_{11} & a_{12} & b_1 \cr 
+                        a_{21} & a_{22} & b_2 \cr 
+                        0 & 0 & 1 
+                    \end{pmatrix}\begin{pmatrix} 
+                        x_1 \cr
+                        x_2 \cr 
+                        1 
+                    \end{pmatrix}.
+                \]
+                つまり, アフィン変換 $f$ は一般には線形ではないものの, 行列の形で表現することができる. 
+                従って, アフィン変換の合成は, 対応する行列の積を計算することにより表現することができる.
+                画像処理などに用いられる複雑な変形であっても, それがアフィン変換の合成により表すことができるならば, 行列の計算に帰着させることができるのである.
+            </p>
         </section>
         
     </article></main>
