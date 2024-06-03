@@ -579,15 +579,15 @@
 				と表していたが, これらは異なる操作であることに注意.</p>	
 			</div><!-- / #remark -->
 				
-			<p>行列の対角化について, ここでは行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの固有値が得られる場合のみ考えることにする. 
+			<p>行列の対角化について, ここでは行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値が得られる場合のみ考えることにする. 
 				このとき, 次が成立する:</p>
 
 			<div class="theorem">
-				行列 $A\in\mathbb{R}^{2\times 2}$ に $2$ つの異なる固有値が存在するならば, 対応する固有ベクトルは線型独立である.
+				行列 $A\in\mathbb{R}^{2\times 2}$ に $2$ つの異なる実数の固有値が存在するならば, 対応する固有ベクトルは線型独立である.
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ に対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
+				行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ に対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
 				いま, $\mathbf{v} _ 1$ と $\mathbf{v} _ 2$ が線型独立でないならば, $\mathbf{v} _ 2 = c\mathbf{v} _ 2$ を満たす $c\neq0$ が存在する. 
 				従って,
 				\[
@@ -598,11 +598,11 @@
 
 			<div class="remark">
 				<p>数学的帰納法を用いることで, 以下を証明することもできる:</p>
-				<p>行列 $A\in\mathbb{R}^{n\times n}$ に $n$ 個の異なる固有値が存在するならば, 対応する固有ベクトルは線型独立である.</p>
+				<p>行列 $A\in\mathbb{R}^{n\times n}$ に $n$ 個の異なる実数の固有値が存在するならば, 対応する固有ベクトルは線型独立である.</p>
 			</div><!-- / #remark -->
 
 			<p>このことを用いて, 対角化の具体的な計算手順を紹介する.</p>
-			<p>まず, 行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ に対し, 対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ とする (固有ベクトルの大きさは問わない). 
+			<p>まず, 行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ に対し, 対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^2$ とする (固有ベクトルの大きさは問わない). 
 			このとき, 列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^{2\times 1}$ を横に並べることで
 			\[
 				P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix}\in\mathbb{R}^{2\times 2}
@@ -640,7 +640,7 @@
 			<p>この結果を, 定理として参照できるようにしておく.</p>
 
 			<div class="theorem" data-name="$2$ 次正方行列の対角化">
-				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2$ を持つとき, 対応する固有ベクトルを横に並べた行列 $P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf {v} _ 2\end{pmatrix}$ を用いて
+				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ を持つとき, 対応する固有ベクトルを横に並べた行列 $P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf {v} _ 2\end{pmatrix}$ を用いて
 				\[
 					P^{-1}AP = P^{-1}P\begin{pmatrix}
 						\lambda _ 1&0\cr 
@@ -661,9 +661,9 @@
 			<div class="remark">
 				<p>どのような正方行列でも対角化可能であるとは限らない. 実際, 上の議論から次の成立がわかる:
 				\[
-					A \text{ の固有値が全て異なる} \implies A \text{ の固有ベクトルは線型独立} \iff A\text{ は対角化可能}. 
+					A \text{ の固有値が全て実数で全て異なる} \implies A \text{ の固有ベクトルは実ベクトルで線型独立} \iff A\text{ は対角化可能}. 
 				\]
-				つまり, 固有値が全て異なる行列は対角化可能であるが, 一方で固有方程式が重解を持つような行列の場合 (つまり行列 $A$ が重複する固有値を持つ場合), 対角化できないことがある.</p>	
+				つまり, 固有方程式が重解を持つような行列の場合 (つまり行列 $A$ が重複する固有値を持つ場合), 対角化できないことがある.</p>	
 			</div><!-- / #remark -->
 
 			<div class="example">
