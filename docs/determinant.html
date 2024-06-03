@@ -843,7 +843,7 @@
 							(-1)^2 \det\begin{pmatrix}
 								5&6\cr 
 								8&9
-							\end{pmatrix} = 93.
+							\end{pmatrix} = -3.
 						\]</li>
 					<li>この行列の第 $(2,2)$ 小行列式は 
 						\[
@@ -861,7 +861,7 @@
 							(-1)^4 \det\begin{pmatrix}
 								1&3\cr 
 								7&9
-							\end{pmatrix} = 30.
+							\end{pmatrix} = -12.
 						\]</li>
 				</ul>				
 			</div><!-- / # example -->
@@ -884,12 +884,22 @@
 							a _ {11} & a _ {12} & \dots & a _ {1n} \cr
 							0 & a _ {22} & \dots & a _ {2n} \cr
 							\vdots & \vdots & \ddots & \vdots \cr
-							0 & a _ {n2} & \dots & a _ {nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11}$.</li>
+							0 & a _ {n2} & \dots & a _ {nn}
+						\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11} = a_{11}\det\begin{pmatrix} 
+							a_{22} & \dots & a_{2n} \cr 
+							\vdots & \ddots & \vdots \cr 
+							a_{n2} & \dots & a_{nn}
+						\end{pmatrix}$.</li>
 					<li>$A=\begin{pmatrix}
 							a _ {11} & 0 & \dots & 0 \cr
 							a _ {21} & a _ {22} & \dots & a _ {2n} \cr
 							\vdots & \vdots & \ddots & \vdots \cr
-							a _ {n1} & a _ {n2} & \dots & a_{nn}\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11}$.</li>
+							a _ {n1} & a _ {n2} & \dots & a_{nn}
+						\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11} = a_{11}\det\begin{pmatrix} 
+							a_{22} & \dots & a_{2n} \cr 
+							\vdots & \ddots & \vdots \cr 
+							a_{n2} & \dots & a_{nn}
+						\end{pmatrix}$.</li>
 					</ul>		
 			</div><!-- / #lemma -->
 
@@ -969,7 +979,7 @@
 						3 & -2 & -2 & 1
 					\end{pmatrix}.
 				\] 
-				第 $i$ 行 (もしくは列) に第 $j$ 行 (もしくは列) の $\lambda$ 倍を加える, という基本変形も用いると, 例えば
+				第 $i$ 行に第 $j$ 行の (もしくは第 $i$ 列に第 $j$ 列の) $\lambda$ 倍を加える, という基本変形で行列式が変わらないことも用いると, 例えば
 				\[
 					\begin{array}{rll}
 						\det A &= \det \begin{pmatrix}
