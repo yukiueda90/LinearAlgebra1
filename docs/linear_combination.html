@@ -436,7 +436,8 @@
                     </p>
                 </div><!-- / #example -->
 
-                <p>一方で, $\mathbf{v} _ 1$, $\mathbf{v} _ 2$, $\dots$, $\mathbf{v} _ 3$ が線型独立でないならば, $\mathbf{v}$ は線型結合で表せないか, もしくは複数の表現が存在する:</p>
+                <p>一方で, 行列 $V$ が正則行列でないならば, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ の解は存在しないか, もしくはある条件を満たす $\mathbf{c}$ 全てが解となるのだった. 
+                    このことは, $\mathbf{v}$ が $\mathbf{v} _ 1,\ \mathbf{v} _ 2,\ \dots$ の線型結合で表せないか, もしくは複数の表現が存在することに対応する:</p>
 
                 <div class="example">
                     <p>\[
@@ -524,6 +525,285 @@
                         などと計算することで $\mathbf{v} = c _ 1\mathbf{v} _ 1+c _ 2\mathbf{v} _ 2 + c _ 3\mathbf{v} _ 3$ となることが確かめられる.
                     </p>
                 </div><!-- / #example -->
+
+                <hr>
+
+                <p>上に挙げた例では, 
+                    \[
+                        \begin{pmatrix}
+                            1 & 0 & 1 \cr 
+                            1 & 1 & 2 \cr 
+                            0 & 1 & 1 
+                        \end{pmatrix}\begin{pmatrix} 
+                            c_1 \cr 
+                            c_2 \cr 
+                            c_3 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            a \cr 
+                            b \cr 
+                            c
+                        \end{pmatrix} 
+                    \]
+                    という連立 $1$ 次方程式を考えた際に, もしも $a-b+c=0$ ならば, 
+                    \[
+                        \left\lbrace\begin{array}{rl}
+                            c _ 1+c _ 3 &= a\cr
+                            c _ 2+c _ 3 &= b-a 
+                            \end{array}\right.
+                    \]
+                    を満たす $c _ 1$, $c _ 2$, $c _ 3$ は全て連立 $1$ 次方程式の解であること, 書き方を変えると 
+                    \[
+                        \mathbf{c} = \begin{pmatrix} 
+                            a \cr 
+                            b-a \cr 
+                            0 
+                        \end{pmatrix} + c_3\begin{pmatrix} 
+                            -1 \cr 
+                            -1 \cr 
+                            1 
+                        \end{pmatrix} \quad (c_3\in\mathbb{R}\mbox{ は任意})
+                    \]
+                    と表されるすべてのベクトル $\mathbf{c}$ が, $V\mathbf{c} = \mathbf{v}$ の解となることを意味している.
+                    このように, 連立 $1$ 次方程式の解が無数に存在する場合 (ある条件を満たすベクトル全てが解となる場合) には, 解をベクトルの足し合わせや線型結合を用いて表すことができる.
+                    このことを説明するために, 連立 $1$ 次方程式の解法をもう一度考えてみよう.</p>
+
+                <div class="example">
+                    <p>連立 $1$ 次方程式 
+                        \[
+                            \begin{pmatrix} 
+                                1 & 0 & 0 & 1 \cr 
+                                2 & 0 & 3 & 5 
+                            \end{pmatrix}\begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                0 \cr 
+                                0 \cr 
+                            \end{pmatrix} 
+                        \]
+                        を考える. まず, 左辺の行列は正則ではない (正方行列ですらない) ため, 拡大行列 
+                        \[
+                            \left(\begin{array}{cccc:c} 
+                                1 & 0 & 0 & 1 & 0 \cr 
+                                2 & 0 & 3 & 5 & 0 
+                            \end{array}\right)
+                        \] に対する掃き出し法 (ガウスの消去法) で左側を単位行列にすることはできない. 
+                        ただし, 行簡約階段形にすることはできる:
+                        \[
+                            \left(\begin{array}{cccc:c}
+                                1 & 0 & 0 & 1 & 0 \cr 
+                                0 & 0 & 1 & 1 & 0 
+                            \end{array}\right)
+                        \]
+                        この式は, 
+                        \[
+                            \left\{\begin{array}{rl} 
+                                x_1 + x_4 &= 0, \cr 
+                                x_3 + x_4 &= 0 
+                            \end{array}\right.
+                        \]
+                        を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ が解となることを意味している.</p>
+                    <p>ここで, 解を
+                        \[
+                            \begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = s\mathbf{v}_1 + t\mathbf{v}_2 \quad(s,t\in\mathbb{R}\mbox{ は任意})
+                        \]
+                        という形で表すことを考える. 
+                        例えば, 上の行簡約階段形において主成分に対応する成分 $x_1$, $x_3$ 以外を $s$, $t\in\mathbb{R}$ とおいてみる:
+                        \[
+                            x_2 = s,\qquad x_4 = t.
+                        \]
+                        このとき, $s$, $t$ を右辺に移行することで (実際には $s$ は現れないが), 
+                        \[
+                            \left\{\begin{array}{rl} 
+                                x_1 &= -t, \cr 
+                                x_3 &= -t 
+                            \end{array}\right.
+                        \]
+                        という式が得られる. これと $x_2=s$, $x_4 = t$ とを合わせると
+                        \[
+                            \begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = s\begin{pmatrix} 
+                                0 \cr 
+                                1 \cr 
+                                0 \cr 
+                                0 
+                            \end{pmatrix} + t\begin{pmatrix} 
+                                -1 \cr 
+                                0 \cr 
+                                -1 \cr 
+                                1 
+                            \end{pmatrix} \quad (s,t\in\mathbb{R}\mbox{ は任意})
+                        \]
+                        という表示を得ることができる. つまり, $2$ つのベクトル
+                        \[
+                            \begin{pmatrix} 
+                                0 \cr 
+                                1 \cr 
+                                0 \cr 
+                                0 
+                            \end{pmatrix},\quad \begin{pmatrix} 
+                                -1 \cr 
+                                0 \cr 
+                                -1 \cr 
+                                1 
+                            \end{pmatrix}
+                        \]
+                        の線型結合で表される全てのベクトルが, この問題の解となることがわかる.
+                    </p>
+                </div><!-- /example -->
+
+                <div class="remark">
+                    上のように, 連立 $1$ 次方程式の解を線型結合の形で表す際には, 拡大行列に対する行基本変形により得られる行簡約階段形について, 主成分に対応するもの以外を変数だと思って式変形することを推奨する. 
+                    ただし, そうしなければならないというわけではない. 
+                </div><!-- /remark -->
+
+                <div class="example">
+                    <p>連立 $1$ 次方程式 
+                        \[
+                            \begin{pmatrix} 
+                                1 & 1 & 3 & 3 \cr 
+                                1 & 2 & 5 & 4 
+                            \end{pmatrix}\begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                0 \cr 
+                                0 \cr 
+                            \end{pmatrix} 
+                        \]
+                        を考える. 拡大行列 
+                        \[
+                            \left(\begin{array}{cccc:c} 
+                                1 & 1 & 3 & 3 & 0 \cr 
+                                1 & 2 & 5 & 4 & 0 
+                            \end{array}\right)
+                        \] 
+                        を行基本変形で行簡約階段形にすると,
+                        \[
+                            \left(\begin{array}{cccc:c}
+                                1 & 0 & 1 & 2 & 0 \cr 
+                                0 & 1 & 2 & 1 & 0 
+                            \end{array}\right)
+                        \]
+                        が得られる. これは, 
+                        \[
+                            \left\{\begin{array}{rl}
+                                x_1 + x_3 + 2x_4 &= 0, \cr 
+                                x_2 + 2x_3 + x_4 &= 0
+                            \end{array}\right.
+                        \]
+                        を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ がこの問題の解となることを意味している. 
+                    </p>
+                    <p>この問題の解を線型結合の形で表す際は, 上の注意で述べたように, 行簡約階段形の主成分に対応するもの以外 (この例では $x_3$, $x_4$) を $s$, $t$ などとおくことを推奨する: 
+                        \[
+                            \left\{\begin{array}{rl}
+                                x_1 &= -s - 2t, \cr 
+                                x_2 &= -2s - t, \cr 
+                                x_3 &= s, \cr 
+                                x_4 &= t.
+                            \end{array}\right.
+                        \]
+                        つまり解は 
+                        \[
+                            \begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = s\begin{pmatrix} 
+                                -1 \cr 
+                                -2 \cr 
+                                1 \cr 
+                                0 
+                            \end{pmatrix} + t\begin{pmatrix} 
+                                -2 \cr 
+                                -1 \cr 
+                                0 \cr 
+                                1 
+                            \end{pmatrix} \quad (s,t\in\mathbb{R} \mbox{ は任意})
+                        \]
+                        と表される. </p>
+                    <p>一方で, もしも $x_1=s$, $x_2=t$ とおくとどうなるかを考えてみる. 
+                        この場合は, 
+                        \[
+                            \left\{\begin{array}{rl}
+                                x_3 + 2x_4 &= -s, \cr 
+                                2x_3 + x_4 &= -t
+                            \end{array}\right.
+                        \]
+                        となるため, この連立 $1$ 次方程式を解くことで 
+                        \[
+                            \left\{\begin{array}{rl}
+                                x_1 &= s, \cr 
+                                x_2 &= t, \cr 
+                                x_3 &= \dfrac{s-2t}{3}, \cr
+                                x_4 &= \dfrac{-2s+t}{3}
+                            \end{array}\right.
+                        \]
+                        が得られる. ここで, $s/3$, $t/3$ を改めて $s$, $t$ とそれぞれ書くことにすると
+                        \[
+                            \begin{pmatrix} 
+                                x_1 \cr 
+                                x_2 \cr 
+                                x_3 \cr 
+                                x_4 
+                            \end{pmatrix} = s\begin{pmatrix} 
+                                3 \cr 
+                                0 \cr 
+                                1 \cr 
+                                -2 
+                            \end{pmatrix} + t\begin{pmatrix} 
+                                0 \cr 
+                                3 \cr 
+                                -2 \cr 
+                                1 
+                            \end{pmatrix} \quad (s,t\in\mathbb{R} \mbox{ は任意})
+                        \]
+                        先ほどとは異なる表示が得られたが, これも解の表示として正しい. 
+                        これは, 
+                        \[
+                            \begin{pmatrix} 
+                                -1 \cr 
+                                -2 \cr 
+                                1 \cr 
+                                0 
+                            \end{pmatrix},\quad \begin{pmatrix} 
+                                -2 \cr 
+                                -1 \cr 
+                                0 \cr 
+                                1 
+                            \end{pmatrix}
+                        \]
+                        という $2$ つのベクトルの線型結合で表すことができるベクトル全体と, 
+                        \[
+                            \begin{pmatrix} 
+                                3 \cr 
+                                0 \cr 
+                                1 \cr 
+                                -2 
+                            \end{pmatrix},\quad \begin{pmatrix} 
+                                0 \cr 
+                                3 \cr 
+                                -2 \cr 
+                                1 
+                            \end{pmatrix}
+                        \] という $2$ つのベクトルの線型結合で表すことができるベクトル全体が一致するために, 複数の表現が存在するのである.
+                    </p>
+                </div><!-- /example -->
+
             </section>
         
     </article></main>
