@@ -314,7 +314,7 @@
 			\] 
 			となってしまう. 一方で, $\lambda I-A$ が正則でない場合には, 連立 $1$ 次方程式 
 			\[
-				(\lambda I-A)\mathbf{v} = 0
+				(\lambda I-A)\mathbf{v} = \mathbf{0}
 			\] 
 			の右辺が $\mathbf{0}$ であることから, (斉次連立 $1$ 次方程式系の議論より) ある条件を満たす全ての $\mathbf{v}$ が解となる.
 			これらより,
@@ -338,7 +338,7 @@
 			\[
 				(\lambda I-A)\mathbf{v} = 0
 			\] 
-			を満たすような $\mathbf{v}$ を (必要なら掃き出し法を用いて) 見つければ, それの複素数倍は全て対応する固有ベクトルとなる.</p>
+			を満たすような $\mathbf{v}$ を見つければ, それの複素数倍は全て対応する固有ベクトルとなる.</p>
 			
 			<div class="remark">
 				<p>正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを<b>特性多項式</b> (<b>characteristic polynomial</b>) もしくは<b>固有多項式</b>という. 
@@ -373,7 +373,7 @@
 			</div><!-- /theorem -->
 
 			<div class="proof">
-				固有値は固有方程式 $\det(\lambda I-A)$ の解であった.
+				固有値は固有方程式 $\det(\lambda I-A)=0$ の解であった.
 				これは
 				\[
 					\det(\lambda I-A) = (\lambda-\lambda_1)(\lambda-\lambda_2)\dots (\lambda-\lambda_n)
@@ -511,6 +511,18 @@
 						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
 				</ul>					
 			</div><!-- / #example -->
+
+			<div class="remark">
+				もしも 
+				\[
+					\lambda I-A = \begin{pmatrix} 
+						a & b \cr 
+						ca & cb 
+					\end{pmatrix}
+				\]
+				という形をしているならば, 例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有ベクトルとなる. 
+				上に挙げた例も, 全てこのパターンに当てはまるため, 固有ベクトルを容易に見つけることができる.
+			</div><!-- #remark -->
 
 		</section>
 
@@ -663,7 +675,8 @@
 				\[
 					A \text{ の固有値が全て実数で全て異なる} \implies A \text{ の固有ベクトルは実ベクトルで線型独立} \iff A\text{ は対角化可能}. 
 				\]
-				つまり, 固有方程式が重解を持つような行列の場合 (つまり行列 $A$ が重複する固有値を持つ場合), 対角化できないことがある.</p>	
+				つまり, 固有方程式が重解を持つような行列の場合 (つまり行列 $A$ が重複する固有値を持つ場合), 対角化できないことがある. 
+				また, $A$ の固有値に実数でないものが含まれる場合には, 実は $A$ は対角化できないことが知られている.</p>	
 			</div><!-- / #remark -->
 
 			<div class="example">
