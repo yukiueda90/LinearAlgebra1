@@ -37,12 +37,10 @@
                         3a-2c-12 & d+6 & 1 \cr 
                         b & -3a+4c-22 & 0 
                     \end{pmatrix}.
-                \]
-            </p>
+                \]</p>
         </div><!-- /problem -->
 
-        <p>
-            行列 $A$ が歪対称であるとは, $A = -A^{\operatorname{T}}$ であることであった, ただし $A^{\operatorname{T}}$ は行列 $A$ の転置である (つまり $A$ の $(i,j)$ 成分が $(j,i)$ 成分の $-1$ 倍になっていれば良い). 
+        <p>行列 $A$ が歪対称であるとは, $A = -A^{\operatorname{T}}$ であることであった, ただし $A^{\operatorname{T}}$ は行列 $A$ の転置である (つまり $A$ の $(i,j)$ 成分が $(j,i)$ 成分の $-1$ 倍になっていれば良い). 
             従って,  
             \[
                 \begin{pmatrix} 
@@ -73,33 +71,31 @@
                     d &= -6.
                 \end{array}\right.
             \]
-            $a$ と $c$ に関する連立 $1$ 次方程式を解くことで $a=1$, $b=-1$, $c=6$, $d=-6$ が得られる.              
-        </p>
+            $a$ と $c$ に関する連立 $1$ 次方程式を解くことで $a=1$, $b=-1$, $c=6$, $d=-6$ が得られる. </p>
 
         <div class="remark">
-            連立 $1$ 次方程式を解く際, もちろん行列を用いて
-            \[
-                \begin{pmatrix} 
-                    3 & -2 \cr 
-                    3 & -4 
-                \end{pmatrix}\begin{pmatrix} 
-                    a \cr 
-                    c 
-                \end{pmatrix} = \begin{pmatrix} 
-                    -9 \cr 
-                    -21 
-                \end{pmatrix}
-            \]
-            と表記した上で, これを掃き出し法などで解いてもよい. 
-            とはいえ, この程度であれば行列に書き直す必要もないだろう.
-            念のため補足しておくと, 例えば $(1)$ 式の $-1$ 倍を $(2)$ 式に加えることで $(2)$ 式から $a$ を消去して... という計算と掃き出し法 (ガウスの消去法) は全く同じものである.   
+            <p>連立 $1$ 次方程式を解く際, もちろん行列を用いて
+                \[
+                    \begin{pmatrix} 
+                        3 & -2 \cr 
+                        3 & -4 
+                    \end{pmatrix}\begin{pmatrix} 
+                        a \cr 
+                        c 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        -9 \cr 
+                        -21 
+                    \end{pmatrix}
+                \]
+                と表記した上で, これを掃き出し法などで解いてもよい. 
+                とはいえ, この程度であれば行列に書き直す必要もないだろう.
+                念のため補足しておくと, 例えば $(1)$ 式の $-1$ 倍を $(2)$ 式に加えることで $(2)$ 式から $a$ を消去して... という計算と掃き出し法 (ガウスの消去法) は全く同じものである. </p>
         </div><!-- /remark -->
         
         <hr>
 
         <div class="problem">
-            <p>
-                \[
+            <p>\[
                     A = \begin{pmatrix} 
                         5 & -5 & 2 & 16 \cr 
                         0 & 1 & 2 & 4 \cr 
@@ -108,7 +104,7 @@
                 \]
                 とする. 
                 <ol>
-                    <li>この行列 $A$ を行基本変形により行間役階段形に変形せよ.</li>
+                    <li>この行列 $A$ を行基本変形により行簡約階段形に変形せよ.</li>
                     <li>$\operatorname{rank}A$ を求めよ.</li>
                 </ol>
             </p>
@@ -154,7 +150,7 @@
                 \end{pmatrix} 
             \end{array}
         \]
-        と行間役階段形に変形することができる. 
+        と行簡約階段形に変形することができる. 
         次に, 階数を求める際には, 列基本変形も用いて
         \[
             A \longrightarrow \begin{pmatrix} 
@@ -164,8 +160,8 @@
             \end{pmatrix}
         \]
         と変形することで $\operatorname{rank}A = 3$ が得られる. 
-        実際には, 列基本変形を用いずとも, 行間役階段形に変形した際の $\mathbf{0}$ でない行の個数 (もっと簡単に言えば主成分の個数) が行列 $A$ の階数と一致する. 
-        上の列基本変形は, 行間役階段形の主成分はそのままに, それ以外の成分を $0$ にする変形になっている.</p>
+        実際には, 列基本変形を用いずとも, 行簡約階段形に変形した際の $\mathbf{0}$ でない行の個数 (もっと簡単に言えば主成分の個数) が行列 $A$ の階数と一致する. 
+        上の列基本変形は, 行簡約階段形の主成分はそのままに, それ以外の成分を $0$ にする変形になっている.</p>
 
         <div class="problem">
             <p>次の連立 $1$ 次方程式を解け:
@@ -230,66 +226,66 @@
         \]</p>
 
         <div class="remark">
-            同じ問題をクラメルの公式を用いて解いてみよう. クラメルの公式によると, $A\mathbf{x}=\mathbf{b}$ の解は, 
-            \[
-                x_i = \dfrac{\det A_i}{\det A}
-            \]
-            により計算できる, ここで $A_i$ は行列 $A$ の第 $i$ 列を右辺 $\mathbf{b}$ で置き換えた行列である. 
-            この問題に対しては, 
-            \[
-                x = \dfrac{
-                    \det\begin{pmatrix} 
-                        -11 & 1 & 1 \cr 
-                        0 & -1 & 4 \cr 
-                        -25 & 5 & -1
-                    \end{pmatrix}
-                }{
-                    \det\begin{pmatrix}
-                        5 & 1 & 1 \cr 
-                        1 & -1 & 4 \cr 
-                        1 & 5 & -1
-                    \end{pmatrix}
-                },\qquad y = \dfrac{
-                    \det\begin{pmatrix} 
-                        5 & -11 & 1 \cr 
-                        1 & 0 & 4 \cr 
-                        1 & -25 & -1
-                    \end{pmatrix}
-                }{
-                    \det\begin{pmatrix}
-                        5 & 1 & 1 \cr 
-                        1 & -1 & 4 \cr 
-                        1 & 5 & -1
-                    \end{pmatrix}}, \qquad z = 
-                    \dfrac{
+            <p>同じ問題をクラメルの公式を用いて解いてみよう. クラメルの公式によると, $A\mathbf{x}=\mathbf{b}$ の解は, 
+                \[
+                    x_i = \dfrac{\det A_i}{\det A}
+                \]
+                により計算できる, ここで $A_i$ は行列 $A$ の第 $i$ 列を右辺 $\mathbf{b}$ で置き換えた行列である. 
+                この問題に対しては, 
+                \[
+                    x = \dfrac{
                         \det\begin{pmatrix} 
-                            5 & 1 & -11 \cr 
-                            1 & -1 & 0 \cr 
-                            1 & 5 & -25
+                            -11 & 1 & 1 \cr 
+                            0 & -1 & 4 \cr 
+                            -25 & 5 & -1
                         \end{pmatrix}
                     }{
                         \det\begin{pmatrix}
                             5 & 1 & 1 \cr 
                             1 & -1 & 4 \cr 
                             1 & 5 & -1
-                        \end{pmatrix}}
-            \]
-            を計算すれば良い. 
-            ただし, 行列式の計算は面倒であり, 基本的には掃き出し法の方が楽である.
+                        \end{pmatrix}
+                    },\qquad y = \dfrac{
+                        \det\begin{pmatrix} 
+                            5 & -11 & 1 \cr 
+                            1 & 0 & 4 \cr 
+                            1 & -25 & -1
+                        \end{pmatrix}
+                    }{
+                        \det\begin{pmatrix}
+                            5 & 1 & 1 \cr 
+                            1 & -1 & 4 \cr 
+                            1 & 5 & -1
+                        \end{pmatrix}}, \qquad z = 
+                        \dfrac{
+                            \det\begin{pmatrix} 
+                                5 & 1 & -11 \cr 
+                                1 & -1 & 0 \cr 
+                                1 & 5 & -25
+                            \end{pmatrix}
+                        }{
+                            \det\begin{pmatrix}
+                                5 & 1 & 1 \cr 
+                                1 & -1 & 4 \cr 
+                                1 & 5 & -1
+                            \end{pmatrix}}
+                \]
+                を計算すれば良い. 
+                ただし, 行列式の計算は面倒であり, 基本的には掃き出し法の方が楽である.</p>
         </div><!-- /remark -->
 
         <hr>
 
         <div class="problem">
-            次の行列式を計算せよ:
-            \[
-                \det\begin{pmatrix} 
-                    1 & 5 & -8 & -1 \cr 
-                    1 & 4 & -5 & -5 \cr 
-                    -1 & -5 & 9 & -1 \cr 
-                    -1 & -4 & -2 & 7 
-                \end{pmatrix}.
-            \]
+            <p>次の行列式を計算せよ:
+                \[
+                    \det\begin{pmatrix} 
+                        1 & 5 & -8 & -1 \cr 
+                        1 & 4 & -5 & -5 \cr 
+                        -1 & -5 & 9 & -1 \cr 
+                        -1 & -4 & -2 & 7 
+                    \end{pmatrix}.
+                \]</p>
         </div><!-- /problem -->
 
         <p>成分が全て数値である行列の行列式を計算する際には, 行列式の性質のうち, </p>
@@ -351,15 +347,15 @@
         <hr>
 
         <div class="problem">
-            次の行列式を計算せよ:
-            \[
-                \det\begin{pmatrix} 
-                    0 & a & b & c \cr 
-                    -a & 0 & d & e \cr 
-                    -b & -d & 0 & f \cr 
-                    -c & -e & -f & 0 
-                \end{pmatrix}.
-            \]
+            <p>次の行列式を計算せよ:
+                \[
+                    \det\begin{pmatrix} 
+                        0 & a & b & c \cr 
+                        -a & 0 & d & e \cr 
+                        -b & -d & 0 & f \cr 
+                        -c & -e & -f & 0 
+                    \end{pmatrix}.
+                \]</p>
         </div><!-- /problem -->
 
         <p>余因子展開によれば, </p>
@@ -529,15 +525,15 @@
         <hr>
 
         <div class="problem">
-            \[
-                A = \begin{pmatrix} 
-                    a & 0 & 0 \cr 
-                    d & b & 0 \cr 
-                    e & f & c 
-                \end{pmatrix}
-            \]
-            とする, ただし $a$, $b$, $c$, $d$, $e$, $f\in\mathbb{R}$ とし, また $abc\neq0$ とする. 
-            このとき, $A^{-1}$ を求めよ.
+            <p>\[
+                    A = \begin{pmatrix} 
+                        a & 0 & 0 \cr 
+                        d & b & 0 \cr 
+                        e & f & c 
+                    \end{pmatrix}
+                \]
+                とする, ただし $a$, $b$, $c$, $d$, $e$, $f\in\mathbb{R}$ とし, また $abc\neq0$ とする. 
+                このとき, $A^{-1}$ を求めよ.</p>
         </div><!-- /problem -->
 
         <p>上の注意で述べたように, 成分に文字が含まれる行列に対する掃き出し法は場合分けが必要になり効率的でない場合があるが, この問題は $a\neq0$, $b\neq 0$, $c\neq0$ が条件として与えられているため掃き出し法による計算が楽である: 
@@ -576,64 +572,290 @@
         </p>
 
         <div class="remark">
-            クラメルの公式で解いてみる: 行列 $A$ の各余因子を計算すると 
-            \[
-                \begin{array}{rl} 
-                    \widetilde{a}_{11} &= (-1)^{1+1} \det\begin{pmatrix} 
-                        \square & \square & \square \cr 
-                        \square & b & 0 \cr 
-                        \square & f & c 
-                    \end{pmatrix} = bc, \cr 
-                    \widetilde{a}_{12} &= (-1)^{1+2} \det\begin{pmatrix} 
-                        \square & \square & \square \cr 
-                        d & \square & 0 \cr 
-                        e & \square & c 
-                    \end{pmatrix} = -cd, \cr
-                    \widetilde{a}_{13} &= (-1)^{1+3} \det\begin{pmatrix} 
-                        \square & \square & \square \cr 
-                        d & b & \square \cr 
-                        e & f & \square 
-                    \end{pmatrix} = df-be, \cr 
-                    \widetilde{a}_{21} &= 0, \cr 
-                    \widetilde{a}_{22} &= (-1)^{2+2} \det\begin{pmatrix} 
-                        a & \square & 0 \cr 
-                        \square & \square & \square \cr 
-                        e & \square & c 
-                    \end{pmatrix} = ac, \cr 
-                    \widetilde{a}_{23} &= (-1)^{2+3} \det\begin{pmatrix} 
-                        a & 0 & \square \cr 
-                        \square & \square & \square \cr 
-                        e & f & \square
-                    \end{pmatrix} = -af, \cr 
-                    \widetilde{a}_{31} &= 0, \cr
-                    \widetilde{a}_{32} &= 0, \cr 
-                    \widetilde{a}_{33} &= (-1)^{3+3} \det\begin{pmatrix} 
-                        a & 0 & \square \cr 
-                        d & b & \square \cr 
-                        \square & \square & \square 
-                    \end{pmatrix} = ab.
-                \end{array}
-            \]
-            従って余因子行列は
-            \[
-                \operatorname{adj}A = \begin{pmatrix} 
-                    bc & 0 & 0 \cr 
-                    -cd & ac & 0 \cr 
-                    df-be & -af & ab 
-                \end{pmatrix}
-            \]
-            であり, これと $\det A = abc$ とを合わせて
-            \[
-                A^{-1} = \dfrac{1}{\det A}\operatorname{adj}A = \dfrac{1}{abc}\begin{pmatrix} 
-                    bc & 0 & 0 \cr 
-                    -cd & ac & 0 \cr 
-                    df-be & -af & ab 
-                \end{pmatrix}.
-            \]
-
+            <p>クラメルの公式で解いてみる: 行列 $A$ の各余因子を計算すると 
+                \[
+                    \begin{array}{rl} 
+                        \widetilde{a}_{11} &= (-1)^{1+1} \det\begin{pmatrix} 
+                            \square & \square & \square \cr 
+                            \square & b & 0 \cr 
+                            \square & f & c 
+                        \end{pmatrix} = bc, \cr 
+                        \widetilde{a}_{12} &= (-1)^{1+2} \det\begin{pmatrix} 
+                            \square & \square & \square \cr 
+                            d & \square & 0 \cr 
+                            e & \square & c 
+                        \end{pmatrix} = -cd, \cr
+                        \widetilde{a}_{13} &= (-1)^{1+3} \det\begin{pmatrix} 
+                            \square & \square & \square \cr 
+                            d & b & \square \cr 
+                            e & f & \square 
+                        \end{pmatrix} = df-be, \cr 
+                        \widetilde{a}_{21} &= 0, \cr 
+                        \widetilde{a}_{22} &= (-1)^{2+2} \det\begin{pmatrix} 
+                            a & \square & 0 \cr 
+                            \square & \square & \square \cr 
+                            e & \square & c 
+                        \end{pmatrix} = ac, \cr 
+                        \widetilde{a}_{23} &= (-1)^{2+3} \det\begin{pmatrix} 
+                            a & 0 & \square \cr 
+                            \square & \square & \square \cr 
+                            e & f & \square
+                        \end{pmatrix} = -af, \cr 
+                        \widetilde{a}_{31} &= 0, \cr
+                        \widetilde{a}_{32} &= 0, \cr 
+                        \widetilde{a}_{33} &= (-1)^{3+3} \det\begin{pmatrix} 
+                            a & 0 & \square \cr 
+                            d & b & \square \cr 
+                            \square & \square & \square 
+                        \end{pmatrix} = ab.
+                    \end{array}
+                \]
+                従って余因子行列は
+                \[
+                    \operatorname{adj}A = \begin{pmatrix} 
+                        bc & 0 & 0 \cr 
+                        -cd & ac & 0 \cr 
+                        df-be & -af & ab 
+                    \end{pmatrix}
+                \]
+                であり, これと $\det A = abc$ とを合わせて
+                \[
+                    A^{-1} = \dfrac{1}{\det A}\operatorname{adj}A = \dfrac{1}{abc}\begin{pmatrix} 
+                        bc & 0 & 0 \cr 
+                        -cd & ac & 0 \cr 
+                        df-be & -af & ab 
+                    \end{pmatrix}.
+                \]
+            </p>
         </div><!-- remark -->
 
+        <hr>
+
+        <div class="problem">
+            <p>次の連立 $1$ 次方程式を解け: 
+                \[
+                    \begin{pmatrix}
+                        1 & -4 & 0 & -7 \cr 
+                        1 & -3 & 1 & -5
+                    \end{pmatrix}\begin{pmatrix} 
+                        x_1 \cr 
+                        x_2 \cr 
+                        x_3 \cr 
+                        x_4 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        0 \cr 
+                        0 
+                    \end{pmatrix}.
+                \]
+            </p>
+        </div><!-- /problem -->
+
+        <p>掃き出し法を考える: 拡大行列に対する行基本変形により
+            \[
+                \left(\begin{array}{cccc:c}
+                    1 & -4 & 0 & -7 & 0 \cr 
+                    1 & -3 & 1 & -5 & 0 
+                \end{array}\right) \longrightarrow \left(\begin{array}{cccc:c}
+                    1 & 0 & 4 & 1 & 0 \cr 
+                    0 & 1 & 1 & 2 & 0 
+                \end{array}\right)
+            \]
+            という行簡約階段形にすることができる. 従って, この行簡約階段形に対応する 
+            \[
+                \left\{\begin{array}{rl} 
+                    x_1 + 4x_3 + x_4 &= 0, \cr 
+                    x_2 + x_3 + 2x_4 &= 0
+                \end{array}\right.
+            \]
+            という式を満たす $x_1$, $x_2$, $x_3$, $x_4$ は全て解となる. </p>
+        <p>解を線型結合の形で表すならば, 上の行簡約階段形において主成分に対応していない $x_3$, $x_4$ をそれぞれ 
+            \[
+                x_3 = s,\qquad x_4 = t
+            \]
+            とおくことを推奨する. 
+            このとき, 
+            \[
+                \left\{\begin{array}{rl} 
+                    x_1 &= -4s-t, \cr 
+                    x_2 &= -s-2t
+                \end{array}\right.
+            \]
+            となるため, 
+            \[
+                \begin{pmatrix} 
+                    x_1 \cr 
+                    x_2 \cr 
+                    x_3 \cr 
+                    x_4 
+                \end{pmatrix} = s\begin{pmatrix} 
+                    -4 \cr 
+                    -1 \cr 
+                    1 \cr 
+                    0 
+                \end{pmatrix} + t\begin{pmatrix} 
+                    -1 \cr 
+                    -2 \cr 
+                    0 \cr 
+                    1 
+                \end{pmatrix}
+            \]
+            という表記を得ることができる.
+        </p>
             
+        <div class="remark">
+            <p>この問題に対しては, 例えば $x_1=s$, $x_2 = t$ などとおいても線型結合による表記を得ることができる: 
+                \[
+                    \left\{\begin{array}{rl} 
+                        4x_3 + x_4 &= -s, \cr 
+                        x_3 + 2x_4 &= -t. 
+                    \end{array}\right.  
+                \]
+                これを解いて $x_3 = -2/7 s + t/7$, $x_4 = s/7-4/7t$ が得られるため, $s/7$ と $t/7$ を改めて $s$, $t$ とおくと 
+                \[
+                    \begin{pmatrix} 
+                        x_1 \cr 
+                        x_2 \cr 
+                        x_3 \cr 
+                        x_4 
+                    \end{pmatrix} = s\begin{pmatrix} 
+                        1 \cr 
+                        0 \cr 
+                        -2 \cr 
+                        1 
+                    \end{pmatrix} + t\begin{pmatrix} 
+                        0 \cr 
+                        1 \cr 
+                        1 \cr 
+                        -4 
+                    \end{pmatrix}.
+                \]
+                上と異なる表記が得られるが, 線型結合で表されるベクトル全体は一致するため, こちらも答えとして正しい. </p>
+        </div><!-- /remark -->
+
+        <div class="problem">
+            <p>行列 
+                \[
+                    A = \begin{pmatrix} 
+                        -6 & -4 \cr 
+                        8 & 6 
+                    \end{pmatrix}
+                \]
+                の固有値を求め, 対応する固有ベクトルの例を一つずつ挙げよ. また行列 $A$ を対角化せよ.</p>
+        </div>
+
+        <p>固有値は固有方程式 
+            \[
+                0 = \det(\lambda I-A) = \det\begin{pmatrix} 
+                    \lambda+6 & 4 \cr 
+                    -8 & \lambda-6 
+                \end{pmatrix} = \lambda^2-4 = (\lambda+2)(\lambda-2)
+            \]
+            の解 $\lambda_1 = -2$, $\lambda_2=2$ である. 対応する固有ベクトルは 
+            \[
+                \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
+                    4 & 4 \cr 
+                    -8 & -8 
+                \end{pmatrix}\mathbf{v}_1,\qquad \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
+                    8 & 4 \cr 
+                    -8 & -4 
+                \end{pmatrix}\mathbf{v}_2
+            \]
+            の解となる $\mathbf{0}$ でないベクトルであり, 例えば 
+            \[
+                \mathbf{v}_1 = \begin{pmatrix}
+                    1 \cr 
+                    -1
+                \end{pmatrix}, \qquad \mathbf{v}_2 = \begin{pmatrix} 
+                    1 \cr 
+                    -2 
+                \end{pmatrix} 
+            \]
+            はそれぞれ対応する固有ベクトルである. いま, $\lambda_1\neq\lambda_2$ より $A$ は対角化可能であり, $P=\begin{pmatrix}\mathbf{v}_1&\mathbf{v}_2\end{pmatrix}$ に対して
+            \[
+                P^{-1}AP = \begin{pmatrix} 
+                    \lambda_1 & 0 \cr 
+                    0 & \lambda_2 
+                \end{pmatrix} = \begin{pmatrix} 
+                    -2 & 0 \cr 
+                    0 & 2 
+                \end{pmatrix}.
+            \]     
+        </p>
+
+        <div class="problem">
+            <p>行列 
+                \[
+                    A = \begin{pmatrix} 
+                        11 & -24 \cr 
+                        4 & -9 
+                    \end{pmatrix}
+                \]
+                に対して, $A^n$ を計算せよ. </p>
+        </div><!-- /problem -->
+
+        <p>行列 $A$ の対角化を用いて計算する. まず, 
+            \[
+                0=\det(\lambda I-A) = (\lambda-11)(\lambda+9)+96 = \lambda^2-2\lambda -3 = (\lambda-3)(\lambda+1)
+            \]
+            を解いて固有値 $\lambda_1=-1$, $\lambda_2=3$ が得られる. 次に, 
+            \[
+                \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
+                    -12 & 24 \cr 
+                    -4 & 8 
+                \end{pmatrix}\mathbf{v}_1, \qquad \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
+                    -8 & 24 \cr 
+                    -4 & 12 
+                \end{pmatrix}\mathbf{v}_2
+            \]
+            を満たす $\mathbf{0}$ でないベクトルが対応する固有値であり, 例えば
+            \[
+                \mathbf{v}_1 = \begin{pmatrix} 
+                    2 \cr 
+                    1
+                \end{pmatrix},\qquad \mathbf{v}_2 = \begin{pmatrix} 
+                    3 \cr 
+                    1 
+                \end{pmatrix}
+            \]
+            である. ここで, $\lambda_1\neq\lambda_2$ なので行列 $A$ は対角化可能であり, $P=\begin{pmatrix}\mathbf{v}_1&\mathbf{v}_2\end{pmatrix}$ とおくと, 
+            \[
+                P = \begin{pmatrix} 
+                    2 & 3 \cr 
+                    1 & 1 
+                \end{pmatrix},\qquad P^{-1} = \begin{pmatrix} 
+                    -1 & 3 \cr 
+                    1 & -2
+                \end{pmatrix},\qquad P^{-1}AP = \begin{pmatrix} 
+                    \lambda_1 & 0 \cr 
+                    0 & \lambda_2 
+                \end{pmatrix} = \begin{pmatrix} 
+                    -1 & 0 \cr 
+                    0 & 3 
+                \end{pmatrix}.
+            \]
+            従って, 
+            \[
+                \begin{array}{rl} 
+                    A^n &= P(P^{-1}AP)(P^{-1}AP)\dots(P^{-1}AP)P^{-1} \cr 
+                    &= P(P^{-1}AP)^nP^{-1} \cr 
+                    &= \begin{pmatrix} 
+                        2 & 3 \cr 
+                        1 & 1 
+                    \end{pmatrix}\begin{pmatrix} 
+                        (-1)^n & 0 \cr 
+                        0 & 3^n 
+                    \end{pmatrix}\begin{pmatrix} 
+                        -1 & 3 \cr 
+                        1 & -2 
+                    \end{pmatrix} \cr 
+                    &= \begin{pmatrix} 
+                        2(-1)^{n+1}+3^{n+1} & 6(-1)^n-2\cdot 3^{n+1} \cr 
+                        (-1)^{n+1}+3^n & 3(-1)^n - 2\cdot 3^n 
+                    \end{pmatrix}.
+                \end{array}
+            \]
+        </p>
+
     </article></main>
     </div>
   </body>
