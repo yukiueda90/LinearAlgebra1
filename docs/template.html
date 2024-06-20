@@ -4,47 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>template</title>
+    <title>線形代数1</title>
     <!-- style -->
-    <link rel="stylesheet" href="./_layouts/style.css">
+    <link rel="stylesheet" href="./common/style.css">
     <!-- mathjax -->
-    <script>
-        MathJax = {
-            tex: {
-            inlineMath: [              // start/end delimiter pairs for in-line math
-                ['$', '$']
-            ],
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="./common/import_mathjax.js"></script>
 </head>
 
 <body>
+    <header>
+        <!-- (no header) -->
+    </header>
+
+    <!-- contents -->
+    <div class="wrapper">
+
     <!-- sidebar -->
-    <script>
-        // Fetch and inject the entire side content (including styles)
-        fetch('./_layouts/side.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.insertAdjacentHTML('afterbegin', html);
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-    </script>
+    <div class="side" id="sidebar"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        ☰
+    </div>
     
     <!-- main -->
-    <main>
+    <main role="main"><article id="section0"><h1>0: テンプレート</h1>
+        <section id="section0-1"><h2>0.1: サブセクション</h2>
+            <p>pタグ内の文章.</p>
+            
+            <div class="definition" data-name="定義のテンプレート">
+                <p>定義の文章</p>
+            </div><!-- /definition-->
+            
+            <hr>
 
-        <div class="block">
-            <p class="title">タイトル</p>
-            内容
-        <!-- / #block --></div>
+            <div class="example">
+                <p>例の文章</p>
+            </div><!-- /example -->
 
-        <div class="statement">
-            <p class="title">タイトル</p>
-            内容
-        <!-- / #statement --></div>
-
-    </main>
-</body>
+        </section>
+            
+    </article></main>
+    </div>
+  </body>
+  
+  <!-- javascript -->
+  <script src="./common/create_statement_block.js"></script>
+  <script src="./common/function_toggleSidebar.js"></script>
+  <script src="./common/import_sidebar.js"></script>
+  
+  </html>
