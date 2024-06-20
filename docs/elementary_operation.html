@@ -743,6 +743,16 @@
                     PI = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
                 \] 
                 を満たす, ということを意味する筆算である. 
+                実際, 行列の区分けを用いると, 上の計算によりある行列 $P$ が存在して
+                \[
+                    P\left(\begin{array}{c:c}A&I\end{array}\right) 
+                    = \left(\begin{array}{c:c}PA&PI\end{array}\right) 
+                    = \left(\begin{array}{c:c}I&\begin{array}{cc}
+                        -2 & 1 \cr 
+                        3/2 & -1/2
+                    \end{array}\end{array}\right)           
+                \]
+                となることがわかる. 
                 上のような変形により $P=A^{-1}$ が得られるのは, (繰り返すが) 以下の $2$ つが同じ計算を意味しているからである:</p>
                 <p>\[
                     \begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) 
@@ -892,7 +902,17 @@
                 を満たすものは, 同時に
                 \[
                     P\mathbf{b} = \begin{pmatrix}6\cr 7\end{pmatrix}
-                \] を満たす, ということを意味する筆算であり, また以下の $3$ つは全て同じ計算を意味している:</p>
+                \] を満たす, ということを意味する筆算であり, 行列の区分けを用いると, ある行列 $P$ が存在して
+                \[
+                    P\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) 
+                    = \left(\begin{array}{c:c}PA&P\mathbf{b}\end{array}\right) 
+                    = \left(\begin{array}{c:c}I&\begin{array}{cc}
+                        6 & \cr 
+                        7 & 
+                    \end{array}\end{array}\right)           
+                \]
+                となることを意味している. 
+                また以下の $3$ つは全て同じ計算を意味している:</p>
                 <p>\[
                     \begin{array}{rl}& \left\lbrace\begin{array}{rll}
                         x+2y &= 20, &(1)\cr
