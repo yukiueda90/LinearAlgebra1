@@ -7,6 +7,7 @@ const proofs = document.querySelectorAll('.proof');
 const definitions = document.querySelectorAll('.definition');
 const theorems = document.querySelectorAll('.theorem');
 const lemmas = document.querySelectorAll('.lemma');
+const problems = document.querySelectorAll('.problem');
 
 // Loop 
 examples.forEach(example => {
@@ -20,13 +21,13 @@ examples.forEach(example => {
 remarks.forEach(remark => {
     const titleElement = document.createElement('p');
     titleElement.className = 'legend_title';
-    titleElement.textContent = '注意'
+    titleElement.textContent = '注意';
     remark.insertBefore(titleElement, remark.firstChild);
 });
 proofs.forEach(proof => {
     const titleElement = document.createElement('p');
     titleElement.className = 'legend_title';
-    titleElement.textContent = '証明'
+    titleElement.textContent = '証明';
     proof.insertBefore(titleElement, proof.firstChild);
 });
 definitions.forEach(definition => {
@@ -58,4 +59,10 @@ lemmas.forEach(lemma => {
         titleElement.textContent = '補題';
     }
     lemma.insertBefore(titleElement, lemma.firstChild);
+});
+problems.forEach(problem => {
+    const titleElement = document.createElement('p');
+    titleElement.className = 'legend_title';
+    titleElement.textContent = '問題';
+    problem.insertBefore(titleElement, problem.firstChild);
 });

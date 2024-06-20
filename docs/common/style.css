@@ -112,7 +112,7 @@ hr {
 
 /* custom class */
 
-.definition, .theorem, .lemma {
+.definition, .theorem, .lemma, .problem {
     width:92%;
     margin-top:10px;
     margin-bottom:10px;
