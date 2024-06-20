@@ -781,6 +781,53 @@
 							\end{pmatrix}
 						\] 
 						が得られる.</li>
+					<li>
+						固有値 $\lambda_1$ と $\lambda_2$ (および対応する固有ベクトル $\mathbf{v}_1$ と $\mathbf{v}_2$) の順序は入れ替えても良い. 
+						例えば $\lambda_1 = 3/2$, $\lambda_2 = 1/2$, 対応する固有ベクトルを 
+						\[
+							\mathbf{v}_1 = \begin{pmatrix} 
+								1 \cr 
+								1
+							\end{pmatrix},\qquad \mathbf{v}_2 = \begin{pmatrix} 
+								1 \cr 
+								-1 
+							\end{pmatrix} 
+						\]
+						としたときは, 
+						\[
+							P = \begin{pmatrix} 
+								\mathbf{v}_1 & \mathbf{v}_2 
+							\end{pmatrix} = \begin{pmatrix} 
+								1 & 1 \cr 
+								1 & -1 
+							\end{pmatrix}
+						\]
+						について, 
+						\[
+							AP = \begin{pmatrix} 
+								3/2 & 1/2 \cr 
+								3/2 & -1/2 
+							\end{pmatrix} = \begin{pmatrix} 
+								1 & 1 \cr 
+								1 & -1 
+							\end{pmatrix}\begin{pmatrix} 
+								3/2 & 0 \cr 
+								0 & 1/2 
+							\end{pmatrix} = P\begin{pmatrix} 
+								3/2 & 0 \cr 
+								0 & 1/2 
+							\end{pmatrix}
+						\]
+						および 
+						\[
+							P^{-1}AP = \begin{pmatrix} 
+								3/2 & 0 \cr 
+								0 & 1/2 
+							\end{pmatrix}
+						\]
+						が得られる. 
+						上の結果と固有値の順序が異なっているものの, いずれにしても固有値を対角成分に持つ対角行列と相似であることが確認できる.
+					</li>
 				</ul>		
 			</div><!-- / #example -->
 
