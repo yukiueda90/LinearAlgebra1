@@ -215,7 +215,12 @@
 							-2i
 						\end{pmatrix}$ とすると, $A\widetilde{\mathbf{v}} _ 1 = \dfrac{1}{2}\widetilde{\mathbf{v}} _ 1$ となるため $\widetilde{\mathbf{v}} _ 1$ も固有ベクトルであり, 対応する固有値は $1/2$ である.</li>
 				</ul>
-				<p>このように, ある列ベクトル $\mathbf{v}$ が固有ベクトルであるならば, その複素数倍もやはり固有ベクトルとなる.</p>
+				<p>いま, $\widetilde{\mathbf{v}}_1 = 2i\mathbf{v}_1$ であり, これと $\mathbf{v}_1$ が固有ベクトルであることに注目すると
+					\[
+						A\widetilde{\mathbf{v}}_1 = A(2i\mathbf{v}_1) = 2iA\mathbf{v}_1 = 2i\lambda \mathbf{v}_1 = \lambda\widetilde{\mathbf{v}}_1
+					\]
+					が成立することがわかる.
+					このように, ある列ベクトル $\mathbf{v}$ が固有ベクトルであるならば, その複素数倍もやはり固有ベクトルとなる.</p>
 				<p>ここで, 固有ベクトルを図示するとどのようになるか見てみよう. ただし, ここでは実ベクトルであり大きさが $1$ である固有ベクトルのみを図示することにする. 上の例においては,
 				\[
 					\mathbf{v} _ 1 = \begin{pmatrix}
@@ -227,7 +232,8 @@
 				\] 
 				が大きさ $1$ の固有ベクトルとなる.</p>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_3.png'></div>
-				<p style="clear:both">図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
+				<p style="clear:both">図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. 
+					このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
 			</div><!-- / #example -->
 
 			<p>上の例では, 固有値が実数であるため, 固有値を変換の拡大率として図示することができた. 
@@ -269,7 +275,7 @@
 					\] 
 					が得られる. つまり, この行列 $A$ はベクトル $\mathbf{v}$ を $\alpha$ だけ回転する変換を表している.</li>
 				<li>このような行列 $A$ を<b>回転行列</b>と呼ぶ.</li>
-				<li>いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが異なってしまう).</li>
+				<li>いま, $\alpha\neq n\pi$ とする. このとき, 行列 $A$ は実数の固有値を持たない (ベクトル $\mathbf{v}$ は行列 $A$ により回転してしまうため, $\mathbf{v}$ と $A\mathbf{v}$ の向きが一致することはない).</li>
 				<li>(実は, 複素数まで認めればこの行列の固有値と固有ベクトルは存在する)</li>
 				</ul>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_4.png'></div>
@@ -316,12 +322,12 @@
 			\[
 				(\lambda I-A)\mathbf{v} = \mathbf{0}
 			\] 
-			の右辺が $\mathbf{0}$ であることから, (斉次連立 $1$ 次方程式系の議論より) ある条件を満たす全ての $\mathbf{v}$ が解となる.
+			の右辺が $\mathbf{0}$ であることから, (斉次連立 $1$ 次方程式の議論より) ある条件を満たす全ての $\mathbf{v}$ が解となる, つまり $\mathbf{v}\neq\mathbf{0}$ であるような解が存在する.
 			これらより,
 			\[
-				\det(\lambda I-A)=0 \iff \text{$\lambda$ は固有値であり, 対応する固有ベクトル } \mathbf{v} \text{ が存在する}
+				\det(\lambda I-A)=0 \iff \text{$\lambda$ は固有値であり, 対応する固有ベクトル } \mathbf{v}\neq\mathbf{0} \text{ が存在する}
 			\] 
-			が得られる. ここで, $A\in\mathbb{R}^{2\times 2}$ の場合は,
+			が得られる. ここで, $A = (a_{ij}) \in\mathbb{R}^{2\times 2}$ の場合は,
 			\[
 				\det(\lambda I-A) = \det\begin{pmatrix}
 					\lambda - a _ {11} & -a _ {12}\cr 
@@ -333,12 +339,12 @@
 				\det(\lambda I-A) = 0
 			\] 
 			は $\lambda$ についての $2$ 次方程式となり, 複素数の解や重解を許せば必ず解が $2$ つ存在する. 
-			これらの解が行列 $A$ の固有値となる. 
+			上の議論より, これらの解が行列 $A$ の固有値となる. 
 			固有値 $\lambda$ が得られたならば, あとは
 			\[
 				(\lambda I-A)\mathbf{v} = 0
 			\] 
-			を満たすような $\mathbf{v}$ を見つければ, それの複素数倍は全て対応する固有ベクトルとなる.</p>
+			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの複素数倍は全て対応する固有ベクトルとなる.</p>
 			
 			<div class="remark">
 				<p>正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを<b>特性多項式</b> (<b>characteristic polynomial</b>) もしくは<b>固有多項式</b>という. 
@@ -414,10 +420,13 @@
 								-1/2&-1/2
 							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
 						\] 
-						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+						を考えると, 例えば $\mathbf{v}_1 = \begin{pmatrix}
 							1\cr 
 							-1
-						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+							1\cr 
+							-1
+						\end{pmatrix}$, $c _ 1\neq0$ は任意.</li>
 					<li>同様に, 
 						\[
 							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
@@ -425,10 +434,13 @@
 								-1/2&1/2
 							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
 						\] 
-						を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+						を考えると, 例えば $\mathbf{v}_2 = \begin{pmatrix}
 							1\cr 
 							1
-						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+							1\cr 
+							1
+						\end{pmatrix}$, $c _ 2\neq0$ は任意.</li>
 				</ul>	
 			</div><!-- / #example -->
 			
@@ -459,10 +471,13 @@
 								-\sin\alpha & i\sin\alpha
 							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
 						\] 
-						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}
+						を考えると, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}
 							1\cr 
 							-i
-						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}
+							1\cr 
+							-i
+						\end{pmatrix}$ $c _ 1\neq0$ は任意.</li>
 					<li>同様に, 
 						\[
 							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
@@ -470,10 +485,13 @@
 								-\sin\alpha & -i\sin\alpha
 							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
 						\] 
-						を満たす $\mathbf{v} _ 2$ は $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+						を考えると, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}
 							1\cr 
 							i
-						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 2\neq0$ は任意).</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
+							1\cr 
+							i
+						\end{pmatrix}$ $c _ 2\neq0$ は任意.</li>
 				</ul>
 			</div><!-- / #example -->
 
@@ -505,23 +523,27 @@
 								0 & 0
 							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
 						\] 
-						を満たす $\mathbf{v} _ 1$ は $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+						を考えると, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}
 							1\cr 
 							0
-						\end{pmatrix}$ となるので, これが対応する固有ベクトルとなる ( $c _ 1\neq0$ は任意).</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
+							1\cr 
+							0
+						\end{pmatrix}$ $c _ 1\neq0$ は任意.</li>
 				</ul>					
 			</div><!-- / #example -->
 
 			<div class="remark">
-				もしも 
+				$A$ が $2$ 次正方行列であれば, 固有値 $\lambda$ に対して $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の各行ベクトルは線形独立ではないことがわかる. 
+				従って, $\lambda I-A$ は必ず
 				\[
 					\lambda I-A = \begin{pmatrix} 
 						a & b \cr 
 						ca & cb 
 					\end{pmatrix}
 				\]
-				という形をしているならば, 例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有ベクトルとなる. 
-				上に挙げた例も, 全てこのパターンに当てはまるため, 固有ベクトルを容易に見つけることができる.
+				という形になり, このとき例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有ベクトルとなる. 
+				このように, $2$ 次正方行列の固有ベクトルは容易に見つけることができる.
 			</div><!-- #remark -->
 
 		</section>
