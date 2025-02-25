@@ -19,6 +19,7 @@ body {
 .wrapper {
     display: flex;
     height: 100dvh;
+    width: 100dvw;
     overflow: auto;
 }
 
@@ -40,8 +41,8 @@ body {
 
 .side {
     min-height: 60dvh;
-    min-width: var(--sidebar_width);
-    margin-left: calc(-1 * var(--sidebar_width));
+    width: 0;
+    /* margin-left: calc(-1 * var(--sidebar_width)); */
     background-color: #eeeeee;
     color: #444444;
     height: 100vh;
@@ -54,30 +55,30 @@ body {
 main {
     /* fix sidebar size and flex size for main */
     flex: 1; 
-    margin-top: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 30px;
-    max-width: 1200px;
-    width: auto;
+    margin: auto;
     max-width: 90dvw;
     transition: all 0.5s;
 }
 
 article {
+    padding-top: 50px;
     padding-bottom: 20px;
 }
 
 
 /* sidebar when hamburger menu is clicked */
 .side.open {
+    min-width: var(--sidebar_width); 
     margin-left: 0;
     padding-left: var(--sidebar_padding_left);
 }
 
-/* main when hamburger menu is clicked */
-/* main.hidden { */
-/* } */
+/* main when hamburger menu is clicked */ 
+main.hidden {
+    padding-left: 20px;
+    min-width: 90dvw;
+    /* overflow-x: hidden; */
+}
 
 
 .side nav {
@@ -158,7 +159,7 @@ hr {
 /* custom class */
 
 .definition, .theorem, .lemma, .problem {
-    width: 92%;
+    width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-top: 0px;
@@ -198,8 +199,12 @@ hr {
 mjx-container {
     overflow-x: auto;
     overflow-y: hidden;
-    max-width: 100%;
+    max-width: 90dvw;
 }
+/* mjx-math { 
+    overflow-x: auto;
+    max-width: 70dvw;
+} */
 
 @media only screen and (min-width: 800px) {
     /* no need hamburger */
@@ -210,5 +215,10 @@ mjx-container {
     .side {
         margin-left: 0;
         padding-left: var(--sidebar_padding_left);
+    }
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 1200px;
     }
 }
