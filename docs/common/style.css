@@ -85,6 +85,11 @@ main {
     padding-bottom: 20px;
 }
 
+main a {
+    color: inherit;
+    font-weight: bold;
+}
+
 nav a {
     margin-left: 10px;
     margin-bottom: 5px;
@@ -123,7 +128,8 @@ a:hover, a:focus {
 /* main contents */
 
 main ul li {
-    padding-bottom: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
     line-height: 1.5em;
 }
 
@@ -175,6 +181,10 @@ hr {
     float:left;
     max-width:100%;
     height:auto;
+}
+
+.wave {
+    text-decoration: underline wavy;
 }
 
 /* mathjax: display math */
