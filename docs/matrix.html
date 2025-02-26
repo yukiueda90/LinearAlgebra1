@@ -32,122 +32,134 @@
             <p>ここでは, <b>行列</b>および行列の演算, 操作について紹介する.</p>
             <p>行列を用いることで, 多くの数を同時に扱うことが可能であり, これは例えば連立 $1$ 次方程式の記述や, ベクトルの $1$ 次変換の表現などに応用される.
             計算機で取り扱う大量のデータや, 物理現象の記述では変位 (つまり位置) や運動の向き, 速度といった情報は, しばしばベクトルとして表現される. 
-            従って, 連立 $1$ 次方程式の解としてそれらを求める, もしくはそれらを変換する際に行列を頻繁に用いることになる.</p>
+            従って, 連立 $1$ 次方程式の解としてそれらを求めたり, もしくはそれらを変換する際に行列を頻繁に用いることになる.</p>
             <p>行列は, 複数の数を長方状に並べたものとして表現されるが, 四則演算の定義などに $1$ つの数との類似性が見られ, &quot; $1$ つの数&quot;を拡張した概念だと言うことができるだろう.</p>
         
             <div class="definition" data-name="行列">
-                <p>縦に$m$個, 横に$n$個の数を長方形状に並べたものを$m\times n$ 型の<b>行列</b> (<b>matrix</b>) という.</p>
-            </div><!-- /definition-->
-
-            <div class="example">
-                \[
-                    A = \begin{pmatrix}
-                        a_{11}&a_{12}\cr 
-                        a_{21}&a_{22}
-                    \end{pmatrix},\qquad 
-                    B=\begin{pmatrix}
-                        b_{11}&b_{12}&b_{13}\cr 
-                        b_{21}&b_{22}&b_{32}
-                    \end{pmatrix}.
-                \]
                 <ul>
-                    <li>行列を構成する$mn$個の数を行列の<b>成分</b> (<b>element</b>) という.</li>
+                    <li>縦に$m$個, 横に$n$個の数を長方形状に並べたものを$m\times n$ 型の<b>行列</b> (<b>matrix</b>) という.</li>
+                    <li>行列を構成する$m\times n$個の数を行列の<b>成分</b> (<b>element</b>) という.</li>
                     <li>行列を構成する要素たちを横に並べた部分を<b>行</b> (<b>row</b>), 縦に並べた部分を<b>列</b> (<b>column</b>)という.</li>
                     <li>上から $i$ 番目の行を<b>第 $i$ 行</b>, 左から $j$ 番目の列を<b>第 $j$ 列</b>という.</li>
                     <li>第 $i$ 行, 第 $j$ 列にある成分を <b>$ (i,j) $ 成分</b>という.</li>
-                    <li>以降, 断りの無い限り, 行列は大文字のアルファベットで表記し, 例えば行列 $A$ の $(i,j)$ 成分を小文字のアルファベットを用いて $ a_{ij} $ と表す.</li>
-                    <li>行列 $A$ の $(i,j)$ 成分は $(A)_{ij}$ と表記されることもある.</li>
-                    <li>また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ と表す.</li>
                 </ul>
-            </div><!-- /example-->
+            </div><!-- /definition-->
+
+            <div class="remark">
+                <ul>
+                    <li>以降, 断りの無い限り, 行列は大文字のアルファベットで表記する.</li>
+                    <li>行列 $A$ の $(i,j)$ 成分は 小文字のアルファベットを用いて $ a_{ij} $ と表したり, $(A)_{ij}$ と表記されることがある.</li>
+                    <li>また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ と表すことがある.</li>
+                </ul>
+            </div><!-- /remark-->
 
             <div class="example">
                 \[
                     A = \begin{pmatrix}
                         a_{11}&a_{12} \cr 
                         a_{21}&a_{22}
-                    \end{pmatrix}.
+                    \end{pmatrix}, \qquad B=\begin{pmatrix}
+                    b_{11}&b_{12}&b_{13}\cr 
+                    b_{21}&b_{22}&b_{32}
+                \end{pmatrix}.
                 \]
                 <ul>
-                    <li>この行列 $A$ の第 $1$ 行は $(a_{11},a_{12})$.</li>
-                    <li>この行列 $A$ の第 $2$ 列は $\begin{pmatrix}a_{12}\cr a_{22}\end{pmatrix}$.</li>
-                    <li>この行列 $A$ の $(1,2)$ 成分は $a_{12}$.</li>
+                    <li>行列 $A$ の第 $1$ 行は $(a_{11},a_{12})$.</li>
+                    <li>行列 $A$ の第 $2$ 列は $\begin{pmatrix}a_{12}\cr a_{22}\end{pmatrix}$.</li>
+                    <li>行列 $A$ の $(1,2)$ 成分は $a_{12}$.</li>
                 </ul>
+
+                <div class="resize" style="width:200px"><img src='./images/matrix_1.png'></div>
+                <div class="resize" style="width:130px"><img src='./images/matrix_2.png'></div>
             </div><!-- /example -->
-
+            
+            
             <hr>
-
-            <ul>
-                <li>全ての成分が実数である行列を<b>実行列</b> (<b>real matrix</b>)という.</li>
+            
+            <div class="definition" data-name="実行列と複素行列">
+                <ul>
+                    <li>全ての成分が実数である行列を<b>実行列</b> (<b>real matrix</b>)という.</li>
                 <ul>
                     <li>行列 $A$ が $m\times n$ 型の実行列であるとき, $A\in \mathbb{R}^{m\times n}$ と表記する.</li>
                 </ul>
-                <li>全ての成分が複素数である行列を<b>複素行列</b> (<b>real matrix</b>)という.</li>
+                <li>全ての成分が複素数である行列を<b>複素行列</b> (<b>complex matrix</b>)という.</li>
                 <ul>
                     <li>行列 $A$ が $m\times n$ 型の複素行列であるとき, $A\in \mathbb{C}^{m\times n}$ と表記する.</li>
                 </ul>
-                <li>$1\times n$ 型の行列を<b>行ベクトル</b> (<b>row vector</b>)という.</li>
-                <li>$m\times 1$ 型の行列を<b>列ベクトル</b> (<b>column vector</b>)という.</li>
-                <li>$1\times 1$ 型の行列は, そのただ $1$ つの成分である実数 (もしくは複素数) と同一視される.</li>
-            </ul>
+                </ul>
+            </div><!-- /definition-->
+
+            <div class="example">
+                <p>実数 $a$, $b$, $c$, $d$ に対して, </p>
+                \[
+                    A = \begin{pmatrix}a&b\cr c&d\end{pmatrix}
+                \]
+                <p>は実行列であり, $A\in\mathbb{R}^{2\times 2}$ である. また, 実数は特に複素数でもあるため, $A\in \mathbb{R}^{2\times 2}\subset \mathbb{C}^{2\times 2}$ である.</p>
+            </div><!-- /example -->
+
+            <div class="definition" data-name="ベクトル">
+                <ul>
+                    <li>$1\times n$ 型の行列を<b>行ベクトル</b> (<b>row vector</b>)という.</li>
+                    <li>$m\times 1$ 型の行列を<b>列ベクトル</b> (<b>column vector</b>)という.</li>
+                    <li>$1\times 1$ 型の行列は, そのただ $1$ つの成分である実数 (もしくは複素数) と同一視される.</li>
+                </ul>
+            </div><!-- /definition-->
 
             <div class="example">
                 <ul>
-                    <li>$A = \begin{pmatrix}a_{11}&a_{12}\cr a_{21}&a_{22}\end{pmatrix} \in \mathbb{R}^{2\times 2}.$</li>
-                    <li>$\mathbf{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$, $\mathbf{x}$ は行ベクトル.</li>
-                    <li>$\mathbf{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$, $\mathbf{v}$ は列ベクトル.</li>
+                    <li>$\mathbf{x} = (x_1,x_2,x_3)\in\mathbb{R}^{1\times3}$ は行ベクトル.</li>
+                    <li>$\mathbf{v} = \begin{pmatrix}v_1\cr v_2\cr v_3\end{pmatrix}\in\mathbb{R}^{3\times1}$ は列ベクトル.</li>
                     <li>$\begin{pmatrix}a\end{pmatrix}\in\mathbb{R}^{1\times1}$ は $a\in\mathbb{R}$ と同一視される.</li>
                 </ul>
             </div><!-- /example -->
 
-            <hr>
+            <div class="remark">
+                <p>行ベクトルに限り, 各成分をカンマ (,) で区切って表記することにする.</p>
 
-            <ul>
-                <li>
-                    行列 $A = (a_{ij})\in\mathbb{R}^{m\times n}$ は, 
-                    \[
-                        \mathbf{a} _ i = (a _ {i1},a _ {i2},\dots, a _ {in})
-                    \] 
-                    という行ベクトルたちを縦に並べたものと見なすことができる:
-                    \[
-                        A = \begin{pmatrix}
-                            a_{11}&a_{12}&\dots&a_{1n}\cr 
-                            a_{21}&a_{22}&\dots&a_{2n}\cr
-                            \vdots&\vdots&\ddots&\vdots\cr
-                            a_{m1}&a_{m2}&\dots&a_{mn}
-                        \end{pmatrix} = \begin{pmatrix}
-                            \mathbf{a}_1 \cr \mathbf{a}_2 \cr \vdots \cr \mathbf{a}_m
-                        \end{pmatrix}.
-                    \] 
-                    このとき, 各 $\mathbf{a}_i$ を行列 $A$ の<b>第 $i$ 行ベクトル</b>という.
-                </li>
-                <li>
-                    同様に, 行列 $A\in\mathbb{R}^{m\times n}$ を
-                    \[
-                        \mathbf{a}_ j = \begin{pmatrix}a_{1j} \cr a_{2j} \cr \vdots \cr a_{mj}\end{pmatrix}
-                    \] 
-                    という列ベクトルたちを横に並べたものと見なすことができる:
-                    \[
-                        A = \begin{pmatrix}
-                            a_{11}&a_{12}&\dots&a_{1n}\cr 
-                            a_{21}&a_{22}&\dots&a_{2n}\cr
-                            \vdots&\vdots&\ddots&\vdots\cr
-                            a_{m1}&a_{m2}&\dots&a_{mn}
-                        \end{pmatrix} = \begin{pmatrix}
-                            \mathbf{a}_1&\mathbf{a}_2&\dots&\mathbf{a}_n
-                        \end{pmatrix}.
-                    \] 
-                    このとき, 各 $\mathbf{a}_j$ を行列 $A$ の<b>第 $j$ 列ベクトル</b>という.
-                </li>
-            </ul>
+            </div><!-- /remark -->
+
+            <div class="remark">
+                <p>
+                    $m\times n$ 型行列 $A$ の第 $i$ 行は $1\times n$ 型行列, つまり行ベクトルになる. 
+                    この行ベクトルを行列 $A$ の第 $i$ 行ベクトルという.
+                    例えば, 行列
+                </p> 
+                \[
+                    A = \begin{pmatrix}
+                        a_{11}&a_{12}&\dots&a_{1n}\cr 
+                        a_{21}&a_{22}&\dots&a_{2n}\cr
+                        \vdots&\vdots&\ddots&\vdots\cr
+                        a_{m1}&a_{m2}&\dots&a_{mn}
+                    \end{pmatrix}
+                \]
+                <p>の第 $i$ 行ベクトルは</p>
+                \[
+                    (a_{i1}, a_{i2}, \dots, a_{in})
+                \]
+                <p>であり, これを $\mathbf{a}_i$ と表すことで</p>
+                \[
+                    A = \begin{pmatrix}
+                        a_{11}&a_{12}&\dots&a_{1n}\cr 
+                        a_{21}&a_{22}&\dots&a_{2n}\cr
+                        \vdots&\vdots&\ddots&\vdots\cr
+                        a_{m1}&a_{m2}&\dots&a_{mn}
+                    \end{pmatrix} = \begin{pmatrix}
+                        \mathbf{a}_1 \cr \mathbf{a}_2 \cr \vdots \cr \mathbf{a}_m
+                    \end{pmatrix}.
+                \] 
+                <p>と表記することがある.</p>
+                <div class="resize" style="width:300px"><img src='./images/matrix_3.png'></div>
+                <p>同様に, 行列 $A$ の第 $j$ 列は列ベクトルであり, これを行列 $A$ の第 $j$ 列ベクトルという.</p>
+            </div><!-- /remark -->
 
             <hr>
         
         </section>
 
-        <section id="section1-2"><h2>1.2: 行列の演算</h2>
+        <section id="section1-2"><h2>1.2: 行列の演算と操作</h2>
 
-            <p>ここでは, 行列の<b>和</b>と<b>積</b> (つまり足し算と掛け算) およびスカラー倍, <b>転置</b>と呼ばれる操作を紹介する.</p>
+            <p>ここでは, 行列の<b>和</b>と<b>積</b> (つまり足し算と掛け算) および<b>スカラー倍</b>, <b>転置</b>と呼ばれる操作を紹介する. 
+            なお, 定義よりベクトルは行列の特殊な場合であり, 行列に対する演算や操作はベクトルに対しても適用されるものである.</p>
             <p>まずは, &quot;$2$ つの行列が等しい&quot;ということの定義を与える:</p>
 
             <div class="definition">
@@ -171,7 +183,8 @@
                     B=\begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix},\quad 
+                    \end{pmatrix},
+                \]\[
                     C=\begin{pmatrix}
                         1&2\cr 
                         3&0
@@ -206,7 +219,8 @@
                     B=\begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix},\quad 
+                    \end{pmatrix},
+                \]\[ 
                     C=\begin{pmatrix}
                         1&2\cr 
                         3&0
@@ -218,8 +232,8 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>$A+B = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}+\begin{pmatrix}1&2\cr 3&4\end{pmatrix} = \begin{pmatrix}2&4\cr 6&8\end{pmatrix}$</li>
-                    <li>$A+C = \begin{pmatrix}1&2\cr 3&4\end{pmatrix} + \begin{pmatrix}1&2\cr 3&0\end{pmatrix} = \begin{pmatrix}2&4\cr 6&4\end{pmatrix}$</li>
+                    <li style="font-size: 13px">$A+B = \begin{pmatrix}1&2\cr 3&4\end{pmatrix}+\begin{pmatrix}1&2\cr 3&4\end{pmatrix} = \begin{pmatrix}2&4\cr 6&8\end{pmatrix}.$</li>
+                    <li style="font-size: 13px">$A+C = \begin{pmatrix}1&2\cr 3&4\end{pmatrix} + \begin{pmatrix}1&2\cr 3&0\end{pmatrix} = \begin{pmatrix}2&4\cr 6&4\end{pmatrix}.$</li>
                     <li>行列の型が異なるため, $A+D$ は定義されない.</li>
                 </ul>
             </div><!-- /example -->
@@ -261,19 +275,22 @@
                             \end{pmatrix} = \begin{pmatrix}
                                 2&4\cr 
                                 6&8
-                            \end{pmatrix} = A+A
+                            \end{pmatrix}.
                         \]</li>
                     <li>\[
-                            A - C = A + (-1)C = \begin{pmatrix}
+                        -C = (-1)\begin{pmatrix} 
+                                1 & 2 \cr 
+                                3 & 0 
+                            \end{pmatrix} = \begin{pmatrix} 
+                                -1 & -2 \cr 
+                                -3 & 0 
+                            \end{pmatrix}.
+                        \]</li>
+                    <li>\[
+                            2A - C = \begin{pmatrix}
                                 1&2\cr 
-                                3&4
-                            \end{pmatrix} + \begin{pmatrix}
-                                -1&-2\cr 
-                                -3&0
-                            \end{pmatrix} = \begin{pmatrix}
-                                0&0\cr 
-                                0&4
-                            \end{pmatrix}
+                                3&8
+                            \end{pmatrix}.
                         \]</li>
                 </ul>     
             </div><!-- /example -->
@@ -296,7 +313,7 @@
 
             <div class="example">
                 \[
-                    \mathbf{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad 
+                    \mathbf{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\quad 
                     \mathbf{y} = \begin{pmatrix}
                         y_1\cr 
                         y_2
@@ -305,11 +322,12 @@
                 <ul>
                     <li>$\mathbf{x}\mathbf{y}\in\mathbb{R}^{1\times1}$ の $(1,1)$ 成分は $\displaystyle\sum_{k=1}^2 x_ky_k$.</li>
                     <li>つまり行列 $\mathbf{x}\mathbf{y}$ は, そのただ $1$ つの成分である $x _ 1y _ 1+x _ 2y _ 2$ と同一視される.</li>
-                    <li>これはベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 
+                    <li>なお, この形の行列積はベクトル $\vec{x}=(x_1,x_2)$ と $\vec{y}=(y_1,y_2)$ の内積 
                         \[
                             \vec{x}\cdot\vec{y} = x_1y_1+x_2y_2
-                        \] に等しい.</li>
+                        \] と一致する.</li>
                 </ul>    
+                <div class="resize" style="width: 240px"><img src='./images/matrix_product_1.png'></div>
             </div><!-- /example -->
 
             <div class="example">
@@ -317,17 +335,17 @@
                     A = \begin{pmatrix}
                         a_{11}&a_{12}\cr 
                         a_{21}&a_{22}
-                    \end{pmatrix}\in\mathbb{R}^{2\times 2},\qquad 
+                    \end{pmatrix},\quad 
                     B = \begin{pmatrix}
                         b_{11}&b_{12}\cr 
                         b_{21}&b_{22}
-                    \end{pmatrix}\in\mathbb{R}^{2\times 2}
+                    \end{pmatrix}
                 \]
                 <ul>
-                    <li>$AB = \begin{pmatrix}
+                    <li style="font-size: 13px">$AB = \begin{pmatrix}
                             a_{11}b_{11}+a_{12}b_{21}&a_{11}b_{12}+a_{12}b_{22}\cr 
                             a_{21}b_{11}+a_{22}b_{21}&a_{21}b_{12}+a_{22}b_{22}
-                        \end{pmatrix}$.</li>
+                        \end{pmatrix}.$</li>
                     <li>行列 $AB$ の $(i,j)$ 成分は, $A$ の第 $i$ 行ベクトル $\mathbf{a}_i$ と $B$ の第 $j$ 列ベクトル $\mathbf{b}_j$の積となる;
                         \[
                             AB = \begin{pmatrix}
@@ -338,11 +356,9 @@
                         ここで $\mathbf{a}_i = (a_{i1},a_{i2})$, $\mathbf{b}_j = \begin{pmatrix}
                             b_{1j}\cr 
                             b_{2j}
-                        \end{pmatrix}$ である. 実際に, 行列積 $\mathbf{a}_i \mathbf{b}_j$ (すなわち行列積 $AB$ の $(i,j)$ 成分) は
-                    \[
-                        \vec{a}_ i = (a_{i1}, a_{i2}),\quad \vec{b}_ j = (b_{1j}, b_{2j})
-                    \] の内積と同一視することができ, $(a_{i1} b_{1j} + a_{i2} b_{2j})$ である.</li>
+                        \end{pmatrix}$ である.</li>
                 </ul>      
+                <div class="resize" style="width: 500px"><img src='./images/matrix_product_2.png'></div>
             </div><!-- /example -->
 
             <div class="example">
@@ -350,31 +366,29 @@
                     A = \begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix},\qquad 
+                    \end{pmatrix},\quad 
                     B = \begin{pmatrix}
                         2&3\cr 
                         4&5
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>\[
-                            AB = \begin{pmatrix}
-                                1\cdot2+2\cdot4 & 1\cdot3+2\cdot5\cr 
-                                3\cdot2+4\cdot4 & 3\cdot3+4\cdot5
-                            \end{pmatrix} = \begin{pmatrix}
+                    <li>$AB = \begin{pmatrix}
+                            1\cdot2+2\cdot4 & 1\cdot3+2\cdot5\cr 
+                            3\cdot2+4\cdot4 & 3\cdot3+4\cdot5
+                        \end{pmatrix}$ <br>
+                        $\qquad = \begin{pmatrix}
                                 10&13\cr 
                                 22&29
-                            \end{pmatrix}.
-                        \]</li>
-                    <li>\[
-                            BA = \begin{pmatrix}
-                                2\cdot1+3\cdot3 & 2\cdot2+3\cdot4\cr 
-                                4\cdot1+5\cdot3 & 4\cdot2+5\cdot4
-                            \end{pmatrix} = \begin{pmatrix}
+                            \end{pmatrix}.$</li>
+                    <li>$BA = \begin{pmatrix}
+                            2\cdot1+3\cdot3 & 2\cdot2+3\cdot4\cr 
+                            4\cdot1+5\cdot3 & 4\cdot2+5\cdot4
+                        \end{pmatrix}$ <br>
+                        $\qquad = \begin{pmatrix}
                                 11&16\cr 
                                 19&28
-                            \end{pmatrix}
-                        \]</li>
+                            \end{pmatrix}.$</li>
                     <li>このように, 一般には $AB\neq BA$ となる.</li>
                 </ul>    
             </div><!-- /example -->
@@ -384,7 +398,7 @@
                     A = \begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix},\qquad 
+                    \end{pmatrix},\quad 
                     B = \begin{pmatrix}
                         2&3&0\cr 
                         4&5&0
@@ -405,7 +419,7 @@
                     A = \begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix},\qquad 
+                    \end{pmatrix},\quad 
                     \mathbf{x} = \begin{pmatrix}
                         x_1\cr 
                         x_2
@@ -421,7 +435,7 @@
 
             <div class="example">
                 \[
-                    \mathbf{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\qquad 
+                    \mathbf{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\quad 
                     \mathbf{y} = \begin{pmatrix}
                         y_1\cr 
                         y_2
@@ -438,13 +452,14 @@
                         であり, これはベクトルの内積と一致しない.</li>
                     <li>ベクトルの内積と一致するのは, $(\text{行ベクトル})(\text{列ベクトル})$ という形をしたベクトル同士の行列積であり, 上のように $(\text{列ベクトル})(\text{行ベクトル})$ という形の積に関してはこの限りでは無い.</li>
                 </ul>
+                <div class="resize" style="width: 250px"><img src='./images/matrix_product_3.png'></div>
             </div><!-- /example -->
 
             <hr>
 
-            <p>以下の $2$ つは, &quot;$1$ つの数&quot;に対しても成立するが, 行列に対しても同様に成り立つ:</p>
+            <p>以下の $2$ つの性質は, &quot;$1$ つの数&quot;に対しても成立するものであるが, 行列に対しても同様に成り立つ:</p>
 
-            <div class="theorem" data-name="結合則">
+            <div class="theorem" data-name="結合則" id="associative_law">
                 行列 $A$, $B$, $C$ がそれぞれ $k\times\ell$ 型, $\ell\times m$ 型, $m\times n$ 型であるならば, 
                 \[
                     (AB)C = A(BC)
@@ -495,7 +510,7 @@
                 \] 
                 である. 一方, 行列 $AB$, $AC$ の $(i,j)$ 成分はそれぞれ
                 \[
-                    \sum_{k=1}^ma_{ik}b_{kj},\qquad \sum_{k=1}^ma_{ik}c_{kj}
+                    \sum_{k=1}^ma_{ik}b_{kj},\quad \sum_{k=1}^ma_{ik}c_{kj}
                 \] 
                 なので $A(B+C) = AB+AC$ が得られる.
             </div><!-- /proof -->
@@ -511,12 +526,12 @@
             <p>定義より次は明らかである:</p>
 
             <div class="theorem">
-                \[
-                    \overline{\overline{A}}=A, \quad 
-                    \overline{A+B} = \overline{A}+\overline{B}, \quad
-                    \overline{\lambda A} = \overline{\lambda}\ \overline{A}, \quad
-                    \overline{AB} = \overline{A}\ \overline{B}.
-                \]
+                <ul>
+                    <li>$\overline{\overline{A}}=A,$</li>
+                    <li>$\overline{A+B} = \overline{A}+\overline{B},$</li>
+                    <li>$\overline{\lambda A} = \overline{\lambda}\ \overline{A},$</li>
+                    <li>$\overline{AB} = \overline{A}\ \overline{B}.$</li>
+                </ul>
                 <!-- /theorem --></div>
                 
             <hr>
@@ -524,7 +539,7 @@
             <p>次に, 行列の<b>転置</b>という操作を紹介しよう. これは, 行列の行と列を入れ替える操作である:</p>
 
             <div class="definition" data-name="転置行列">
-                <p>行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の<b>転置行列</b> といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を<b>転置</b> (<b>transpose</b>) という.</p>
+                <p>行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の<b>転置行列</b> (もしくは単に<b>転置</b>) といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を<b>転置</b> (<b>transpose</b>) という.</p>
             </div><!-- /definition -->
 
             <div class="remark">
@@ -557,35 +572,35 @@
                             b_{13}&b_{23}
                         \end{pmatrix}$.</li>
                 </ul>
+                <div class="resize" style="width: 200px"><img src='./images/matrix_transpose_1.png'></div>
             </div><!-- /example -->
 
             <div class="theorem">
-                \[
-                    (A^{\operatorname{T}})^{\operatorname{T}}=A, \quad 
-                    (A+B)^{\operatorname{T}} = A^{\operatorname{T}}+B^{\operatorname{T}}, \quad
-                    (AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}.
-                \]
+                <ul>
+                    <li>$(A^{\operatorname{T}})^{\operatorname{T}}=A,$</li>
+                    <li>$(A+B)^{\operatorname{T}} = A^{\operatorname{T}}+B^{\operatorname{T}},$</li>
+                    <li>$(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}.$</li>
+                </ul>
             </div><!-- /theorem -->
 
             <div class="proof">
-                <p>最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, 行列 $AB\in\mathbb{R}^{m\times n}$ の $(i,j)$ 成分は
-                \[
-                    \sum_{k=1}^ma_{ik}b_{kj}
-                \] 
-                なので, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は
+                <p>最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は行列 $AB$ の $(j,i)$ 成分に等しいため 
                 \[
                     \sum_{k=1}^ma_{jk}b_{ki}
                 \] 
-                となる. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル $\mathbf{b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル $\mathbf{a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}} A^{\operatorname{T}}$ の $(i,j)$ 成分は
+                である. 一方, $B^{\operatorname{T}}$ の第 $i$ 行ベクトルは, $B$ の第 $i$ 列ベクトル $\mathbf{b}_i$ の転置であり, $A^{\operatorname{T}}$ の第 $j$ 列ベクトルは, $A$ の第 $j$ 行ベクトル $\mathbf{a}_j$ の転置である. 従って, 行列 $B^{\operatorname{T}} A^{\operatorname{T}}$ の $(i,j)$ 成分は
                 \[
-                    \mathbf{b}_i^{\operatorname{T}}\mathbf{a}_j^{\operatorname{T}} = \begin{pmatrix}b_{1i}&  b_{2i}& \dots&  b_{mi}\end{pmatrix} \begin{pmatrix}
-                        a_{j1}\cr 
-                        a_{j2}\cr 
-                        \vdots\cr 
-                        a_{jm}
-                    \end{pmatrix} = \sum_{k=1}^m a_{jk} b_{ki}.
+                    \begin{array}{rl}
+                        \mathbf{b}_i^{\operatorname{T}}\mathbf{a}_j^{\operatorname{T}} &= \begin{pmatrix}b_{1i}, b_{2i}, \dots,  b_{mi}\end{pmatrix} \begin{pmatrix}
+                            a_{j1}\cr 
+                            a_{j2}\cr 
+                            \vdots\cr 
+                            a_{jm}
+                        \end{pmatrix} \cr 
+                        & = \displaystyle\sum_{k=1}^m a_{jk} b_{ki}.
+                    \end{array}
                 \]
-                従って $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が得られる.</p>
+                これが任意の $i$, $j$ に対して成立するため, $2$ つの行列 $(AB)^{\operatorname{T}}$ と $B^{\operatorname{T}}A^{\operatorname{T}}$ の全ての成分が等しい, つまり $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が成立する.</p>
             </div><!-- /proof -->
 
             <div class="example">
@@ -613,7 +628,7 @@
                             2&6&10\cr 
                             4&8&12
                         \end{pmatrix}$.</li>
-                    <li>従って, $B^{\operatorname{T}}A^{\operatorname{T}} = \begin{pmatrix}
+                    <li>$B^{\operatorname{T}}A^{\operatorname{T}} = \begin{pmatrix}
                             44&98\cr 
                             56&128
                         \end{pmatrix} = (AB)^{\operatorname{T}}$.</li>
@@ -669,10 +684,11 @@
                     <li>$(A-A)\mathbf{x} = \begin{pmatrix}
                             0&0\cr 
                             0&0
-                        \end{pmatrix}\mathbf{x} = O\mathbf{x} = \begin{pmatrix}
+                        \end{pmatrix}\mathbf{x}$ <br> 
+                        $\qquad\qquad\quad = O\mathbf{x} = \begin{pmatrix}
                             0\cr 
                             0
-                        \end{pmatrix} = O$.</li>
+                        \end{pmatrix} = \mathbf{0}$.</li>
                     <li>$A(\mathbf{x}-\mathbf{x}) = A\mathbf{0} = \mathbf{0}$.</li>
                 </ul>
             </div><!-- /example -->
@@ -686,11 +702,15 @@
             <div class="remark">
                 <ul>
                     <li>$A=(a_{ij})$ が正方行列ならば, $A$ の成分 $a_{ii}$ たちは行列の左上から右下にかけての対角線上に位置している. これらの成分を<b>対角成分</b> (<b>main diagonal</b>) という.</li>
+                </ul>
+                <div class="resize" style="width: 200px"><img src='./images/diagonal.png'></div>
+                <ul>
                     <li>正方行列 $A$ の転置行列 $A^{\mathrm{T}}$ は $A$ と同じ型の正方行列となり, それらの対角成分は一致する.</li>
                     <li>$A$ が正方行列ならば, 行列積 $AA$ が定義できる. これを $A^2$ と表記する.</li>
                     <li>同様に, $k$ 個の $A$ を掛け合わせた行列積 $A\cdots A$ を $A^k$ と表記する.</li>
                 </ul>
             </div><!-- /remark -->
+
 
             <hr>
             
@@ -769,7 +789,7 @@
 
             <hr>
 
-            <div class="definition">
+            <div class="definition" data-name="単位行列">
                 <p>対角成分が全て $1$ である対角行列を<b>単位行列</b> (<b>identity matrix</b>) といい, $I$ ( もしくは $E$ ) と表記する.</p>
             </div><!-- /definition -->
 
@@ -777,6 +797,7 @@
                 <ul>
                     <li>$I = \begin{pmatrix}1\end{pmatrix}\in\mathbb{R}^{1\times 1}$. これは $1\in\mathbb{R}$ と同一視される.</li>
                     <li>$I=\begin{pmatrix}1&0\cr 0&1\end{pmatrix}\in\mathbb{R}^{2\times2}$.</li>
+                    <li>$I=\begin{pmatrix}1&0&0\cr 0&1&0\cr 0&0&1\end{pmatrix}\in\mathbb{R}^{3\times 3}$</li>
                 </ul>
             </div><!-- /example -->
 
@@ -784,15 +805,20 @@
                 <ul>
                     <li>特に $n$ 次正方行列である単位行列を $I_n$ ( もしくは $E_n$ ) と表記することがある.</li>
                     <li>クロネッカーのデルタを用いると, $I=(\delta_{ij})$ と表記できる.</li>
+                    <li>全ての対角成分が $\lambda$ である対角行列は $\lambda I$ と表すことができる.</li>
+                </ul>
+            </div><!-- /remark -->
+            
+            <p>この行列を&quot;単位&quot;行列と呼ぶのは, 以下の性質が成り立つからである:</p>
+            <div class="theorem">
+                <ul>
                     <li>行列積 $IA$ が定義されるなら $IA=A$.</li>
                     <li>行列積 $AI$ が定義されるなら $AI=A$.</li>
                     <li>任意の $k$ に対し, $I^k=I$.</li>
-                    <li>全ての対角成分が $\lambda$ である対角行列は $\lambda I$ と表すことができる:
-                        \[
-                            \lambda IA = \lambda A,\quad A(\lambda I) = \lambda A,\quad (\lambda I)^k = \lambda^k I.
-                        \]</li>
-                </ul>
-            </div><!-- /remark -->
+            </div><!-- /theorem -->
+
+            <p>証明略.</p>
+            <p>単位行列に関連して, 以下にも言及しておく:</p>
 
             <div class="definition">
                 単位行列の各列ベクトル
@@ -816,7 +842,7 @@
             <hr>
             
             <p>行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. 
-            これを一般化して行列の<b>区分け</b>による行列積の表現が可能である.</p>
+            これを一般化して<b>ブロック行列</b> (<b>block matrix</b>) もしくは行列の<b>区分け</b> (<b>partitioning</b>) による行列積の表現が可能である.</p>
 
             <div class="example">
                 \[
@@ -829,11 +855,6 @@
                         2&3\cr
                         4&5\cr
                         6&7
-                    \end{pmatrix}, \quad 
-                    AB = \begin{pmatrix}
-                        28&34\cr 
-                        64&79\cr 
-                        100&124
                     \end{pmatrix}.
                 \]
                 <ul>
@@ -869,38 +890,42 @@
                             AB = \begin{pmatrix}
                                 A_{11}B_{11}+A_{12}B_{21}\cr 
                                 A_{21}B_{11}+A_{22}B_{21}
-                            \end{pmatrix} = \begin{pmatrix}
+                            \end{pmatrix}
+                        \]\[ = \begin{pmatrix}
                                 28&34\cr 
                                 64&79\cr
                                 \hdashline 
                                 100&124
                             \end{pmatrix}
                         \] 
-                        と表現することができる. 実際に計算してみると,
-                        \[
-                            A_{11}B_{11} = \begin{pmatrix}
-                                10&13\cr 
-                                28&37
-                            \end{pmatrix},
-                        \]  
-                        \[
-                            A_{12}B_{21} = \begin{pmatrix}
-                                18&21\cr 
-                                36&42
-                            \end{pmatrix},
-                        \]
-                        \[
-                            A_{21}B_{11} = \begin{pmatrix}
-                                46&61
-                            \end{pmatrix},
-                        \]
-                        \[
-                            A_{22}B_{21} = \begin{pmatrix}
-                                54&63
-                            \end{pmatrix}
-                        \] 
-                        となる.</li>
-                    <li>異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, 
+                        と表現することができる.</li> 
+                        <ul>
+                            <li>実際に計算してみると,
+                            \[
+                                A_{11}B_{11} = \begin{pmatrix}
+                                    10&13\cr 
+                                    28&37
+                                \end{pmatrix},
+                            \]  
+                            \[
+                                A_{12}B_{21} = \begin{pmatrix}
+                                    18&21\cr 
+                                    36&42
+                                \end{pmatrix},
+                            \]
+                            \[
+                                A_{21}B_{11} = \begin{pmatrix}
+                                    46&61
+                                \end{pmatrix},
+                            \]
+                            \[
+                                A_{22}B_{21} = \begin{pmatrix}
+                                    54&63
+                                \end{pmatrix}
+                            \] 
+                            となる.</li>
+                        </ul>
+                    <!-- <li>異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, 
                         $B = \left(\begin{array}{c:c}
                             2&3\cr 
                             4&5\cr
@@ -925,7 +950,7 @@
                             2&3\cr 
                             4&5\cr 
                             6&7
-                        \end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と列ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.</li>
+                        \end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と列ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.</li> -->
                 </ul>
             </div><!-- /example -->
 
@@ -971,7 +996,8 @@
                                     x_1\cr 
                                     x_2
                                 \end{pmatrix}+3x_3
-                            \end{pmatrix} = \begin{pmatrix}
+                            \end{pmatrix}
+                        \]\[\qquad = \begin{pmatrix}
                                 2x_1\cr 
                                 2x_2\cr 
                                 x _ 1+2x _ 2+3x _ 3
@@ -984,12 +1010,12 @@
 
             <p>次に述べる<b>逆行列</b>は, 行列の&quot;割り算&quot;に相当するものであり非常に重要である.</p>
 
-            <div class="definition" data-name="正則行列と逆行列">
+            <div class="definition" data-name="正則行列と逆行列" id="def_inverse_matrix">
                 <p>正方行列 $A$ に対して, 同じ型の正方行列 $B$ であって 
                 \[
                     AB = BA = I
                 \] 
-                を満たすものが存在するならば, $B$ を $A$ の<b>逆行列</b> (<b>inverse matrix</b>) といい, $B=A^{-1}$ と表記する. 
+                を満たすものが<span class="wave">存在するならば</span>, $B$ を $A$ の<b>逆行列</b> (<b>inverse matrix</b>) といい, $B=A^{-1}$ と表記する. 
                 正方行列 $A$ の逆行列が存在するならば, $A$ を<b>正則行列</b> (<b>regular matrix</b>) もしくは<b>可逆行列</b> (<b>invertible matrix</b>) という.</p>
             </div><!-- /definition -->
 
@@ -1009,17 +1035,19 @@
                     <li>$A=\begin{pmatrix}
                             1&2\cr 
                             3&4
-                        \end{pmatrix}$ とする. ここで,
+                        \end{pmatrix}$ とする. いま,
                         \[
                             A\begin{pmatrix}
                                 -2&1\cr 
                                 3/2&-1/2
-                            \end{pmatrix} = I,\quad\begin{pmatrix}
+                            \end{pmatrix} = I,
+                        \]
+                        \[\begin{pmatrix}
                                 -2&1\cr 
                                 3/2&-1/2
                             \end{pmatrix}A = I 
                         \] 
-                        となるので, $A^{-1} = \begin{pmatrix}
+                        が成立するので, $A^{-1} = \begin{pmatrix}
                             -2&1\cr 
                             3/2&-1/2
                         \end{pmatrix}$.</li>
@@ -1053,38 +1081,48 @@
             <div class="theorem">
                 <p>逆行列について以下が成立する:</p>
                 <ul>
-                    <li>同じ型の正方行列 $A$, $B$ に対し, $A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$.</li>
                     <li>$A^{-1}$ が存在するならば, $(A^{-1})^{-1} = A$.</li>
                     <li>$A^{-1}$ は存在するならばただ$1$つに定まる.</li>
+                    <li>同じ型の正方行列 $A$, $B$ に対し, $A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$.</li>
                 </ul>
             </div><!-- /theorem -->
 
             <div class="proof">
                 <ul>
-                    <li>行列 $AB$ と $(B^{-1}A^{-1})$ について, 行列積の結合則より 
+                    <li><a href="def_inverse_matrix">逆行列の定義</a>より $A^{-1}$ は
                         \[
-                            \left\lbrace\begin{array}{l}&(AB)(B^{-1}A^{-1}) = ABB^{-1}A^{-1} = AIA^{-1} = AA^{-1}=I,\cr
-                            &(B^{-1}A^{-1})(AB) = B^{-1}A^{-1}AB = B^{-1}IB = B^{-1}B=I.\end{array}\right.
+                            AA^{-1} = A^{-1}A = I
                         \] 
-                        従って, 逆行列の定義より $(AB)^{-1} = B^{-1}A^{-1}$.</li>
-                    <li>$I^{-1}=I$ と先ほどの結果から
-                        \[
-                            I = I^{-1} = (AA^{-1})^{-1} = (A^{-1})^{-1}A^{-1}.
-                        \] 
-                        これを用いると
-                        \[
-                            (A^{-1})^{-1} = (A^{-1})^{-1}I=(A^{-1})^{-1}A^{-1}A = IA=A.
-                        \]</li>
+                        を満たす. ここで, もう一度逆行列の定義を使うと $A$ は $A^{-1}$ の逆行列である, つまり $(A^{-1})^{-1}=A$ である.</li>
                     <li>(背理法) $2$ つの異なる行列 $B$, $C$ に対して,
                         \[
-                            AB=BA=AC=CA=I
+                            AB=BA=I,
                         \] 
-                        が成立すると仮定する. このとき,
                         \[
-                            B = BI = B(AC) = (BA)C = IC = C,
+                            AC=CA=I
+                        \]
+                        が成立すると仮定する. このとき, <a href="#associative_law">行列積の結合則</a> より
+                        \[
+                            B = BI = B(AC) = (BA)C = IC = C
                         \] 
-                        これは $B\neq C$ に矛盾する. 
+                        となるが, これは $B\neq C$ に矛盾する. 
                         従って, 背理法より $A$ の逆行列はただ $1$ つに定まる.</li>
+                    <li>行列 $AB$ と $(B^{-1}A^{-1})$ について, 行列積の結合則より 
+                        \[
+                            \begin{array}{rl}
+                                (AB)(B^{-1}A^{-1}) &= ABB^{-1}A^{-1} \cr 
+                                &= AIA^{-1} \cr 
+                                &= AA^{-1}=I,
+                            \end{array}
+                        \]
+                        \[
+                            \begin{array}{rl}
+                                (B^{-1}A^{-1})(AB) &= B^{-1}A^{-1}AB \cr
+                                &= B^{-1}IB \cr
+                                &= B^{-1}B=I.
+                            \end{array}
+                        \] 
+                        逆行列の定義より $(AB)^{-1} = B^{-1}A^{-1}.$</li>
                 </ul>
             </div><!-- /proof -->
 
@@ -1108,8 +1146,8 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>いま, $AB = I$ となることだけ確かめれば, $BA=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.</li>
-                    <li>同様に $BA=I$ となることだけ確かめれば, $AB=I$ も自動的に満たされるため, $B=A^{-1}$ であることがわかる.</li>
+                    <li>いま, $AB = I$ となることだけ確かめれば, 実は $BA=I$ も満たされるため, $B=A^{-1}$ であることがわかる.</li>
+                    <li>同様に $BA=I$ となることだけ確かめれば, 実は $AB=I$ も満たされるため, $B=A^{-1}$ であることがわかる.</li>
                 </ul>
             </div><!-- /example -->
 
