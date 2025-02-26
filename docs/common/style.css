@@ -188,11 +188,13 @@ hr {
 /* resize */
 .resize {
     width: 500px;
+    max-width: 80dvw;
     margin-left: auto;
     margin-right: auto;
 }
 .resize img {
     width: 100%;
+    max-width: 80dvw;
     margin-left: auto;
     margin-right: auto;
     height: auto;
