@@ -58,6 +58,7 @@ main {
     margin: auto;
     max-width: 90dvw;
     transition: all 0.5s;
+    display: block;
 }
 
 article {
@@ -185,10 +186,16 @@ hr {
 }
 
 /* resize */
+.resize {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .resize img {
-    float:left;
-    max-width:100%;
-    height:auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
 }
 
 .wave {
