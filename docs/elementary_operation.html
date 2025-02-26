@@ -36,7 +36,17 @@
                     3x+4y &= 46. &(2)
                 \end{array}\right.
             \] 
-            これは行列を用いると以下のように書き直すことができる:
+            これはベクトルを用いると (<a href="matrix.html#def_matrix_equality">行列の等号</a>より) 以下のように表現することができる:
+            \[
+                \begin{pmatrix} 
+                    x+2y \cr 
+                    3x + 4y 
+                \end{pmatrix} = \begin{pmatrix} 
+                    20 \cr 
+                    46 
+                \end{pmatrix}.
+            \]
+            さらに, 左辺のベクトルは<a href="matrix.html#def_matrix_product">行列積</a>を用いて表すことができるため, 以下の方程式は元の連立 $1$ 次方程式を同じものになる:
             \[
                 \begin{pmatrix}
                     1&2\cr 
@@ -49,13 +59,23 @@
                     46
                 \end{pmatrix}.
             \]
-            このように, 連立 $1$ 次方程式を行列と列ベクトルの行列積により表現することは, 行列の基本的な応用の $1$ つである 
-            (以降, 上のようにして連立 $1$ 次方程式と同一視することができる $A\mathbf{x} = \mathbf{b}$ という形の方程式のことも連立 $1$ 次方程式と呼ぶことがある).</p>
+            このように, 連立 $1$ 次方程式は対応する行列 $A$ と列ベクトル $\mathbf{b}$ を用いて, 「$A\mathbf{x} = \mathbf{b}$ を満たす列ベクトル $\mathbf{x}$ を求めよ」 という問題と同一視することができる.
+            これは行列の基本的な応用の $1$ つである.</p>
 
-            <p>ここで, 左辺にある行列 $A = \begin{pmatrix}
-                1&2\cr 
-                3&4
-            \end{pmatrix}$ の逆行列が
+            <p>上の連立 $1$ 次方程式は, </p>
+            \[
+                A = \begin{pmatrix}
+                    1&2\cr 
+                    3&4
+                \end{pmatrix},\quad \mathbf{x} = \begin{pmatrix} 
+                    x \cr 
+                    y 
+                \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+                    20 \cr 
+                    46 
+                \end{pmatrix}
+            \]
+            <p>とすると, $A\mathbf{x}=\mathbf{b}$ と同一視される. ここで, 左辺にある行列 $A$ の逆行列が
             \[
                 A^{-1}=\begin{pmatrix}
                     -2&1\cr 
@@ -64,53 +84,62 @@
             \] 
             であることを用いると,
             \[
-                \begin{pmatrix}
-                    x\cr 
-                    y
-                \end{pmatrix} = A^{-1}\begin{pmatrix}
-                    20\cr 
-                    46
-                \end{pmatrix} = \begin{pmatrix}
-                    6\cr 
-                    7
-                \end{pmatrix}
+                \begin{array}{rl}
+                    \mathbf{x} &= A^{-1}A\mathbf{x} \cr
+                    &= A^{-1}\mathbf{b} \cr 
+                    &= \begin{pmatrix}
+                        -2&1\cr 
+                        3/2&-1/2
+                    \end{pmatrix}\begin{pmatrix} 
+                        20 \cr 
+                        46 
+                    \end{pmatrix} \cr
+                    &= \begin{pmatrix}
+                        6\cr 
+                        7
+                    \end{pmatrix}
+                \end{array}
             \] 
             と計算することで, 連立$1$次方程式を解くことができる. 
-            すなわち, 連立 $1$ 次方程式を解くことと逆行列を求めることとを同一視することができる.</p>
+            すなわち, 行列 $A$ の逆行列を求めることにより, 連立 $1$ 次方程式を解くことができる.</p>
 
-            <p>一方で, この連立$1$次方程式は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加えることで $(1)$ 式から $y$ の項を消去する, といった操作を用いて解くこともできる. 
-            ここで例に挙げた操作を実際に適用すると,
+            <p>一方で, この連立$1$次方程式は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加えることで $(1)$ 式から $y$ の項を消去する, といった操作 (いわゆる<b>変数消去</b>) を用いて解くこともできる. 
+            実際に変数消去を用いて,
             \[
-                \left\lbrace\begin{array}{rll}
-                    x+2y &= 20, &(1) \cr
-                    3x+4y &= 46. &(2)
-                \end{array}\right. \qquad \leadsto \qquad
-                \left\lbrace\begin{array}{rll}
-                    x+2y &= 20, &(1)\cr
-                    x &= 6. &(2)^\prime
-                \end{array}\right.
-            \] と変形して, $x=6$ を得ることができるが, この操作は『行列 $A$ と右辺の列ベクトル の第 $2$ 行に第 $1$ 行の $-2$ 倍を加える』という操作と同値である:
-            \[
-                \begin{pmatrix}
-                    1&2\cr 
-                    3&4
-                \end{pmatrix}\begin{pmatrix}
-                    x\cr 
-                    y
-                \end{pmatrix} = \begin{pmatrix}
-                    20\cr 
-                    46
-                \end{pmatrix} \qquad \leadsto \qquad 
-                \begin{pmatrix}
-                    1&2\cr 
-                    1&0
-                \end{pmatrix}\begin{pmatrix}
-                    x\cr 
-                    y
-                \end{pmatrix} = \begin{pmatrix}
-                    20\cr 
-                    6
-                \end{pmatrix}.
+                \begin{array}{rl}
+                    &\left\lbrace\begin{array}{rll}
+                        x+2y &= 20, &(1) \cr
+                        3x+4y &= 46. &(2)
+                    \end{array}\right. \cr 
+                    \leadsto & \left\lbrace\begin{array}{rll}
+                        x+2y &= 20, &(1)\cr
+                        x &= 6. &(2)^\prime
+                    \end{array}\right.
+                \end{array}
+            \] と変形して, $x=6$ を得ることができるが, 同様の操作は行列と列ベクトルを用いた表記に対しても可能である:
+            \[  
+                \begin{array}{rl}
+                    & \begin{pmatrix}
+                        1&2\cr 
+                        3&4
+                    \end{pmatrix}\begin{pmatrix}
+                        x\cr 
+                        y
+                    \end{pmatrix} = \begin{pmatrix}
+                        20\cr 
+                        46
+                    \end{pmatrix} \cr 
+                    \leadsto & \begin{pmatrix}
+                        1&2\cr 
+                        1&0
+                    \end{pmatrix}\begin{pmatrix}
+                        x\cr 
+                        y
+                    \end{pmatrix} = \begin{pmatrix}
+                        20\cr 
+                        6
+                    \end{pmatrix}.
+                \end{array}
             \] 
             連立 $1$ 次方程式を解く際に用いられるこのような操作は, 行列に対しても, その性質を保ちつつ簡単な形に変形する操作としてしばしば用いられるものである.</p>
 
@@ -141,40 +170,35 @@
                 \end{pmatrix}$ に対する行基本変形は, </p>
                 <ul>
                     <li>
-                        \[
-                            \begin{pmatrix} 
-                                a & b \cr 
-                                c & d 
-                            \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                                c & d \cr 
-                                a & b 
-                            \end{pmatrix}, 
-                        \]
+                        $\begin{pmatrix} 
+                            a & b \cr 
+                            c & d 
+                        \end{pmatrix} \longrightarrow \begin{pmatrix} 
+                            c & d \cr 
+                            a & b 
+                        \end{pmatrix},$
                     </li>
                     <li>
-                        \[
-                            \begin{pmatrix} 
-                                a & b \cr 
-                                c & d 
-                            \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                                a & b \cr 
-                                \lambda c & \lambda d 
-                            \end{pmatrix}, 
-                        \]
+                        $\begin{pmatrix} 
+                            a & b \cr 
+                            c & d 
+                        \end{pmatrix} \longrightarrow \begin{pmatrix} 
+                            a & b \cr 
+                            \lambda c & \lambda d 
+                        \end{pmatrix},$ 
                     </li>
                     <li>
-                        \[
-                            \begin{pmatrix} 
-                                a & b \cr 
-                                c & d 
-                            \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                                a & b \cr 
-                                \lambda a + c & \lambda b + d 
-                            \end{pmatrix}, 
-                        \]
+                        $\begin{pmatrix} 
+                            a & b \cr 
+                            c & d 
+                        \end{pmatrix} \longrightarrow \begin{pmatrix} 
+                            a & b \cr 
+                            \lambda a + c & \lambda b + d 
+                        \end{pmatrix},$     
                     </li>
                 </ul>
                 <p>といったものである.</p>
+                <div class="resize" style="width: 300px"><img src='./images/elementary_row_operations.png'></div>
             </div><!-- /example -->
             
             <hr>
