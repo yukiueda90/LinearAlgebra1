@@ -222,6 +222,7 @@ mjx-container {
     }
     /* always show side bar */
     .side {
+        min-width: var(--sidebar_width);
         margin-left: 0;
         padding-left: var(--sidebar_padding_left);
     }
