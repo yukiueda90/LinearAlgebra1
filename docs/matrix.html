@@ -311,6 +311,11 @@
                 <p>行列積 $AB$ は, 左側の行列 $A$ の列の数と, 右側の行列 $B$ の行の数が等しいときに限り定義される.</p>
             </div><!-- /remark -->
 
+            <div class="remark" id="rem_matrix_product_not_commutative">
+                <p>行列積は一般には非可換である, つまり一般には $AB\neq BA$ である. また, 行列積 $AB$ が定義されたとしても, 行列積 $BA$ が定義されるとは限らない.</p>
+            </div><!-- /remark -->
+
+
             <div class="example">
                 \[
                     \mathbf{x} = (x_1,x_2)\in\mathbb{R}^{1\times2},\quad 
@@ -841,7 +846,7 @@
 
             <hr>
             
-            <p>行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. 
+            <p id="block_matrix">行列積の定義で述べたように, 行列積 $AB$ の $(i,j)$ 成分 は $A$ の第 $i$ 行ベクトルと $B$ の第 $j$ 列ベクトルの行列積を用いて表現することができる. 
             これを一般化して<b>ブロック行列</b> (<b>block matrix</b>) もしくは行列の<b>区分け</b> (<b>partitioning</b>) による行列積の表現が可能である.</p>
 
             <div class="example">
@@ -1126,7 +1131,7 @@
                 </ul>
             </div><!-- /proof -->
 
-            <div class="remark">
+            <div class="remark" id="rem_invertible_matrix">
                 <ul>
                     <li>上の結果より, 特に正則行列たちの積は正則行列になる.</li>
                     <li>実は, 正方行列 $A$ に対し $AB=I$ を満たす $B$ が存在すれば, そのような $B$ は $BA=I$ も満たす (つまり $B=A^{-1}$ となる).</li>
