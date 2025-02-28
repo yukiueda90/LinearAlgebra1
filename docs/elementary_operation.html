@@ -85,7 +85,8 @@
             であることを用いると,
             \[
                 \begin{array}{rl}
-                    \mathbf{x} &= A^{-1}A\mathbf{x} \cr
+                    \mathbf{x} &= I\mathbf{x} \cr 
+                    &= A^{-1}A\mathbf{x} \cr
                     &= A^{-1}\mathbf{b} \cr 
                     &= \begin{pmatrix}
                         -2&1\cr 
@@ -101,7 +102,7 @@
                 \end{array}
             \] 
             と計算することで, 連立$1$次方程式を解くことができる. 
-            すなわち, 行列 $A$ の逆行列を求めることにより, 連立 $1$ 次方程式を解くことができる.</p>
+            すなわち, 行列 $A$ の逆行列を求めることは, 連立 $1$ 次方程式の解法の一つである.</p>
 
             <p>一方で, この連立$1$次方程式は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加えることで $(1)$ 式から $y$ の項を消去する, といった操作 (いわゆる<b>変数消去</b>) を用いて解くこともできる. 
             実際に変数消去を用いて,
@@ -205,7 +206,7 @@
 
             <p>行列に対する基本変形は, 以下に挙げる行列を掛けることにより表現することができる.</p>
 
-            <div class="definition" data-name="基本行列">
+            <div class="definition" data-name="基本行列" id="def_elementary_matrix">
                 <p>以下の $3$ つの正方行列を<b>基本行列</b> (<b>elementary matrix</b>) という:</p>
                 <ul>
                     <li>$P_{i,j}$: 単位行列 $I$ の 第 $i$ 行と第 $j$ 行を入れ替えたもの.</li>
@@ -255,33 +256,75 @@
             <div class="example">
                 <p>\[
                     A = \begin{pmatrix}
-                        1&2\cr 
-                        3&4
+                        a & b\cr 
+                        c & d
                     \end{pmatrix}.
                 \]</p>
                 <ul>
-                    <li>行列 $A$ の第 $2$ 行に第 $1$ 行の $-2$ 倍を加える行基本変形により,
-                        \[
-                            A = \begin{pmatrix} 
-                                1 & 2 \cr 
-                                3 & 4 
-                            \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                                1 & 2 \cr 
-                                1 & 0
-                            \end{pmatrix}
-                        \]
-                        と表すことができるが, これは行列 $A$ を
-                        \[
-                            R_{2,1,-2}A = \begin{pmatrix}
-                                1&0\cr 
-                                -2&1
-                            \end{pmatrix}A = \begin{pmatrix}
-                                1&2\cr 
-                                1&0
-                            \end{pmatrix}
-                        \] 
-                        に取り替えることに対応している.</li>
-                    </ul>
+                    <li>$P_{1,2} = \begin{pmatrix} 
+                        0 & 1 \cr 
+                        1 & 0 
+                    \end{pmatrix}$ であり, 
+                    \[
+                        \begin{array}{rl}
+                            P_{1,2}A &= \begin{pmatrix} 
+                                0 & 1 \cr 
+                                1 & 0 
+                            \end{pmatrix}\begin{pmatrix} 
+                                a & b \cr 
+                                c & d 
+                            \end{pmatrix} \cr 
+                            & = \begin{pmatrix} 
+                                c & d \cr 
+                                a & b 
+                            \end{pmatrix}.
+                        \end{array}
+                    \]
+                    この行列は, 行列 $A$ に「第 $1$ 行と第 $2$ 行を入れ替える」という行基本変形を適用したものに等しい.
+                    </li>
+                    <li>$Q_{2,\lambda} = \begin{pmatrix} 
+                        1 & 0 \cr 
+                        0 & \lambda 
+                    \end{pmatrix}$ であり, 
+                    \[
+                        \begin{array}{rl} 
+                            Q_{2,\lambda}A &= \begin{pmatrix} 
+                                1 & 0 \cr 
+                                0 & \lambda 
+                            \end{pmatrix}\begin{pmatrix} 
+                                a & b \cr 
+                                c & d 
+                            \end{pmatrix} \cr 
+                            & = \begin{pmatrix} 
+                                a & b \cr 
+                                \lambda c & \lambda d 
+                            \end{pmatrix}.
+                        \end{array}
+                    \]
+                    この行列は, 行列 $A$ に「第 $2$ 行に $\lambda$ を掛ける」という行基本変形を適用したものに等しい.
+                    </li>
+                    <li>$R_{2,1,\lambda} = \begin{pmatrix} 
+                        1 & 0 \cr 
+                        \lambda & 1 
+                    \end{pmatrix}$ であり, 
+                    \[
+                        \begin{array}{rl} 
+                            R_{2,1,\lambda}A &= \begin{pmatrix} 
+                                1 & 0 \cr 
+                                \lambda & 1 
+                            \end{pmatrix}\begin{pmatrix} 
+                                a & b \cr 
+                                c & d 
+                            \end{pmatrix} \cr 
+                            & = \begin{pmatrix} 
+                                a & b \cr 
+                                \lambda a + c & \lambda b + d 
+                            \end{pmatrix}.
+                        \end{array}
+                    \]
+                    この行列は, 行列 $A$ に「第 $2$ 行に第 $1$ 行の $\lambda$ 倍を加える」という行基本変形を適用したものに等しい.
+                    </li>
+                </ul>
             </div><!-- / #example -->
 
             <div class="remark">
@@ -292,64 +335,26 @@
                     <li>行列 $A$ を $R_{i,j,\lambda}A$ に置き換える</li>
                 </ul>
                 <p>という操作であると表現することができる.
-                    また, 例えば行列 $A$ の『第 $i$ 行と第 $j$ 行を入れ換えた』行列の『第 $i$ 行を $\lambda$ 倍した』ものは, 
+                    また, 例えば行列 $A$ に「第 $i$ 行と第 $j$ 行を入れ換える」という行基本変形を適用した行列に, さらに「第 $i$ 行を $\lambda$ 倍する」という行基本変形を適用したものは, 
                     \[
                         Q_{i,\lambda}(P_{i,j}A) = Q_{i,\lambda}P_{i,j}A
                     \]
-                    となる (行列積の順番に注意). 
+                    と一致する (<a href="matrix.html#rem_matrix_product_not_commutative">行列積の順番</a>に注意). 
                 </p>
             </div><!-- / #remark -->
 
-            <div class="example">
-                <p>行列 $A=\begin{pmatrix} 
-                        a & b \cr 
-                        c & d 
-                    \end{pmatrix}$ に対して, 例えば $A$ の『第 $1$ 行と第 $2$ 行を入れ換えた』行列の『第 $1$ 行を $3$ 倍する』という行基本変形は, 
-                    \[
-                        A = \begin{pmatrix} 
-                            a & b \cr 
-                            c & d 
-                        \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                            c & d \cr 
-                            a & b 
-                        \end{pmatrix} \longrightarrow \begin{pmatrix} 
-                            3c & 3d \cr 
-                            a & b 
-                        \end{pmatrix}
-                    \]
-                    のように表すことができるが, これは行列 $A$ を 
-                    \[
-                        Q_{1,3}P_{1,2}A = \begin{pmatrix} 
-                            3 & 0 \cr 
-                            0 & 1 
-                        \end{pmatrix}\begin{pmatrix} 
-                            0 & 1 \cr 
-                            1 & 0 
-                        \end{pmatrix} \begin{pmatrix} 
-                            a & b \cr 
-                            c & d 
-                        \end{pmatrix} = \begin{pmatrix} 
-                            3c & 3d \cr 
-                            a & b 
-                        \end{pmatrix}
-                    \]
-                    に置き換えることに対応している. </p>
-            </div><!-- /example -->
-
-
             <div class="remark">
-                <p>基本行列は全て正則であり,
+                <p>基本行列は全て<a href="matrix.html#def_inverse_matrix">正則行列</a>であり,
                 \[
-                    P_{i,j}^{-1}=P_{i,j},\quad Q_{i,\lambda}^{-1} = Q_{i,\lambda^{-1}},\quad R_{i,j,\lambda}^{-1} = R_{i,j,-\lambda}
+                    P_{i,j}^{-1}=P_{i,j},
                 \] 
-                となる, すなわち, 基本行列の逆行列は基本変形行列で表現できる. 
-                実際, 行基本変形を考えると,</p>
-                <ul>
-                    <li>$P_{i,j}P_{i,j}I = I$,</li>
-                    <li>$Q_{i,\lambda^{-1}}Q_{i,\lambda}I = I, \quad Q_{i,\lambda}Q_{i,\lambda^{-1}}I=I$,</li>
-                    <li>$R_{i,j,-\lambda}R_{i,j,\lambda}I = I, \quad R_{i,j,\lambda}R_{i,j,-\lambda}I = I$</li>
-                </ul>
-                <p>などとなることは容易に想像できるし, 計算して確かめることもできる.</p>
+                \[
+                    Q_{i,\lambda}^{-1} = Q_{i,\lambda^{-1}},
+                \]
+                \[
+                    R_{i,j,\lambda}^{-1} = R_{i,j,-\lambda}
+                \]
+                となる, すなわち, 基本行列の逆行列は基本行列である. 
             </div><!-- / #remark -->
 
             <hr>
@@ -358,10 +363,13 @@
 
         <section id="section2-3"><h2>2.3: 階数と正則性</h2>
 
-            <p>基本行列を用いて, 実数の因数分解に相当するものを考えてみる: つまり, 与えられた行列 $A$ を, 基本行列と&quot;簡単な形をした行列&quot;の積によって表現する.</p>
+            <p>基本行列を用いて, 行列に対して因数分解に相当する操作を考えてみよう: つまり, 与えられた行列 $A$ を, 基本行列と&quot;簡単な形をした行列&quot;の積によって表現することを考える.</p>
             <ul>
-                <li>具体的には, $A = (\text{基本行列たちの積})\widetilde{A}(\text{基本行列たちの積})$ と表現できないかを考える.</li>
-                <li>これは, 行列 $A$ に対する基本変形により, &quot;簡単な形をした行列&quot; $\widetilde{A}$ を得ることができないかを考える, ということを意味している. </li>
+                <li>具体的には, &quot;簡単な形をした行列&quot; $\widetilde{A}$ を用いて, 
+                    \[
+                        A = (\text{基本行列たちの積})\widetilde{A}(\text{基本行列たちの積})
+                    \] と表現する.</li>
+                <li>これは, 行列 $A$ に対する基本変形により, &quot;簡単な形をした行列&quot; $\widetilde{A}$ を得ることを意味している. </li>
             </ul>
             <p>まず, 基本変形の性質を用いることで, 以下が成立する:</p>
 
@@ -378,6 +386,56 @@
                 </ul>    
             </div><!-- / #proof -->
 
+            <div class="example" id="ex_row_reduction_1">
+                <p>\[
+                    A = \begin{pmatrix}
+                        2&4&6\cr
+                        2&3&4\cr
+                        1&3&5
+                    \end{pmatrix}.
+                \]</p>
+                <ul>
+                    <li>この行列の第 $1$ 行と第 $1$ 列を掃き出してみよう.</li> 
+                    <ul>
+                        <li>つまり 第 $1$ 行と 第 $1$ 列について, $(1,1)$ 成分のみ $1$, それ以外は $0$ とする基本変形を考える.</li>
+                    </ul>
+                    <li>まず, 第 $1$ 行を $a_{11}=2$ で割ることで $(1,1)$ 成分を $1$ にする:
+                    \[
+                        Q_{1,1/2}A = \begin{pmatrix}
+                            1&2&3\cr 
+                            2&3&4\cr
+                            1&3&5
+                        \end{pmatrix}.
+                    \]</li>
+                    <li>次に, 第 $2$ 行に第 $1$ 行の $-2$ 倍を加え, 第 $3$ 行に第 $1$ 行の $-1$ 倍を加える, これにより, 第 $1$ 列は $(1,1)$ 成分を除いて全て $0$ になる:
+                    \[
+                        R_{3,1,-1}R_{2,1,-2}Q_{1,1/2}A = \begin{pmatrix}
+                            1&2&3\cr
+                            0&-1&-2\cr
+                            0&1&2
+                        \end{pmatrix}.
+                    \] 記号の簡単のため, $\widetilde{P} = R_{3,1,-1}R_{2,1,-2}Q_{1,1/2}$ とおく.</li>
+                    <li>最後に, 第 $2$ 列に第 $1$ 列の $-2$ 倍を加え, 第 $3$ 列に第 $1$ 列の $-3$ 倍を加える, これにより, 第 $1$ 行は $(1,1)$ 成分を除いて全て $0$ になる:
+                    \[
+                        \widetilde{P}AR_{2,1,-2}R_{3,1,-3} = \begin{pmatrix}
+                            1&0&0\cr
+                            0&-1&-2\cr
+                            0&1&2
+                        \end{pmatrix}.
+                    \] 記号の簡単のため, $\widetilde{Q} = R_{2,1,-2}R_{3,1,-3}$ とおく.</li>
+                </ul>
+                <div class="resize" style="width: 300px"><img src='./images/elementary_operations_1.png'></div>
+            </div><!-- / #example -->
+
+            <p>上の例では, 行列 $A$ の $(1,1)$ 成分に注目して掃き出しを行うことで, 第 $1$ 行と第 $1$ 列を $(1,1)$ 成分のみ $1$ に, それ以外を $0$ にすることができた. 
+                同様に, $(2,2)$ 成分に注目して掃き出しを行うことで $(2,2)$ 成分のみを $1$ に, それ以外を $0$ にすることができると期待される. 
+                この手順を繰り返し, $i=1,2,\dots$ について, 行列 $A$ の第 $(i,i)$ 成分に注目した掃き出しを行うことで, $A$ を基本変形により単位行列に&quot;近づける&quot;ことができる. 
+            つまり, 
+            \[
+                A = (\text{基本行列たちの積})\widetilde{A}(\text{基本行列たちの積})
+            \] 
+            を満たす $\widetilde{A}$ として, 単位行列に似た行列を求めることができる.</p> 
+            
             <div class="example">
                 <p>\[
                     A = \begin{pmatrix}
@@ -387,57 +445,65 @@
                     \end{pmatrix}.
                 \]</p>
                 <ul>
-                    <li>この行列の 第 $1$ 行と 第 $1$ 列について, $(1,1)$ 成分のみ $1$, それ以外は $0$ とする基本変形を求めてみよう.</li>
-                    <li>まず, 第 $1$ 行を $a_{11}=2$ で割ることで $(1,1)$ 成分を $1$ にする:
+                    <li>この行列の第 $1$ 行と第 $1$ 列を掃き出すと (<a href="#ex_row_reduction_1">上の例</a>より), 
+                        \[
+                            \widetilde{A} = \widetilde{P}A\widetilde{Q} = \begin{pmatrix} 
+                                1 & 0 & 0 \cr
+                                0 & -1 & -2 \cr
+                                0 & 1 & 2
+                            \end{pmatrix}
+                        \] と変形することができる.
+                    </li>
+                    <li>このようにして得られた行列について, さらに第 $2$ 行と第 $2$ 列を掃き出してみよう.</li> 
+                    <li>まず, 第 $2$ 行を $\widetilde{a}_{22}=-1$ で割ることで $(2,2)$ 成分を $1$ にする:
                     \[
-                        Q_{1,1/2}A = \begin{pmatrix}
-                            1&2&3\cr 
-                            2&3&4\cr
-                            1&3&5
+                        Q_{2,-1}\widetilde{A} = \begin{pmatrix}
+                            1 & 0 & 0 \cr 
+                            0 & 1 & 2 \cr
+                            0 & 1 & 2
                         \end{pmatrix}.
                     \]</li>
-                    <li>次に, 第 $2$ 行に第 $1$ 行の $-2$ 倍を加え, 第 $3$ 行に第 $1$ 行の $-1$ 倍を加える:
+                    <li>次に, 第 $3$ 行に第 $2$ 行の $-1$ 倍を加える, これにより, 第 $2$ 列は $(2,2)$ 成分を除いて全て $0$ になる:
                     \[
-                        R_{3,1,-1}R_{2,1,-2}Q_{1,1/2}A = \begin{pmatrix}
-                            1&2&3\cr
-                            0&-1&-2\cr
-                            0&1&2
+                        R_{3,2,-1}Q_{2,-1}\widetilde{A} = \begin{pmatrix}
+                            1 & 0 & 0 \cr
+                            0 & 1 & 2\cr
+                            0 & 0 & 0
                         \end{pmatrix}.
                     \]</li>
-                    <li>最後に, 第 $2$ 列に第 $1$ 列の $-2$ 倍を加え, 第 $3$ 列に第 $1$ 列の $-3$ 倍を加える:
+                    <li>最後に, 第 $3$ 列に第 $2$ 列の $-2$ 倍を加える, これにより, 第 $2$ 行は $(2,2)$ 成分を除いて全て $0$ になる:
                     \[
-                        R_{3,2,-3}R_{1,2,-2}Q_{2,1/2}AR_{2,1,-2}R_{3,1,-3} = \begin{pmatrix}
-                            1&0&0\cr
-                            0&-1&-2\cr
-                            0&1&2
+                        R_{3,2,-1}Q_{2,-1}\widetilde{A}R_{3,2,-2} = \begin{pmatrix}
+                            1 & 0 & 0 \cr
+                            0 & 1 & 0 \cr
+                            0 & 0 & 0
                         \end{pmatrix}.
                     \]</li>
+                    <li>記号の簡単のため, 改めて 
+                        \[
+                            \widetilde{P} = R_{3,2,-1}Q_{2,-1}R_{3,1,-1}R_{2,1,-2}Q_{1,1/2},
+                        \]
+                        \[
+                            \widetilde{Q} = R_{2,1,-2}R_{3,1,-3}R_{3,2,-2}
+                        \]
+                        とおくと, 
+                        \[
+                            \widetilde{P}A\widetilde{Q} = \begin{pmatrix} 
+                                1 & 0 & 0 \cr
+                                0 & 1 & 0 \cr
+                                0 & 0 & 0
+                            \end{pmatrix}
+                        \] が得られたことになる.
+                    </li>
                 </ul>
             </div><!-- / #example -->
 
-            <!--
-            <div class="remark">
-                <p>掃き出しによる結果は, どのような順序で基本変形を行うかに依存しない. 
-                しかしながら, 上の例のように, 第 $(i,j)$ 成分に注目して</p>
-                <ol>
-                    <li>第 $(i,j)$ 成分を $1$ にする.</li>
-                    <li>第 $i$ 行のスカラー倍を加えることで, 他の行の第 $j$ 列を全て $0$ にする.</li>
-                    <li>第 $j$ 列のスカラー倍を加えることで, 他の列の第 $i$ 行を全て $0$ にする.</li>
-                </ol>
-                <p>という手順で計算することを推奨する.</p>
-            </div><!-- / #remark -->
-            
 
-            <p>行列 $A$ の第 $(i,i)$ 成分に注目して掃き出しを行うことで, $A$ を基本変形により単位行列に&quot;近づける&quot;ことができる. 
-            つまり, 
-            \[
-                A = (\text{基本行列たちの積})\widetilde{A}(\text{基本行列たちの積})
-            \] 
-            を満たす $\widetilde{A}$ として, 単位行列に似た行列を求めることができる. 
-            このことは, <b>階数</b>という言葉を用いて以下のように言及される:</p>
+            <p>どのような行列に対しても, 基本変形により上と同様の&quot;単位行列に似た行列&quot;を得ることがが可能である. 
+                このことは, <b>階数</b>という言葉を用いて以下のように言及される:</p>
 
-            <div class="theorem" data-name="階数">
-                <p>任意の行列 $m\times n$ 型行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$, および $m\times n$ 型行列
+            <div class="theorem" data-name="階数" id="thm_rank">
+                <p>任意の行列 $m\times n$ 型行列 $A$ は, 基本変形により $m\times n$ 型行列
                 \[
                     F(r) =\begin{pmatrix}
                         I_r&O\cr 
@@ -451,8 +517,9 @@
                         &&&&&\ddots
                     \end{pmatrix}
                 \] 
-                を用いて, $A=PF(r)Q$ と表すことができる, ここで $I_r$ は $r\times r$ 型の単位行列である 
-                (この $r$ を行列 $A$ の<b>階数</b>(<b>rank</b>)という).</p>
+                に変形できる, ここで $I_r$ は $r\times r$ 型の単位行列である (<a href="matrix.html#block_matrix">ブロック行列</a>を用いて表現している).</p>
+                <p>言い換えれば, 基本行列の積により表される行列 $P$, $Q$ を用いて, $A=PF(r)Q$ と表すことができる.</p> 
+                <p>この $r$ を行列 $A$ の<b>階数</b>(<b>rank</b>)という.</p>
             </div><!-- / #theorem -->
 
             <div class="proof">
@@ -478,7 +545,8 @@
                         \widetilde{P} A \widetilde{Q} = F(r)
                     \] 
                     という形が得られる, ただし $\widetilde{P}$, $\widetilde{Q}$ は基本行列の積で表される.</li>
-                    <li>基本行列は正則かつ逆行列も基本行列で表されるので, $P=\widetilde{P}^{-1}$, $Q=\widetilde{Q}^{-1}$ とすれば, $P$, $Q$ は基本行列の積で表され,
+                    <li>基本行列は正則であり, 逆行列も基本行列で表される. 
+                        ここで, (<a href="matrix.html#rem_invertible_matrix">正則行列の積が正則行列</a>であることから $\widetilde{P}$, $\widetilde{Q}$ も正則行列なので) $P=\widetilde{P}^{-1}$, $Q=\widetilde{Q}^{-1}$ とすれば, $P$, $Q$ は基本行列の積で表され,
                     \[
                     A = P\widetilde{P}A\widetilde{Q}Q = PF(r)Q
                     \] 
@@ -488,72 +556,10 @@
 
             <div class="remark">
                 <ul>
-                    <li>この $r$ を行列 $A$ の<b>階数</b>(<b>rank</b>)といい, $\operatorname{rank} A = r$ と表記する.</li>
-                    <li>行列 $F(r)$ を, 行列 $A$ の標準形と呼ぶことがある.</li>
+                    <li>行列 $A$ の階数が $r$ であるとき, $\operatorname{rank} A = r$ と表記する.</li>
+                    <li>行列 $F(r)$ を, 行列 $A$ の<b>標準形</b>と呼ぶことがある.</li>
                     <li>本当は, このような $r$ が一意に定まることも示す必要があるが, ここでは証明は省略する.</li>
                 </ul> 
-            </div><!-- / #remark -->
-
-            <div class="example">
-                <p>(ここでのみ) 行及び列基本変形を $\longrightarrow$ により表すことにする. 例として,
-                \[
-                    A = \begin{pmatrix}
-                        0&2&4&6\cr 
-                        1&2&3&4\cr 
-                        -2&-1&0&1
-                    \end{pmatrix}
-                \] 
-                という行列の階数を計算してみる:
-                \[
-                    \begin{array}{rll} A = \begin{pmatrix}
-                        0&2&4&6\cr 
-                        1&2&3&4\cr 
-                        -2&-1&0&1
-                    \end{pmatrix} &\longrightarrow \begin{pmatrix}
-                        1&2&3&4\cr 
-                        0&2&4&6\cr 
-                        -2&-1&0&1
-                    \end{pmatrix} \quad &\text{($1$ 行目と $2$ 行目を交換)} \cr
-                    &\longrightarrow \begin{pmatrix}
-                        1&2&3&4\cr 
-                        0&2&4&6\cr 
-                        0&3&6&9
-                    \end{pmatrix} &\text{($1$ 行目の $2$ 倍を $3$ 行目に加えた)} \cr
-                    &\longrightarrow \begin{pmatrix}
-                        1&0&0&0\cr 
-                        0&2&4&6\cr 
-                        0&3&6&9
-                    \end{pmatrix} &\text{($1$ 列目のスカラー倍を $2$, $3$, $4$ 列目に加えた)} \cr
-                    &\longrightarrow \begin{pmatrix}
-                        1&0&0&0\cr 
-                        0&1&2&3\cr 
-                        0&1&2&3
-                    \end{pmatrix} &\text{($2$ 行目と $3$ 行目をスカラー倍)} \cr
-                    &\longrightarrow \begin{pmatrix}
-                        1&0&0&0\cr 
-                        0&1&2&3\cr 
-                        0&0&0&0
-                    \end{pmatrix} &\text{($3$ 行目に $2$ 行目の $-1$ 倍を加えた)} \cr
-                    &\longrightarrow \begin{pmatrix}
-                        1&0&0&0\cr 
-                        0&1&0&0\cr 
-                        0&0&0&0
-                    \end{pmatrix} &\text{($2$ 列目のスカラー倍を $3$, $4$ 列目に加えた)}.
-                    \end{array}
-                \] 
-                このように, 行列 $A$ に対して行基本変形と列基本変形を用いることで, 標準形にすることができる. またこのことから $\operatorname{rank}A = 2$ であることがわかる.</p>
-            </div><!-- / #example -->
-
-            <!--
-            <div class="remark">
-                <p>階数を求める上の計算も, やはりどのような順序で基本変形を行うかに依存しない. 
-                しかしながら, $i = 1, 2, \dots, n$ の順に,</p>
-                <ol>
-                    <li>第 $(i,i)$ 成分を $1$ にする.</li>
-                    <li>第 $i$ 行のスカラー倍を加えることで, 他の行の第 $i$ 列を全て $0$ にする.</li>
-                    <li>第 $i$ 列のスカラー倍を加えることで, 他の列の第 $i$ 行を全て $0$ にする.</li>
-                </ol>
-                という手順で計算することを推奨する.
             </div><!-- / #remark -->
 
             <hr>
@@ -566,14 +572,15 @@
             </ul>
             <p>のいずれかであることがわかる.</p>
             <p>実は正方行列の階数と正則性 (すなわち逆行列の存在) とは密接に関連している:
-            具体的には, $A$ が逆行列を持つことと $\operatorname{rank}A = n$ であることは同値である. 
+            具体的には, $A$ が逆行列を持つことと $\operatorname{rank}A = n$ であること (標準形が単位行列であること) は同値である. 
             つまり正則行列は基本変形により単位行列にできる、一方で正則でない行列は基本変形により単位行列にできない:</p>
 
-            <div class="theorem">
-                <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
-                \[
-                    \operatorname{rank}A = n \iff A \text{ は正則}.
-                \]</p>
+            <div class="theorem" data-name="正方行列のランクと正則性">
+                <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:</p>
+                <ul>
+                    <li>$\operatorname{rank}A = n \iff A \text{ は正則}.$</li>
+                    <li>$\operatorname{rank}A \lt n \iff A \text{ は正則でない}.$</li>
+                </ul>
             </div><!-- / #theorem -->
 
             <div class="proof">
@@ -639,11 +646,21 @@
             <div class="theorem">
                 <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
                 \[
-                    A\text{ が正則} \iff A \text{ は行 (もしくは列) 基本変形だけで単位行列にできる}
+                    A\text{ が正則} \iff A \text{ は行基本変形だけで単位行列にできる}
                 \]</p>
-            </div><!-- / #theorem -->
+            </div><!-- /theorem -->
 
-            <p>以降は, 特に行基本変形のみを考えることにする.</p>
+            <div class="remark" id="rem_row_reduction_procedure">
+                <p>ある行列 $A$ を行基本変形だけで単位行列にできるかどうかを確かめる際に, どのような手順で行基本変形を適用しても構わない (結果は変わらない). 
+                    ここでは具体的な計算手順として, 各対角成分に対する掃き出しのうち, 行基本変形の部分のみを行うことを推奨する. 
+                    つまり, $i=1, 2, \dots$ に対して,
+                </p>
+                <ul>
+                    <li>第 $i$ 行を $a_{ii}$ で割ることで, $(i,i)$ 成分を $1$ にする,</li>
+                    <li>行基本変形により, 第 $i$ 列を $(i,i)$ 成分を除いて全て $0$ にする</li>
+                </ul>
+                <p>という手順で計算することを推奨する. </p>
+            </div><!-- /remark -->
 
             <div class="example">
                 <p>
@@ -655,44 +672,44 @@
                     B= \begin{pmatrix}
                         -2&1\cr 
                         3/2&-1/2
-                    \end{pmatrix}
+                    \end{pmatrix}.
                 \] 
-                とすると, $A^{-1}=B$ を確かめることができるので $A$ は正則である. 
-                この行列 $A$ が行基本変形のみで単位行列に変形できることを確かめてみる.</p> 
+                このとき, $AB=BA=I$ なので $A^{-1}=B$ である, つまり $A$ は正則行列である. 
+                この行列 $A$ が行基本変形のみで単位行列に変形できることを確かめてみよう.</p> 
                 <p>以降, 行基本変形を矢印 ($\longrightarrow$) で表すことにする:
                 \[
-                    \begin{array}{rll}A &= \begin{pmatrix}
+                    \begin{array}{rll}A =& \begin{pmatrix}
                         1&2\cr 
                         3&4
-                    \end{pmatrix}\cr
-                    &\longrightarrow\begin{pmatrix}
+                    \end{pmatrix} \quad & \left(\text{$a_{11}=1$ なので変形不要}\right) \cr
+                    \longrightarrow&\begin{pmatrix}
                         1&2\cr 
                         0&-2
-                    \end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                    &\longrightarrow\begin{pmatrix}
-                        1&0\cr 
-                        0&-2
-                    \end{pmatrix} \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                    &\longrightarrow\begin{pmatrix}
+                    \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $2$ 行に第 $1$ 行の}\cr \text{$-3$ 倍を加えた}\end{array}\right)\cr
+                    \longrightarrow&\begin{pmatrix}
+                        1&2\cr 
+                        0&1
+                    \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $2$ 行を $-1/2$ 倍して}\cr \text{$a_{22}=1$ に変形}\end{array}\right)\cr
+                    \longrightarrow&\begin{pmatrix}
                         1&0\cr 
                         0&1
-                    \end{pmatrix} \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}
+                    \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $1$ 行に第 $2$ 行の}\cr \text{$-2$ 倍を加えた}\end{array}\right)
                     \end{array}
                 \]
-                これは基本行列を左から掛けて表現すると, $Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I$ となることを意味している.</p>
+                これは基本行列を左から掛けて表現すると, $R_{1,2,-2}Q_{2,-1/2}R_{2,1,-3}A = I$ となることを意味している.</p>
             </div><!-- / #example -->
      
             <hr>
 
             <p>ここまでの内容を改めて整理すると, </p>
             <ul>
-                <li>全ての行列は, 行基本変形に加えて列基本変形も用いると, 標準形 $F(r)$ に変形できる,</li>
-                <li>行列 $A$ が正則 $\iff$ 行列 $A$ は行基本変形だけで単位行列 $I$ に変形できる,</li>
+                <li>全ての行列は, 行基本変形に加えて<span class="wave">列基本変形も用いると</span>, 標準形 $F(r)$ に変形できる,</li>
+                <li>行列 $A$ が正則 $\iff$ 行列 $A$ は<span class="wave">行基本変形だけで</span>単位行列 $I$ に変形できる,</li>
                 <li>行列 $A$ が正則でない $\iff$ 行列 $A$ は行基本変形で単位行列 $I$ に変形することはできない</li>
             </ul>
-            <p>となる (単位行列も標準形の一種である). 
-                また, 全ての正則でない行列は, 行基本変形に加えて列基本変形も用いることで標準形 $F(r)$ に変形できるが, それは単位行列ではない. </p>
-            <p>さて, 正則でない行列を, 行基本変形だけで (単位行列にすることができないのは上述の通りだが) 標準形にすることができるかというと, 一般には否である.</p>
+            <p>となる. 
+                また, 全ての正則でない行列は, 行基本変形に加えて<span class="wave">列基本変形も用いることで</span>標準形 $F(r)$ に変形できるが, それは単位行列ではない. </p>
+            <p>さて, 正則でない行列を, <span class="wave">行基本変形だけで</span> (単位行列にすることができないのは上述の通りだが) 標準形にすることができるかというと, 一般には否である.</p>
 
             <div class="example">
                 <p>
@@ -700,22 +717,22 @@
                     C = \begin{pmatrix}
                         1&2\cr 
                         2&4
-                    \end{pmatrix}
+                    \end{pmatrix}.
                 \] 
-                は逆行列を持たない. この行列に行基本変形を行うと,
+                この行列は逆行列を持たない. この行列に行基本変形を行うと,
                 \[
-                    \begin{array}{rll}C &= \begin{pmatrix}
+                    \begin{array}{rll}C =& \begin{pmatrix}
                         1&2\cr 
                         2&4
                     \end{pmatrix}\quad&\cr
-                    &\longrightarrow \begin{pmatrix}
+                    \longrightarrow& \begin{pmatrix}
                         1&2\cr 
                         0&0
-                    \end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-2$ 倍を加えた)}
+                    \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $2$ 行に第 $1$ 行の}\cr \text{$-2$ 倍を加えた}\end{array}\right)
                     \end{array}
                 \] 
                 などとなる. これ以上行基本変形を行なっても, 標準形にすることはできない.</p>   
-                <p>行基本変形だけでなく, 列基本変形も用いると, $
+                <p>なお, 行基本変形だけでなく, 列基本変形も用いると, $
                     \begin{pmatrix}
                         1&0\cr 
                         0&0
@@ -724,7 +741,7 @@
                 </p>
             </div><!-- / #example -->
 
-            <p>このように, 正則でない行列 (正方行列でない行列も含む) に対して行基本変形のみ施した場合, 一般には標準形にすることはできないが, 実は<b>行簡約階段形</b> (<b>reduced row echelon form</b>) にすることができることが知られている. 
+            <p>このように, 正則でない行列 (正方行列でない行列も含む) に対して行基本変形のみ施した場合, 一般には標準形にすることはできないが, 実は<b>行簡約階段形</b> (<b>reduced row echelon form</b>) という形にすることができることが知られている. 
             行簡約階段形とは何かを説明するために, まずは<b>主成分</b> (<b>leading coefficient</b>) を紹介する: </p>
 
             <div class="definition" data-name="行列の主成分">
@@ -770,7 +787,7 @@
                         1 & 2 & 3 & 4 \cr 
                         0 & 0 & 1 & 6/5 \cr 
                         0 & 0 & 0 & 0 
-                    \end{pmatrix}$ は行階段形ではあるが, 第 $2$ 行の主成分を含む列に, 主成分でも $0$ でもない成分が存在するため行簡約階段形ではない. </li>
+                    \end{pmatrix}$ は行階段形ではあるが, 第 $2$ 行の主成分を含む列 (第 $3$ 列) に, 主成分でも $0$ でもない成分が存在するため行簡約階段形ではない. </li>
                     <li>行列 $C=\begin{pmatrix} 
                         1 & 2 & 0 & 2/5 \cr 
                         0 & 0 & 1 & 6/5 \cr 
@@ -780,51 +797,18 @@
                         つまり, 行簡約階段形でない行列に行基本変形を行うことで, 行簡約階段形の条件が満たされるように変形することができる.
                     </li>
                 </ul>
+                <div class="resize" style="width: 300px"><img src='./images/reduced_row_echelon.png'></div>
             </div><!-- /example -->
 
-
-            <!--
-            <p>正則でない行列 (正方行列でない行列も含む) に対して行基本変形のみを施した場合は, 以下の性質を持つ行列に変形することができる (が, それ以上単位行列に&quot;近づける&quot;ことはできない) ことが知られている:</p>
-            <ul>
-                <li>全ての成分が $0$ となる行が, 行列の最下部に配置される.</li>
-                <li>各行の<b>主成分</b> (行の最も左にある $0$ でない要素, <b>leading coefficient</b>) が, その行の上にある他の行の主成分よりも右側にある.</li>
-            </ul>
-            <p>このような性質を満たす行列を<b>行階段形</b> (<b>row echelon form</b>) であるという. 特に, 全ての主成分が $1$ であり, 主成分を含む列の他の成分が全て $0$ である行階段形を<b>行簡約階段形</b> (<b>reduced row echelon form</b>) という. 単位行列は行簡約階段形である行列の一種である.</p>
             
-            <div class="example">
-                <p>例えば,
-                \[
-                    \begin{pmatrix}
-                        2&2a&2b&2c+3\cr 
-                        1&a&b&c+4\cr 
-                        4&4a&4b&4c+5
-                    \end{pmatrix}
-                \] 
-                という行列に行基本変形を行うことで得られる
-                \[
-                    \begin{pmatrix}
-                        1&a&b&0\cr 
-                        0&0&0&1\cr 
-                        0&0&0&0
-                    \end{pmatrix}
-                \] 
-                という行列は行簡約階段形である. また, 列基本変形も許せば,
-                \[
-                    \begin{pmatrix}
-                        1&0&0&0\cr
-                        0&1&0&0\cr
-                        0&0&0&0
-                    \end{pmatrix}
-                \]
-                と変形できるため, この行列の階数は $2$ である.</p>
-            </div><!-- / #example -->
-
-            <div class="remark">
-                <p>行列 $A$ に対して, 行基本変形により得られる行簡約階段形はただ一つに定まる. また, 行簡約階段形が得られれば, あとは列基本変形により標準形 $F(r)$ に変形することができる.
-                    このとき, $0$ でない成分を含む行は, 列基本変形を用いても $\mathbf{0}$ にはできない (一方, $\mathbf{0}$ である行はどのような列基本変形を施しても $\mathbf{0}$ になる). 
-                    つまり, 行列 $A$ に対する行簡約階段形の $\mathbf{0}$ でない行の数と (すなわち主成分の個数と) $\operatorname{rank} A$ は一致する.</p>
-            </div><!-- /remark -->
-
+            <p>行列 $A$ に対して, 行基本変形により得られる行簡約階段形はただ一つに定まる. また, 行簡約階段形が得られれば, あとは列基本変形により標準形 $F(r)$ に変形することができる.
+                このとき, $0$ でない成分を含む行は, 列基本変形を用いても $\mathbf{0}$ にはできない (一方, $\mathbf{0}$ である行はどのような列基本変形を施しても $\mathbf{0}$ になる).</p> 
+            <p>このことは, 以下のように言い換えることもできる:</p> 
+            
+            <div class="theorem" data-name="行簡約階段系と階数">
+                行列 $A$ に対する行簡約階段形の主成分の個数と $\operatorname{rank} A$ は一致する.
+            </div><!-- /theorem -->
+            
             <p>ここで, 単位行列も行簡約階段形の一種であることに注意して, 上にまとめた内容を書き直しておく: </p>
             <ul>
                 <li>全ての行列は, 行基本変形だけで行簡約階段形に変形できる,</li>
@@ -838,41 +822,40 @@
 
         <section id="section2-4"><h2>2.4: 掃き出し法 (ガウスの消去法)</h2>
             <p>上述のように, 行列に対して行基本変形を行うことで, 行階段形 (単位行列を含む) に変形することができる. 
-            このような計算手順 (アルゴリズム) を<b>掃き出し法</b> (<b>row reduction</b>) もしくは <b>ガウスの消去法</b> (<b>Gaussian elimination</b>) という. 
-            掃き出し法は, 先ほども紹介したように, 行列の階数を求めるテクニックとして応用できるが, 他にも連立 $1$ 次方程式の解法, もしくは逆行列を計算する方法としても応用することができる. 
+            このような計算手順 (アルゴリズム) を<b>掃き出し法</b> (<b>row reduction</b>) もしくは <b>ガウスの消去法</b> (<b>Gaussian elimination</b>) という. </p>
+            <p>掃き出し法は, 先ほども紹介したように, 行列の階数を求めるテクニックとして応用できるが, 他にも連立 $1$ 次方程式の解法, もしくは逆行列を計算する方法としても応用することができる. 
             これらを説明するため, まず<b>拡大行列</b>という概念を導入する.</p>
             
-            <div class="definition">
+            <div class="definition" data-name="拡大行列">
                 <p>行の数が等しい $2$ つの行列 $A$, $B$ に対して, それらを横に連結して得られる行列 $\left(\begin{array}{c:c}A&B\end{array}\right)$ を<b>拡大行列</b> (<b>augmented matrix</b>) という.</p>
             </div><!-- / #definition -->
 
             <p>拡大行列は, $2$ つの行列に同じ行基本変形を行う際に, 記述を簡単にするために用いられる.</p>
 
             <div class="example">
-                <p>\[
-                        A = \begin{pmatrix}
-                            1&2&3\cr 
-                            2&3&4\cr 
-                            1&3&5
-                        \end{pmatrix},\quad 
-                        I = \begin{pmatrix}
-                            1&0&0\cr 
-                            0&1&0\cr 
-                            0&0&1
-                        \end{pmatrix},\quad 
-                        \mathbf{b} = \begin{pmatrix}
-                            4\cr 
-                            7\cr 
-                            5
-                        \end{pmatrix}.
-                    \] 
+                <p>\[A = \begin{pmatrix}
+                        1&2&3\cr 
+                        2&3&4\cr 
+                        1&3&5
+                    \end{pmatrix},\quad 
+                    I = \begin{pmatrix}
+                        1&0&0\cr 
+                        0&1&0\cr 
+                        0&0&1
+                    \end{pmatrix},\quad 
+                    \mathbf{b} = \begin{pmatrix}
+                        4\cr 
+                        7\cr 
+                        5
+                    \end{pmatrix}.\]
                     このとき,
                     \[
                         \left(\begin{array}{c:c}A&I\end{array}\right) = \left(\begin{array}{ccc:ccc}
                             1&2&3&1&0&0\cr 
                             2&3&4&0&1&0\cr 
                             1&3&5&0&0&1
-                        \end{array}\right),\quad 
+                        \end{array}\right),
+                    \]\[
                         \left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) = \left(\begin{array}{ccc:c}
                             1&2&3&4\cr 
                             2&3&4&7\cr 
@@ -887,142 +870,75 @@
     
             <p>例えば
             \[
-                \begin{array}{rll}A &= \begin{pmatrix}
+                \begin{array}{rll}A =& \begin{pmatrix}
                     1&2\cr 
                     3&4
-                \end{pmatrix}\cr
-                &\longrightarrow\begin{pmatrix}
+                \end{pmatrix} \quad & \left(\text{$a_{11}=1$ なので変形不要}\right) \cr
+                \longrightarrow&\begin{pmatrix}
                     1&2\cr 
                     0&-2
-                \end{pmatrix} \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                &\longrightarrow\begin{pmatrix}
-                    1&0\cr 
-                    0&-2
-                \end{pmatrix} \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                &\longrightarrow\begin{pmatrix}
+                \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $2$ 行に第 $1$ 行の}\cr \text{$-3$ 倍を加えた}\end{array}\right)\cr
+                \longrightarrow&\begin{pmatrix}
+                    1&2\cr 
+                    0&1
+                \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $2$ 行を $-1/2$ 倍して}\cr \text{$a_{22}=1$ に変形}\end{array}\right)\cr
+                \longrightarrow&\begin{pmatrix}
                     1&0\cr 
                     0&1
-                \end{pmatrix} \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}\end{array}
-            \] 
+                \end{pmatrix} \quad &\left(\begin{array}{c}\text{第 $1$ 行に第 $2$ 行の}\cr \text{$-2$ 倍を加えた}\end{array}\right)
+                \end{array}
+                \] 
             という行基本変形は, 基本行列を用いて表記すると
             \[
-                Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I
+                R_{1,2,-2}Q_{2,-1/2}R_{2,1,-3}A = I
             \] 
             と同じことを意味しているのだった. これは
             \[
-                A^{-1} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I
+                \begin{array}{rl} 
+                    A^{-1} &= R_{1,2,-2}Q_{2,-1/2}R_{2,1,-3} \cr 
+                    &= Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I
+                \end{array}
             \] 
             ということに他ならない. 言い換えると, 次が成立する:</p>
                 
             <div class="theorem" data-name="掃き出し法による逆行列の計算">
-                <p>行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を単位行列 $I$ に対して行うことで $A^{-1}$ を得ることができる.</p>
+                <p>行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を単位行列 $I$ に対して適用することで $A^{-1}$ を得ることができる.</p>
             </div><!-- / #theorem -->
 
             <div class="example">
                 <p>これによる逆行列の計算を, 拡大行列を用いて記述してみよう:
                 \[
                     \begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) 
-                    &= \left(\begin{array}{cc:cc}
-                        1&2&1&0\cr 
-                        3&4&0&1
-                    \end{array}\right)\cr
-                    &\longrightarrow\left(\begin{array}{cc:cc}
-                        1&2&1&0\cr 
-                        0&-2&-3&1
-                    \end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                    &\longrightarrow\left(\begin{array}{cc:cc}
-                        1&0&-2&1\cr 
-                        0&-2&-3&1
-                    \end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                    &\longrightarrow\left(\begin{array}{cc:cc}
-                        1&0&-2&1\cr 
-                        0&1&3/2&-1/2
-                    \end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.\end{array}
-                \] 
-                このように, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}$ となる.</p>        
-            </div><!-- / #example -->
-
-            <div class="remark">
-                <p>この計算による結果は行基本変形の順序に依存しない. しかしながら, $i = 1, 2, \dots, n$ の順に,</p>
-                <ol>
-                    <li>第 $(i,i)$ 成分を $1$ にする.</li>
-                    <li>第 $i$ 行の定数倍を加えることで他の行の第 $i$ 列の成分を全て $0$ にする.</li>
-                </ol>
-                <p>という手順で計算することを推奨する.</p>    
-            </div><!-- / #remark -->
-
-            <div class="remark">
-                <p>この計算は, 基本行列たちの積 $P$ であって
-                \[
-                    PA = I \quad (\text{つまり } P=A^{-1})
-                \] 
-                を満たすものは, 同時に
-                \[
-                    PI = \begin{pmatrix}-2&1\cr 3/2&-1/2\end{pmatrix}
-                \] 
-                を満たす, ということを意味する筆算である. 
-                実際, 行列の区分けを用いると, 掃き出し法による行基本変形は, 基本行列たちの積 $P$ が存在して
-                \[
-                    P\left(\begin{array}{c:c}A&I\end{array}\right) 
-                    = \left(\begin{array}{c:c}PA&PI\end{array}\right) 
-                    = \left(\begin{array}{c:c}I&\begin{array}{cc}
-                        -2 & 1 \cr 
-                        3/2 & -1/2
-                    \end{array}\end{array}\right)           
-                \]
-                が成立することを意味している.
-                <!--
-                となることがわかる. 
-                上のような変形により $P=A^{-1}$ が得られるのは, (繰り返すが) 以下の $2$ つが同じ計算を意味しているからである:</p>
-                <p>\[
-                    \begin{array}{rll}\left(\begin{array}{c:c}A&I\end{array}\right) 
                     =& \left(\begin{array}{cc:cc}
                         1&2&1&0\cr 
                         3&4&0&1
                     \end{array}\right)\cr
-                    \longrightarrow & \left(\begin{array}{cc:cc}
+                    \longrightarrow&\left(\begin{array}{cc:cc}
                         1&2&1&0\cr 
                         0&-2&-3&1
-                    \end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                    \longrightarrow & \left(\begin{array}{cc:cc}
+                    \end{array}\right) \quad &\left(\begin{array}{c}\text{第 $2$ 行に第 $1$ 行の}\cr \text{$-3$ 倍を加えた}\end{array}\right)\cr
+                    \longrightarrow&\left(\begin{array}{cc:cc}
+                        1&2&1&0\cr 
+                        0&1&3/2&-1/2
+                    \end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}\cr
+                    \longrightarrow&\left(\begin{array}{cc:cc}
                         1&0&-2&1\cr 
-                        0&-2&-3&1
-                    \end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                    \longrightarrow & \left(\begin{array}{cc:cc}
-                        1&0&-2&1\cr 
-                        0&1&3/2&-1/2\end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.\end{array}
-                \]</p>
-                <p>\[
-                    \begin{array}{rll} & A = \begin{pmatrix}
-                        1&2\cr 
-                        3&4
-                    \end{pmatrix},\quad I = \begin{pmatrix}
-                        1&0\cr 
-                        0&1
-                    \end{pmatrix}\cr
-                    \iff & R_{2,1,-3}A = \begin{pmatrix}
-                        1&2\cr 
-                        0&-2
-                    \end{pmatrix},\qquad R_{2,1,-3}I = \begin{pmatrix}
-                        1&0\cr 
-                        -3&1
-                    \end{pmatrix}\cr
-                    \iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}
-                        1&0\cr 
-                        0&-2
-                    \end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}
-                        -2&1\cr 
-                        -3&1
-                    \end{pmatrix}\cr
-                    \iff & Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}
-                        1&0\cr 
-                        0&1
-                    \end{pmatrix},\qquad Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I = \begin{pmatrix}
-                        -2&1\cr 
-                        3/2&-1/2
-                    \end{pmatrix}\end{array}
-                \]</p> 
-            -->
+                        0&1&3/2&-1/2
+                    \end{array}\right) \quad &\left(\begin{array}{c}\text{第 $1$ 行に第 $2$ 行の}\cr \text{$-2$ 倍を加えた}\end{array}\right)
+                    \end{array}
+                \] 
+                このように, 拡大行列 $\left(\begin{array}{c:c}A&I\end{array}\right)$ に対して行基本変形を行うことで, 行列 $A$ と単位行列 $I$ に対して同じ行基本変形を適用できる. 定理より, 左側を単位行列に変形することができたので, 右側が $A^{-1}$ となる.</p>        
+            </div><!-- / #example -->
+
+            <div class="remark">
+                <p>この計算による結果は行基本変形の順序に依存しない.
+                    具体的な計算手順として, 拡大行列の左側 $A$ を<a href="#rem_row_reduction_procedure">単位行列に変形する手順</a>をそのまま適用することを推奨する. 
+                    つまり, $i = 1, 2, \dots, n$ の順に,</p>
+                <ul>
+                    <li>第 $i$ 行を $a_{ii}$ で割ることで, $(i,i)$ 成分を $1$ にする,</li>
+                    <li>行基本変形により, 第 $i$ 列を $(i,i)$ 成分を除いて全て $0$ にする</li>
+                </ul>
+                <p>という手順で計算することを推奨する.</p>    
             </div><!-- / #remark -->
 
             <div class="remark">
@@ -1040,19 +956,19 @@
                     3x+4y &= 46. &(2)
                 \end{array}\right.
             \] 
-            まず, この連立 $1$ 次方程式をそのまま解いてみる, 例えば以下のような式変形を考えよう:
+            まず, この連立 $1$ 次方程式を変数消去により解いてみる, 例えば以下のような式変形を考えよう:
             \[
                 \begin{array}{rl}\longrightarrow&\left\lbrace\begin{array}{rll}
                     x+2y &= 20, &(1)\cr
                     -2y &= -14. &(2)^{\prime} = (2) - 3\times(1)
                 \end{array}\right.\cr
                 \longrightarrow&\left\lbrace\begin{array}{rll}
-                    x &= 6, &(1)^{\prime} = (1) + (2)^{\prime}\cr
-                    -2y &= -14. &(2)^{\prime}
+                    x+2y &= 20, &(1)\cr
+                    y &= 7. &(2)^{\prime\prime} = -1/2 \times (2)^{\prime}
                 \end{array}\right.\cr
                 \longrightarrow&\left\lbrace\begin{array}{rll}
-                    x &= 6, &(1)'\cr
-                    y &= 7. &(2)^{\prime \prime} = -1/2\times (2)^{\prime}
+                    x &= 6, &(1)^{\prime} = (1)-2\times(2)^{\prime\prime}\cr
+                    y &= 7. &(2)^{\prime \prime} 
                 \end{array}\right.\end{array}
             \] このような式変形により, 解 $x=6$, $y=7$ が得られる.</p>
             <p>さて, この連立 $1$ 次方程式を行列を用いて 
@@ -1074,152 +990,38 @@
                     46
                 \end{pmatrix}.
             \] 
-            もしも $A$ が正則行列であるならば, $\mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{b}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができるが, 先ほども見たように $A^{-1}$ は (存在するならば) 行基本変形により表現できる
-            (この例に対しては, 上の連立 $1$ 次方程式を解く際に用いた変形は
-            \[
-                Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = I
-            \] 
-            と同一視でき, これを用いると
-            \[
-                \mathbf{x} = A^{-1}\mathbf{b} = Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}\mathbf{b}
-            \] 
-            となる). 
+            もしも $A$ が正則行列であるならば, $\mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{b}$ を計算することで連立 $1$ 次方程式の解 $x$, $y$ を得ることができる. 
+            先ほども見たように $A^{-1}$ は (存在するならば) 行列 $A$ を単位行列にする行基本変形により表現できる.
             言い換えれば, 次が成立する:</p>
 
-            <div class="theorem" data-name="掃き出し法による連立 $1$ 次方程式の解法">
+            <div class="theorem" data-name="連立 $1$ 次方程式に対する掃き出し法">
                 <p>行列 $A$ を行基本変形で単位行列に変形することができるならば, 同じ行基本変形を列ベクトル$\mathbf{b}$に対して行うことで $A^{-1}\mathbf{b}$ を得ることができる.</p>
             </div><!-- / #theorem -->
 
             <div class="example">
-                <p>上に例として挙げた連立 $1$ 次方程式の解法と同じ計算を, 拡大行列に対する掃き出し法を用いて記述してみる:
+                <p>上に例として挙げた連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{b}$ を掃き出し法により解いて $\mathbf{x} = A^{-1}\mathbf{b}$ を求めてみよう:</p>
                 \[
-                    \begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) 
-                    &= \left(\begin{array}{cc:c}
-                        1&2&20\cr 
-                        3&4&46
-                    \end{array}\right)\cr
-                    &\longrightarrow\left(\begin{array}{cc:c}
-                        1&2&20\cr 
-                        0&-2&-14
-                    \end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                    &\longrightarrow\left(\begin{array}{cc:c}
-                        1&0&6\cr 
-                        0&-2&-14
-                    \end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                    &\longrightarrow\left(\begin{array}{cc:c}
-                        1&0&6\cr 
-                        0&1&7
-                    \end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.\end{array}
-                \] 
-                ここで, 例えば拡大行列
-                \[
-                    \left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) 
-                    = \left(\begin{array}{cc:c}
-                        1&2&20\cr 
-                        3&4&46
-                    \end{array}\right)
-                \]
-                は, 連立 $1$ 次方程式 
-                \[
-                    \left\{\begin{array}{rl}
-                        x+2y &= 20, \cr 
-                        3x + 4y &= 46
-                    \end{array}\right.
-                \]
-                を意味している (拡大行列の左側は $x$, $y$ の係数を表している). 
-                また, ここで用いた行基本変形は, 連立 $1$ 次方程式に対する各操作と確かに同一視できる (例えば上の連立 $1$ 次方程式の解法において, $(2)^\prime = (2) - 3\times (1)$ という式変形を用いたが, これは第 $2$ 行に第 $1$ 行の $-3$ 倍を加える行基本変形と同値である).</p>
-                <p>このように, 拡大行列 $\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}\mathbf{b}$ となる.</p>      
-            </div><!-- / #example -->
-
-            <div class="remark">
-                <p>何度も同じことを書くが, この計算は基本行列たちの積 $P$ であって
-                \[
-                    PA = I \quad (\text{つまり } P=A^{-1})
-                \] 
-                を満たすものは, 同時に
-                \[
-                    P\mathbf{b} = \begin{pmatrix}6\cr 7\end{pmatrix}
-                \] を満たす, ということを意味する筆算であり, 行列の区分けを用いると, ある行列 $P$ が存在して
-                \[
-                    P\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) 
-                    = \left(\begin{array}{c:c}PA&P\mathbf{b}\end{array}\right) 
-                    = \left(\begin{array}{c:c}I&\begin{array}{cc}
-                        6 \cr 
-                        7  
-                    \end{array}\end{array}\right)           
-                \]
-                となることを意味している. 
-                <!--また以下の $3$ つは全て同じ計算を意味している:</p>
-                <p>\[
-                    \begin{array}{rl}& \left\lbrace\begin{array}{rll}
-                        x+2y &= 20, &(1)\cr
-                        3x+4y &= 46. &(2)
-                    \end{array}\right.\cr
-                    \longrightarrow & \left\lbrace\begin{array}{rll}
-                        x+2y &= 20, &(1)\cr
-                        -2y &= -14. &(2)^{\prime} = (2) - 3\times(1)
-                    \end{array}\right.\cr
-                    \longrightarrow & \left\lbrace\begin{array}{rll}
-                        x &= 6, &(1)^{\prime} = (1) + (2)^{\prime}\cr
-                        -2y &= -14. &(2)^{\prime}
-                    \end{array}\right.\cr
-                    \longrightarrow & \left\lbrace\begin{array}{rll}
-                        x &= 6, &(1)'\cr
-                        y &= 7. &(2)^{\prime \prime} = -1/2\times (2)^{\prime}
-                    \end{array}\right.\end{array}
-                \]</p>
-                <p>\[
                     \begin{array}{rll}\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right) 
                     =& \left(\begin{array}{cc:c}
                         1&2&20\cr 
-                        3&4&46\end{array}\right)\cr
-                    \longrightarrow & \left(\begin{array}{cc:c}
+                        3&4&46
+                    \end{array}\right)\cr
+                    \longrightarrow&\left(\begin{array}{cc:c}
                         1&2&20\cr 
                         0&-2&-14
-                    \end{array}\right) \quad &\text{(第 $2$ 行に第 $1$ 行の $-3$ 倍を加えた)}\cr
-                    \longrightarrow & \left(\begin{array}{cc:c}
-                        1&0&6\cr 
-                        0&-2&-14
-                    \end{array}\right) \quad &\text{(第 $1$ 行に第 $2$ 行の $1$ 倍を加えた)}\cr
-                    \longrightarrow & \left(\begin{array}{cc:c}
+                    \end{array}\right) \quad &\left(\begin{array}{c}\text{第 $2$ 行に第 $1$ 行の}\cr \text{$-3$ 倍を加えた}\end{array}\right)\cr
+                    \longrightarrow&\left(\begin{array}{cc:c}
+                        1&2&20\cr 
+                        0&1&7
+                    \end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}\cr
+                    \longrightarrow&\left(\begin{array}{cc:c}
                         1&0&6\cr 
                         0&1&7
-                    \end{array}\right) \quad &\text{(第 $2$ 行を $-1/2$ 倍した)}.\end{array}
-                \]</p>
-                <p>\[
-                    \begin{array}{rl}
-                    &A = \begin{pmatrix}
-                        1&2\cr 
-                        3&4
-                    \end{pmatrix},\qquad 
-                    \mathbf{b} = \begin{pmatrix}
-                        20\cr 
-                        40
-                    \end{pmatrix}\cr
-                    \iff & R_{2,1,-3}A = \begin{pmatrix}
-                        1&2\cr 
-                        0&-2
-                    \end{pmatrix},\qquad R_{2,1,-3}\mathbf{b} = \begin{pmatrix}
-                        20\cr 
-                        -14
-                    \end{pmatrix}\cr
-                    \iff & R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}
-                        1&0\cr 
-                        0&-2
-                    \end{pmatrix},\qquad R_{1,2,1}R_{2,1,-3}\mathbf{b} = \begin{pmatrix}
-                        6\cr 
-                        -14
-                    \end{pmatrix}\cr
-                    \iff & Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}A = \begin{pmatrix}
-                        1&0\cr 
-                        0&1
-                    \end{pmatrix},\qquad Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}\mathbf{b} = \begin{pmatrix}
-                        6\cr 
-                        7
-                    \end{pmatrix}\end{array}
-                \]</p>  
-                --> 
-            </div><!-- / #remark -->
+                    \end{array}\right) \quad &\left(\begin{array}{c}\text{第 $1$ 行に第 $2$ 行の}\cr \text{$-2$ 倍を加えた}\end{array}\right).\end{array}
+                \] 
+                <p>このように, 拡大行列 $\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right)$ に対する行基本変形により, 左側を単位行列に変形することができたならば, 右側が $A^{-1}\mathbf{b}$ となるため, これが連立 $1$ 次方程式の解 $\mathbf{x}$ である.</p>
+                <p>なお, この手順による計算は, 上に述べた変数消去による計算と一致する (同じ式変形を行列を用いて表記している).</p>      
+            </div><!-- / #example -->
 
             <div class="remark">
                 <p>もしも $A$ が正則行列でなかったならば (正方行列でない場合も含む), 拡大行列 $\left(\begin{array}{c:c}A&\mathbf{b}\end{array}\right)$ に対する行基本変形により左側を単位行列に変形することはできない. 
@@ -1246,7 +1048,7 @@
                         b
                     \end{pmatrix}
                 \] 
-                を考える. 拡大係数行列に対する掃き出し法により
+                を考える. 拡大行列に対する掃き出し法により
                 \[
                     \left(\begin{array}{cc:c}
                         1&2&a\cr 
@@ -1267,6 +1069,8 @@
                 と同値であるが, この問題は $b-2a\neq 0$ ならば 解は存在しない. 一方で, $b-2a=0$ ならば $x+2y=a$ を満たす全ての $x$, $y$ が解となる.</p>
             </div><!-- example -->
 
+            <hr>
+
             <p>上の例のように, 実は $A$ が正則でない場合には $A\mathbf{x}=\mathbf{b}$ という問題の解 $\mathbf{x}$ は存在しないか, もしくはある条件を満たすもの全てが解になるかのいずれかになる. 
                 一方, $A$ が正則ならば $\mathbf{x} = A^{-1}\mathbf{b}$ がただ一つの解となる. 
                 つまり, 連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{b}$ の解は, 
@@ -1278,7 +1082,7 @@
             </ul>
             <p>のいずれかとなる. いま, $A\mathbf{x}=\mathbf{0}$ という問題は必ず解 $\mathbf{x}=\mathbf{0}$ を持つので, この問題の解はただ一つ (つまり $\mathbf{x}=\mathbf{0}$ のみが解) であるか, もしくはある条件を満たす $\mathbf{x}$ 全てが解となるかのいずれかとなる. </p>
             
-            <div class="definition">
+            <div class="definition" data-name="斉次連立 $1$ 次方程式">
                 <p>行列 $A$ と列ベクトル $\mathbf{x}$ に対し, $A\mathbf{x} = \mathbf{0}$ という形の式を<b>斉次連立 $1$ 次方程式</b>という.
             </div><!-- / #definition -->
 
@@ -1287,7 +1091,7 @@
             一方で, 正方行列 $A$ が正則でない場合には, ある条件を満たす $\mathbf{x}$ 全てが解となる: 特に, 必ず $\mathbf{x} = \mathbf{0}$ 以外の解 (非自明な解) が存在する.</p>
             <p>このことを定理としてまとめておく:</p>
                 
-            <div class="theorem">
+            <div class="theorem" data-name="斉次連立 $1$ 次方程式の解">
                 <p>$n$ 次正方行列 $A$ についての斉次連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{0}$ について, 以下が成立する: </p>
                 <ul>
                     <li>$A$ が正則ならば, この斉次連立 $1$ 次方程式は $\mathbf{x} = \mathbf{0}$ 以外の解を持たない.</li>
@@ -1309,7 +1113,7 @@
                         0
                     \end{pmatrix}
                 \] 
-                を考える. 拡大係数行列に対する掃き出し法により
+                を考える. 拡大行列に対する掃き出し法により
                 \[
                     \left(\begin{array}{cc:c}
                         1&2&0\cr 
