@@ -268,30 +268,24 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>\[
-                            2A = 2\begin{pmatrix}
-                                1&2\cr 
-                                3&4
-                            \end{pmatrix} = \begin{pmatrix}
-                                2&4\cr 
-                                6&8
-                            \end{pmatrix}.
-                        \]</li>
-                    <li>\[
-                        -C = (-1)\begin{pmatrix} 
-                                1 & 2 \cr 
-                                3 & 0 
-                            \end{pmatrix} = \begin{pmatrix} 
-                                -1 & -2 \cr 
-                                -3 & 0 
-                            \end{pmatrix}.
-                        \]</li>
-                    <li>\[
-                            2A - C = \begin{pmatrix}
-                                1&2\cr 
-                                3&8
-                            \end{pmatrix}.
-                        \]</li>
+                    <li>$2A = 2\begin{pmatrix}
+                            1&2\cr 
+                            3&4
+                        \end{pmatrix} = \begin{pmatrix}
+                            2&4\cr 
+                            6&8
+                        \end{pmatrix}.$</li>
+                    <li>$-C = (-1)\begin{pmatrix} 
+                            1 & 2 \cr 
+                            3 & 0 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            -1 & -2 \cr 
+                            -3 & 0 
+                        \end{pmatrix}.$</li>
+                    <li>$2A - C = \begin{pmatrix}
+                            1&2\cr 
+                            3&8
+                        \end{pmatrix}.$</li>
                 </ul>     
             </div><!-- /example -->
             
@@ -382,7 +376,7 @@
                             1\cdot2+2\cdot4 & 1\cdot3+2\cdot5\cr 
                             3\cdot2+4\cdot4 & 3\cdot3+4\cdot5
                         \end{pmatrix}$ <br>
-                        $\qquad = \begin{pmatrix}
+                        $\hspace{30px} = \begin{pmatrix}
                                 10&13\cr 
                                 22&29
                             \end{pmatrix}.$</li>
@@ -390,7 +384,7 @@
                             2\cdot1+3\cdot3 & 2\cdot2+3\cdot4\cr 
                             4\cdot1+5\cdot3 & 4\cdot2+5\cdot4
                         \end{pmatrix}$ <br>
-                        $\qquad = \begin{pmatrix}
+                        $\hspace{30px} = \begin{pmatrix}
                                 11&16\cr 
                                 19&28
                             \end{pmatrix}.$</li>
@@ -543,7 +537,7 @@
 
             <p>次に, 行列の<b>転置</b>という操作を紹介しよう. これは, 行列の行と列を入れ替える操作である:</p>
 
-            <div class="definition" data-name="転置行列">
+            <div class="definition" data-name="転置行列" id="def_transpose">
                 <p>行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の<b>転置行列</b> (もしくは単に<b>転置</b>) といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を<b>転置</b> (<b>transpose</b>) という.</p>
             </div><!-- /definition -->
 
@@ -689,11 +683,7 @@
                     <li>$(A-A)\mathbf{x} = \begin{pmatrix}
                             0&0\cr 
                             0&0
-                        \end{pmatrix}\mathbf{x}$ <br> 
-                        $\qquad\qquad\quad = O\mathbf{x} = \begin{pmatrix}
-                            0\cr 
-                            0
-                        \end{pmatrix} = \mathbf{0}$.</li>
+                        \end{pmatrix}\mathbf{x} = \mathbf{0}$.</li>
                     <li>$A(\mathbf{x}-\mathbf{x}) = A\mathbf{0} = \mathbf{0}$.</li>
                 </ul>
             </div><!-- /example -->
@@ -762,7 +752,7 @@
 
             <hr>
 
-            <div class="definition" data-name="対角行列">
+            <div class="definition" data-name="対角行列" id="def_diagonal_matrix">
                 <p>正方行列 $A$ について, その対角成分以外が $0$ であるとき, $A$ を<b>対角行列</b> (<b>diagonal matrix</b>) という.</p>
             </div><!-- /definition -->
 
@@ -825,7 +815,7 @@
             <p>証明略.</p>
             <p>単位行列に関連して, 以下にも言及しておく:</p>
 
-            <div class="definition">
+            <div class="definition" id="def_canonical_basis">
                 単位行列の各列ベクトル
                 \[
                     \mathbf{e}_1 = \begin{pmatrix}
