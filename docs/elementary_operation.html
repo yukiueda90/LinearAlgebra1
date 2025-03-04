@@ -763,7 +763,7 @@
 
             これを用いて, 行簡約階段形は以下のように説明される: 
 
-            <div class="definition" data-name="行簡約階段形">
+            <div class="definition" data-name="行簡約階段形" id="def_row_echelon_form">
                 <p>以下を満たす行列を <b>行階段形</b> (<b>row echelon form</b>) であるという:</p>
                 <ol style="list-style:none">
                     <li>① 全ての成分が $0$ となる行が, そうでない行より下にある, </li>
@@ -1087,16 +1087,16 @@
             </div><!-- / #definition -->
 
             <p>もう一度書いておくと, 斉次連立 $1$ 次方程式について, $\mathbf{x}=\mathbf{0}$ が解となることは簡単にわかる (これを<b>自明な解</b>という).
-            上で述べたように, 正方行列 $A$ が正則であれば, 解は $\mathbf{x} = A^{-1}\mathbf{0} = \mathbf{0}$ 以外には存在しない. 
-            一方で, 正方行列 $A$ が正則でない場合には, ある条件を満たす $\mathbf{x}$ 全てが解となる: 特に, 必ず $\mathbf{x} = \mathbf{0}$ 以外の解 (非自明な解) が存在する.</p>
+            上で述べたように, 正方行列 $A$ が正則であれば, 解は $\mathbf{x} = A^{-1}\mathbf{0} = \mathbf{0}$ 以外には存在しない. </p>
+            <p>一方で, 正方行列 $A$ が正則でない場合には, ある条件を満たす $\mathbf{x}$ 全てが解となる: 特に, 必ず $\mathbf{x} = \mathbf{0}$ 以外の解 (<b>非自明な解</b>) が存在する.
+            この<a href="index.html#theorem_contraposition">対偶</a>を考えると, 斉次連立 $1$ 次方程式が非自明な解を持たないならば, $A$ は正則行列である.</p>
             <p>このことを定理としてまとめておく:</p>
                 
-            <div class="theorem" data-name="斉次連立 $1$ 次方程式の解">
+            <div class="theorem" data-name="斉次連立 $1$ 次方程式の解" id="thm_homogeneous_linear_system">
                 <p>$n$ 次正方行列 $A$ についての斉次連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{0}$ について, 以下が成立する: </p>
-                <ul>
-                    <li>$A$ が正則ならば, この斉次連立 $1$ 次方程式は $\mathbf{x} = \mathbf{0}$ 以外の解を持たない.</li>
-                    <li>$A$ が正則でないならば, この斉次連立 $1$ 次方程式は必ず $\mathbf{x} = \mathbf{0}$ 以外の解 (非自明な解) を持つ.</li>
-                </il>
+                \[
+                    A \text{が正則} \iff \text{非自明な解は存在しない.}
+                \]
             </div>
 
             <div class="example">
@@ -1128,7 +1128,11 @@
                 \[
                     x + 2y = 0
                 \]
-                を満たす全ての $x$, $y$ が解となる.</p>
+                を満たす全ての $x$, $y$ が解となる. これは, 定理の主張の対偶である</p>
+                \[
+                    A \text{が正則でない} \iff \text{非自明な解が存在する} 
+                \]
+                の具体例となっている.
             </div><!-- / #example -->
         </section>
 
