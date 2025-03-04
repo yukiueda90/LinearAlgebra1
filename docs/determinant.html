@@ -33,7 +33,7 @@
 			<p>ここでは, 行列 $A$ として常に正方行列を考えることにする. 
 			この行列 $A$ の逆行列について, ここまでの内容を以下にいくつか再掲する:</p>
 			
-			<div class="definition">
+			<div class="definition" data-name="正則行列と逆行列">
 				<p>正方行列 $A$ に対して, 同じ型の正方行列 $B$ であって
 				\[
 					AB = BA = I
@@ -43,13 +43,13 @@
 			</div><!-- / #definition -->
 
 			<div class="theorem">
-				<p>逆行列について以下が成立する:</p>
-				<ul>
-					<li>$A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$</li>
-					<li>$A^{-1}$ が存在するならば, $(A^{-1})^{-1} = A$.</li>
-					<li>$A^{-1}$ は存在するならばただ$1$つに定まる.</li>
-				</ul>
-			</div><!-- / #theorem -->
+                <p>逆行列について以下が成立する:</p>
+                <ul>
+                    <li>$A^{-1}$ が存在するならば, $(A^{-1})^{-1} = A$.</li>
+                    <li>$A^{-1}$ は存在するならばただ$1$つに定まる.</li>
+                    <li>同じ型の正方行列 $A$, $B$ に対し, $A^{-1}$, $B^{-1}$ が存在するならば $(AB)^{-1} = B^{-1}A^{-1}$.</li>
+                </ul>
+            </div><!-- /theorem -->
 
 			<div class="remark">
 				<ul>
@@ -59,12 +59,13 @@
 				</ul>
 			</div><!-- / #remark -->
 
-			<div class="theorem">
-				<p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
-				\[
-					\operatorname{rank}A = n \iff A \text{ は正則}.
-				\]</p>
-			</div><!-- / #theorem -->
+			<div class="theorem" data-name="正方行列のランクと正則性">
+                <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:</p>
+                <ul>
+                    <li>$\operatorname{rank}A = n \iff A \text{ は正則}.$</li>
+                    <li>$\operatorname{rank}A \lt n \iff A \text{ は正則でない}.$</li>
+                </ul>
+            </div><!-- / #theorem -->
 
 			<div class="theorem">
 				<p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
@@ -83,8 +84,8 @@
 			</ul>
 			<p>を紹介した (ちなみに, 階数の計算は掃き出し法とほぼ同じ計算であり, 逆行列が存在するときにそれを具体的に計算できるかどうかだけ異なる).</p>
 			
-			<p>ここでは, 逆行列の存在判定 (及び逆行列の具体的な計算) に用いられる基準として, <b>行列式</b> (<b>determinant</b>) を導入する. 
-			その定義, 性質や応用は改めて紹介するが, その内いくつかをあらかじめ簡単に述べておく:</p>
+			<p>ここでは, 逆行列の存在判定 (及び逆行列の具体的な計算) に用いられる <b>行列式</b> (<b>determinant</b>) を紹介する. 
+			行列式とは何かを説明すると長くなるので, まずは行列式の表記やいくつかの性質から紹介しよう:</p>
 			<ul>
 				<li>正方行列 $A$ の行列式を,
 				\[
@@ -103,7 +104,7 @@
 				<li>実正方行列の行列式は実数である.</li>
 				<li>$n$ 次正方行列
 				\[
-					F(r) =\begin{pmatrix}I_r&O\cr O&O\end{pmatrix} = \begin{pmatrix}1\cr&1\cr&&\ddots\cr&&&1\cr&&&&0\cr&&&&&\ddots\end{pmatrix}<br>
+					F(r) =\begin{pmatrix}I_r&O\cr O&O\end{pmatrix} = \begin{pmatrix}1\cr&\ddots\cr&&1\cr&&&0\cr&&&&\ddots\end{pmatrix}<br>
 				\] 
 				に対して,
 				\[
@@ -113,7 +114,7 @@
 					\end{array}\right.
 				\] 
 				が成立する.</li>
-				<li>基本行列 $P_{i,j}$, $Q_{i,\lambda}$, $R_{i,j,\lambda}$ に対して,
+				<li><a href="elementary_operation.html#def_elementary_matrix">基本行列</a> $P_{i,j}$, $Q_{i,\lambda}$, $R_{i,j,\lambda}$ に対して,
 				\[
 					\det P_{i,j} \neq 0,\quad \det Q_{i,\lambda} \neq 0,\quad \det R_{i,j,\lambda} \neq 0<br>
 				\] 
@@ -124,7 +125,7 @@
 				\] が成立する.</li>
 			</ul>
 
-			<p>これらの性質を用いることで, 以下の性質を得ることができる:</p>
+			<p>これらの性質については, 行列式の定義を述べる際に改めて証明を行う. ひとまず, これらを事実として認めると, 以下が成立することがわかる:</p>
 
 			<div class="theorem">
 				<p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
@@ -134,15 +135,23 @@
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				<p>正方行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$ を用いて $A = PF(r)Q$ と表されるのだった. 
-				これと行列式の性質より,
-				\[
-					\det A\neq 0 \iff \det F(r)\neq 0 \iff \operatorname{rank} A=n
+				<p>正方行列 $A$ は, 基本行列の積により表される行列 $P$, $Q$ を用いて $A = PF(r)Q$ と表されるのだった (<a href="elementary_operation.html#thm_rank">詳細</a>). 
+				上で言及したように, 基本行列の行列式は $0$ でないので, 基本行列の積で表される $P$, $Q$ の行列式も $0$ ではない.
+				これと上に述べた性質より,
+				\[	
+					\begin{array}{rl}
+					\det A\neq 0 &\iff \det P\det F(r)\det Q\neq 0 \cr 
+					&\iff \det F(r)\neq 0\cr
+					&\iff \operatorname{rank} A=n
+					\end{array}
 				\] 
 				が得られる.</p>
 			</div><!-- / #proof -->
 			
-			<p>すなわち, 正方行列 $A$ の逆行列が存在するか否か判定するには, $A$ の行列式を計算すれば良いことになる.</p>
+			<p>すなわち, 正方行列 $A$ の逆行列が存在するか否か判定するには, $A$ の行列式を計算すれば良いことになる.
+				このように, 行列式という概念は逆行列と密接に関連するものであり, 従って連立 $1$ 次方程式とも関連するものである. 
+			</p>
+			<p>ここでは, 行列式の定義を解説し, 定義から得られる性質を紹介する. 行列式の定義は複雑であり, 完璧に理解できなかったとしても仕方ないが, 行列式の計算やその応用は (公式として暗記してでも) できるようになるべきだろう.</p>
 			
 			<hr>
 			
@@ -150,10 +159,10 @@
 
 		<section id="section3-2"><h2>3.2: 行列式の定義</h2>
 			
-			<p>ここでは, 行列式の定義を述べる. 行列式を上で述べた性質が満たされるよう構成するために, (唐突ではあるが) まずは<b>置換</b>という概念を導入する:</p>
+			<p>行列式が上で述べた性質が満たすように構成するために, (唐突ではあるが) まずは<b>置換</b>という概念を導入する:</p>
 			
 			<div class="definition" data-name="置換">
-				<p>$n$ 個の元からなる集合を考える (ここでは, $\lbrace 1, 2, \dots, n\rbrace$ のみを考えることにする). 
+				<p>$n$ 個の元からなる<a href="index.html#def_set">集合</a>を考える (例えば $\lbrace 1, 2, \dots, n\rbrace$ など). 
 				これを並び替える操作を<b>置換</b> (<b>permutation</b>) という. 
 				いま, $\lbrace 1, 2, \dots n\rbrace を \lbrace \sigma(1), \sigma(2), \dots, \sigma(n)\rbrace$ に並び替える置換を
 				\[
@@ -180,7 +189,7 @@
 			</div><!-- / #example -->
 
 			<div class="example">
-				<p>$\lbrace 1,2,3\rbrace$ の置換 $S_n$ は以下の $6$ つからなる:
+				<p>$\lbrace 1,2,3\rbrace$ の置換 $S_3$ は以下の $6$ つからなる:
 				\[
 					\begin{array}{c}\begin{bmatrix}
 						1& 2& 3\cr 1 & 2 & 3
@@ -188,15 +197,15 @@
 					\begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 1 & 3
-					\end{bmatrix},\quad 
-					\begin{bmatrix}
-						1& 2& 3\cr 
-						1 & 3 & 2
 					\end{bmatrix},\cr
 					\begin{bmatrix}
 						1& 2& 3\cr 
+						1 & 3 & 2
+					\end{bmatrix},\quad
+					\begin{bmatrix}
+						1& 2& 3\cr 
 						3 & 2 & 1
-					\end{bmatrix},\quad 
+					\end{bmatrix},\cr 
 					\begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 3 & 1
@@ -302,7 +311,7 @@
 			
 			<p>ここまで準備することで, 正方行列に対する行列式の定義を記述することができる.</p>
 
-			<div class="definition" data-name="行列式">
+			<div class="definition" data-name="行列式" id="def_determinant">
 				<p>$n$ 次正方行列 $A=(a_{ij})$ に対して,
 				\[
 					\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)}
@@ -311,82 +320,93 @@
 			</div><!-- / #definition -->
 
 			<div class="example">
-				<p>$2$ 次正方行列 $A = (a_{ij}) = \begin{pmatrix}a&b\cr c&d\end{pmatrix}$ を考える. いま, $2$ 個に対する置換 $S_2$ は
+				<p>$2$ 次正方行列 $A = \begin{pmatrix}a_{11} & a_{12} \cr a_{21} & a_{22}\end{pmatrix} = \begin{pmatrix}a&b\cr c&d\end{pmatrix}$ を考える. いま, $2$ 個に対する置換 $S_2$ は
 				\[
-					\sigma_1 = \begin{bmatrix}
+					\sigma_1 = \begin{bmatrix} 
+						1 & 2 \cr 
+						\sigma_1(1) & \sigma_1(2) 
+					\end{bmatrix} = \begin{bmatrix}
 						1&2\cr 
 						1&2
-					\end{bmatrix},\quad 
-					\sigma_2 = \begin{bmatrix}
+					\end{bmatrix},
+				\]\[
+					\sigma_2 = \begin{bmatrix} 
+						1 & 2 \cr 
+						\sigma_2(1) & \sigma_2(2) 
+					\end{bmatrix} = \begin{bmatrix}
 						1&2\cr 
 						2&1
 					\end{bmatrix}
 				\] 
 				からなる. ここで,
 				\[
-					\sigma_1(1) = 1,\quad \sigma_1(2)=2,\quad \operatorname{sgn}\sigma_1 = 1,
-				\]\[
-					\sigma_2(1) = 2,\quad \sigma_2(2) = 1,\quad \operatorname{sgn} \sigma_2 = -1<br>
-				\] 
+					\operatorname{sgn}\sigma_1 = 1,\quad \operatorname{sgn} \sigma_2 = -1
+				\]
 				であることから,
 				\[
-					\begin{array}{rl}\det A &= \operatorname{sgn}\sigma_1 a_{1\sigma_1(1)} a_{2\sigma_1(2)} + \operatorname{sgn}\sigma_2 a_{1\sigma_2(1)} a_{2\sigma_2(2)} \cr
+					\begin{array}{rl}\det A &= (\operatorname{sgn}\sigma_1) a_{1\sigma_1(1)} a_{2\sigma_1(2)} \cr 
+						&\qquad + (\operatorname{sgn}\sigma_2) a_{1\sigma_2(1)} a_{2\sigma_2(2)} \cr
 						&= a_{11}a_{22} - a_{12}a_{21}\cr
 						&= ad-bc
 					\end{array}
 				\] 
-				となる. 計算中に行列 $A$ の $i\sigma_k(i)$ 成分を用いているが, $i$ と $\sigma_k(i)$ のペアは置換 $\sigma_k$ を行列とみなしたときの第 $i$ 列に一致することに注意.</p>
+				となる. </p>
 			</div><!-- / #example -->
 
 			<div class="example">
 				<p>$3$ 次正方行列 $A = (a_{ij}) = \begin{pmatrix}a&b&c\cr d&e&f\cr g&h&i\end{pmatrix}$ を考える. いま $S_3$ は先の例に挙げた
 				\[
-					\begin{array}{c}\sigma _ 1 = \begin{bmatrix}
+					\begin{array}{c}\sigma_1 = \begin{bmatrix}
 						1& 2& 3\cr 
 						1 & 2 & 3
-					\end{bmatrix},\quad \sigma _ 2 = \begin{bmatrix}
+					\end{bmatrix},\quad \sigma_2 = \begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 1 & 3
-					\end{bmatrix},\quad \sigma _ 3 = \begin{bmatrix}
+					\end{bmatrix},\cr 
+					\sigma_3 = \begin{bmatrix}
 						1& 2& 3\cr 
 						1 & 3 & 2
-					\end{bmatrix},\cr
-					\sigma _ 4 = \begin{bmatrix}
+					\end{bmatrix},\quad \sigma_4 = \begin{bmatrix}
 						1& 2& 3\cr 
 						3 & 2 & 1
-					\end{bmatrix},\quad \sigma _ 5 = \begin{bmatrix}
+					\end{bmatrix},\cr \sigma_5 = \begin{bmatrix}
 						1& 2& 3\cr 
 						2 & 3 & 1
-					\end{bmatrix},\quad \sigma _ 6 = \begin{bmatrix}
+					\end{bmatrix},\quad \sigma_6 = \begin{bmatrix}
 						1& 2& 3\cr 
 						3 & 1 & 2
 					\end{bmatrix}.\end{array}
 				\] 
-				の$6$ つであり, それらを用いて計算すると
+				の$6$ つであり, これらを用いて計算すると
 				\[
-					\begin{array}{rl}\det A &= \operatorname{sgn}\sigma _ 1 a _ {1\sigma _ 1(1)}a _ {2\sigma _ 1(2)}a _ {3\sigma _ 1(3)} + 
-						\operatorname{sgn}\sigma _ 2 a _ {1\sigma _ 2(1)}a _ {2\sigma _ 2(2)}a _ {3\sigma _ 2(3)} +
-						\operatorname{sgn}\sigma _ 3 a _ {1\sigma _ 3(1)}a _ {2\sigma _ 3(2)}a _ {3\sigma _ 3(3)} \cr
-						&\qquad + \operatorname{sgn}\sigma _ 4 a _ {1\sigma _ 4(1)}a _ {2\sigma _ 4(2)}a _ {3\sigma _ 4(3)} +
-						\operatorname{sgn}\sigma _ 5 a _ {1\sigma _ 5(1)}a _ {2\sigma _ 5(2)}a _ {3\sigma _ 5(3)} + 
-						\operatorname{sgn}\sigma _ 6 a _ {1\sigma _ 6(1)}a _ {2\sigma _ 6(2)}a _ {3\sigma _ 6(3)}\cr
-						&= a_{11} a_{22} a_{33} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32} \cr
-						&\qquad - a_{13} a_{22} a_{31} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32}  \cr
-						&= aei + bfg + cdh - ceg - bdi - afh
+					\begin{array}{rl}\det A &= (\operatorname{sgn}\sigma_1) a_{1\sigma_1(1)}a_{2\sigma_1(2)}a_{3\sigma_1(3)} \cr 
+						&\quad + (\operatorname{sgn}\sigma_2) a_{1\sigma_2(1)}a_{2\sigma_2(2)}a_{3\sigma_2(3)} \cr 
+						&\qquad + (\operatorname{sgn}\sigma_3) a_{1\sigma_3(1)}a_{2\sigma_3(2)}a_{3\sigma_3(3)} \cr
+						&\quad + (\operatorname{sgn}\sigma_4) a_{1\sigma_4(1)}a_{2\sigma_4(2)}a_{3\sigma_4(3)} \cr
+						&\qquad + (\operatorname{sgn}\sigma_5) a_{1\sigma_5(1)}a_{2\sigma_5(2)}a_{3\sigma_5(3)} \cr
+						&\quad\qquad + (\operatorname{sgn}\sigma_6) a_{1\sigma_6(1)}a_{2\sigma_6(2)}a_{3\sigma_6(3)}\cr
+						&= a_{11} a_{22} a_{33} - a_{12} a_{21} a_{33} \cr 
+						&\quad - a_{11} a_{23} a_{32} - a_{13} a_{22} a_{31} \cr 
+						& \qquad + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32}  \cr
+						&= aei + bfg + cdh \cr 
+						& \qquad - ceg - bdi - afh
 					\end{array}
 				\] となる.</p>
 			</div><!-- / #example -->
 
 			<div class="remark">
-				<p>$4$ 次以上の正方行列に対しても上と同様にして行列式を計算することは可能だが, 実用上は (いくつかの特殊な場合を除いて) $2$ 次と $3$ 次の場合の行列式を公式として暗記すれば十分だろう:
+				<p>$4$ 次以上の正方行列に対しても, 上と同様に定義から行列式を計算することは可能だが, 実用上は (いくつかの特殊な場合を除いて) $2$ 次と $3$ 次の場合の行列式の定義を公式として暗記すれば十分だろう:
 				\[
-					\begin{array}{c}A = \begin{pmatrix}a&b\cr c&d\end{pmatrix} \leadsto \det A = ad-bc.\cr
-					A = \begin{pmatrix}a&b&c\cr d&e&f\cr g&h&i\end{pmatrix} \leadsto \det A =  aei + bfg + cdh - ceg - bdi - afh.\end{array}
+					A = \begin{pmatrix}a&b\cr c&d\end{pmatrix} \leadsto \det A = ad-bc.
+				\]\[
+					A = \begin{pmatrix}a&b&c\cr d&e&f\cr g&h&i\end{pmatrix} \leadsto \begin{array}{rl}\det A\hspace{-12px}&=  aei + bfg + cdh \cr &\quad - ceg - bdi - afh.\end{array}
 				\]
 				ちなみに $1$ 次正方行列は, その唯一の成分である複素数と同一視されるが, 行列式もこれに一致する:
 				\[
 					A =\begin{pmatrix}a\end{pmatrix}\leadsto \det A = a
 				\]</p>
+				<div class="resize" style="width: 300px"><img src='./images/determinant_1.png'></div>
+				<div class="resize" style="width: 320px"><img src='./images/determinant_2.png'></div>
 			</div><!-- remark -->
 
 			<hr>
@@ -395,7 +415,7 @@
 
 		<section id="section3-3"><h2>3.3: 行列式の性質</h2>
 			
-			<p>ここでは行列式の性質を列挙していく. 
+			<p>行列式の性質を列挙していく. 
 			行列式を定義に置換という概念を用いたのは, 以下の性質が成立するように構成するためである.</p>
 			
 			<div class="theorem">
@@ -403,7 +423,7 @@
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				<p>$A = (a_{ij})$ を対角行列とする, このとき
+				<p>$A = (a_{ij})$ を対角行列とすると, <a href="matrix.html#def_diagonal_matrix">対角行列の定義</a>より
 				\[
 					a_{ij} = 0 \quad \text{ if }\quad i\neq j
 				\] 
@@ -411,7 +431,8 @@
 				\[
 					\det A = \sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)}
 				\] 
-				において, $\sigma(1)=1$, $\sigma(2)=2$, $\dots$, $\sigma(n)=n$ の場合を除き $a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)}=0$ となる, すなわち, 対角行列 $A$ に対して
+				において, $\sigma(1)=1$, $\sigma(2)=2$, $\dots$, $\sigma(n)=n$ の場合を除き $a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)}=0$ となる. 
+				従って, 対角行列 $A$ に対して
 				\[
 					\det A = a_{11} a_{22} \dots a_{nn}
 				\] 
@@ -470,7 +491,8 @@
 				<p>行列 $\lambda A$ の $(i,j)$ 成分は, $A$ の $(i,j)$ 成分の $\lambda$ 倍なので,
 				\[
 					\begin{array}{rl}\det (\lambda A) &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) (\lambda a_{1\sigma(1)}) (\lambda a_{2\sigma(2)})\dots (\lambda a_{n\sigma(n)})\cr
-						&= \lambda^n \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)} = \lambda^n\det A
+						&= \lambda^n \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)}\dots a_{n\sigma(n)} \cr 
+						&= \lambda^n\det A
 					\end{array}
 				\]
 				となる.</p>
@@ -479,21 +501,24 @@
 			<div class="example">
 				<ul>
 					<li>単位行列 $I\in\mathbb{R}^{n\times n}$ に対して $\det (-I) = (-1)^n$.</li>
-					<lI>\[
-							\det\begin{pmatrix} 
-								\lambda a&\lambda b\cr 
-								\lambda c&\lambda d 
-							\end{pmatrix} = (\lambda a)(\lambda d) - (\lambda b)(\lambda c) = \lambda^2(ad-bc) = \lambda^2\det\begin{pmatrix} 
+					<li>$\det\begin{pmatrix} 
+							\lambda a&\lambda b\cr 
+							\lambda c&\lambda d 
+						\end{pmatrix} = (\lambda a)(\lambda d) - (\lambda b)(\lambda c)$
+						<br>
+						$\begin{array}{rl}
+							\hspace{91px} &= \lambda^2(ad-bc)\cr 
+							&= \lambda^2\det\begin{pmatrix} 
 								a&b\cr 
 								c&d 
 							\end{pmatrix}.
-						\]</lI>
+						\end{array}$</li>
 				</ul>
 			</div><!-- / #example -->
 				
 			<hr>
 
-			<div class="theorem">
+			<div class="theorem" id="thm_transpose_equality">
 				<p>正方行列 $A$ に対し,
 				\[
 					\det A^{\operatorname{T}} = \det A
@@ -510,10 +535,10 @@
 						&= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{\sigma(1)1} a_{\sigma(2)2} \dots a_{\sigma(n)n}
 					\end{array}
 				\] 
-				となる, ここで, $\sigma^{-1}(i) = j$ であるとき $a_{i\sigma^{-1}(i)} = a_{\sigma(j)j}$ であることを用い, また $a_{\sigma(j)j}$ たちの積の順序を入れ換えている.</p>
-				<p>一方で, $A^{\operatorname{T}}$ の $(i,j)$ 成分を $\widetilde{a} _ {ij}$ とおくと, $\widetilde{a} _ {ij} = a_{ji}$ となるため,
+				となる, ここで, 最後の等号では $\sigma^{-1}(i) = j$ であるときに $a_{i\sigma^{-1}(i)} = a_{\sigma(j)j}$ であることを用い, また $a_{\sigma(j)j}$ たちの積の順序を入れ換えている.</p>
+				<p>一方で, <a href="matrix.html#def_transpose">転置</a> $A^{\operatorname{T}}$ の $(i,j)$ 成分を $\widetilde{a}_{ij}$ とおくと, $\widetilde{a}_{ij} = a_{ji}$ となるため,
 				\[
-					\begin{array}{rl}\det A^{\operatorname{T}} &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) \widetilde{a} _ {1\sigma(1)} \widetilde{a} _ {2\sigma(2)}\dots \widetilde{a} _ {n\sigma(n)} \cr
+					\begin{array}{rl}\det A^{\operatorname{T}} &= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) \widetilde{a}_{1\sigma(1)} \widetilde{a}_{2\sigma(2)}\dots \widetilde{a}_{n\sigma(n)} \cr
 						&= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{\sigma(1)1} a_{\sigma(2)2} \dots a_{\sigma(n)n}
 					\end{array}
 				\] 
@@ -521,105 +546,128 @@
 			</div><!-- / #proof -->
 
 			<div class="example">
-				$\det\begin{pmatrix} 
-					a&b\cr 
-					c&d 
-				\end{pmatrix} = ad-bc = \det\begin{pmatrix} 
-					a&c \cr 
-					b&d 
-				\end{pmatrix}$.
+				<ul>
+					<li>$\det\begin{pmatrix}
+						a & b \cr 
+						c & d 
+					\end{pmatrix}^{\operatorname{T}} = \det\begin{pmatrix} 
+						a & c \cr 
+						b & d 
+					\end{pmatrix}$<br>
+					$\begin{array}{rl} 
+						\hspace{82px} & = ad-bc\cr 
+						&= \det\begin{pmatrix} 
+							a & b \cr 
+							c & d 
+						\end{pmatrix} 
+					\end{array}$</li>
+				</ul>
 			</div><!-- / #example -->
 			
 			<hr>
 			
-			<p>上の結果より, $A$ の行列式を考える際に $A$ の列に関する性質は, $A$ の行に対しても同様に成立することが言える. 
-			そこで, 行列 $A$ を列ベクトル $\mathbf{a}_j$ を横に並べたものとみなして行列式を考えてみる:
+			<p>上の結果より, $A$ の行列式を考える際に $A$ の列に関する性質は, (転置を考えることで) $A$ の行に対しても同様に成立することが言える. 
+			そこで, 行列 $A$ を第 $j$ 列ベクトル $\mathbf{a}_j$ を横に並べたものとみなす:</p>
 			\[
 				\det A = \det (\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n).
-			\]</p>
+			\]
+			<p>この表記を用いると, 行列式の<b>多重線形性</b>を以下のように説明することができる:</p>
 
-			<div class="lemma" data-name="多重線形性">
+			<div class="lemma" data-name="多重線形性" id="lem_multilinear">
 				<ul>
-					<li>\[
-							\det (\mathbf{a}_1, \dots, \mathbf{a}_j + \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n) 
-							= \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) 
-							+ \det (\mathbf{a}_1, \dots, \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n),
-						\]</li>
-					<li>\[
+					<li>行列の第 $j$ 列ベクトルが $2$ つの列ベクトルの和で表されるとき,</li> 
+						\[
+							\begin{array}{rl} 
+								\det (\mathbf{a}_1, \dots, \mathbf{a}_j + \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n) 
+								& = \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) \cr
+								&\quad + \det (\mathbf{a}_1, \dots, \widetilde{\mathbf{a}}_j, \dots, \mathbf{a}_n).
+							\end{array}
+						\]
+					<li>行列の第 $j$ 列ベクトルがベクトルのスカラー倍で表されるとき,</li>
+						\[
 							\det (\mathbf{a}_1, \dots, \lambda\mathbf{a}_j, \dots, \mathbf{a}_n) 
-							= \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n)
-						\]</li>
+							= \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n).
+						\]
 				</ul>
 			</div><!-- / #proof -->
 
-			<p>証明略 (行に対しても同様の性質が成り立つことに注意)</p>
+			<p>証明略 (行列式の定義より得られる, 行に対しても同様の性質が成り立つことに注意)</p>
 
 			<div class="example">
 				<ul>
-					<li>\[
-							\det\begin{pmatrix}
-								a&b\cr
-								c_1+c_2&d_1+d_2	
-							\end{pmatrix} = \det\begin{pmatrix} 
-								a&b\cr 
-								c_1&d_1 
-							\end{pmatrix} + \det\begin{pmatrix} 
-								a&b \cr 
-								c_2&d_2 
-							\end{pmatrix} = ad_1-bc_1 + ad_2-bc_2 = a(d_1+d_2)-b(c_1+c_2).
-						\]</li>
-					<li>\[
-							\det\begin{pmatrix} 
-								a&b\cr 
-								\lambda c&\lambda d 
-							\end{pmatrix} = \lambda\det\begin{pmatrix} 
-								a&b\cr 
-								c&d
-							\end{pmatrix} = \lambda(ad-bc).
-						\]</li>
-					<li>\[
-							\det\begin{pmatrix} 
+					<li>行に対しても同様に多重線形性が成り立つ:</li>
+						\[
+							\begin{array}{rl} 
+								\det\begin{pmatrix}
+									a&b\cr
+									c_1+c_2&d_1+d_2	
+								\end{pmatrix} &= \det\begin{pmatrix} 
+									a&b\cr 
+									c_1&d_1 
+								\end{pmatrix} + \det\begin{pmatrix} 
+									a&b \cr 
+									c_2&d_2 
+								\end{pmatrix} \cr 
+								& = ad_1-bc_1 + ad_2-bc_2 \cr 
+								& = a(d_1+d_2)-b(c_1+c_2),
+							\end{array}
+						\]
+						\[
+							\begin{array}{rl}
+								\det\begin{pmatrix} 
+									a&b\cr 
+									\lambda c&\lambda d 
+								\end{pmatrix} &= \lambda\det\begin{pmatrix} 
+									a&b\cr 
+									c&d
+								\end{pmatrix} \cr 
+								& = \lambda(ad-bc).
+							\end{array}
+						\]
+					<li>$\det\begin{pmatrix} 
 								a&b\cr 
 								0&0 
 							\end{pmatrix} = 0\det\begin{pmatrix} 
 								a&b\cr 
 								\ast&\ast 
-							\end{pmatrix} = 0.
-						\]</li>
+							\end{pmatrix} = 0.$</li>
 				</ul>
 			</div><!-- / #example -->
 
 			<div class="remark">
 				<p>基本行列 $R_{i,j,\lambda}$ に対して, 
 				\[
-					\det R_{i,j,\lambda} = \det I + \det (\mathbf{0},\dots,\mathbf{0}, \lambda\mathbf{e}_i,\mathbf{0}, \dots\mathbf{0}) = 1\neq 0
+					\begin{array}{rl} 
+						\det R_{i,j,\lambda} &= \det I + \det (\mathbf{0},\dots,\mathbf{0}, \lambda\mathbf{e}_i,\mathbf{0}, \dots\mathbf{0}) \cr 
+						& = 1 (\neq 0)
+					\end{array}
 				\] 
 				を確かめることができる.</p>
 			</div><!-- / #remark -->
 			
-			<div class="lemma" data-name="交代性">
+			<div class="lemma" data-name="交代性" id="lem_alternating">
 				<p>置換 $\tau\in S_n$ に対し,
 				\[
-					\det (\mathbf{a} _ {\tau(1)}, \dots, \mathbf{a} _ {\tau(n)}) = (\operatorname{sgn}\tau) \det (\mathbf{a}_1, \dots, \mathbf{a}_n).
+					\det (\mathbf{a}_{\tau(1)}, \dots, \mathbf{a}_{\tau(n)}) = (\operatorname{sgn}\tau) \det (\mathbf{a}_1, \dots, \mathbf{a}_n).
 				\]
 				が成立する.</p>
 			</div><!-- / #lemma -->
 
 			<div class="proof">
-				<p>全ての置換は互換の積として表されるため, $i$ 番目と $j$ 番目を入れ替える互換 $\tau$ を考えた際に
+				<p>全ての置換は互換の積として表されるため, $i$ 番目と $j$ 番目を入れ替える互換 $\tau$ に対し
 				\[
-					\det (\mathbf{a} _ 1, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ n) = - \det (\mathbf{a} _ 1, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ n)
+					\det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n) = - \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n)
 				\] 
 				となることを示せば良い. 互換 $\sigma\in S_n$ に対し, $\widetilde{\sigma} = \tau\sigma$ とおくと,
 				\[
 					\begin{array}{rl}
-						&\det (\mathbf{a} _ 1, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ n) \cr
-						&\quad= \displaystyle\sum _ {\sigma\in S _ n}(\operatorname{sgn}\sigma) a _ {1\tau\sigma(1)} \dots a _ {n\tau\sigma(n)} \cr
-						&\quad= (\operatorname{sgn}\tau)\displaystyle\sum _ {\widetilde{\sigma}\in S _ n}(\operatorname{sgn}\widetilde{\sigma}) a _ {1\widetilde{\sigma}(1)} \dots a _ {n\widetilde{\sigma}(n)} \cr
-						&\quad = - \det (\mathbf{a} _ 1, \dots, \mathbf{a} _ i, \dots, \mathbf{a} _ j, \dots, \mathbf{a} _ n),
+						&\det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n) \cr
+						&\quad= \displaystyle\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\tau\sigma(1)} \dots a_{n\tau\sigma(n)} \cr
+						&\quad= (\operatorname{sgn}\tau)\displaystyle\sum_{\widetilde{\sigma}\in S_n}(\operatorname{sgn}\widetilde{\sigma}) a_{1\widetilde{\sigma}(1)} \dots a_{n\widetilde{\sigma}(n)} \cr
+						&\quad = - \det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n),
 					\end{array}
 				\] 
-				ここで全ての $\sigma\in S _ n$ についての足し合わせは, 全ての $\widetilde{\sigma}\in S _ n$ についての足し合わせに等しいことを用いた.</p>
+				ここで全ての $\sigma\in S_n$ についての足し合わせは, 全ての $\widetilde{\sigma}\in S_n$ についての足し合わせに等しいことを用いた.</p>
 			</div><!-- / #proof -->
 
 			<div class="remark">
@@ -634,31 +682,40 @@
 							\det\widehat{A} = (-1)^k \det A
 						\] 
 						となることを意味している.</li>
-					<li>基本行列 $P_{i,j}$ に対して, $\det P_{i,j} = -\det I = -1\neq 0$ を確かめることができる</li>
+					<li>基本行列 $P_{i,j}$ に対して, 
+						\[
+							\det P_{i,j} = -\det I = -1 (\neq 0)
+						\] を確かめることができる</li>
 				</ul>
+				<div class="resize" style="width: 250px"><img src='./images/determinant_alternating.png'></div>
+				
 			</div><!-- / #remark -->
 
 			<div class="example">
 				\[
-					\det\begin{pmatrix} 
-						c&d \cr
-						a&b 
-					\end{pmatrix} = bc - ad = -(ad-bc) = -\det\begin{pmatrix} 
-						a&b \cr
-						c&d 
-					\end{pmatrix}.
+					\begin{array}{rl} 
+						\det\begin{pmatrix} 
+							c&d \cr
+							a&b 
+						\end{pmatrix} &= bc - ad \cr 
+						&= -(ad-bc) \cr 
+						&= -\det\begin{pmatrix} 
+							a&b \cr
+							c&d 
+						\end{pmatrix}.
+					\end{array}
 				\]
 			</div><!-- / #example -->
 
-			<div class="theorem">
+			<div class="theorem" id="thm_alternating">
 				<p>正方行列 $A$ の 異なる $2$ つの列 (もしくは行) が一致するならば $\det A=0$.</p>	
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				<p>第 $i$ 列ベクトルと第 $j$ 列ベクトルが等しいならば, それらを入れ換えた行列が $A$ に一致することから $\det A = -\det A$ が得られる.</p>
+				<p>行列 $A$ の第 $i$ 列ベクトルと第 $j$ 列ベクトルが等しいならば, それらを入れ換えた行列が $A$ に一致する. これと<a href="#lem_alternating">交代性</a>より $\det A = -\det A$ となるため, $\det A=0$ である.</p>
 			</div><!-- / #proof -->
 
-			<div class="theorem">
+			<div class="theorem" id="thm_determinant_reduction">
 				<p>正方行列 $A$ の第 $i$ 列に第 $j$ 列の (もしくは第 $i$ 行に第 $j$ 行の) $\lambda$ 倍を加えて得られる行列 $\widetilde{A}$ に対し,
 					\[
 						\det\widetilde{A} = \det A
@@ -671,11 +728,13 @@
 				\[
 					\widetilde{A} = (\mathbf{a}_1, \dots, \mathbf{a}_i + \lambda\mathbf{a}_j, \dots, \mathbf{a}_n)
 				\] 
-				となるので,
+				と表すことができるので,
 				\[
 					\begin{array}{rl}
-						\det \widetilde{A} &= \det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n) + \det (\mathbf{a}_1, \dots, \lambda\mathbf{a}_j, \dots, \mathbf{a}_n) \cr
-						&= \det A + \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n).
+						\det \widetilde{A} &= \det (\mathbf{a}_1, \dots, \mathbf{a}_i, \dots, \mathbf{a}_n) \cr 
+						& \qquad + \det (\mathbf{a}_1, \dots, \lambda\mathbf{a}_j, \dots, \mathbf{a}_n) \cr
+						&= \det A \cr 
+						& \qquad + \lambda \det (\mathbf{a}_1, \dots, \mathbf{a}_j, \dots, \mathbf{a}_j, \dots, \mathbf{a}_n).
 					\end{array}
 				\] 
 				ここで, 第 $2$ 項の行列式は先の結果より $0$ となるため, 欲しい結果が得られる.</p>
@@ -704,9 +763,10 @@
 			<div class="remark">
 				<p>この結果は, 基本行列 $R_{i,j,\lambda}$ に対して
 					\[
-						\det(R _ {i,j,\lambda} A) = \det A,\qquad \det(AR _ {i,j,\lambda}) = \det A
+						\det(R_{i,j,\lambda} A) = \det A,\quad \det(AR_{i,j,\lambda}) = \det A
 					\] 
 					であることを意味している.</p>
+				<div class="resize" style="width: 300px"><img src='./images/determinant_reduction.png'></div>
 			</div><!-- / #remark -->
 			
 			<div class="example">
@@ -721,9 +781,9 @@
 				\[
 					\begin{array}{rll}
 						\det A &= \det \begin{pmatrix}1 & 11 & 111 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix} & \cr
-						&= \det \begin{pmatrix}1 & 0 & 111 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix} & \text{(第 $2$ 列に第 $1$ 列の $-11$ 倍を加えた)} \cr
-						&= \det \begin{pmatrix}1 & 0 & 0 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix} & \text{(第 $3$ 列に第 $1$ 列の $-111$ 倍を加えた)} \cr
-						&= \det \begin{pmatrix}1 & 0 & 0 \cr 0 & 1 & 0 \cr 0 & 0 & 1\end{pmatrix} & \text{(第 $3$ 列に第 $2$ 列の $-11$ 倍を加えた)} \cr
+						&= \det \begin{pmatrix}1 & 0 & 111 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix} & \left(\begin{array}{c}\text{第 $2$ 列に第 $1$ 列の}\cr \text{$-11$ 倍を加えた}\end{array}\right) \cr
+						&= \det \begin{pmatrix}1 & 0 & 0 \cr 0 & 1 & 11 \cr 0 & 0 & 1\end{pmatrix} & \left(\begin{array}{c}\text{第 $3$ 列に第 $1$ 列の}\cr \text{$-111$ 倍を加えた}\end{array}\right) \cr
+						&= \det \begin{pmatrix}1 & 0 & 0 \cr 0 & 1 & 0 \cr 0 & 0 & 1\end{pmatrix} & \left(\begin{array}{c}\text{第 $3$ 列に第 $2$ 列の}\cr \text{$-11$ 倍を加えた}\end{array}\right) \cr
 						&= \det I = 1.
 					\end{array}
 				\]</p>	
@@ -741,38 +801,42 @@
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				<p>行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b} _ j$ とする. 
-				また, 標準基底 $\mathbf{e} _ i$ を用いて $\mathbf{b} _ j = \displaystyle\sum _ { {i _ j} =1}^n b _ { {i _ j} j} \mathbf{e} _ {i _ j}$ とする. 
+				<p>行列 $B$ の第 $j$ 列ベクトルを $\mathbf{b}_j$ とする. 
+				また, <a href="matrix.html#def_canonical_basis">標準基底</a> $\mathbf{e}_i$ を用いて $\mathbf{b}_j = \displaystyle\sum_{ {i_j} =1}^n b_{ {i_j} j} \mathbf{e}_{i_j}$ とおく. 
 				このとき,
 				\[
-					\det (AB) = \det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n).
+					\det (AB) = \det (A\mathbf{b}_1, \dots, A\mathbf{b}_n).
 				\] 
-				多重線形性より
+				<a href="#lem_multilinear">多重線形性</a>より
 				\[
 					\begin{array}{rl}
-						\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) &= \displaystyle\sum _ {i _ 1}^n b_{ {i _ 1} 1}\det (A\mathbf{e} _ {i _ 1}, A\mathbf{b} _ 2, \dots, A\mathbf{b} _ n) \cr
+						\det (A\mathbf{b}_1, \dots, A\mathbf{b}_n) &= \displaystyle\sum_{i_1}^n b_{ {i_1} 1}\det (A\mathbf{e}_{i_1}, A\mathbf{b}_2, \dots, A\mathbf{b}_n) \cr
 						& =\dots\cr
-						&= \displaystyle\sum _ {i _ 1}^n\dots\sum _ {i _ n}^n b _ { {i _ 1 } 1}\dots b _ { {i _ n} n} \det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}).
+						&= \displaystyle\sum_{i_1}^n\dots\sum_{i_n}^n b_{ {i_1 } 1}\dots b_{ {i_n} n} \det (A\mathbf{e}_{i_1}, \dots, A\mathbf{e}_{i_n}).
 					\end{array}
 				\] 
-				ここで, もしも $i _ 1,\dots, i _ n$ の中に同じものが複数あったならば, $2$ つの列が一致することになるため $\det (A\mathbf{e} _ {i _ 1}, \dots, A\mathbf{e} _ {i _ n}) = 0$ となる. 
-				一方, $i _ 1, \dots, i _ n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S _ n$ が存在する. 
-				まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S _ n$ を用いて表すことができるもののみであり, 具体的には
+				ここで, もしも $i_1,\dots, i_n$ の中に同じものが複数あったならば, <a href="#thm_alternating">$2$ つの列が一致する</a>ことになるため $\det (A\mathbf{e}_{i_1}, \dots, A\mathbf{e}_{i_n}) = 0$ となる. 
+				一方, $i_1, \dots, i_n$ が全て異なる場合, そのような並び方と同一視できる置換 $\sigma\in S_n$ が存在する. 
+				まとめると, 上の式の足し合わせの中で $0$ でないものは $\sigma\in S_n$ を用いて表すことができるもののみであり, 具体的には
 				\[
-					\det (A\mathbf{b} _ 1, \dots, A\mathbf{b} _ n) = \displaystyle\sum _ {\sigma\in S _ n} b _ {\sigma(1)1} \dots b _ {\sigma(n)n} \det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)})
+					\det (A\mathbf{b}_1, \dots, A\mathbf{b}_n) = \displaystyle\sum_{\sigma\in S_n} b_{\sigma(1)1} \dots b_{\sigma(n)n} \det (A\mathbf{e}_{\sigma(1)}, \dots, A\mathbf{e}_{\sigma(n)})
 				\] 
-				となる. ここで, 交代性より
+				となる. ここで, <a href="#lem_alternating">交代性</a>より
 				\[
 					\begin{array}{rl}
-						\det (A\mathbf{e} _ {\sigma(1)}, \dots, A\mathbf{e} _ {\sigma(n)}) &= (\operatorname{sgn}\sigma) \det(A\mathbf{e} _ 1, \dots, A\mathbf{e} _ n)\cr
+						\det (A\mathbf{e}_{\sigma(1)}, \dots, A\mathbf{e}_{\sigma(n)}) &= (\operatorname{sgn}\sigma) \det(A\mathbf{e}_1, \dots, A\mathbf{e}_n)\cr
 						&= (\operatorname{sgn}\sigma) \det A
 					\end{array}
 				\] 
 				となり, 以上より
 				\[
-					\det (AB) = \det A \displaystyle\sum _ {\sigma\in S _ n} (\operatorname{sgn}\sigma) b _ {\sigma(1)1} \dots b _ {\sigma(n)n} = \det A\det B
+					\begin{array}{rl} 
+						\det (AB) &= \det A \displaystyle\sum_{\sigma\in S_n} (\operatorname{sgn}\sigma) b_{\sigma(1)1} \dots b_{\sigma(n)n} \cr 
+						& = \det A\det B^{\operatorname{T}}\cr 
+						&= \det A\det B 
+					\end{array}
 				\] 
-				が得られる.</p>
+				が得られる (<a href="#thm_transpose_equality">転置により行列式は変わらない</a>ことを用いた).</p>
 			</div><!-- / #proof -->
 			
 			<hr>
@@ -812,10 +876,175 @@
 		</section>
 
 		<section id="section3-4"><h2>3.4: 余因子行列とクラメルの公式</h2>
-			<p>行列式を用いると, ある正方行列が正則であるか否かを比較的容易に判定することができる. ここでは, 行列式の計算する際のテクニックや, 行列式を用いて逆行列を計算する方法を紹介する.</p>
+			<p>行列式を用いると, ある正方行列が正則であるか否かを比較的容易に判定することができる. 
+				ただし, 定義に基づく行列式の計算は, 行列のサイズが大きくなるほど困難となる.</p>
+			<p>ここでは, 行列式の計算する際のテクニックを紹介し, また行列式の応用の一つとして, 行列式を用いて逆行列を計算する方法も紹介する.</p>
 			
+			<div class="lemma" data-name="行列サイズ削減" id="lem_determinant_size_reduction">
+				<p>$n$ 次正方行列 $A$ と $n-1$ 次正方行列 $B$ に対して, もしも<a href="matrix.html#block_matrix">ブロック行列</a>を用いて</p>
+				\[
+					A = \begin{pmatrix} 
+						a_{11} & \mathbf{0} \cr 
+						* & B
+					\end{pmatrix}
+				\] 
+				<p>と表されるならば, </p>
+				\[
+					\det A = a_{11}\det B
+				\] 
+				<p>が成立する, ここで $\mathbf{0}\in\mathbb{R}^{1\times (n-1)}$ は行ベクトルであり, $*\in\mathbb{R}^{(n-1)\times 1}$ は任意の列ベクトルである.</p>		
+			</div><!-- / #lemma -->
+
+			<div class="remark">
+				<p><a href="#thm_transpose_equality">転置により行列式は変わらない</a>ため, </p>
+				\[
+					A = \begin{pmatrix} 
+						a_{11} & * \cr 
+						\mathbf{0} & B
+					\end{pmatrix}
+				\] 
+				<p>のときも同様に</p>
+				\[
+					\det A = a_{11}\det B
+				\]
+				<p>が成立する. ただし, このときは $\mathbf{0}\in\mathbb{R}^{(n-1)\times 1}$ は列ベクトルであり, $*\in\mathbb{R}^{1\times(n-1)}$ は任意の行ベクトルである.</p>		
+			</div><!-- /remark -->
+
+			<div class="proof">
+				<p>行列 $A$ が</p>
+				\[
+					A = \begin{pmatrix} 
+						a_{11} & \mathbf{0} \cr 
+						* & B
+					\end{pmatrix}
+				\] 
+				<p>と表されるとき, </p>
+				\[
+					\det A = \sum_{\sigma\in S_n}(\operatorname{sgn}\sigma) a_{1\sigma(1)} a_{2\sigma(2)} \dots a_{n\sigma(n)}
+				\] 
+				<p>の足し合わせの項は, $\sigma(1) = 1$ である場合を除き $0$ となる. 
+				いま, $\sigma\in S_n$ であって $\sigma(1)=1$ であるものは, $\widetilde{\sigma}\in S_{n-1}$ と同一視することができる (ただし, $\widetilde{\sigma}$ は $\lbrace2,\dots,n\rbrace$ の置換とみなすことにする). 
+				この同一視に基づくと,</p>
+				\[
+					\det A = a_{11}\sum_{\widetilde{\sigma}\in S_{n-1}}(\operatorname{sgn}\widetilde{\sigma}) a_{2\widetilde{\sigma}(2)} \dots a_{n\widetilde{\sigma}(n)}
+				\] 
+				となり, ここで
+				\[
+					\displaystyle\sum_{\widetilde{\sigma}\in S_{n-1}}(\operatorname{sgn}\widetilde{\sigma}) a_{2\widetilde{\sigma}(2)} \dots a_{n\widetilde{\sigma}(n)}
+				\] 
+				という足し合わせは, <a href="#def_determinant">行列式の定義</a>より 
+				\[
+					\det\begin{pmatrix}
+						a_{22} & \dots & a_{2n} \cr
+						\vdots & \ddots & \vdots \cr
+						a_{n2} & \dots & a_{nn}
+					\end{pmatrix},
+				\] 
+				つまりこの場合は $\det B$ と一致する.</p>
+			</div><!-- / #proof -->
+
+			<div class="remark">
+				<p>以降, この性質を便宜上 &quot;行列式の計算における行列サイズ削減&quot; と呼ぶことにする. 
+					ただし, この呼び方はここだけのものであり, 他では通用しないため注意.</p>
+			</div><!-- /remark -->
+
+			<div class="example">
+				<p>\[
+					A = \begin{pmatrix}
+						0 & 3 & 0 & 0 \cr 
+						2 & 4 & 1 & 4 \cr 
+						0 & 2 & 1 & 2 \cr 
+						2 & 6 & 1 & 6\end{pmatrix}.
+					\] 
+					この行列の行列式は, 例えば以下のように計算できる:
+					\[
+						\begin{array}{rll}
+							\det A  &= \det \begin{pmatrix}
+								0 & 3 & 0 & 0 \cr 
+								2 & 4 & 1 & 4 \cr 
+								0 & 2 & 1 & 2 \cr 
+								2 & 6 & 1 & 6
+							\end{pmatrix} & \cr
+							&= -\det \begin{pmatrix}
+								3 & 0 & 0 & 0 \cr 
+								4 & 2 & 1 & 4 \cr 
+								2 & 0 & 1 & 2 \cr 
+								6 & 2 & 1 & 6
+							\end{pmatrix} & \text{(第 $1$ 列と第 $2$ 列を交換)} \cr
+							&= -3 \det\begin{pmatrix}
+								2 & 1 & 4 \cr 
+								0 & 1 & 2\cr 
+								2 & 1 & 6
+							\end{pmatrix} &\text{(行列サイズ削減)}\cr
+							&= -3 \det\begin{pmatrix} 
+								2 & 1 & 4 \cr 
+								0 & 1 & 2 \cr 
+								0 & 0 & 2 
+							\end{pmatrix} &\left(\begin{array}{c}\text{第 $3$ 行に第 $1$ 行の}\cr \text{$-1$ 倍を加えた}\end{array}\right) \cr
+							&= -6 \det\begin{pmatrix}
+								1&2\cr 
+								0&2
+							\end{pmatrix} &\text{(行列サイズ削減)} \cr
+							&= -12
+						\end{array}
+					\] と計算できる.</p>
+			</div><!-- / #example -->
+
+			<p>この性質は, 成分が全て数値である行列の行列式を計算する際に非常に便利である. 
+				一方で, 成分が文字で表されている場合には有用で無い場合がある.
+			</p>
+
+			<div class="example">
+				\[
+                    A = \begin{pmatrix} 
+                        0 & a & b & c \cr 
+                        -a & 0 & d & e \cr 
+                        -b & -d & 0 & f \cr 
+                        -c & -e & -f & 0 
+                    \end{pmatrix}.
+                \]
+				<ul>
+					<li>この行列の行列式を, 行列サイズ削減を用いて計算しようとしてみる. </li>
+					<li>例えば, 第 $1$ 列と第 $2$ 列を交換して</li>
+					\[
+						\det A = \det \begin{pmatrix}
+							a & 0 & b & c \cr 
+							0 & -a & d & e \cr 
+							-d & -b & 0 & f \cr 
+							-e & -c & -f & 0 
+						\end{pmatrix}.
+					\]
+					<li><span class="wave">もしも $a\neq0$ ならば</span>, 第 $3$ 行に第 $1$ 行の $d/a$ 倍を加え, 第 $4$ 行に第 $1$ 行の $e/a$ 倍を加えることで </li>
+					\[
+						\begin{array}{rl} 
+							\det A &= \det \begin{pmatrix}
+								a & 0 & b & c \cr 
+								0 & -a & d & e \cr 
+								0 & -b & bd/a & cd/a + f \cr 
+								0 & -c & be/a-f & ce/a 
+							\end{pmatrix} \cr 
+							&= a \det\begin{pmatrix} 
+								-a & d & e \cr 
+								-b & bd/a & cd/a + f \cr 
+								-c & be/a-f & ce/a 
+							\end{pmatrix}.
+						\end{array}
+					\]
+					<ul>
+						<li>行列サイズを削減することはできるが, 行列の成分は複雑なものになってしまう.</li>
+						<li>また, この変形は $a\neq0$ のときのみ可能であり, $a=0$ のときは場合分けが必要となる.</li>
+					</ul>
+					<li>このように, 成分が文字で表現されている行列に対しては, 行列サイズ削減を用いた行列式の計算は必ずしも容易ではない.</li>
+				</ul>
+			</div><!-- /example -->
+
+			<hr>
+
+			<p>そこで, 上のような場合にも行列式を容易に計算することができるように, 行列サイズ削減の一般化を考えよう. </p>
+
 			<div class="definition" data-name="余因子">
-				<p>$n$ 次正方行列 $A$ に対し, その第 $i$ 行と第 $j$ 列を取り除くことで得られる $n-1$ 次正方行列の行列式を第 $(i,j)$ <b>小行列式</b> (<b>minor determinant</b>) という. また, $(i,j)$ 小行列式に $(-1)^{i+j}$ をかけたものを第 $(i,j)$ <b>余因子</b> (<b>cofactor</b>) という.</p>
+				<p>$n$ 次正方行列 $A$ に対し, その第 $i$ 行と第 $j$ 列を取り除くことで得られる $n-1$ 次正方行列の行列式を第 $(i,j)$ <b>小行列式</b> (<b>minor determinant</b>) という. 
+					また, $(i,j)$ 小行列式に $(-1)^{i+j}$ をかけたものを第 $(i,j)$ <b>余因子</b> (<b>cofactor</b>) という.</p>
 			</div><!-- / #definition -->
 
 			<div class="example">
@@ -840,7 +1069,7 @@
 						\] 
 						の行列式であり, 従って第 $(1,1)$ 余因子は
 						\[
-							(-1)^2 \det\begin{pmatrix}
+							(-1)^{1+1} \det\begin{pmatrix}
 								5&6\cr 
 								8&9
 							\end{pmatrix} = -3.
@@ -858,7 +1087,7 @@
 						\] 
 						の行列式であり, 従って第 $(2,2)$ 余因子は
 						\[
-							(-1)^4 \det\begin{pmatrix}
+							(-1)^{2+2} \det\begin{pmatrix}
 								1&3\cr 
 								7&9
 							\end{pmatrix} = -12.
@@ -866,232 +1095,105 @@
 				</ul>				
 			</div><!-- / # example -->
 
-			<p>特に余因子は, 行列式の定義の計算から一部分のみを切り取ったものになっており, これを用いて行列式の計算を簡略化できることがある.</p>
-			<p>以降, 行列 $A$ の第 $(i,j)$ 小行列式を $d _ {ij}$ と表記し, 第 $(i,j)$ 余因子を $\widetilde{a} _ {ij}$ と表記することにする.</p>
-			
-			<div class="lemma">
-				<p>$n$ 次正方行列 $A=(a_{ij})$ の第 $(1,1)$ 小行列式を $d _ {11}$, 第 $(1,1)$ 余因子を $\widetilde{a} _ {11}$ とする, つまり
-				\[
-					\widetilde{a} _ {11} = (-1)^2 d _ {11} = \det \begin{pmatrix}
-						a _ {22} & \dots & a _ {2n} \cr
-						\vdots & \ddots & \vdots \cr
-						a _ {n2} & \dots & a _ {nn}
-					\end{pmatrix}.
-				\] 
-				このとき</p>
-				<ul>
-					<li>$A=\begin{pmatrix}
-							a _ {11} & a _ {12} & \dots & a _ {1n} \cr
-							0 & a _ {22} & \dots & a _ {2n} \cr
-							\vdots & \vdots & \ddots & \vdots \cr
-							0 & a _ {n2} & \dots & a _ {nn}
-						\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11} = a_{11}\det\begin{pmatrix} 
-							a_{22} & \dots & a_{2n} \cr 
-							\vdots & \ddots & \vdots \cr 
-							a_{n2} & \dots & a_{nn}
-						\end{pmatrix}$.</li>
-					<li>$A=\begin{pmatrix}
-							a _ {11} & 0 & \dots & 0 \cr
-							a _ {21} & a _ {22} & \dots & a _ {2n} \cr
-							\vdots & \vdots & \ddots & \vdots \cr
-							a _ {n1} & a _ {n2} & \dots & a_{nn}
-						\end{pmatrix}$ ならば $\det A = a _ {11}\widetilde{a} _ {11} = a _ {11}d _ {11} = a_{11}\det\begin{pmatrix} 
-							a_{22} & \dots & a_{2n} \cr 
-							\vdots & \ddots & \vdots \cr 
-							a_{n2} & \dots & a_{nn}
-						\end{pmatrix}$.</li>
-					</ul>		
-			</div><!-- / #lemma -->
-
-			<div class="proof">
-				<p>行列 $A$ が上のいずれかの形をしている場合,
-				\[
-					\det A = \sum _ {\sigma\in S _ n}(\operatorname{sgn}\sigma) a _ {1\sigma(1)} a _ {2\sigma(2)} \dots a _ {n\sigma(n)}
-				\] 
-				の足し合わせの項は, $\sigma(1) = 1$ である場合を除き $0$ となる. 
-				いま, $\sigma\in S _ n$ であって $\sigma(1)=1$ であるものは, $\widetilde{\sigma}\in S_{n-1}$ と同一視することができる (ただし, $\widetilde{\sigma}$ は $\lbrace2,\dots,n\rbrace$ の置換とみなすことにする). 
-				この同一視に基づくと,
-				\[
-					\det A = a _ {11}\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}
-				\] 
-				となり, ここで
-				\[
-					\displaystyle\sum _ {\widetilde{\sigma}\in S _ {n-1}}(\operatorname{sgn}\widetilde{\sigma}) a _ {2\widetilde{\sigma}(2)} \dots a _ {n\widetilde{\sigma}(n)}
-				\] 
-				という足し合わせは, 行列式の定義より 
-				\[
-					\det\begin{pmatrix}
-						a _ {22} & \dots & a _ {2n} \cr
-						\vdots & \ddots & \vdots \cr
-						a _ {n2} & \dots & a _ {nn}
-					\end{pmatrix} = d _ {11} = (-1)^2d _ {11},
-				\] 
-				つまり $A$ の第 $(1,1)$ 余因子 $\widetilde{a} _ {11}$ と一致する.</p>
-			</div><!-- / #proof -->
-
-			<div class="remark">
-				<p>この結果は, 直感的には『正方行列 $A$ がたとえ巨大なサイズの行列であっても, その要素の多くが $0$ であるならば, よりサイズの小さい行列の行列式の計算に帰着できる (つまり $A$ の行列式の計算はそれほど大変ではない)』ことを意味しており, 非常に有用である.</p>
-			</div><!-- / #remark -->
-
 			<div class="example">
-				<p>\[
-					A = \begin{pmatrix}
-						0 & 3 & 0 & 0 \cr 
-						2 & 4 & 1 & 4 \cr 
-						0 & 2 & 1 & 2 \cr 
-						0 & 6 & 0 & 2\end{pmatrix}.
-					\] 
-					このとき, 交代性と先の補題を用いると, 例えば
-					\[
-						\begin{array}{rll}
-							\det A  &= \det \begin{pmatrix}
-								0 & 3 & 0 & 0 \cr 
-								2 & 4 & 1 & 4 \cr 
-								0 & 2 & 1 & 2 \cr 
-								0 & 6 & 0 & 2
-							\end{pmatrix} & \cr
-							&= -\det \begin{pmatrix}
-								3 & 0 & 0 & 0 \cr 
-								4 & 2 & 1 & 4 \cr 
-								2 & 0 & 1 & 2 \cr 
-								6 & 0 & 0 & 2
-							\end{pmatrix} & \text{(第 $1$ 列と第 $2$ 列を交換)} \cr
-							&= -3 \det\begin{pmatrix}
-								2 & 1 & 4 \cr 
-								0 & 1 & 2\cr 
-								0 & 0 & 2
-							\end{pmatrix} &\text{(補題より)}\cr
-							&= -6 \det\begin{pmatrix}
-								1&2\cr 
-								0&2
-							\end{pmatrix} &\text{(補題より)} \cr
-							&= -12
-						\end{array}
-					\] と計算できる.</p>
-			</div><!-- / #example -->
-
-			<div class="example">
-				<p>\[
-					A = \begin{pmatrix}
-						2 & -1 & 1 & 2 \cr
-						1 & 2 & 3 & 2 \cr
-						2 & 2 & 3 & 3 \cr
-						3 & -2 & -2 & 1
-					\end{pmatrix}.
-				\] 
-				第 $i$ 行に第 $j$ 行の (もしくは第 $i$ 列に第 $j$ 列の) $\lambda$ 倍を加える, という基本変形で行列式が変わらないことも用いると, 例えば
 				\[
-					\begin{array}{rll}
-						\det A &= \det \begin{pmatrix}
-							2 & -1 & 1 & 2 \cr
-							1 & 2 & 3 & 2 \cr
-							2 & 2 & 3 & 3 \cr
-							3 & -2 & -2 & 1
-						\end{pmatrix} & \cr
-						& = -\det \begin{pmatrix}
-							1 & 2 & 3 & 2 \cr
-							2 & -1 & 1 & 2 \cr
-							2 & 2 & 3 & 3 \cr
-							3 & -2 & -2 & 1
-						\end{pmatrix} & \text{(第 $1$ 行と第 $2$ 行を交換)} \cr
-						&= -\det \begin{pmatrix}
-							1 & 2 & 3 & 2 \cr
-							0 & -5 & -5 & -2 \cr
-							0 & -2 & -3 & -1 \cr
-							0 & -8 & -11 & -5
-						\end{pmatrix} & \text{(第 $2$, $3$, $4$ 行に第 $1$ 行の $-2$倍, $-2$ 倍, $-3$ 倍を加えた)} \cr
-						&= -\det \begin{pmatrix}
-							-5 & -5 & -2 \cr
-							-2 & -3 & -1 \cr
-							-8 & -11 & -5
-						\end{pmatrix} & \text{(補題より)} \cr
-						&= -\det \begin{pmatrix}
-							-1 & -3 & -2 \cr
-							-2 & -5 & -5 \cr
-							-5 & -11 & -8
-						\end{pmatrix} & \text{(第 $1$ 行と第 $2$ 行を交換し, 第 $1$ 列と第 $3$ 列を交換)} \cr
-						&= -\det \begin{pmatrix}
-							-1 & -3 & -2 \cr
-							0 & 1 & -1 \cr
-							0 & 4 & 2
-						\end{pmatrix} & \text{(第 $2$, $3$ 行に第 $1$ 行の $-2$ 倍, $-5$ 倍を加えた)} \cr
-						&= \det\begin{pmatrix}1&-1\cr 4&2\end{pmatrix} = 6
-					\end{array}
-				\] 
-				などと計算できる.</p>	
-			</div><!-- / #example -->
+					A = \begin{pmatrix} 
+						a_{11} & \mathbf{0} \cr 
+						* & B 
+					\end{pmatrix}
+				\]
+				<p>この行列の第 $(1,1)$ 小行列式は, 行列 $A$ の第 $1$ 行と第 $1$ 列を取り除いた正方行列 $B$ の行列式であり, 従って第 $(1,1)$ 小行列式は</p>
+				\[
+					(-1)^{1+1}\det B = \det B.
+				\]				
+			</div><!-- /example -->
 
 			<div class="theorem" data-name="余因子展開">
-				<p>$n$ 次正方行列 $A=(a _ {ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ とおく, このとき</p>
+				<p>$n$ 次正方行列 $A=(a_{ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ とおく, このとき</p>
 				<ul>
-					<li>任意の $j$ に対し, $\det A = a _ {1j} \widetilde{a} _ {1j} + \dots + a _ {nj} \widetilde{a} _ {nj} = \displaystyle\sum _ {i=1}^n a _ {ij} \widetilde{a} _ {ij},$</li>
-					<li>任意の $i$ に対し, $\det A = a _ {i1} \widetilde{a} _ {i1} + \dots + a _ {in} \widetilde{a} _ {in} = \displaystyle\sum _ {j=1}^n a _ {ij} \widetilde{a} _ {ij}$</li>
+					<li>任意の $j$ に対し, (第 $j$ 列に注目すると)
+						\[
+							\begin{array}{rl} 
+								\det A &= a_{1j} \widetilde{a}_{1j} + \dots + a_{nj} \widetilde{a}_{nj} \cr 
+								&= \displaystyle\sum_{i=1}^n a_{ij} \widetilde{a}_{ij}
+							\end{array}
+						\]
+						が成立する.</li>
+					<li>任意の $i$ に対し, (第 $i$ 行に注目すると)
+						\[
+							\begin{array}{rl}
+								\det A &= a_{i1} \widetilde{a}_{i1} + \dots + a_{in} \widetilde{a}_{in} \cr 
+								&= \displaystyle\sum_{j=1}^n a_{ij} \widetilde{a}_{ij}
+							\end{array} 
+						\]
+					が成立する.</li>
 				</ul>
-				<p>が, それぞれ成立する.</p>
 			</div><!-- / #theorem-->
 
 			<div class="proof">
-				<p>上のみ証明する.</p>
+				<p>上のみ証明する. 以降, 行列 $A$ の第 $(i,j)$ 小行列式を $d_{ij}$ と表記し, 第 $(i,j)$ 余因子を $\widetilde{a}_{ij}$ と表記することにする.</p>
 				<ul>
 					<li>$j=1$ のとき:
 					多重線形性より,
 					\[
 						\begin{array}{rl}
 							\det A &= \det\begin{pmatrix}
-								a _ {11} & a _ {12} & \dots & a _ {1n} \cr
-								0 & a _ {22} & \dots & a _ {2n} \cr
+								a_{11} & a_{12} & \dots & a_{1n} \cr
+								0 & a_{22} & \dots & a_{2n} \cr
 								\vdots & \vdots & \ddots & \vdots \cr
-								0 & a _ {n2} & \dots & a _ {nn}
+								0 & a_{n2} & \dots & a_{nn}
 							\end{pmatrix} \cr
 							&\qquad +
 							\det\begin{pmatrix}
-								0 & a _ {12} & \dots & a _ {1n} \cr
-								a _ {21} & a _ {22} & \dots & a _ {2n} \cr
+								0 & a_{12} & \dots & a_{1n} \cr
+								a_{21} & a_{22} & \dots & a_{2n} \cr
 								\vdots & \vdots & \ddots & \vdots \cr
-								0 & a _ {n2} & \dots & a _ {nn}
+								0 & a_{n2} & \dots & a_{nn}
 							\end{pmatrix} \cr
 							& \qquad \qquad + \dots +
 							\det\begin{pmatrix}
-								0 & a _ {12} & \dots & a _ {1n} \cr
-								0 & a _ {22} & \dots & a _ {2n} \cr
+								0 & a_{12} & \dots & a_{1n} \cr
+								0 & a_{22} & \dots & a_{2n} \cr
 								\vdots & \vdots & \ddots & \vdots \cr
-								a _ {n1} & a _ {n2} & \dots & a _ {nn}
+								a_{n1} & a_{n2} & \dots & a_{nn}
 							\end{pmatrix}
 						\end{array}
 					\] 
 					となる. 
-					第 $1$ 項は先の補題より $a _ {11} d _ {11}$, すなわち $a _ {11}\widetilde{a} _ {11}$ に等しい. 
-					第 $2$ 項は交代性を用いて
+					第 $1$ 項は<a href="#lem_determinant_size_reduction">行列サイズ削減</a>より $a_{11} d_{11}$, すなわち $a_{11}\widetilde{a}_{11}$ に等しい. 
+					第 $2$ 項は<a href="#lem_alternating">交代性</a>も用いて
 					\[
 						\begin{array}{rl}
 							\det\begin{pmatrix}
-								0 & a _ {12} & \dots & a _ {1n} \cr
-								a _ {21} & a _ {22} & \dots & a _ {2n} \cr
+								0 & a_{12} & \dots & a_{1n} \cr
+								a_{21} & a_{22} & \dots & a_{2n} \cr
 								\vdots & \vdots & \ddots & \vdots \cr
-								0 & a _ {n2} & \dots & a _ {nn}
+								0 & a_{n2} & \dots & a_{nn}
 							\end{pmatrix} &= - \det\begin{pmatrix}
-								a _ {21} & a _ {22} & \dots & a _ {2n} \cr
-								0 & a _ {12} & \dots & a _ {1n} \cr
+								a_{21} & a_{22} & \dots & a_{2n} \cr
+								0 & a_{12} & \dots & a_{1n} \cr
 								\vdots & \vdots & \ddots & \vdots \cr
-								0 & a _ {n2} & \dots & a _ {nn}
+								0 & a_{n2} & \dots & a_{nn}
 							\end{pmatrix} \cr
-							&= -a _ {21} d _ {21} \cr
-							& = (-1)^3 a _ {21} d _ {21} = a _ {21}\widetilde{a} _ {21}.
+							&= -a_{21} d_{21} \cr
+							& = (-1)^3 a_{21} d_{21} \cr 
+							&= a_{21}\widetilde{a}_{21}.
 						\end{array}
 					\] 
-					同様に, 第 $i$ 項は $(-1)^{i+1}a _ {i1} d _ {i1}$, すなわち $a _ {i1}\widetilde{a} _ {i1}$ に等しいので欲しい式が得られる.</li>
+					同様に, 第 $i$ 項は $(-1)^{i+1}a_{i1} d_{i1}$, すなわち $a_{i1}\widetilde{a}_{i1}$ に等しいので欲しい式が得られる.</li>
 					<li>$j\neq1$ のとき:
-					第 $j$ 列と第 $j-1$ 列を入れ換え, その後に第 $j-1$ 列を第 $j-2$ 列と入れ換え, ... , 最後に第 $2$ 列と第 $1$ 列を入れ換えるという操作により, 第 $j$ 列を第 $1$ 列に移動することができ, またこの行列の行列式は $(-1)^{j-1}\det A$ となる. 
+					第 $j$ 列と第 $j-1$ 列を入れ換え, その後に第 $j-1$ 列を第 $j-2$ 列と入れ換え, ... , 最後に第 $2$ 列と第 $1$ 列を入れ換えるという操作により, 第 $j$ 列を第 $1$ 列に移動することがでる. 
+					この操作は列の入れ替えを $j-1$ 回行うため, この行列の行列式は $(-1)^{j-1}\det A$ となる. 
 					あとは上と同様に計算すると,
 					\[
-						(-1)^{j-1}\det A  = a _ {1j}d _ {1j} - a_{2j}d _ {2j} + \dots + (-1)^n a _ {nj}d _ {nj}.
+						(-1)^{j-1}\det A  = a_{1j}d_{1j} - a_{2j}d_{2j} + \dots + (-1)^n a_{nj}d_{nj}.
 					\] 
 					両辺を $(-1)^{j+1}$ 倍することで,
 					\[
 						\begin{array}{rl}
 							\det A &= (-1)^{2j}\det A \cr 
-							&= (-1)^{j+1} a _ {1j} d _ {1j} + (-1)^{j+2} a _ {2j} d _ {2j} + \dots + (-1)^{j+n} a _ {nj} d _ {nj} \cr 
-							&= a _ {1j} \widetilde{a} _ {1j} + \dots + a _ {nj} \widetilde{a} _ {nj} \end{array}
+							&= (-1)^{j+1} a_{1j} d_{1j} + (-1)^{j+2} a_{2j} d_{2j} + \dots + (-1)^{j+n} a_{nj} d_{nj} \cr 
+							&= a_{1j} \widetilde{a}_{1j} + \dots + a_{nj} \widetilde{a}_{nj} \end{array}
 						\] 
 						となり欲しい式が得られる.</li>
 					</ul>
@@ -1106,7 +1208,14 @@
 					\end{pmatrix}.
 				\]
 				<ul>
-					<li>このとき, $\det A = aei+bfg+cdh-ceg-bdi-afh$ であった.</li>
+					<li>このとき, 
+						\[
+							\begin{array}{rl}
+								\det A &= aei+bfg+cdh \cr
+								& \quad -ceg-bdi-afh
+							\end{array}
+						\] 
+						であった.</li>
 					<li>これを余因子展開により確かめてみる: 例えば第 $1$ 列に注目すると
 						\[
 							\det A = \displaystyle\sum_{i=1}^3 a_{i1}\widetilde{a}_{i1}
@@ -1118,11 +1227,13 @@
 									\square & \square & \square \cr
 									\square & e & f \cr
 									\square & h & i
-								\end{pmatrix} + d (-1)^{2+1}\det\begin{pmatrix} 
+								\end{pmatrix} \cr 
+								& \quad + d (-1)^{2+1}\det\begin{pmatrix} 
 									\square & b & c \cr
 									\square & \square & \square \cr
 									\square & h & i
-								\end{pmatrix} + g(-1)^{3+1}\det\begin{pmatrix} 
+								\end{pmatrix} \cr 
+								& \qquad + g(-1)^{3+1}\det\begin{pmatrix} 
 									\square & b & c \cr
 									\square & e & f \cr
 									\square & \square & \square 
@@ -1141,25 +1252,48 @@
 								&= aei + bfg + cdh - ceg - bdi - afh
 							\end{array}
 						\]
-						となり, 確かに $\det A$ が得られる.
+						となり, 確かに同じ結果が得られる.
 					</li>
 				</ul>
 			</div><!-- /example -->
 
+			<div class="example">
+				\[
+					A = \begin{pmatrix} 
+						a_{11} & \mathbf{0} \cr 
+						* & B 
+					\end{pmatrix}
+				\]
+				<p>$a_{12} = \dots = a_{1n} = 0$ に注目すると, 第 $1$ 行に注目した余因子展開より </p>
+				\[
+					\begin{array}{rl}
+						\det A &= a_{11}\widetilde{a}_{11} + 0\cdot\widetilde{a}_{12} + \dots + 0\cdot\widetilde{a}_{1n} \cr 
+						&= a_{11}\widetilde{a}_{11}.
+					\end{array}
+				\]
+				<p>ここで, $\widetilde{a}_{11} = \det B$ なので, この場合は</p>
+				\[
+					\det A = a_{11}\det B
+				\]
+				<p>が得られる. つまり, <a href="#lem_determinant_size_reduction">行列サイズ削減</a>は余因子展開の特別な場合であると解釈できる.</p>
+			</div><!-- /example -->
+
 			<div class="remark">
-				<p>この定理は, 各余因子が簡単に計算できる場合や, 行列の成分に文字が含まれている場合には有用である. 
-					一方で, この定理よりもむしろ先の補題の方が使い勝手が良い場面も多いだろう.
+				<p>余因子展開による行列式の計算は, 各余因子が簡単に計算できる場合や, 行列の成分が文字で表されている場合に有用である. 
+					一方で, この定理よりもむしろ行列サイズ削減の方が使い勝手が良い場面も多いだろう.
 				</p>
 			</div><!-- /remark -->
 
 			<hr>
 
+			<p>次に, 余因子を応用して逆行列を計算する方法を紹介する. まず, <b>余因子行列</b> の定義を述べる:</p>
+
 			<div class="definition" data-name="余因子行列">
-				<p>$n$ 次正方行列 $A$ に対し, 第 $(i,j)$ 成分が $A$ の第 $(j,i)$ 余因子 $\widetilde{a} _ {ji}$ である $n$ 次正方行列を $A$ の<b>余因子行列</b> (<b>adjugate matrix</b>) といい, $\operatorname{adj} A$ と表記する.</p>
+				<p>$n$ 次正方行列 $A$ に対し, 第 $(i,j)$ 成分が $A$ の第 $(j,i)$ 余因子 $\widetilde{a}_{ji}$ である $n$ 次正方行列を $A$ の<b>余因子行列</b> (<b>adjugate matrix</b>) といい, $\operatorname{adj} A$ と表記する.</p>
 			</div><!-- / #definition -->
 
 			<div class="remark">
-				<p>$A$ の余因子行列 $\operatorname{adj} A$ は $\widetilde{A}$ と表記されることも多いが, <b>ここでは, 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a} _ {ij}$ である行列を $\widetilde{A}$ と表すことにする</b>. 
+				<p>$A$ の余因子行列 $\operatorname{adj} A$ は $\widetilde{A}$ と表記されることも多いが, <b>ここでは 第 $(i,j)$ 成分が $A$ の第 $(i,j)$ 余因子 $\widetilde{a}_{ij}$ である行列を $\widetilde{A}$ と表すことにする</b>. 
 				このとき, $\operatorname{adj} A = \widetilde{A}^{\operatorname{T}}$ である.</p>
 			</div><!-- / #remark -->
 
@@ -1189,10 +1323,10 @@
 			<div class="proof">
 				<p>行列 $A(\operatorname{adj}A)$ の第 $(i,j)$ 成分は
 				\[
-					\displaystyle\sum_{k=1}^n a_{ik} \widetilde{a} _ {jk}
+					\displaystyle\sum_{k=1}^n a_{ik} \widetilde{a}_{jk}
 				\] 
 				となり, $i=j$ ならば余因子展開より $\det A$ と一致する. 
-				もしも $i\neq j$ ならば, これは $A$ の第 $j$ 行を第 $i$ 行で置き換えた行列の余因子展開と一致するが, そのような行列は第 $i$ 行と第 $j$ 行が等しいため行列式が $0$ になる. 
+				もしも $i\neq j$ ならば, これは $A$ の第 $j$ 行を第 $i$ 行で置き換えた行列の余因子展開と一致するが, そのような行列は <a href="#thm_alternating">第 $i$ 行と第 $j$ 行が等しいため</a> 行列式が $0$ になる. 
 				従って $A(\operatorname{adj}A) = (\det A)I$ が得られる. 
 				$(\operatorname{adj}A)A = (\det A)I$ も同様にして証明される.</p>
 			</div><!-- / #proof -->
@@ -1201,9 +1335,9 @@
 				<p>この結果を $\det A$ の計算に応用することができる場合もあるが, これが有用な場面は限られる.</p>
 			</div><!-- / #remark -->
 
-			<p>この結果と, $\det A\neq0\iff A$ が正則である, という性質を用いると以下が得られる:</p>
+			<p>この結果と $\det A\neq0\iff A$ が正則である, という性質を用いると以下が得られる:</p>
 			
-			<div class="theorem" data-name="クラメルの公式">
+			<div class="theorem" data-name="余因子行列による逆行列の表現" id="thm_inverse_by_adjugate">
 				<p>正則行列 $A$ に対し,
 					\[
 						A^{-1} = \dfrac{1}{\det A}\operatorname{adj} A
@@ -1217,7 +1351,7 @@
 				\]</p>
 				<ul>
 					<li>行列 $A$ が正則行列であるとする, つまり $\det A = ad-bc\neq 0 $ とする.</li>
-					<li>このとき, クラメルの公式より
+					<li>このとき, 
 						\[
 							A^{-1} = \dfrac{1}{ad-bc}\begin{pmatrix}
 								d & -b \cr 
@@ -1228,7 +1362,7 @@
 				</ul>
 			</div><!-- / #example-->
 
-			次をクラメルの公式ということもある:
+			この結果を応用することで, 連立 $1$ 次方程式の解法の一つが得られる:
 			<div class="theorem" data-name="クラメルの公式">
 				正則行列 $A$ に対し, 連立 $1$ 次方程式
 				\[
@@ -1242,7 +1376,7 @@
 			</div><!-- /theorem -->
 
 			<div class="proof">
-				上の結果より,
+				<a href="#thm_inverse_by_adjugate">上の結果</a>より,
 				\[
 					\mathbf{x} = A^{-1}\mathbf{b} = \dfrac{1}{\det A}(\operatorname{adj}A)\mathbf{b}
 				\]
@@ -1262,9 +1396,78 @@
 				が示される.
 			</div><!-- /proof -->
 
+			<div class="example">
+				\[
+					A = \begin{pmatrix} 
+						a & b \cr 
+						c & d 
+					\end{pmatrix},\quad \mathbf{x} = \begin{pmatrix} 
+						x_1 \cr 
+						x_2 
+					\end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+						e \cr 
+						f 
+					\end{pmatrix}.
+				\]
+				<ul>
+					<li>$\det A = ad-bc\neq0$ のとき, 連立 $1$ 次方程式
+						\[
+							A\mathbf{x}=\mathbf{b}
+						\]
+					を, クラメルの公式を用いて解いてみよう.</li>
+					<li>行列 $A$ の第 $i$ 列を $\mathbf{b}$ に置き換えた行列を $A_i$ とする, つまり 
+						\[
+							A_1 = \begin{pmatrix} 
+								e & b \cr 
+								f & d 
+							\end{pmatrix},\quad A_2 = \begin{pmatrix} 
+								a & e \cr 
+								c & f 
+							\end{pmatrix}.
+						\]
+					</li>
+					<li>クラメルの公式より, 連立 $1$ 次方程式の解 $\mathbf{x}$ の第 $i$ 成分はそれぞれ
+						\[
+							x_1 = \dfrac{\det A_1}{\det A} = \dfrac{de-bf}{ad-bc},
+						\]
+						\[
+							x_2 = \dfrac{\det A_2}{\det A} = \dfrac{af-ce}{ad-bc}
+						\]
+						である.
+					</li>
+					<li>実際に, この $\mathbf{x}$ に対して $A\mathbf{x} = \mathbf{b}$ が成立することを確かめてみよう. 右辺の行列積を計算すると,
+						\[
+							\begin{array}{rl} 
+								A\mathbf{x} &= \begin{pmatrix} 
+									a & b \cr 
+									c & d 
+								\end{pmatrix}\begin{pmatrix} 
+									(de-bf) / (ad-bc) \cr 
+									(af-ce) / (ad-bc)
+								\end{pmatrix} \cr 
+								&= \dfrac{1}{ad-bc}\begin{pmatrix} 
+									ade-abf+abf-bce \cr 
+									cde-bcf+adf-cde 
+								\end{pmatrix} \cr 
+								&= \dfrac{1}{ad-bc}\begin{pmatrix} 
+									(ad-bc)e \cr 
+									(ad-bc)f 
+								\end{pmatrix} \cr
+								&= \begin{pmatrix} 
+									e \cr 
+									f 
+								\end{pmatrix} \cr 
+								&= \mathbf{b}
+							\end{array}
+						\]
+						を確認できる.
+					</li>
+				</ul>
+			</div><!-- /example -->
+
 			<div class="remark">
-				<p>クラメルの公式は, 行列の成分に数値ではなく記号が含まれている場合などに有用である. 
-				一方で, 具体的な数値を成分とする行列に対する逆行列や連立 $1$ 次方程式の計算方法として実用的とは言い難い.</p>
+				<p>クラメルの公式は, <a href="elementary_operation.html#thm_Gauss_elimination">掃き出し法 (ガウスの消去法)</a> と比較して, 行列の成分が文字で表現されている場合に有用である. 
+				一方で, 具体的な数値を成分とする行列に対する連立 $1$ 次方程式の解法としては, 掃き出し法の方が便利だろう.</p>
 			</div><!-- / #remark -->
 
 			
