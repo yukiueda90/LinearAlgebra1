@@ -99,8 +99,8 @@
 
             <div class="definition" data-name="ベクトル">
                 <ul>
-                    <li>$1\times n$ 型の行列を<b>行ベクトル</b> (<b>row vector</b>)という.</li>
-                    <li>$m\times 1$ 型の行列を<b>列ベクトル</b> (<b>column vector</b>)という.</li>
+                    <li>$1\times n$ 型の行列を<b>行ベクトル</b> (<b>row vector</b>) もしくは<b>横ベクトル</b>という.</li>
+                    <li>$m\times 1$ 型の行列を<b>列ベクトル</b> (<b>column vector</b>) もしくは<b>縦ベクトル</b>という.</li>
                     <li>$1\times 1$ 型の行列は, そのただ $1$ つの成分である実数 (もしくは複素数) と同一視される.</li>
                 </ul>
             </div><!-- /definition-->
@@ -206,7 +206,7 @@
 
             <p>行列の和は, 成分ごとに足し合わせることで定義される:</p>
 
-            <div class="definition" data-name="行列の和">
+            <div class="definition" data-name="行列の和" id="def_matrix_sum">
                 同じ型の$2$つの行列 $A=(a_{ij})$, $B=(b_{ij})$ に対し, $(i,j)$ 成分が $a_{ij}+b_{ij}$ である行列を $A$ と $B$ の<b>和</b>といい, $A+B$ と表記する.
             </div><!-- /definition -->
 
@@ -574,7 +574,7 @@
                 <div class="resize" style="width: 200px"><img src='./images/matrix_transpose_1.png'></div>
             </div><!-- /example -->
 
-            <div class="theorem">
+            <div class="theorem" id="thm_transpose_property">
                 <ul>
                     <li>$(A^{\operatorname{T}})^{\operatorname{T}}=A,$</li>
                     <li>$(A+B)^{\operatorname{T}} = A^{\operatorname{T}}+B^{\operatorname{T}},$</li>
@@ -727,7 +727,7 @@
 
             <hr>
 
-            <div class="definition" data-name="歪対称行列">
+            <div class="definition" data-name="歪対称行列" id="def_skew_symmetric">
                 <p>正方行列 $A$ について, 
                 \[
                     A=-A^{\mathrm{T}}
@@ -784,7 +784,7 @@
 
             <hr>
 
-            <div class="definition" data-name="単位行列">
+            <div class="definition" data-name="単位行列" id="def_identity_matrix">
                 <p>対角成分が全て $1$ である対角行列を<b>単位行列</b> (<b>identity matrix</b>) といい, $I$ ( もしくは $E$ ) と表記する.</p>
             </div><!-- /definition -->
 
@@ -1146,6 +1146,63 @@
                 </ul>
             </div><!-- /example -->
 
+        </section>
+
+        <hr>
+
+        <section><h2>練習問題</h2>
+
+            <div class="problem">
+                <p>次を単位行列にする $a$, $b$, $c$, $d$ を求めよ: 
+                    \[
+                        \begin{pmatrix} 
+                            2 & -1 & a \cr 
+                            0 & b & 4 \cr 
+                            1 & 0 & c
+                        \end{pmatrix} + \begin{pmatrix} 
+                            -1 & 1 & 2 \cr 
+                            0 & 3 & d \cr 
+                            -1 & 0 & 0 
+                        \end{pmatrix}.
+                    \]</p>
+            </div><!-- /problem -->
+
+            <div class="problem">
+                <p>次を歪対称行列にする $a$, $b$, $c$, $d$ を求めよ: 
+                    \[
+                        \begin{pmatrix} 
+                            0 & -6a+4c+3 & 2b+3 \cr 
+                            3a-2c-12 & d+6 & 1 \cr 
+                            b & -3a+4c-22 & 0 
+                        \end{pmatrix}.
+                    \]</p>
+            </div><!-- /problem -->
+
+            <div class="problem">
+                <p>$2$ つの正方行列
+                    \[
+                        A = \begin{pmatrix} 
+                            1 & a \cr 
+                            b & c 
+                        \end{pmatrix},\quad B = \begin{pmatrix} 
+                            -3 & d \cr 
+                            2 & -1 
+                        \end{pmatrix}
+                    \]
+                    に対して, $B=A^{-1}$ とする $a$, $b$, $c$, $d$ を求めよ. 
+                </p>
+            </div><!-- /problem -->
+
+            <div class="problem">
+                <p>正則行列 $A$ に対して, 
+                    \[
+                        (A^{\operatorname{T}})^{-1} = (A^{-1})^{\operatorname{T}}
+                    \]
+                    を証明せよ. 
+                </p>
+            </div><!-- /problem -->
+
+            <a href="exercises.html#section1_answer">解答例</a>
         </section>
             
   </article></main>

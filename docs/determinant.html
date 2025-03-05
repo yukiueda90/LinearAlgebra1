@@ -127,7 +127,7 @@
 
 			<p>これらの性質については, 行列式の定義を述べる際に改めて証明を行う. ひとまず, これらを事実として認めると, 以下が成立することがわかる:</p>
 
-			<div class="theorem">
+			<div class="theorem" id="thm_determinant_and_invertible">
 				<p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
 				\[
 					\det A\neq 0\iff \operatorname{rank}A = n \iff A \text{ は正則}.
@@ -353,7 +353,7 @@
 				となる. </p>
 			</div><!-- / #example -->
 
-			<div class="example">
+			<div class="example" id="example_determinant">
 				<p>$3$ 次正方行列 $A = (a_{ij}) = \begin{pmatrix}a&b&c\cr d&e&f\cr g&h&i\end{pmatrix}$ を考える. いま $S_3$ は先の例に挙げた
 				\[
 					\begin{array}{c}\sigma_1 = \begin{bmatrix}
@@ -1108,7 +1108,7 @@
 				\]				
 			</div><!-- /example -->
 
-			<div class="theorem" data-name="余因子展開">
+			<div class="theorem" data-name="余因子展開" id="thm_cofactor_expansion">
 				<p>$n$ 次正方行列 $A=(a_{ij})$ の $(i,j)$ 余因子を $\widetilde{a}_{ij}$ とおく, このとき</p>
 				<ul>
 					<li>任意の $j$ に対し, (第 $j$ 列に注目すると)
@@ -1363,7 +1363,7 @@
 			</div><!-- / #example-->
 
 			この結果を応用することで, 連立 $1$ 次方程式の解法の一つが得られる:
-			<div class="theorem" data-name="クラメルの公式">
+			<div class="theorem" data-name="クラメルの公式" id="thm_Cramer_rule">
 				正則行列 $A$ に対し, 連立 $1$ 次方程式
 				\[
 					A\mathbf{x} = \mathbf{b}
@@ -1469,11 +1469,76 @@
 				<p>クラメルの公式は, <a href="elementary_operation.html#thm_Gauss_elimination">掃き出し法 (ガウスの消去法)</a> と比較して, 行列の成分が文字で表現されている場合に有用である. 
 				一方で, 具体的な数値を成分とする行列に対する連立 $1$ 次方程式の解法としては, 掃き出し法の方が便利だろう.</p>
 			</div><!-- / #remark -->
-
-			
-			
-		
 		</section>
+
+		<hr>
+
+		<section><h2>練習問題</h2>
+
+			<div class="problem">
+                <p>次の行列式を計算せよ:
+                    \[
+                        \det\begin{pmatrix} 
+                            0 & -1 & 3 & -4 \cr 
+                            1 & 5 & -8 & -1 \cr 
+                            -1 & -5 & 9 & -1 \cr 
+                            -1 & -4 & -2 & 7 
+                        \end{pmatrix}.
+                    \]</p>
+            </div><!-- /problem -->
+
+			<div class="problem">
+                <p>次の行列式を計算せよ:
+                    \[
+                        \det\begin{pmatrix} 
+                            0 & a & b & c \cr 
+                            -a & 0 & d & e \cr 
+                            -b & -d & 0 & f \cr 
+                            -c & -e & -f & 0 
+                        \end{pmatrix}.
+                    \]</p>
+            </div><!-- /problem -->
+
+			<div class="problem">
+                次の行列式を計算せよ: 
+                \[
+                    \det\begin{pmatrix} 
+                        1 & 1 & 1 & 1 \cr 
+                        a & a & a & y \cr
+                        z & c & x & y \cr 
+                        b & b & x & y 
+                    \end{pmatrix}.
+                \]
+            </div><!-- /remark -->
+
+			<div class="problem">
+                <p>実数 $a$, $b$, $c$, $d$, $e$ に対して, 
+                    \[
+                        A = \begin{pmatrix} 
+                            a & 0 & b \cr 
+                            0 & c & 0 \cr 
+                            d & 0 & e 
+                        \end{pmatrix},\quad \mathbf{x} = \begin{pmatrix} 
+                            x \cr 
+                            y \cr 
+                            z 
+                        \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+                            1 \cr 
+                            1 \cr 
+                            1
+                        \end{pmatrix}
+                    \]
+                    とする. 
+                </p>
+                <ul>
+                    <li>行列 $A$ を正則にする $a$, $b$, $c$, $d$, $e$ の条件を求めよ.</li>
+                    <li>連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{b}$ を解け.</li>
+                </ul>
+            </div><!-- /remark -->
+
+            <a href="exercises.html#section3_answer">解答例</a>
+        </section>
+
 	</article></main>	
 	</div>		
 </body>

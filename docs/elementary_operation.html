@@ -575,7 +575,7 @@
             具体的には, $A$ が逆行列を持つことと $\operatorname{rank}A = n$ であること (標準形が単位行列であること) は同値である. 
             つまり正則行列は基本変形により単位行列にできる、一方で正則でない行列は基本変形により単位行列にできない:</p>
 
-            <div class="theorem" data-name="正方行列のランクと正則性">
+            <div class="theorem" data-name="正方行列の階数と正則性" id="thm_rank_and_invertibe">
                 <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:</p>
                 <ul>
                     <li>$\operatorname{rank}A = n \iff A \text{ は正則}.$</li>
@@ -656,7 +656,8 @@
                     つまり, $i=1, 2, \dots$ に対して,
                 </p>
                 <ul>
-                    <li>第 $i$ 行を $a_{ii}$ で割ることで, $(i,i)$ 成分を $1$ にする,</li>
+                    <li>必要ならば行の入れ替えを行う.</li>
+                    <li>第 $i$ 行を $(i,j)$ 成分 ($\neq0$) で割ることで, $(i,i)$ 成分を $1$ にする,</li>
                     <li>行基本変形により, 第 $i$ 列を $(i,i)$ 成分を除いて全て $0$ にする</li>
                 </ul>
                 <p>という手順で計算することを推奨する. </p>
@@ -800,12 +801,23 @@
                 <div class="resize" style="width: 300px"><img src='./images/reduced_row_echelon.png'></div>
             </div><!-- /example -->
 
-            
-            <p>行列 $A$ に対して, 行基本変形により得られる行簡約階段形はただ一つに定まる. また, 行簡約階段形が得られれば, あとは列基本変形により標準形 $F(r)$ に変形することができる.
+            <div class="remark">
+                <p>行列 $A$ に対して, 行基本変形により得られる行簡約階段形はただ一つに定まり, 行基本変形の順序には依存しない.
+                    具体的な計算手順としては, <a href="#rem_row_reduction_procedure">正則行列を単位行列に変形する手順</a>をそのまま適用することを推奨する. 
+                    つまり, $i = 1, 2, \dots, n$ の順に,</p>
+                <ul>
+                    <li>必要ならば行の入れ替えを行う.</li>
+                    <li>第 $i$ 行を $(i,j)$ 成分 ($\neq0$) で割ることで, $(i,i)$ 成分を $1$ にする,</li>
+                    <li>行基本変形により, 第 $i$ 列を $(i,i)$ 成分を除いて全て $0$ にする</li>
+                </ul>
+                <p>という手順で計算することを推奨する.</p>    
+            </div><!-- / #remark -->
+
+            <p>行簡約階段形が得られれば, あとは列基本変形により標準形 $F(r)$ に変形することができる.
                 このとき, $0$ でない成分を含む行は, 列基本変形を用いても $\mathbf{0}$ にはできない (一方, $\mathbf{0}$ である行はどのような列基本変形を施しても $\mathbf{0}$ になる).</p> 
             <p>このことは, 以下のように言い換えることもできる:</p> 
             
-            <div class="theorem" data-name="行簡約階段系と階数">
+            <div class="theorem" data-name="行簡約階段系と階数" id="thm_rank_of_row_echelon_form">
                 行列 $A$ に対する行簡約階段形の主成分の個数と $\operatorname{rank} A$ は一致する.
             </div><!-- /theorem -->
             
@@ -932,10 +944,11 @@
 
             <div class="remark">
                 <p>この計算による結果は行基本変形の順序に依存しない.
-                    具体的な計算手順として, 拡大行列の左側 $A$ を<a href="#rem_row_reduction_procedure">単位行列に変形する手順</a>をそのまま適用することを推奨する. 
+                    具体的な計算手順としては, 拡大行列の左側 $A$ にやはり<a href="#rem_row_reduction_procedure">正則行列を単位行列に変形する手順</a>をそのまま適用することを推奨する. 
                     つまり, $i = 1, 2, \dots, n$ の順に,</p>
                 <ul>
-                    <li>第 $i$ 行を $a_{ii}$ で割ることで, $(i,i)$ 成分を $1$ にする,</li>
+                    <li>必要ならば行の入れ替えを行う.</li>
+                    <li>第 $i$ 行を $(i,j)$ 成分 ($\neq0$) で割ることで, $(i,i)$ 成分を $1$ にする,</li>
                     <li>行基本変形により, 第 $i$ 列を $(i,i)$ 成分を除いて全て $0$ にする</li>
                 </ul>
                 <p>という手順で計算することを推奨する.</p>    
@@ -1134,6 +1147,75 @@
                 \]
                 の具体例となっている.
             </div><!-- / #example -->
+        </section>
+
+        <hr>
+
+        <section><h2>練習問題</h2>
+
+            <div class="problem">
+                <p>\[
+                        A = \begin{pmatrix} 
+                            5 & -5 & 2 & 16 \cr 
+                            0 & 1 & 2 & 4 \cr 
+                            10 & -10 & 5 & 35
+                        \end{pmatrix}
+                    \]
+                    とする. 
+                    <ol>
+                        <li>この行列 $A$ を行基本変形により行簡約階段形に変形せよ.</li>
+                        <li>行列 $A$ の階数を求めよ.</li>
+                    </ol>
+                </p>
+            </div><!-- /problem -->
+
+            <div class="problem">
+                <p>$a$, $b$ を実数とする. このとき, 
+                    \[
+                        A = \begin{pmatrix} 
+                            1 & a \cr 
+                            b & 1
+                        \end{pmatrix}
+                    \]
+                    の階数を求めよ. また, 行列 $A$ を正則にする $a$, $b$ を求めよ.
+                </p>
+            </div><!-- /problem -->
+
+            <div class="problem">
+                <p>$a$, $b$, $c$, $d$, $e$, $f\in\mathbb{R}$ に対し, 
+                    \[
+                        A = \begin{pmatrix} 
+                            a & 0 & 0 \cr 
+                            d & b & 0 \cr 
+                            e & f & c 
+                        \end{pmatrix}
+                    \]
+                    とする, ただし $abc\neq0$ とする. 
+                    このとき, $A^{-1}$ を求めよ.</p>
+            </div><!-- /problem -->
+    
+
+            <div class="problem">
+                <p>次の連立 $1$ 次方程式を解け:
+                    \[
+                        \begin{pmatrix} 
+                            5 & 1 & 1 \cr 
+                            1 & -1 & 4 \cr 
+                            1 & 5 & -1
+                        \end{pmatrix}\begin{pmatrix} 
+                            x \cr 
+                            y \cr 
+                            z 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            -11 \cr 
+                            0 \cr 
+                            -25 
+                        \end{pmatrix}.
+                    \]
+                </p>
+            </div><!-- /problem -->
+
+            <a href="exercises.html#section2_answer">解答例</a>
         </section>
 
     </article></main>

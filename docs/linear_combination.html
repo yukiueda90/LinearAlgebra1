@@ -167,11 +167,11 @@
                 線型独立であることを<b>一次独立</b>ということもある. また, 線型独立<span class="wave">でない</span>ことを<b>線形従属</b>もしくは<b>一次従属</b>であるということがある.
             </div><!-- /remark -->
 
-            </section>
+        </section>
 
-            <hr>
+        <hr>
 
-            <section id="section4-2"><h2>4.2: 線型独立と行列の正則性</h2>
+        <section id="section4-2"><h2>4.2: 線型独立と行列の正則性</h2>
             <p>ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルとする正方行列を $V$ とおき, また $c_1$, $c_2$, $\dots$, $c_n$ たちを並べた列ベクトルを $\mathbf{c}$ とおく:
                 \[
                     V = \begin{pmatrix} 
@@ -378,477 +378,482 @@
                         となり, $\mathbf{0}$ となる行が現れる. 従って, $\operatorname{rank}B \lt 3$ である (なお, $\mathbf{b}_1$ と $\mathbf{b}_2$ は線型独立なので, これ以上 $\mathbf{0}$ となる行を増やすことはできない, これは $\operatorname{rank}B = 2$ を意味する).</li>
                 </ul>
             </div><!-- / #example -->
+        </section>
 
+        <hr>
 
-            </section>
+        <section id="section4-3"><h2>4.3: 線型結合によるベクトルの表現</h2>
+            <p>あるベクトル $\mathbf{v}$ を, 線型独立なベクトル $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ の線型結合で表したい:
+                \[
+                    \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \dots + c_n\mathbf{v}_n.
+                \]
+                先ほどと同じ記号を用いると, 右辺は$V\mathbf{c}$ となるため, 上の式は
+                \[
+                    V\mathbf{c} = \mathbf{v}
+                \]
+                という連立 $1$ 次方程式とみなすことができ, これを解くことで等号を成立させる $c_1$, $c_2$, $\dots$, $c_n$ を求めることができる.</p>
+            <p>特に, $\mathbf{v}_i\in\mathbb{R}^{n\times 1}$ ならば, $V$ は $n$ 次正方行列となり, 先ほどの結果より正則行列となる, 従って, $V^{-1}$ が存在して $\mathbf{c} = V^{-1}\mathbf{v}$ が一意に定まる. 
+                このことは, 以下のように言い換えることもできる:</p>
+
+            <div class="theorem">
+                $n$ 個の $n\times 1$ 型列ベクトル 
+                \[
+                    \mathbf{v}_1,\ \mathbf{v}_2,\ \dots,\ \mathbf{v}_n\in\mathbb{R}^{n\times 1}
+                \] 
+                が線型独立ならば, 任意のベクトル $\mathbf{v}\in\mathbb{R}^{n\times 1}$ は $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ の線型結合で表すことができる.
+            </div><!-- / #theorem-->
+
+            <div class="example">
+                <p>\[
+                    \mathbf{v} = \begin{pmatrix} 
+                        a\cr 
+                        b\cr 
+                        c
+                    \end{pmatrix},\quad \mathbf{v}_1 = \begin{pmatrix} 
+                        1\cr 
+                        1\cr 
+                        0 
+                    \end{pmatrix}, \quad \mathbf{v}_2 = \begin{pmatrix} 
+                        0\cr 
+                        1\cr 
+                        1 
+                    \end{pmatrix}, \quad \mathbf{v}_3 = \begin{pmatrix} 
+                        1\cr 
+                        1\cr 
+                        1 
+                    \end{pmatrix}.
+                \]
+                このとき,
+                \[
+                    \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3
+                \]
+                を満たす $c_1$, $c_2$, $c_3$ を求める.</p>
+                <p>まず, $V = \begin{pmatrix} 
+                        \mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        1&0&1\cr 
+                        1&1&1\cr
+                        0&1&1 
+                    \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (なお, $\det V = 1\neq0$ なので $V$ は正則行列である).</p>
+                <p>これを<a href="elementary_operation.html#thm_Gauss_elimination">掃き出し法</a>により計算してみよう: 拡大行列に対する行基本変形により,
+                    \[
+                        \begin{array}{rl} 
+                            \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                1&1&1&b\cr 
+                                0&1&1&c    
+                            \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                0&1&0&b-a\cr 
+                                0&1&1&c    
+                            \end{array}\right) \cr
+                            & \longrightarrow \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                0&1&0&b-a\cr 
+                                0&0&1&a-b+c    
+                            \end{array}\right) \cr
+                            & \longrightarrow \left(\begin{array}{ccc:c}
+                                1&0&0&b-c\cr 
+                                0&1&0&b-a\cr 
+                                0&0&1&a-b+c    
+                            \end{array}\right)
+                        \end{array}
+                    \]
+                    と変形すると, 左側を単位行列にすることができるため, 右側が
+                    \[
+                        \begin{pmatrix} 
+                            c_1\cr 
+                            c_2\cr 
+                            c_3 
+                        \end{pmatrix} = \mathbf{c} = V^{-1}\mathbf{v} = \begin{pmatrix} 
+                            b-c\cr 
+                            b-a\cr
+                            a-b+c 
+                        \end{pmatrix}
+                    \]
+                    を意味している.
+                </p>
+            </div><!-- / #example -->
 
             <hr>
 
-            <section id="section4-3"><h2>4.3: 線型結合によるベクトルの表現</h2>
-                <p>あるベクトル $\mathbf{v}$ を, 線型独立なベクトル $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ の線型結合で表したい:
+            <p>一方で, 行列 $V$ が正則行列でないならば, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ の解は存在しないか, もしくはある条件を満たす $\mathbf{c}$ 全てが解となるのだった. 
+                このことは, $\mathbf{v}$ が $\mathbf{v}_1,\ \mathbf{v}_2,\ \dots$ の線型結合で表せないか, もしくは複数の表現が存在することに対応する:</p>
+
+            <div class="example">
+                <p>\[
+                    \mathbf{v} = \begin{pmatrix} 
+                        a\cr 
+                        b\cr 
+                        c
+                    \end{pmatrix},\quad \mathbf{v}_1 = \begin{pmatrix} 
+                        1\cr 
+                        1\cr 
+                        0 
+                    \end{pmatrix}, \quad \mathbf{v}_2 = \begin{pmatrix} 
+                        0\cr 
+                        1\cr 
+                        1 
+                    \end{pmatrix}, \quad \mathbf{v}_3 = \begin{pmatrix} 
+                        1\cr 
+                        2\cr 
+                        1 
+                    \end{pmatrix}.
+                \]
+                このとき,
+                \[
+                    \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3
+                \]
+                を満たす $c_1$, $c_2$, $c_3$ を求める.</p>
+                <p>まず, $V = \begin{pmatrix} 
+                        \mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        1&0&1\cr 
+                        1&1&2\cr
+                        0&1&1 
+                    \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (ただし, $\det V = 0$ なので $V$ は正則行列ではない).</p>
+                <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
                     \[
-                        \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \dots + c_n\mathbf{v}_n.
+                        \begin{array}{rl} 
+                            \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                1&1&2&b\cr 
+                                0&1&1&c    
+                            \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                0&1&1&b-a\cr 
+                                0&1&1&c    
+                            \end{array}\right) \cr
+                            & \longrightarrow \left(\begin{array}{ccc:c}
+                                1&0&1&a\cr 
+                                0&1&1&b-a\cr 
+                                0&0&0&a-b+c    
+                            \end{array}\right)
+                        \end{array}
                     \]
-                    先ほどと同じ記号を用いると, 右辺は$V\mathbf{c}$ となるため, 上の式は
+                    と変形すると, 拡大行列の左側を<a href="elementary_operation.html#def_row_echelon_form">行簡約階段形</a>にすることができる.
+                    ここで, 一番下の行は
                     \[
-                        V\mathbf{c} = \mathbf{v}
+                        0\cdot c_1+0\cdot c_2+0\cdot c_3 = a-b+c
                     \]
-                    という連立 $1$ 次方程式とみなすことができ, これを解くことで等号を成立させる $c_1$, $c_2$, $\dots$, $c_n$ を求めることができる.</p>
-                <p>特に, $\mathbf{v}_i\in\mathbb{R}^{n\times 1}$ ならば, $V$ は $n$ 次正方行列となり, 先ほどの結果より正則行列となる, 従って, $V^{-1}$ が存在して $\mathbf{c} = V^{-1}\mathbf{v}$ が一意に定まる. 
-                    このことは, 以下のように言い換えることもできる:</p>
-
-                <div class="theorem">
-                    $n$ 個の $n\times 1$ 型列ベクトル 
-                    \[
-                        \mathbf{v}_1,\ \mathbf{v}_2,\ \dots,\ \mathbf{v}_n\in\mathbb{R}^{n\times 1}
-                    \] 
-                    が線型独立ならば, 任意のベクトル $\mathbf{v}\in\mathbb{R}^{n\times 1}$ は $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ の線型結合で表すことができる.
-                </div><!-- / #theorem-->
-
-                <div class="example">
-                    <p>\[
-                        \mathbf{v} = \begin{pmatrix} 
-                            a\cr 
-                            b\cr 
-                            c
-                        \end{pmatrix},\quad \mathbf{v}_1 = \begin{pmatrix} 
-                            1\cr 
-                            1\cr 
-                            0 
-                        \end{pmatrix}, \quad \mathbf{v}_2 = \begin{pmatrix} 
-                            0\cr 
-                            1\cr 
-                            1 
-                        \end{pmatrix}, \quad \mathbf{v}_3 = \begin{pmatrix} 
-                            1\cr 
-                            1\cr 
-                            1 
-                        \end{pmatrix}.
-                    \]
-                    このとき,
-                    \[
-                        \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3
-                    \]
-                    を満たす $c_1$, $c_2$, $c_3$ を求める.</p>
-                    <p>まず, $V = \begin{pmatrix} 
-                            \mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3 
-                        \end{pmatrix} = \begin{pmatrix} 
-                            1&0&1\cr 
-                            1&1&1\cr
-                            0&1&1 
-                        \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (なお, $\det V = 1\neq0$ なので $V$ は正則行列である).</p>
-                    <p>これを<a href="elementary_operation.html#thm_Gauss_elimination">掃き出し法</a>により計算してみよう: 拡大行列に対する行基本変形により,
-                        \[
-                            \begin{array}{rl} 
-                                \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    1&1&1&b\cr 
-                                    0&1&1&c    
-                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    0&1&0&b-a\cr 
-                                    0&1&1&c    
-                                \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    0&1&0&b-a\cr 
-                                    0&0&1&a-b+c    
-                                \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc:c}
-                                    1&0&0&b-c\cr 
-                                    0&1&0&b-a\cr 
-                                    0&0&1&a-b+c    
-                                \end{array}\right)
-                            \end{array}
-                        \]
-                        と変形すると, 左側を単位行列にすることができるため, 右側が
-                        \[
-                            \begin{pmatrix} 
-                                c_1\cr 
-                                c_2\cr 
-                                c_3 
-                            \end{pmatrix} = \mathbf{c} = V^{-1}\mathbf{v} = \begin{pmatrix} 
-                                b-c\cr 
-                                b-a\cr
-                                a-b+c 
-                            \end{pmatrix}
-                        \]
-                        を意味している.
-                    </p>
-                </div><!-- / #example -->
-
-                <hr>
-
-                <p>一方で, 行列 $V$ が正則行列でないならば, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ の解は存在しないか, もしくはある条件を満たす $\mathbf{c}$ 全てが解となるのだった. 
-                    このことは, $\mathbf{v}$ が $\mathbf{v}_1,\ \mathbf{v}_2,\ \dots$ の線型結合で表せないか, もしくは複数の表現が存在することに対応する:</p>
-
-                <div class="example">
-                    <p>\[
-                        \mathbf{v} = \begin{pmatrix} 
-                            a\cr 
-                            b\cr 
-                            c
-                        \end{pmatrix},\quad \mathbf{v}_1 = \begin{pmatrix} 
-                            1\cr 
-                            1\cr 
-                            0 
-                        \end{pmatrix}, \quad \mathbf{v}_2 = \begin{pmatrix} 
-                            0\cr 
-                            1\cr 
-                            1 
-                        \end{pmatrix}, \quad \mathbf{v}_3 = \begin{pmatrix} 
-                            1\cr 
-                            2\cr 
-                            1 
-                        \end{pmatrix}.
-                    \]
-                    このとき,
-                    \[
-                        \mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3
-                    \]
-                    を満たす $c_1$, $c_2$, $c_3$ を求める.</p>
-                    <p>まず, $V = \begin{pmatrix} 
-                            \mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3 
-                        \end{pmatrix} = \begin{pmatrix} 
-                            1&0&1\cr 
-                            1&1&2\cr
-                            0&1&1 
-                        \end{pmatrix}$ とおくと, 連立 $1$ 次方程式 $V\mathbf{c} = \mathbf{v}$ を解けば良いことがわかる (ただし, $\det V = 0$ なので $V$ は正則行列ではない).</p>
-                    <p>これを掃き出し法により計算してみよう: 拡大行列に対する行基本変形により,
-                        \[
-                            \begin{array}{rl} 
-                                \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    1&1&2&b\cr 
-                                    0&1&1&c    
-                                \end{array}\right) & \longrightarrow \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    0&1&1&b-a\cr 
-                                    0&1&1&c    
-                                \end{array}\right) \cr
-                                & \longrightarrow \left(\begin{array}{ccc:c}
-                                    1&0&1&a\cr 
-                                    0&1&1&b-a\cr 
-                                    0&0&0&a-b+c    
-                                \end{array}\right)
-                            \end{array}
-                        \]
-                        と変形すると, 拡大行列の左側を<a href="elementary_operation.html#def_row_echelon_form">行簡約階段形</a>にすることができる.
-                        ここで, 一番下の行は
-                        \[
-                            0\cdot c_1+0\cdot c_2+0\cdot c_3 = a-b+c
-                        \]
-                        を意味しているため, $a-b+c\neq0$ のときはこれを満たす $\mathbf{c}$ は存在しない. 
-                        一方で, もしも $a-b+c=0$ ならば, 
-                        \[
-                            \left\lbrace\begin{array}{rl}
-                                c_1+c_3 &= a\cr
-                                c_2+c_3 &= b-a 
-                            \end{array}\right.
-                        \]
-                        を満たす $c_1$, $c_2$, $c_3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c_1\mathbf{v}_1+c_2\mathbf{v}_2 + c_3\mathbf{v}_3$ を満たす. 
-                        実際, 
-                        \[  
-                            \begin{array}{rl}
-                                c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3 
-                                &= (a-c_3)\mathbf{v}_1 + (b-a-c_3)\mathbf{v}_2 + c_3\mathbf{v}_3 \cr 
-                                &= \begin{pmatrix} 
-                                    a-c_3+c_3\cr
-                                    a-c_3+b-a-c_3+2c_3\cr 
-                                    b-a-c_3+c_3 
-                                \end{pmatrix} \cr 
-                                &= \begin{pmatrix} 
-                                    a\cr 
-                                    b\cr 
-                                    c 
-                                \end{pmatrix} \qquad (\because a-b+c=0)\cr 
-                                &=\mathbf{v}
-                            \end{array} 
-                        \]
-                        などと計算することで $\mathbf{v} = c_1\mathbf{v}_1+c_2\mathbf{v}_2 + c_3\mathbf{v}_3$ となることが確かめられる.
-                    </p>
-                </div><!-- / #example -->
-
-                <hr>
-
-                <p>上に挙げた例では, 
-                    \[
-                        \begin{pmatrix}
-                            1 & 0 & 1 \cr 
-                            1 & 1 & 2 \cr 
-                            0 & 1 & 1 
-                        \end{pmatrix}\begin{pmatrix} 
-                            c_1 \cr 
-                            c_2 \cr 
-                            c_3 
-                        \end{pmatrix} = \begin{pmatrix} 
-                            a \cr 
-                            b \cr 
-                            c
-                        \end{pmatrix} 
-                    \]
-                    という連立 $1$ 次方程式を考えた際に, もしも $a-b+c=0$ ならば, 
+                    を意味しているため, $a-b+c\neq0$ のときはこれを満たす $\mathbf{c}$ は存在しない. 
+                    一方で, もしも $a-b+c=0$ ならば, 
                     \[
                         \left\lbrace\begin{array}{rl}
                             c_1+c_3 &= a\cr
                             c_2+c_3 &= b-a 
-                            \end{array}\right.
+                        \end{array}\right.
                     \]
-                    を満たす $c_1$, $c_2$, $c_3$ は全て連立 $1$ 次方程式の解であること, 書き方を変えると 
+                    を満たす $c_1$, $c_2$, $c_3$ は全て連立 $1$ 次方程式の解であり, 従って $\mathbf{v} = c_1\mathbf{v}_1+c_2\mathbf{v}_2 + c_3\mathbf{v}_3$ を満たす. 
+                    実際, 
+                    \[  
+                        \begin{array}{rl}
+                            c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3 
+                            &= (a-c_3)\mathbf{v}_1 + (b-a-c_3)\mathbf{v}_2 + c_3\mathbf{v}_3 \cr 
+                            &= \begin{pmatrix} 
+                                a-c_3+c_3\cr
+                                a-c_3+b-a-c_3+2c_3\cr 
+                                b-a-c_3+c_3 
+                            \end{pmatrix} \cr 
+                            &= \begin{pmatrix} 
+                                a\cr 
+                                b\cr 
+                                c 
+                            \end{pmatrix} \qquad (\because a-b+c=0)\cr 
+                            &=\mathbf{v}
+                        \end{array} 
+                    \]
+                    などと計算することで $\mathbf{v} = c_1\mathbf{v}_1+c_2\mathbf{v}_2 + c_3\mathbf{v}_3$ となることが確かめられる.
+                </p>
+            </div><!-- / #example -->
+
+            <hr>
+
+            <p>上に挙げた例では, 
+                \[
+                    \begin{pmatrix}
+                        1 & 0 & 1 \cr 
+                        1 & 1 & 2 \cr 
+                        0 & 1 & 1 
+                    \end{pmatrix}\begin{pmatrix} 
+                        c_1 \cr 
+                        c_2 \cr 
+                        c_3 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        a \cr 
+                        b \cr 
+                        c
+                    \end{pmatrix} 
+                \]
+                という連立 $1$ 次方程式を考えた際に, もしも $a-b+c=0$ ならば, 
+                \[
+                    \left\lbrace\begin{array}{rl}
+                        c_1+c_3 &= a\cr
+                        c_2+c_3 &= b-a 
+                        \end{array}\right.
+                \]
+                を満たす $c_1$, $c_2$, $c_3$ は全て連立 $1$ 次方程式の解であること, 書き方を変えると 
+                \[
+                    \mathbf{c} = \begin{pmatrix} 
+                        a \cr 
+                        b-a \cr 
+                        0 
+                    \end{pmatrix} + c_3\begin{pmatrix} 
+                        -1 \cr 
+                        -1 \cr 
+                        1 
+                    \end{pmatrix} \quad (c_3\in\mathbb{R}\mbox{ は任意})
+                \]
+                と表されるすべてのベクトル $\mathbf{c}$ が, $V\mathbf{c} = \mathbf{v}$ の解となることを意味している.
+                このように, 連立 $1$ 次方程式の解が無数に存在する場合 (ある条件を満たすベクトル全てが解となる場合) には, 線型結合を用いて解を表すことができる.
+                このことを説明するために, 連立 $1$ 次方程式の解法をもう一度考えてみよう.</p>
+
+            <div class="example">
+                <p>連立 $1$ 次方程式 
                     \[
-                        \mathbf{c} = \begin{pmatrix} 
-                            a \cr 
-                            b-a \cr 
+                        \begin{pmatrix} 
+                            1 & 0 & 0 & 1 \cr 
+                            2 & 0 & 3 & 5 
+                        \end{pmatrix}\begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            0 \cr 
+                            0 \cr 
+                        \end{pmatrix} 
+                    \]
+                    を考える. まず, 左辺の行列は正則ではない (正方行列ですらない) ため, 拡大行列 
+                    \[
+                        \left(\begin{array}{cccc:c} 
+                            1 & 0 & 0 & 1 & 0 \cr 
+                            2 & 0 & 3 & 5 & 0 
+                        \end{array}\right)
+                    \] に対する掃き出し法 (ガウスの消去法) で左側を単位行列にすることはできない. 
+                    ただし, <a href="elementary_operation.html#def_row_echelon_form">行簡約階段形</a>にすることはできる:
+                    \[
+                        \left(\begin{array}{cccc:c}
+                            1 & 0 & 0 & 1 & 0 \cr 
+                            0 & 0 & 1 & 1 & 0 
+                        \end{array}\right)
+                    \]
+                    この拡大行列は, 
+                    \[
+                        \left\{\begin{array}{rl} 
+                            x_1 + x_4 &= 0, \cr 
+                            x_3 + x_4 &= 0 
+                        \end{array}\right.
+                    \]
+                    を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ が解となることを意味している.</p>
+                <p>ここで, 解を
+                    \[
+                        \begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = s\mathbf{v}_1 + t\mathbf{v}_2 \quad(s,t\in\mathbb{R}\mbox{ は任意})
+                    \]
+                    という<a href="#def_linear_combination">線型結合</a>で表現してみよう. 
+                    例えば, 上の行簡約階段形において主成分に対応する成分 $x_1$, $x_3$ <span class="wave">以外</span> (つまり $x_2$ と $x_4$) を $s$, $t\in\mathbb{R}$ とおいてみる:
+                    \[
+                        x_2 = s,\qquad x_4 = t.
+                    \]
+                    このとき, $s$, $t$ を右辺に移行することで (実際には $s$ は現れないが), 
+                    \[
+                        \left\{\begin{array}{rl} 
+                            x_1 &= -t, \cr 
+                            x_3 &= -t 
+                        \end{array}\right.
+                    \]
+                    という式が得られる. これと $x_2=s$, $x_4 = t$ とを合わせると
+                    \[
+                        \begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = s\begin{pmatrix} 
+                            0 \cr 
+                            1 \cr 
+                            0 \cr 
                             0 
-                        \end{pmatrix} + c_3\begin{pmatrix} 
+                        \end{pmatrix} + t\begin{pmatrix} 
                             -1 \cr 
+                            0 \cr 
                             -1 \cr 
                             1 
-                        \end{pmatrix} \quad (c_3\in\mathbb{R}\mbox{ は任意})
+                        \end{pmatrix} \quad (s,t\in\mathbb{R}\mbox{ は任意})
                     \]
-                    と表されるすべてのベクトル $\mathbf{c}$ が, $V\mathbf{c} = \mathbf{v}$ の解となることを意味している.
-                    このように, 連立 $1$ 次方程式の解が無数に存在する場合 (ある条件を満たすベクトル全てが解となる場合) には, 線型結合を用いて解を表すことができる.
-                    このことを説明するために, 連立 $1$ 次方程式の解法をもう一度考えてみよう.</p>
+                    という表示を得ることができる. つまり, $2$ つのベクトル
+                    \[
+                        \begin{pmatrix} 
+                            0 \cr 
+                            1 \cr 
+                            0 \cr 
+                            0 
+                        \end{pmatrix},\quad \begin{pmatrix} 
+                            -1 \cr 
+                            0 \cr 
+                            -1 \cr 
+                            1 
+                        \end{pmatrix}
+                    \]
+                    の線型結合で表される全てのベクトルが, この問題の解となることがわかる.
+                </p>
+            </div><!-- /example -->
 
-                <div class="example">
-                    <p>連立 $1$ 次方程式 
-                        \[
-                            \begin{pmatrix} 
-                                1 & 0 & 0 & 1 \cr 
-                                2 & 0 & 3 & 5 
-                            \end{pmatrix}\begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = \begin{pmatrix} 
-                                0 \cr 
-                                0 \cr 
-                            \end{pmatrix} 
-                        \]
-                        を考える. まず, 左辺の行列は正則ではない (正方行列ですらない) ため, 拡大行列 
-                        \[
-                            \left(\begin{array}{cccc:c} 
-                                1 & 0 & 0 & 1 & 0 \cr 
-                                2 & 0 & 3 & 5 & 0 
-                            \end{array}\right)
-                        \] に対する掃き出し法 (ガウスの消去法) で左側を単位行列にすることはできない. 
-                        ただし, <a href="elementary_operation.html#def_row_echelon_form">行簡約階段形</a>にすることはできる:
-                        \[
-                            \left(\begin{array}{cccc:c}
-                                1 & 0 & 0 & 1 & 0 \cr 
-                                0 & 0 & 1 & 1 & 0 
-                            \end{array}\right)
-                        \]
-                        この拡大行列は, 
-                        \[
-                            \left\{\begin{array}{rl} 
-                                x_1 + x_4 &= 0, \cr 
-                                x_3 + x_4 &= 0 
-                            \end{array}\right.
-                        \]
-                        を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ が解となることを意味している.</p>
-                    <p>ここで, 解を
-                        \[
-                            \begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = s\mathbf{v}_1 + t\mathbf{v}_2 \quad(s,t\in\mathbb{R}\mbox{ は任意})
-                        \]
-                        という<a href="#def_linear_combination">線型結合</a>で表現してみよう. 
-                        例えば, 上の行簡約階段形において主成分に対応する成分 $x_1$, $x_3$ <span class="wave">以外</span> (つまり $x_2$ と $x_4$) を $s$, $t\in\mathbb{R}$ とおいてみる:
-                        \[
-                            x_2 = s,\qquad x_4 = t.
-                        \]
-                        このとき, $s$, $t$ を右辺に移行することで (実際には $s$ は現れないが), 
-                        \[
-                            \left\{\begin{array}{rl} 
-                                x_1 &= -t, \cr 
-                                x_3 &= -t 
-                            \end{array}\right.
-                        \]
-                        という式が得られる. これと $x_2=s$, $x_4 = t$ とを合わせると
-                        \[
-                            \begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = s\begin{pmatrix} 
-                                0 \cr 
-                                1 \cr 
-                                0 \cr 
-                                0 
-                            \end{pmatrix} + t\begin{pmatrix} 
-                                -1 \cr 
-                                0 \cr 
-                                -1 \cr 
-                                1 
-                            \end{pmatrix} \quad (s,t\in\mathbb{R}\mbox{ は任意})
-                        \]
-                        という表示を得ることができる. つまり, $2$ つのベクトル
-                        \[
-                            \begin{pmatrix} 
-                                0 \cr 
-                                1 \cr 
-                                0 \cr 
-                                0 
-                            \end{pmatrix},\quad \begin{pmatrix} 
-                                -1 \cr 
-                                0 \cr 
-                                -1 \cr 
-                                1 
-                            \end{pmatrix}
-                        \]
-                        の線型結合で表される全てのベクトルが, この問題の解となることがわかる.
-                    </p>
-                </div><!-- /example -->
+            <div class="remark">
+                上のように, 連立 $1$ 次方程式の解を線型結合の形で表す際には, 拡大行列に対する行基本変形により得られる行簡約階段形について, <span class="wave">主成分に対応するもの以外</span>を変数だと思って式変形することを推奨する. 
+                ただし, そうしなければならないというわけではない. 
+            </div><!-- /remark -->
 
-                <div class="remark">
-                    上のように, 連立 $1$ 次方程式の解を線型結合の形で表す際には, 拡大行列に対する行基本変形により得られる行簡約階段形について, <span class="wave">主成分に対応するもの以外</span>を変数だと思って式変形することを推奨する. 
-                    ただし, そうしなければならないというわけではない. 
-                </div><!-- /remark -->
+            <div class="example">
+                <p>連立 $1$ 次方程式 
+                    \[
+                        \begin{pmatrix} 
+                            1 & 1 & 3 & 3 \cr 
+                            1 & 2 & 5 & 4 
+                        \end{pmatrix}\begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            0 \cr 
+                            0 \cr 
+                        \end{pmatrix} 
+                    \]
+                    を考える. 拡大行列 
+                    \[
+                        \left(\begin{array}{cccc:c} 
+                            1 & 1 & 3 & 3 & 0 \cr 
+                            1 & 2 & 5 & 4 & 0 
+                        \end{array}\right)
+                    \] 
+                    を行基本変形で行簡約階段形にすると,
+                    \[
+                        \left(\begin{array}{cccc:c}
+                            1 & 0 & 1 & 2 & 0 \cr 
+                            0 & 1 & 2 & 1 & 0 
+                        \end{array}\right)
+                    \]
+                    が得られる. これは, 
+                    \[
+                        \left\{\begin{array}{rl}
+                            x_1 + x_3 + 2x_4 &= 0, \cr 
+                            x_2 + 2x_3 + x_4 &= 0
+                        \end{array}\right.
+                    \]
+                    を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ がこの問題の解となることを意味している. 
+                </p>
+                <p>この問題の解を線型結合の形で表す際は, 上の注意で述べたように, 行簡約階段形の主成分に対応するもの<span class="wave">以外</span> (この例では $x_3$, $x_4$) を $s$, $t$ などとおくことを推奨する: 
+                    \[
+                        \left\{\begin{array}{rl}
+                            x_1 &= -s - 2t, \cr 
+                            x_2 &= -2s - t, \cr 
+                            x_3 &= s, \cr 
+                            x_4 &= t.
+                        \end{array}\right.
+                    \]
+                    つまり解は 
+                    \[
+                        \begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = s\begin{pmatrix} 
+                            -1 \cr 
+                            -2 \cr 
+                            1 \cr 
+                            0 
+                        \end{pmatrix} + t\begin{pmatrix} 
+                            -2 \cr 
+                            -1 \cr 
+                            0 \cr 
+                            1 
+                        \end{pmatrix} \quad (s,t\in\mathbb{R} \mbox{ は任意})
+                    \]
+                    と表される. </p>
+                <p>一方で, もしも $x_1=s$, $x_2=t$ とおくとどうなるかを考えてみる. 
+                    この場合は, 
+                    \[
+                        \left\{\begin{array}{rl}
+                            x_3 + 2x_4 &= -s, \cr 
+                            2x_3 + x_4 &= -t
+                        \end{array}\right.
+                    \]
+                    となるため, この連立 $1$ 次方程式を解くことで 
+                    \[
+                        \left\{\begin{array}{rl}
+                            x_1 &= s, \cr 
+                            x_2 &= t, \cr 
+                            x_3 &= \dfrac{s-2t}{3}, \cr
+                            x_4 &= \dfrac{-2s+t}{3}
+                        \end{array}\right.
+                    \]
+                    が得られる. ここで, $s/3$, $t/3$ を改めて $\widetilde{s}$, $\widetilde{t}$ とそれぞれ書くことにすると
+                    \[
+                        \begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = \widetilde{s}\begin{pmatrix} 
+                            3 \cr 
+                            0 \cr 
+                            1 \cr 
+                            -2 
+                        \end{pmatrix} + \widetilde{t}\begin{pmatrix} 
+                            0 \cr 
+                            3 \cr 
+                            -2 \cr 
+                            1 
+                        \end{pmatrix} \quad (\widetilde{s},\widetilde{t}\in\mathbb{R} \mbox{ は任意})
+                    \]
+                    と, 先ほどとは異なる表示が得られたが, これも解の表示として正しい. 
+                    これは, 
+                    \[
+                        \begin{pmatrix} 
+                            -1 \cr 
+                            -2 \cr 
+                            1 \cr 
+                            0 
+                        \end{pmatrix},\quad \begin{pmatrix} 
+                            -2 \cr 
+                            -1 \cr 
+                            0 \cr 
+                            1 
+                        \end{pmatrix}
+                    \]
+                    という $2$ つのベクトルの線型結合で表すことができるベクトル全体と, 
+                    \[
+                        \begin{pmatrix} 
+                            3 \cr 
+                            0 \cr 
+                            1 \cr 
+                            -2 
+                        \end{pmatrix},\quad \begin{pmatrix} 
+                            0 \cr 
+                            3 \cr 
+                            -2 \cr 
+                            1 
+                        \end{pmatrix}
+                    \] という $2$ つのベクトルの線型結合で表すことができるベクトル全体が一致するために, 複数の表現が存在するのである.
+                </p>
+            </div><!-- /example -->
 
-                <div class="example">
-                    <p>連立 $1$ 次方程式 
-                        \[
-                            \begin{pmatrix} 
-                                1 & 1 & 3 & 3 \cr 
-                                1 & 2 & 5 & 4 
-                            \end{pmatrix}\begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = \begin{pmatrix} 
-                                0 \cr 
-                                0 \cr 
-                            \end{pmatrix} 
-                        \]
-                        を考える. 拡大行列 
-                        \[
-                            \left(\begin{array}{cccc:c} 
-                                1 & 1 & 3 & 3 & 0 \cr 
-                                1 & 2 & 5 & 4 & 0 
-                            \end{array}\right)
-                        \] 
-                        を行基本変形で行簡約階段形にすると,
-                        \[
-                            \left(\begin{array}{cccc:c}
-                                1 & 0 & 1 & 2 & 0 \cr 
-                                0 & 1 & 2 & 1 & 0 
-                            \end{array}\right)
-                        \]
-                        が得られる. これは, 
-                        \[
-                            \left\{\begin{array}{rl}
-                                x_1 + x_3 + 2x_4 &= 0, \cr 
-                                x_2 + 2x_3 + x_4 &= 0
-                            \end{array}\right.
-                        \]
-                        を満たす全ての $x_1$, $x_2$, $x_3$, $x_4$ がこの問題の解となることを意味している. 
-                    </p>
-                    <p>この問題の解を線型結合の形で表す際は, 上の注意で述べたように, 行簡約階段形の主成分に対応するもの<span class="wave">以外</span> (この例では $x_3$, $x_4$) を $s$, $t$ などとおくことを推奨する: 
-                        \[
-                            \left\{\begin{array}{rl}
-                                x_1 &= -s - 2t, \cr 
-                                x_2 &= -2s - t, \cr 
-                                x_3 &= s, \cr 
-                                x_4 &= t.
-                            \end{array}\right.
-                        \]
-                        つまり解は 
-                        \[
-                            \begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = s\begin{pmatrix} 
-                                -1 \cr 
-                                -2 \cr 
-                                1 \cr 
-                                0 
-                            \end{pmatrix} + t\begin{pmatrix} 
-                                -2 \cr 
-                                -1 \cr 
-                                0 \cr 
-                                1 
-                            \end{pmatrix} \quad (s,t\in\mathbb{R} \mbox{ は任意})
-                        \]
-                        と表される. </p>
-                    <p>一方で, もしも $x_1=s$, $x_2=t$ とおくとどうなるかを考えてみる. 
-                        この場合は, 
-                        \[
-                            \left\{\begin{array}{rl}
-                                x_3 + 2x_4 &= -s, \cr 
-                                2x_3 + x_4 &= -t
-                            \end{array}\right.
-                        \]
-                        となるため, この連立 $1$ 次方程式を解くことで 
-                        \[
-                            \left\{\begin{array}{rl}
-                                x_1 &= s, \cr 
-                                x_2 &= t, \cr 
-                                x_3 &= \dfrac{s-2t}{3}, \cr
-                                x_4 &= \dfrac{-2s+t}{3}
-                            \end{array}\right.
-                        \]
-                        が得られる. ここで, $s/3$, $t/3$ を改めて $\widetilde{s}$, $\widetilde{t}$ とそれぞれ書くことにすると
-                        \[
-                            \begin{pmatrix} 
-                                x_1 \cr 
-                                x_2 \cr 
-                                x_3 \cr 
-                                x_4 
-                            \end{pmatrix} = \widetilde{s}\begin{pmatrix} 
-                                3 \cr 
-                                0 \cr 
-                                1 \cr 
-                                -2 
-                            \end{pmatrix} + \widetilde{t}\begin{pmatrix} 
-                                0 \cr 
-                                3 \cr 
-                                -2 \cr 
-                                1 
-                            \end{pmatrix} \quad (\widetilde{s},\widetilde{t}\in\mathbb{R} \mbox{ は任意})
-                        \]
-                        と, 先ほどとは異なる表示が得られたが, これも解の表示として正しい. 
-                        これは, 
-                        \[
-                            \begin{pmatrix} 
-                                -1 \cr 
-                                -2 \cr 
-                                1 \cr 
-                                0 
-                            \end{pmatrix},\quad \begin{pmatrix} 
-                                -2 \cr 
-                                -1 \cr 
-                                0 \cr 
-                                1 
-                            \end{pmatrix}
-                        \]
-                        という $2$ つのベクトルの線型結合で表すことができるベクトル全体と, 
-                        \[
-                            \begin{pmatrix} 
-                                3 \cr 
-                                0 \cr 
-                                1 \cr 
-                                -2 
-                            \end{pmatrix},\quad \begin{pmatrix} 
-                                0 \cr 
-                                3 \cr 
-                                -2 \cr 
-                                1 
-                            \end{pmatrix}
-                        \] という $2$ つのベクトルの線型結合で表すことができるベクトル全体が一致するために, 複数の表現が存在するのである.
-                    </p>
-                </div><!-- /example -->
+        </section>
 
-            </section>
-        
+        <hr>
+
+        <section><h2>練習問題</h2>
+
+            <a href="exercises.html#section4_answer">解答例</a>
+        </section>
+    
     </article></main>
     </div>
 </body>
