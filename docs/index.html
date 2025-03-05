@@ -204,7 +204,7 @@
         また, 集合に含まれる&quot;もの&quot;を<b>元</b> (<b>element</b>) という.
         <ul>
             <li>$x$ が集合 $X$ の元であるとき, $x\in X$ と表す.</li>
-            <li>集合 $X$ の全ての元が集合 $Y$ の元でもあるとき, $X\subset Y$ と表す.</li>
+            <li>集合 $X$ の全ての元が集合 $Y$ の元でもあるとき, $X$ は $Y$ の<b>部分集合</b>であるといい, $X\subset Y$ と表す.</li>
             <li>$2$ つの集合 $X$, $Y$ が $X\subset Y$ および $Y\subset X$ を満たすとき, $X=Y$ と表す. </li>
         </ul>
     </div><!-- /definition -->
@@ -243,7 +243,7 @@
         <ul>
             <li>$2$ つの条件 $P$, $Q$ に対して, 命題 「$P$ ならば $Q$」 を $P\implies Q$ もしくは $Q\impliedby P$ と表す. </li>
             <li>$P\implies Q$ が真であるとき, $P$ を $Q$ であるための <b>十分条件</b> (<b>sufficient condition</b>), $Q$ を $P$ であるための <b>必要条件</b> (<b>necessary condition</b>) であるという. </li>
-            <li>$P\implies Q$ と $Q\implies P$ がともに真であるとき, $P\iff Q$ と表し, $P$ は $Q$ であるための必要十分条件である, もしくは $P$ と $Q$ は<b>同値</b>であるという (英語では $P$ if and only if $Q$ と表される).</li>
+            <li>$P\implies Q$ と $Q\implies P$ がともに真であるとき, $P\iff Q$ と表し, $P$ は $Q$ であるための<b>必要十分条件</b>である, もしくは $P$ と $Q$ は<b>同値</b>であるという (英語では $P$ if and only if $Q$ と表される).</li>
         </ul>
     </div><!-- /definition -->
     <div class="example">
@@ -258,8 +258,24 @@
     <div class="example">
         <ul>
             <li>命題「$x\in\mathbb{R}\implies x^2\ge0$」は真なので, その対偶である命題「$x^2<0\implies x\not\in\mathbb{R}$」も真である. </li>
-            <li>$x\in\mathbb{R}$ とする, このとき $x\neq0\iff x^2>0$ である, つまり命題「$x\neq0\implies x^2>0$」と「$x^2>0\implies x\neq0$」はどちらも真である. 
-                従って, それらの対偶である命題「$x^2\le0\implies x=0$」および「$x=0\implies x^2\le0$」も真であり, 結果として $x\in\mathbb{R}$ ならば $x=0$ と $x^2\le0$ は同値である. 
+            <li>$x\in\mathbb{R}$ とする, このとき $x\neq0\iff x^2>0$ である, つまり命題
+                \[
+                    「x\neq0\implies x^2>0」
+                \]
+                と
+                \[
+                    「x^2>0\implies x\neq0」
+                \]
+                はどちらも真である. 
+                従って, それらの対偶である命題
+                \[
+                    「x^2\le0\implies x=0」
+                \]    
+                および
+                \[
+                    「x=0\implies x^2\le0」
+                \]
+                も真であり, 結果として $x\in\mathbb{R}$ ならば $x=0$ と $x^2\le0$ は同値である. 
                 <ul>
                     <li>実際には, 命題「$x\in\mathbb{R}\implies x^2\ge0$」が真であることも用いて, $x\in\mathbb{R}$ なら $x=0\iff x^2=0$ が成立する. </li>
                 </ul>
