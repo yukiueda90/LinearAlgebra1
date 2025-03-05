@@ -31,9 +31,9 @@
         <section id="section5-1"><h2>5.1: 導入</h2>
 			<p>行列積の性質を思い出せば, 行列 $A\in\mathbb{R}^{n\times m}$ を列ベクトルの左から掛けるという操作は, 以下の<b>線形性</b>と呼ばれる性質を満たすことがわかる:</p>
 			<ul>
-				<li>任意の列ベクトル $\mathbf{v} _ 1, \mathbf{v} _ 2\in\mathbb{R}^{m\times 1}$ に対し, 
+				<li>任意の列ベクトル $\mathbf{v}_1, \mathbf{v}_2\in\mathbb{R}^{m\times 1}$ に対し, 
 					\[
-						A(\mathbf{v} _ 1 + \mathbf{v} _ 2) = A\mathbf{v} _ 1 + A\mathbf{v} _ 2.
+						A(\mathbf{v}_1 + \mathbf{v}_2) = A\mathbf{v}_1 + A\mathbf{v}_2.
 					\]</li>
 				<li>任意の列ベクトル $\mathbf{v}\in \mathbb{R}^{m\times 1}$ と任意のスカラー値 $\lambda$ に対し, 
 					\[
@@ -43,66 +43,79 @@
 			<p>この性質を用いると, 正方行列 $A\in\mathbb{R}^{2\times 2}$ と列ベクトル $\mathbf{x} = \begin{pmatrix}
 					a\cr 
 					b
-				\end{pmatrix}$ に対し, $A\mathbf{x}$ という行列積は, 例えば以下のように計算することができる: 
-			標準基底
+				\end{pmatrix}$ に対し, $A\mathbf{x}$ という行列積を, 例えば以下のように計算することができる: 
+			<a href="matrix.html#def_canonical_basis">標準基底</a>
 			\[
-				\mathbf{e} _ 1 = \begin{pmatrix}
+				\mathbf{e}_1 = \begin{pmatrix}
 					1\cr 
 					0
-				\end{pmatrix}, \qquad 
-				\mathbf{e} _ 2 = \begin{pmatrix}
+				\end{pmatrix}, \quad 
+				\mathbf{e}_2 = \begin{pmatrix}
 					0\cr 
 					1
 				\end{pmatrix}
 			\] 
-			に対し, $\mathbf{x} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2$ であるので,
+			を用いると, <a href="linear_combination.html#def_linear_combination">線型結合</a>を用いて $\mathbf{x} = a\mathbf{e}_1 + b\mathbf{e}_2$ と表されるため, 線形性を用いると
 			\[
-				A\mathbf{x} = aA\mathbf{e} _ 1 + bA\mathbf{e} _ 2
+				\begin{array}{rl} 
+					A\mathbf{x} &= A(a\mathbf{e}_1+b\mathbf{e}_2) \cr 
+					&= A(a\mathbf{e}_1) + A(b\mathbf{e}_2) \cr
+					&= aA\mathbf{e}_1 + bA\mathbf{e}_2
+				\end{array}
 			\] 
 			が得られる. 
-			従って, $A\mathbf{e} _ 1$ と $A\mathbf{e} _ 2$ を計算しておけば, 一般のベクトル $\mathbf{x}$ に対して $A\mathbf{x}$ が分かることになる.</p>
+			従って, $A\mathbf{e}_1$ と $A\mathbf{e}_2$ を計算しておけば, 一般のベクトル $\mathbf{x}$ に対して $A\mathbf{x}$ が分かることになる.</p>
 
 			<div class="example">
 				<p>\[
 					A = \begin{pmatrix}
 						1&2\cr 
 						3&4
-					\end{pmatrix},\quad \text{このとき}\quad A\begin{pmatrix}
-						1 \cr 
-						0
-					\end{pmatrix} = \begin{pmatrix}
-						1\cr 
-						3
-					\end{pmatrix},\quad A\begin{pmatrix}
-						0\cr 
-						1
-					\end{pmatrix} = \begin{pmatrix}
-						2\cr 
-						4
-					\end{pmatrix}.
-				\]</p>
+					\end{pmatrix},
+					\]
+					このとき 
+					\[
+						A\begin{pmatrix}
+							1 \cr 
+							0
+						\end{pmatrix} = \begin{pmatrix}
+							1\cr 
+							3
+						\end{pmatrix},\quad A\begin{pmatrix}
+							0\cr 
+							1
+						\end{pmatrix} = \begin{pmatrix}
+							2\cr 
+							4
+						\end{pmatrix}.
+					\]
+				</p>
 				<ul>
 					<li>従って, 例えば 
 						\[
-							A\begin{pmatrix}
-								3\cr 
-								5
-							\end{pmatrix} = 3A\begin{pmatrix}
-								1\cr 
-								0
-							\end{pmatrix} + 5A\begin{pmatrix}
-								0\cr 
-								1
-							\end{pmatrix} = 3\begin{pmatrix}
-								1\cr 
-								3
-							\end{pmatrix} + 5\begin{pmatrix}
-								2\cr 
-								4
-							\end{pmatrix} = \begin{pmatrix}
-								13\cr 
-								29
-							\end{pmatrix}.
+							\begin{array}{rl}
+								A\begin{pmatrix}
+									3\cr 
+									5
+								\end{pmatrix} &= 3A\begin{pmatrix}
+									1\cr 
+									0
+								\end{pmatrix} + 5A\begin{pmatrix}
+									0\cr 
+									1
+								\end{pmatrix} \cr
+								&= 3\begin{pmatrix}
+									1\cr 
+									3
+								\end{pmatrix} + 5\begin{pmatrix}
+									2\cr 
+									4
+								\end{pmatrix} \cr
+								&= \begin{pmatrix}
+									13\cr 
+									29
+								\end{pmatrix}.
+							\end{array}
 						\]</li>
 				</ul>
 			</div><!-- / #example -->
@@ -113,34 +126,38 @@
 
 			<hr>
 			
-			<p>さて, 上の例では標準基底 $\mathbf{e} _ 1$, $\mathbf{e} _ 2$ に対して,  $\mathbf{x} = a\mathbf{e} _ 1 + b\mathbf{e} _ 2$ であることを用いたが, ここでは一般の列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ を用いてみよう:</p>
-			<p>もしも $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ となるならば, $A\mathbf{v} _ 1$ と $A\mathbf{v} _ 2$ を計算することで
+			<p>さて, 上の例では標準基底 $\mathbf{e}_1$, $\mathbf{e}_2$ に対して,  $\mathbf{x} = a\mathbf{e}_1 + b\mathbf{e}_2$ であることを用いたが, ここでは一般の列ベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ を用いてみよう:</p>
+			<p>もしも $\mathbf{x} = a\mathbf{v}_1 + b\mathbf{v}_2$ となるならば, $A\mathbf{v}_1$ と $A\mathbf{v}_2$ を計算することで
 			\[
-				A\mathbf{x} = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2
+				A\mathbf{x} = aA\mathbf{v}_1 + bA\mathbf{v}_2
 			\] 
 			が得られる. 
-			ここで, $\mathbf{v} _ 1$ と $\mathbf{v} _ 2$ として, どのようなものを用いるのが便利だろうか.</p>
-			<p>この問題に対する答えの一つは, $A$ を左から掛けても, 定数倍しか変わらないベクトルを用いるというものである: 
-			もしもある $\lambda _ i$ に対して
+			ここで, $\mathbf{v}_1$ と $\mathbf{v}_2$ として, どのようなものを用いるのが便利だろうか?</p>
+			<p>この問題に対する答えの一つは, $A$ を左から掛けても定数倍しか変わらないベクトルを用いるというものである: 
+			もしもある $\lambda_i\in\mathbb{C}$ に対して
 			\[
-				A\mathbf{v} _ i = \lambda _ i\mathbf{v} _ i \qquad (i=1,2)
+				A\mathbf{v}_i = \lambda_i\mathbf{v}_i \qquad (i=1,2)
 			\] 
-			が成立するならば, $\mathbf{x} = a\mathbf{v} _ 1 + b\mathbf{v} _ 2$ に対して
+			が成立するならば, $\mathbf{x} = a\mathbf{v}_1 + b\mathbf{v}_2$ に対して
 			\[
-				A\mathbf{x} = A(a\mathbf{v} _ 1 + b\mathbf{v}_ 2) = aA\mathbf{v} _ 1 + bA\mathbf{v} _ 2 = a\lambda _ 1\mathbf{v} _ 1 + b\lambda _ 2\mathbf{v} _ 2
+				\begin{array}{rl}
+					A\mathbf{x} &= A(a\mathbf{v}_1 + b\mathbf{v}_ 2) \cr
+					&= aA\mathbf{v}_1 + bA\mathbf{v}_2 \cr
+					&= a\lambda_1\mathbf{v}_1 + b\lambda_2\mathbf{v}_2
+				\end{array}
 			\] 
-			が得られる. このような性質を満たすベクトル $\mathbf{v} _ i$ を正方行列 $A\in\mathbb{R}^{2\times 2}$ の<b>固有ベクトル</b>, 対応する $\lambda_i$ を<b>固有値</b> という.</p>
+			が得られる. このような性質を満たすベクトル $\mathbf{v}_i$ を正方行列 $A\in\mathbb{R}^{2\times 2}$ の<b>固有ベクトル</b>, 対応する $\lambda_i$ を<b>固有値</b> という.</p>
 			
 			<hr>
 
 			<p>固有値及び固有ベクトルは, より一般に<b>線型写像</b>と呼ばれるものに対して定義され, 統計学における主成分分析や力学系における安定性解析など, 様々な応用を持つものであるが, ここでは正方行列 $A\in\mathbb{R}^{2\times 2}$ に対する固有値及び固有ベクトルのみを考えることにする:</p>
 			
-			<div class="definition" data-name="行列の固有値と固有ベクトル">
+			<div class="definition" data-name="行列の固有値と固有ベクトル" id="def_eigen_pair">
 				<p>正方行列 $A\in\mathbb{R}^{n\times n}$ に対して,
 				\[
 					A\mathbf{v} = \lambda\mathbf{v}
 				\] 
-				を満たす, ゼロでない列ベクトル $\mathbf{v}\in \mathbb{C}^{n\times 1}$ と $\lambda\in \mathbb{C}$ のペアが存在するならば, $\mathbf{v}$ を<b>固有ベクトル</b> (<b>eigenvector</b>), $\lambda$ を<b>固有値</b> (<b>eigenvalue</b>) という. 
+				を満たす, <span class="wave">ゼロでない</span>列ベクトル $\mathbf{v}\in \mathbb{C}^{n\times 1}$ と $\lambda\in \mathbb{C}$ のペアが存在するならば, $\mathbf{v}$ を<b>固有ベクトル</b> (<b>eigenvector</b>), $\lambda$ を<b>固有値</b> (<b>eigenvalue</b>) という. 
 				また, これらのペア $(\lambda,\mathbf{v})$ を<b>固有対</b> (<b>eigenpair</b>) と呼ぶことがある.</p>
 			</div><!-- / #definition -->
 
@@ -148,6 +165,19 @@
 				<ul>
 					<li>成分が全て $0$ であるベクトル $\mathbf{0}$ は, $A\mathbf{0} = \lambda\mathbf{0}$ を満たすものの, 固有ベクトルとは認めない.</li>
 					<li>固有値及び固有ベクトルは, 実数でなくとも構わない.</li>
+					<li>ベクトル $\mathbf{v}$ が行列 $A$ の固有ベクトルならば, $\mathbf{v}$ を $0$ でないスカラー倍したものも固有ベクトルである. 実際, 
+						\[
+							A\mathbf{v} = \lambda \mathbf{v}
+						\]
+						が成立するならば, 任意の $a\in\mathbb{C}$ に対し
+						\[
+							\begin{array}{rl}
+								A(a\mathbf{v}) &= aA\mathbf{v} \cr 
+								&= a\lambda\mathbf{v} \cr 
+								&= \lambda (a\mathbf{v})
+							\end{array}
+						\]
+					が成立する.</li>
 				</ul>
 			</div><!-- /remark -->
 
@@ -159,30 +189,40 @@
 
 		<section id="section5-2"><h2>5.2: 行列による変換と固有値, 固有ベクトル</h2>
 			
-			<p>以降, 列ベクトル $\begin{pmatrix}a\cr b\end{pmatrix}\in\mathbb{R}^{2\times 1}$ を, 高校数学で学ぶベクトル (これを<b>幾何ベクトル</b>という) と同一視する. 
-			また, このベクトルを $xy$ 平面上の点 $(a,b)\in\mathbb{R}^2$ と同一視することにする. 
-			このとき, 列ベクトルの左から行列を掛けるという操作は,</p>
+			<p>以降, 列ベクトル 
+				\[
+					\mathbf{v} = \begin{pmatrix}a\cr b\end{pmatrix}\in\mathbb{R}^{2\times 1}
+				\] 
+				を, 高校数学で学ぶベクトル (これを<b>幾何ベクトル</b>という) と同一視することで単に $\mathbf{v}\in\mathbb{R}^2$ と表記し,</p>
+				<ul>
+					<li>$xy$ 平面上の原点を始点, 点 $(a,b)$ を終点とする矢印, もしくは</li>
+					<li>$xy$ 平面上の点 $(a,b)$</li>
+				</ul> 
+			<p>として図示することにする.
+			このとき, 列ベクトル $\mathbf{v}$ に左から行列を掛けるという操作は,</p>
 			<ul>
 				<li>原点 $(0,0)$ を始点とする矢印を矢印に変換する操作,</li>
 				<li>$(x,y)$ 平面上の点を点に変換する操作</li>
 			</ul>
-			<p>であるとみなすことができる. 
-			この同一視により, 行列によるベクトルの変換を図示することができるようになる. 
-			以降, 列ベクトル $\mathbf{v}\in\mathbb{R}^{2\times 1}$ に対して単に $\mathbf{v}\in\mathbb{R}^2$ と表記することがある.</p>
+			<p>であるとみなすことができる. </p>
 			
 			<div class="example">
 				<p>\[
 					A = \begin{pmatrix}
 						1&1/2\cr 
 						1/2&1
-					\end{pmatrix},\qquad \mathbf{v} = \begin{pmatrix}
+					\end{pmatrix},\quad \mathbf{v} = \begin{pmatrix}
 						a\cr 
 						b
 					\end{pmatrix}\in\mathbb{R}^2.
 				\]</p>
 				<ul>
-					<li>$A\mathbf{v} = \begin{pmatrix}a+b/2\cr a/2+b\end{pmatrix}\in\mathbb{R}^2$.</li>
-					<li>$\mathbf{v}$ および $A\mathbf{v}$ を幾何ベクトルや $xy$ 平面上の点と同一視すると, 行列 $A$ による変換は例えば以下の図のように解釈できる:</li>
+					<li>このとき, 
+						\[
+							A\mathbf{v} = \begin{pmatrix}a+b/2\cr a/2+b\end{pmatrix}\in\mathbb{R}^2
+						\]
+						となる. </li>
+					<li>つまり, ベクトル $\mathbf{v}\in\mathbb{R}^2$ に左から行列 $A$ を掛けることで, ベクトル $\mathbf{v}$ で表される $xy$ 平面上の矢印 (もしくは点) は, $A\mathbf{v}$ で表される矢印 (もしくは点) に変換される.</li>
 				</ul>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_1.png'></div>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_2.png'></div>
@@ -192,7 +232,7 @@
 
 			<hr>
 			
-			<p>次に, 固有値と固有ベクトルについて具体例を見てみる:</p>
+			<p>このようにベクトルを矢印で図示することにすると, 行列 $A$ の<a href="#def_eigen_pair">固有ベクトル</a>とは, 行列 $A$ を左から掛けても向きが変わらない矢印であると解釈することができる.</p>
 
 			<div class="example">
 				<p>\[
@@ -202,38 +242,21 @@
 					\end{pmatrix}.
 				\]</p>
 				<ul>
-					<li>例えば $\mathbf{v} _ 1 = \begin{pmatrix}
+					<li>例えば $\mathbf{v}_1 = \dfrac{1}{\sqrt{2}}\begin{pmatrix}
 							1\cr 
 							-1
-						\end{pmatrix}$ とすると, $A\mathbf{v} _ 1 = \dfrac{1}{2}\mathbf{v} _ 1$ となるため $\mathbf{v} _ 1$ は固有ベクトルであり, 対応する固有値は $1/2$ である.</li>
-					<li>例えば $\mathbf{v} _ 2 = \begin{pmatrix}
+						\end{pmatrix}$ とすると, $A\mathbf{v}_1 = \dfrac{1}{2}\mathbf{v}_1$ となるため $\mathbf{v}_1$ は固有ベクトルであり, 対応する固有値は $1/2$ である.</li>
+					<li>例えば $\mathbf{v}_2 = \dfrac{1}{\sqrt{2}}\begin{pmatrix}
 							1\cr 
 							1
-						\end{pmatrix}$ とすると, $A\mathbf{v} _ 2 = \dfrac{3}{2}\mathbf{v} _ 2$ となるため $\mathbf{v} _ 2$ は固有ベクトルであり, 対応する固有値は $3/2$ である.</li>
-					<li>例えば $\widetilde{\mathbf{v}} _ 1 = \begin{pmatrix}
-							2i\cr 
-							-2i
-						\end{pmatrix}$ とすると, $A\widetilde{\mathbf{v}} _ 1 = \dfrac{1}{2}\widetilde{\mathbf{v}} _ 1$ となるため $\widetilde{\mathbf{v}} _ 1$ も固有ベクトルであり, 対応する固有値は $1/2$ である.</li>
+						\end{pmatrix}$ とすると, $A\mathbf{v}_2 = \dfrac{3}{2}\mathbf{v}_2$ となるため $\mathbf{v}_2$ は固有ベクトルであり, 対応する固有値は $3/2$ である.</li>
+					<li>なお, $\mathbf{v}_1$, $\mathbf{v}_2$ に $1/\sqrt{2}$ が含まれるのは, ベクトルの大きさを $1$ に揃えるためである (ベクトルの大きさに興味がないならば不要である). </li>
 				</ul>
-				<p>いま, $\widetilde{\mathbf{v}}_1 = 2i\mathbf{v}_1$ であり, これと $\mathbf{v}_1$ が固有ベクトルであることに注目すると
-					\[
-						A\widetilde{\mathbf{v}}_1 = A(2i\mathbf{v}_1) = 2iA\mathbf{v}_1 = 2i\lambda \mathbf{v}_1 = \lambda\widetilde{\mathbf{v}}_1
-					\]
-					が成立することがわかる.
-					このように, ある列ベクトル $\mathbf{v}$ が固有ベクトルであるならば, その複素数倍もやはり固有ベクトルとなる.</p>
-				<p>ここで, 固有ベクトルを図示するとどのようになるか見てみよう. ただし, ここでは実ベクトルであり大きさが $1$ である固有ベクトルのみを図示することにする. 上の例においては,
-				\[
-					\mathbf{v} _ 1 = \begin{pmatrix}
-						1/\sqrt{2}\cr 
-						-1/\sqrt{2}
-					\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}
-						1/\sqrt{2}\cr 
-						1/\sqrt{2}\end{pmatrix}
-				\] 
-				が大きさ $1$ の固有ベクトルとなる.</p>
+				<p>ここで, 固有ベクトルを図示するとどのようになるか見てみよう.</p>
 				<div class="resize"><img src='./images/linear_transform_by_matrix_3.png'></div>
-				<p style="clear:both">図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ と, $A\mathbf{v} _ 1$ および $A\mathbf{v} _ 2$ を示したものである. 
-					このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda _ 1$, $\lambda _ 2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
+				<p>図は例に挙げた行列 $A$ の固有ベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ と, $A\mathbf{v}_1$ および $A\mathbf{v}_2$ を示したものである. 
+					このように, 行列 $A$ の固有ベクトルは $A$ による変換で向きを変えないベクトルであり, 対応する固有値 $\lambda_1$, $\lambda_2$ は固有ベクトルに対する $A$ による変換の拡大率と解釈することができる.</p>
+				<p>実際に, 大きさ $1$ の固有ベクトル $\mathbf{v}_1$ に対し, $A\mathbf{v}_1 = \mathbf{v}_1$ であるため, $A\mathbf{v}_1$ は大きさが $1/2$ であり, 向きは $\mathbf{v}_1$ と同じ矢印として図示される.</p>
 			</div><!-- / #example -->
 
 			<p>上の例では, 固有値が実数であるため, 固有値を変換の拡大率として図示することができた. 
@@ -259,19 +282,23 @@
 					\] 
 					と与えられていたとする. このとき, 三角関数の加法定理より
 					\[
-						A\mathbf{v} = \begin{pmatrix}
-							\cos\alpha & -\sin\alpha\cr 
-							\sin\alpha & \cos\alpha
-						\end{pmatrix}\begin{pmatrix}
-							r\cos\theta\cr 
-							r\sin\theta
-						\end{pmatrix} = \begin{pmatrix}
-							r(\cos\theta\cos\alpha-\sin\theta\sin\alpha)\cr 
-							r(\sin\theta\cos\alpha + \cos\theta\sin\alpha)
-						\end{pmatrix} = \begin{pmatrix}
-							r\cos(\theta+\alpha)\cr 
-							r\sin(\theta+\alpha)
-						\end{pmatrix}
+						\begin{array}{rl}
+							A\mathbf{v} &= \begin{pmatrix}
+								\cos\alpha & -\sin\alpha\cr 
+								\sin\alpha & \cos\alpha
+							\end{pmatrix}\begin{pmatrix}
+								r\cos\theta\cr 
+								r\sin\theta
+							\end{pmatrix} \cr 
+							&= \begin{pmatrix}
+								r(\cos\theta\cos\alpha-\sin\theta\sin\alpha)\cr 
+								r(\sin\theta\cos\alpha + \cos\theta\sin\alpha)
+							\end{pmatrix} \cr 
+							&= \begin{pmatrix}
+								r\cos(\theta+\alpha)\cr 
+								r\sin(\theta+\alpha)
+							\end{pmatrix}
+						\end{array}
 					\] 
 					が得られる. つまり, この行列 $A$ はベクトル $\mathbf{v}$ を $\alpha$ だけ回転する変換を表している.</li>
 				<li>このような行列 $A$ を<b>回転行列</b>と呼ぶ.</li>
@@ -294,12 +321,12 @@
 					1/2&1
 				\end{pmatrix}
 			\] 
-			の固有値が $\lambda _ 1 = 1/2$, $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは例えば 
+			の固有値が $\lambda_1 = 1/2$, $\lambda_2 = 3/2$ であり, 対応する固有ベクトルは (ベクトルの大きさを気にしないことにすると) 例えば 
 			\[
-				\mathbf{v} _ 1 = \begin{pmatrix}
+				\mathbf{v}_1 = \begin{pmatrix}
 					1\cr 
 					-1
-				\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}
+				\end{pmatrix},\qquad \mathbf{v}_2 = \begin{pmatrix}
 					1\cr 
 					1
 				\end{pmatrix}
@@ -313,43 +340,52 @@
 			\[
 				(\lambda I-A)\mathbf{v}=\mathbf{0}
 			\] 
-			が成立する. いま, 固有ベクトル $\mathbf{v}$ はゼロでないもののみ考えているため, そのような $\mathbf{v}$ が存在するためには $\det(\lambda I-A)=\mathbf{0}$ でなければならない. 
-			実際, もしも $\det(\lambda I-A)\neq0$ であるならば, $\lambda I-A$ の逆行列が存在するため, これを両辺に左から掛けることで
+			が成立する. 
+			これを満たす $\mathbf{v}\neq\mathbf{0}$ が存在することは (つまりこの連立 $1$ 次方程式が非自明な解を持つことは), <a href="elementary_operation.html#thm_homogeneous_linear_system">斉次連立 $1$ 次方程式の議論</a>より, 行列 $\lambda I-A$ が正則でないことと同値である. 
+			つまり, $\lambda\in\mathbb{C}$ が行列 $A$ の固有値であることは, 
 			\[
-				\mathbf{v} = (\lambda I-A)^{-1}(\lambda I-A)\mathbf{v} = (\lambda I-A)^{-1}\mathbf{0} = \mathbf{0}
+				\det(\lambda I-A) = 0
 			\] 
-			となってしまう. 一方で, $\lambda I-A$ が正則でない場合には, 連立 $1$ 次方程式 
+			と同値である.</p>
+
+			<p>ここで, 
 			\[
-				(\lambda I-A)\mathbf{v} = \mathbf{0}
-			\] 
-			の右辺が $\mathbf{0}$ であることから, (斉次連立 $1$ 次方程式の議論より) ある条件を満たす全ての $\mathbf{v}$ が解となる, つまり $\mathbf{v}\neq\mathbf{0}$ であるような解が存在する.
-			これらより,
+				A = \begin{pmatrix} 
+					a & b \cr 
+					c & d 
+				\end{pmatrix} \in\mathbb{R}^{2\times 2}
+			\] とおくと,
 			\[
-				\det(\lambda I-A)=0 \iff \text{$\lambda$ は固有値であり, 対応する固有ベクトル } \mathbf{v}\neq\mathbf{0} \text{ が存在する}
-			\] 
-			が得られる. ここで, $A = (a_{ij}) \in\mathbb{R}^{2\times 2}$ の場合は,
-			\[
-				\det(\lambda I-A) = \det\begin{pmatrix}
-					\lambda - a _ {11} & -a _ {12}\cr 
-					-a _ {21}&\lambda-a _ {22}
-				\end{pmatrix} = (\lambda-a _ {11})(\lambda - a _ {22}) - a _ {12} a _ {21}
+				\begin{array}{rl}
+					\det(\lambda I-A) &= \det\begin{pmatrix}
+						\lambda - a & -b\cr 
+						-c&\lambda - d 
+					\end{pmatrix} \cr 
+					&= (\lambda-a)(\lambda - d) - bc \cr 
+					&= \lambda^2 - (a+d)\lambda -bc
+				\end{array}
 			\] 
 			となるため, 
 			\[
 				\det(\lambda I-A) = 0
 			\] 
-			は $\lambda$ についての $2$ 次方程式となり, 複素数の解や重解を許せば必ず解が $2$ つ存在する. 
-			上の議論より, これらの解が行列 $A$ の固有値となる. 
+			は $\lambda$ についての $2$ 次方程式となり, (解の公式より) 複素数の解や重解を許せば必ず解を $2$ つ持つ:
+			\[
+				\lambda = \dfrac{(a+d)\pm \sqrt{(a+d)^2 - 4bc}}{2}.
+			\] 
+			これが行列 $A$ の固有値となる. 
 			固有値 $\lambda$ が得られたならば, あとは
 			\[
 				(\lambda I-A)\mathbf{v} = 0
 			\] 
-			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの複素数倍は全て対応する固有ベクトルとなる.</p>
+			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの複素数倍は全て固有値 $\lambda$ に対応する固有ベクトルとなる.</p>
 			
 			<div class="remark">
 				<p>正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを<b>特性多項式</b> (<b>characteristic polynomial</b>) もしくは<b>固有多項式</b>という. 
 				方程式 $\det(\lambda I-A)= 0$ のことは<b>固有方程式</b>と呼ぶことがある. さらに, 固有多項式の解を<b>特性根</b>と呼ぶことがある.</p>
 			</div><!-- / #remark -->
+
+			上の結果を定理としてまとめておこう:
 
 			<div class="theorem">
 				<p>正方行列 $A$ に対する固有方程式 
@@ -361,15 +397,15 @@
 			</div><!-- / #theorem -->
 
 			<div class="remark">
-				<p>ここでは $A$ が $2$ 次正方行列である場合のみを具体例として扱うが, 上の結果は一般に $n$ 次正方行列 $A$ に対して成立する.
+				<p>以下では $A$ が $2$ 次正方行列である場合のみを具体例として扱うが, 上の結果を含むいくつかの定理は一般に $n$ 次正方行列 $A$ に対して成立する.
 					また, $n$ 次正方行列 $A$ の特性多項式は $\lambda$ についての $n$ 次多項式となり, (代数学の基本定理より) 複素数の解や重解を許せば必ず解が $n$ 個存在する.
 				</p>
 			</div><!-- / #remark -->
 
-			固有値には様々な性質が知られているが, ここでは行列式との関連を見てみる:
+			固有値には様々な性質が知られているが, ここでは行列式との関連を見てみよう.
 			
 			<div class="theorem">
-				<p>正方行列 $A$ の固有値を $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n\in\mathbb{C}$ とする (重複するものがあってもよい).
+				<p>$n$ 次正方行列 $A$ の固有値を $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n\in\mathbb{C}$ とする (重複するものがあってもよい).
 					このとき,
 					\[
 						\det A = \lambda_1\lambda_2\dots \lambda_n
@@ -389,7 +425,7 @@
 				\[
 					\det(-A) = (-1)^n\lambda_1\lambda_2\dots\lambda_n
 				\]
-				が得られるが, 左辺は行列式の性質より $(-1)^n\det A$ に等しいので欲しい式が得られる.
+				が得られるが, 左辺は<a href="determinant.html#thm_scalar_multiplication_determinant">行列式の性質</a>より $(-1)^n\det A$ に等しいので欲しい式が得られる.
 			</div><!-- /proof -->
 
 			<hr>
@@ -407,40 +443,54 @@
 				<ul>
 					<li>特性多項式は 
 						\[
-							\det(\lambda I-A) = \lambda^2 - 2\lambda + 3/4 = (\lambda-1/2)(\lambda-3/2).
+							\begin{array}{rl} 
+								\det(\lambda I-A) &= \lambda^2 - 2\lambda + 3/4 \cr 
+								&= (\lambda-1/2)(\lambda-3/2).
+							\end{array}
 						\]</li>
 					<li>従って 
 						\[
 							\det(\lambda I-A)=0\iff \lambda = 1/2,\ 3/2
 						\] 
-						となり, $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ が行列 $A$ の固有値となる.</li>
-					<li>\[
-							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+						となり, 
+						\[
+							\lambda_1 = 1/2,\quad \lambda_2 = 3/2
+						\] 
+						が行列 $A$ の固有値となる.</li>
+					<li>ここで, 
+						\[
+							(\lambda_1I-A)\mathbf{v}_1 = \begin{pmatrix}
 								-1/2 & -1/2\cr 
 								-1/2&-1/2
-							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+							\end{pmatrix}\mathbf{v}_1= \mathbf{0}
 						\] 
 						を考えると, 例えば $\mathbf{v}_1 = \begin{pmatrix}
 							1\cr 
 							-1
-						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
-							1\cr 
-							-1
-						\end{pmatrix}$, $c _ 1\neq0$ は任意.</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が固有値 $\lambda_1=1/2$ に対応する固有ベクトルである: 
+						\[
+							\mathbf{v}_1 = c_1 \begin{pmatrix}
+								1\cr 
+								-1
+							\end{pmatrix},\quad c_1\neq0 \text{は任意}.
+						\]</li>
 					<li>同様に, 
 						\[
-							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
+							(\lambda_2I-A)\mathbf{v}_2 = \begin{pmatrix}
 								1/2 & -1/2\cr 
 								-1/2&1/2
-							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
+							\end{pmatrix}\mathbf{v}_2= \mathbf{0}
 						\] 
 						を考えると, 例えば $\mathbf{v}_2 = \begin{pmatrix}
 							1\cr 
 							1
-						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
-							1\cr 
-							1
-						\end{pmatrix}$, $c _ 2\neq0$ は任意.</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が固有値 $\lambda_2=3/2$ に対応する固有ベクトルである: 
+						\[
+							\mathbf{v}_2 = c_2\begin{pmatrix}
+								1\cr 
+								1
+							\end{pmatrix},\quad c_2\neq0 \text{は任意.} 
+						\]</li>
 				</ul>	
 			</div><!-- / #example -->
 			
@@ -464,34 +514,48 @@
 						\[
 							\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha
 						\] 
-						となり, $\lambda _ 1 = \cos\alpha+i\sin\alpha$ と $\lambda _ 2 = \cos\alpha-i\sin\alpha$ が行列 $A$ の固有値となる, ただし $i=\sqrt{-1}$ は虚数単位.</li>
-					<li>\[
-							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+						となり, 
+						\[
+							\lambda_1 = \cos\alpha+i\sin\alpha,
+						\]
+						\[
+							\lambda_2 = \cos\alpha-i\sin\alpha
+						\] 
+						が行列 $A$ の固有値となる, ただし $i=\sqrt{-1}$ は虚数単位.</li>
+					<li>ここで, 
+						\[
+							(\lambda_1I-A)\mathbf{v}_1 = \begin{pmatrix}
 								i\sin\alpha & \sin\alpha\cr 
 								-\sin\alpha & i\sin\alpha
-							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+							\end{pmatrix}\mathbf{v}_1= \mathbf{0}
 						\] 
-						を考えると, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}
+						を考えると, 例えば $\mathbf{v}_1 = \begin{pmatrix}
 							1\cr 
 							-i
-						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1\begin{pmatrix}
-							1\cr 
-							-i
-						\end{pmatrix}$ $c _ 1\neq0$ は任意.</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: 
+						\[
+							\mathbf{v}_1 = c_1\begin{pmatrix}
+								1\cr 
+								-i
+							\end{pmatrix},\quad c_1\neq0 \text{は任意.} 
+						\]</li>
 					<li>同様に, 
 						\[
-							(\lambda _ 2I-A)\mathbf{v} _ 2 = \begin{pmatrix}
+							(\lambda_2I-A)\mathbf{v}_2 = \begin{pmatrix}
 								-i\sin\alpha & \sin\alpha\cr 
 								-\sin\alpha & -i\sin\alpha
-							\end{pmatrix}\mathbf{v} _ 2= \mathbf{0}
+							\end{pmatrix}\mathbf{v}_2= \mathbf{0}
 						\] 
-						を考えると, 例えば $\mathbf{v} _ 2 = \begin{pmatrix}
+						を考えると, 例えば $\mathbf{v}_2 = \begin{pmatrix}
 							1\cr 
 							i
-						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 2 = c _ 2\begin{pmatrix}
-							1\cr 
-							i
-						\end{pmatrix}$ $c _ 2\neq0$ は任意.</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: 
+						\[
+							\mathbf{v}_2 = c_2\begin{pmatrix}
+								1\cr 
+								i
+							\end{pmatrix},\quad c_2\neq0 \text{は任意.} 
+						\]</li>
 				</ul>
 			</div><!-- / #example -->
 
@@ -515,34 +579,37 @@
 					\[
 						\det(\lambda I-A)=0\iff \lambda = 1
 					\] 
-					となり, 固有値は $\lambda _ 1= 1$ のみ.</li>
-					<li>
+					となり, 固有値は $\lambda_1= 1$ のみ.</li>
+					<li>ここで, 
 						\[
-							(\lambda _ 1I-A)\mathbf{v} _ 1 = \begin{pmatrix}
+							(\lambda_1I-A)\mathbf{v}_1 = \begin{pmatrix}
 								0& -1\cr 
 								0 & 0
-							\end{pmatrix}\mathbf{v} _ 1= \mathbf{0}
+							\end{pmatrix}\mathbf{v}_1= \mathbf{0}
 						\] 
-						を考えると, 例えば $\mathbf{v} _ 1 = \begin{pmatrix}
+						を考えると, 例えば $\mathbf{v}_1 = \begin{pmatrix}
 							1\cr 
 							0
-						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: $\mathbf{v} _ 1 = c _ 1 \begin{pmatrix}
-							1\cr 
-							0
-						\end{pmatrix}$ $c _ 1\neq0$ は任意.</li>
+						\end{pmatrix}$ はこれを満たすため, その任意の複素数倍が対応する固有ベクトルである: 
+						\[
+							\mathbf{v}_1 = c_1 \begin{pmatrix}
+								1\cr 
+								0
+							\end{pmatrix},\quad c_1\neq0 \text{は任意.} 
+						\]</li>
 				</ul>					
 			</div><!-- / #example -->
 
 			<div class="remark">
-				$A\in\mathbb{R}^{2\times 2}$ が 実数の固有値 $\lambda$ をもつならば, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の各行ベクトルは線形独立ではないことがわかる. 
-				従って, $\lambda I-A$ は必ず
+				$A\in\mathbb{R}^{2\times 2}$ が 実数の固有値 $\lambda$ をもつならば, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
+				従って, 固有値 $\lambda$ に対して, $\lambda I-A$ は必ず
 				\[
 					\lambda I-A = \begin{pmatrix} 
 						a & b \cr 
 						ca & cb 
 					\end{pmatrix} \in\mathbb{R}^{2\times 2}
 				\]
-				という形になり, このとき例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有ベクトルとなる. 
+				のような形になり, このとき例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有値 $\lambda$ に対応する固有ベクトルとなる. 
 				このように, $2$ 次正方行列の固有ベクトルは容易に見つけることができる.
 			</div><!-- #remark -->
 
@@ -583,7 +650,7 @@
 			という等式が得られる. 
 			つまり, 任意の正則行列 $P$ に対し, 正方行列 $A$ と $P^{-1}AP$ の特性多項式は等しいことがわかる. 
 			そして特性多項式が等しいので固有値も等しいということになる (ただし対応する固有ベクトルが等しいとは限らない).</p>
-			<p>さらに, 先ほどと同様に計算することで,
+			<p>さらに, 同様の計算により,
 			\[
 				\det(P^{-1}AP) = (\det P^{-1})(\det P)(\det A) = \det A
 			\] 
@@ -597,7 +664,7 @@
 			</p>
 
 			<div class="definition" data-name="対角化">
-				<p>$n$ 次正方行列 $A$ が, 対角行列と相似であるならば $A$ は<b>対角化可能</b> (<b>diagonalizable</b>) という. 
+				<p>$n$ 次正方行列 $A$ が対角行列と相似であるならば, $A$ は<b>対角化可能</b> (<b>diagonalizable</b>) という. 
 				正方行列 $A$ が対角行列と相似である場合に, その対角行列を求める操作を行列の<b>対角化</b> (<b>diagonalization</b>) という.</p>
 			</div><!-- / #definition -->
 
@@ -606,7 +673,7 @@
 				\[
 					P^{-1}AP
 				\] 
-				を計算する. 一方で, 行列の階数を求める際の基本変形は, 基本行列たちの積 $P$, $Q$ を用いて
+				を計算する. 一方で, <a href="elementary_operation.html#thm_rank">行列の階数</a>を求める際には, 基本行列たちの積 $P$, $Q$ を用いて
 				\[
 					F(r) = PAQ
 				\] 
@@ -621,13 +688,13 @@
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ に対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
-				いま, $\mathbf{v} _ 1$ と $\mathbf{v} _ 2$ が線型独立でないならば, $\mathbf{v} _1 = c\mathbf{v} _ 2$ を満たす $c\neq0$ が存在する. 
+				行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ に対応する固有ベクトルを $\mathbf{v}_1$, $\mathbf{v}_2\in\mathbb{R}^2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
+				いま, $\mathbf{v}_1$ と $\mathbf{v}_2$ が<a href="linear_combination.html#def_linear_independent">線型独立</a>でないならば, $\mathbf{v} _1 = c\mathbf{v}_2$ を満たす $c\neq0$ が存在する. 
 				従って,
 				\[
-					c\lambda _ 1\mathbf{v} _ 2 = \lambda _ 1\mathbf{v} _ 1 = A\mathbf{v} _ 1 = A(c\mathbf{v} _ 2) = c\lambda _ 2\mathbf{v} _ 2 
+					c\lambda_1\mathbf{v}_2 = \lambda_1\mathbf{v}_1 = A\mathbf{v}_1 = A(c\mathbf{v}_2) = c\lambda_2\mathbf{v}_2 
 				\]
-				が成立するが, $\mathbf{v} _ 2\neq\mathbf{0}$ および $c\neq0$ より $\lambda _ 1=\lambda _ 2$ となるため矛盾する. 従って, $\mathbf{v} _ 1$ と $\mathbf{v} _ 2$ は線型独立である.
+				が成立するが, $\mathbf{v}_2\neq\mathbf{0}$ および $c\neq0$ より $\lambda_1=\lambda_2$ となるため矛盾する. 従って, $\mathbf{v}_1$ と $\mathbf{v}_2$ は線型独立である.
 			</div><!-- / #proof -->
 
 			<div class="remark">
@@ -636,52 +703,53 @@
 			</div><!-- / #remark -->
 
 			<p>このことを用いて, 対角化の具体的な計算手順を紹介する.</p>
-			<p>まず, 行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ に対し, 対応する固有ベクトルを $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^2$ とする (固有ベクトルの大きさは問わない). 
-			このとき, 列ベクトル $\mathbf{v} _ 1$, $\mathbf{v} _ 2\in\mathbb{R}^{2\times 1}$ を横に並べることで
+			<p>まず, 行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ に対し, 対応する固有ベクトルを $\mathbf{v}_1$, $\mathbf{v}_2\in\mathbb{R}^2$ とする (固有ベクトルの大きさは問わない). 
+			このとき, $\mathbf{v}_j$ を第 $j$ 列ベクトルとする行列 $P$ を考える:
 			\[
-				P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix}\in\mathbb{R}^{2\times 2}
+				P = \begin{pmatrix}\mathbf{v}_1, \mathbf{v}_2\end{pmatrix}\in\mathbb{R}^{2\times 2}.
 			\] 
-			とする. 
 			この行列 $P$ を, 行列 $A$ の右から掛けると, $P$ の各列が固有ベクトルであることから,
 			\[
-				AP = A\begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix} 
-				= \begin{pmatrix}A\mathbf{v} _ 1&A\mathbf{v} _ 2\end{pmatrix} 
-				= \begin{pmatrix}\lambda _ 1\mathbf{v} _ 1&\lambda _ 2\mathbf{v} _ 2\end{pmatrix} 
-				= \begin{pmatrix}\mathbf{v} _ 1&\mathbf{v} _ 2\end{pmatrix}\begin{pmatrix}
-					\lambda _ 1&0\cr 
-					0&\lambda _ 2
-				\end{pmatrix}
+				\begin{array}{rl}
+					AP &= A\begin{pmatrix}\mathbf{v}_1, \mathbf{v}_2\end{pmatrix} \cr
+					&= \begin{pmatrix}A\mathbf{v}_1, A\mathbf{v}_2\end{pmatrix} \cr
+					&= \begin{pmatrix}\lambda_1\mathbf{v}_1, \lambda_2\mathbf{v}_2\end{pmatrix}\cr 
+					&= \begin{pmatrix}\mathbf{v}_1, \mathbf{v}_2\end{pmatrix}\begin{pmatrix}
+						\lambda_1&0\cr 
+						0&\lambda_2
+					\end{pmatrix}
+				\end{array}
 			\] 
 			となる. 
-			一番右に, 行列 $P$ が再び現れているため,
+			右辺に行列 $P$ が再び現れているため,
 			\[
 				AP = P\begin{pmatrix}
-					\lambda _ 1&0\cr 
-					0&\lambda _ 2
+					\lambda_1&0\cr 
+					0&\lambda_2
 				\end{pmatrix}
 			\] 
 			が得られる. 
-			ここで, 先ほどの結果より $\mathbf{v} _ 1$, $\mathbf{v} _ 2$ は線型独立であり, 従って正方行列 $P$ は正則行列である. 
+			ここで, 先ほどの結果より $\mathbf{v}_1$, $\mathbf{v}_2$ は線型独立であり, <a href="linear_combination.html#thm_invertible_and_linear_independence">従って</a>正方行列 $P$ は正則行列である. 
 			そこで, 両辺の左から $P^{-1}$ を掛けると,
 			\[
 				P^{-1}AP = \begin{pmatrix}
-					\lambda _ 1&0\cr 
-					0&\lambda _ 2
+					\lambda_1&0\cr 
+					0&\lambda_2
 				\end{pmatrix}
 			\] 
 			となり, 対角成分に固有値を持つような対角行列に変形することができる. 
 			この操作が行列の<b>対角化</b>と呼ばれるものである.</p>
-			<p>この結果を, 定理として参照できるようにしておく.</p>
+			<p>この結果を, 定理としてまとめておく.</p>
 
 			<div class="theorem" data-name="$2$ 次正方行列の対角化">
-				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda _ 1$, $\lambda _ 2\in\mathbb{R}$ を持つとき, 対応する固有ベクトルを横に並べた行列 $P = \begin{pmatrix}\mathbf{v} _ 1&\mathbf {v} _ 2\end{pmatrix}$ を用いて
+				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ を持つとき, 対応する固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列 $P = \begin{pmatrix}\mathbf{v}_1, \mathbf {v}_2\end{pmatrix}$ を用いて
 				\[
 					P^{-1}AP = P^{-1}P\begin{pmatrix}
-						\lambda _ 1&0\cr 
-						0&\lambda _ 2
+						\lambda_1&0\cr 
+						0&\lambda_2
 					\end{pmatrix} = \begin{pmatrix}
-						\lambda _ 1&0\cr 
-						0&\lambda _ 2
+						\lambda_1&0\cr 
+						0&\lambda_2
 					\end{pmatrix}
 				\] 
 				と対角化できる.</p>	
@@ -689,7 +757,7 @@
 
 			<div class="remark">
 				<p>このように, 行列の対角化により得られる対角行列は, その対角成分に行列固有値を持つ. 
-				また, 相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda _ 1\lambda _ 2$ となることを確かめることができる. </p>
+				また, 相似な $2$ つの行列の行列式は等しいので, 上の場合は $\det A = \lambda_1\lambda_2$ となることを確かめることができる. </p>
 			</div><!-- / #remark -->
 
 			<div class="remark">
@@ -709,12 +777,12 @@
 					\end{pmatrix}.
 				\]</p>
 				<ul>
-					<li>固有値は $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは, 例えば 
+					<li>固有値は $\lambda_1 = 1/2$ と $\lambda_2 = 3/2$ であり, 対応する固有ベクトルは, 例えば 
 						\[
-							\mathbf{v} _ 1 = \begin{pmatrix}
+							\mathbf{v}_1 = \begin{pmatrix}
 								1\cr 
 								-1
-							\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}
+							\end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix}
 								1\cr 
 								1
 							\end{pmatrix}
@@ -723,7 +791,7 @@
 					<li>これを用いて, 
 						\[
 							P = \begin{pmatrix}
-								\mathbf{v} _ 1&\mathbf{v} _ 2
+								\mathbf{v}_1, \mathbf{v}_2
 							\end{pmatrix} = \begin{pmatrix}
 								1&1\cr 
 								-1&1
@@ -731,49 +799,43 @@
 						\] 
 						とすると, 
 						\[
-							AP = P\begin{pmatrix}
-								\lambda _ 1&0\cr 
-								0&\lambda _ 2
-							\end{pmatrix},\qquad P^{-1}AP = \begin{pmatrix}
-								\lambda _ 1&0\cr 
-								0&\lambda _ 2
+							P^{-1}AP = \begin{pmatrix}
+								\lambda_1&0\cr 
+								0&\lambda_2
+							\end{pmatrix} = \begin{pmatrix} 
+								1/2 & 0 \cr 
+								0 & 3/2 
 							\end{pmatrix}
 						\] 
 						が得られる. 
 						実際, 
 						\[
-							AP = \begin{pmatrix}
-								1/2&3/2\cr 
-								-1/2&3/2
-							\end{pmatrix} = \begin{pmatrix}
-								1&1\cr 
-								-1&1
-							\end{pmatrix}\begin{pmatrix}
-								1/2&0\cr 
-								0&3/2
-							\end{pmatrix} = P\begin{pmatrix}
-							1/2&0\cr 
-							0&3/2
-						\end{pmatrix}
+							\begin{array}{rl}
+								AP &= \begin{pmatrix}
+									1/2&3/2\cr 
+									-1/2&3/2
+								\end{pmatrix} \cr 
+								&= \begin{pmatrix}
+									1&1\cr 
+									-1&1
+								\end{pmatrix}\begin{pmatrix}
+									1/2&0\cr 
+									0&3/2
+								\end{pmatrix} \cr
+								&= P\begin{pmatrix}
+									1/2&0\cr 
+									0&3/2
+								\end{pmatrix}
+							\end{array}
 						\]
-						を確かめることができ, また, $P^{-1} = \begin{pmatrix}
-							1/2&-1/2\cr 
-							1/2&1/2
-						\end{pmatrix}$ を用いて
-						\[
-							P^{-1}AP = \begin{pmatrix}
-								1/2&0\cr 
-								0&3/2
-							\end{pmatrix}
-						\] 
-						を確かめることもできる.</li>
+						を確かめることができる.</li>
 					<li>対角化が固有ベクトルの大きさに依存しない (固有ベクトルの向きにのみ依存する) ことを確かめてみる. 
 						例えば, 対応する固有ベクトルを
 						\[
-							\mathbf{v} _ 1 = \begin{pmatrix}
+							\mathbf{v}_1 = \begin{pmatrix}
 								2\cr 
 								-2
-							\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}
+							\end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix}
 								1/2\cr 
 								1/2
 							\end{pmatrix}
@@ -782,27 +844,38 @@
 							P = \begin{pmatrix}
 								2&1/2\cr 
 								-2&1/2
-							\end{pmatrix},\qquad P^{-1}=\begin{pmatrix}
-								1/4&-1/4\cr 
-								1&1
 							\end{pmatrix}
 						\] となり,
 						\[
-							P^{-1}AP = P^{-1}\begin{pmatrix}
-								1&3/4\cr 
-								-1&3/4
-							\end{pmatrix} = P^{-1}\begin{pmatrix}
-								2&1/2\cr 
-								-2&1/2
-							\end{pmatrix}\begin{pmatrix}
-								1/2&0\cr 
-								0&3/2
-							\end{pmatrix} = \begin{pmatrix}
-								1/2 & 0\cr 
-								0&3/2
-							\end{pmatrix}
+							\begin{array}{rl}
+								AP &= \begin{pmatrix}
+									1&3/4\cr 
+									-1&3/4
+								\end{pmatrix} \cr
+								&= \begin{pmatrix}
+									2&1/2\cr 
+									-2&1/2
+								\end{pmatrix}\begin{pmatrix}
+									1/2&0\cr 
+									0&3/2
+								\end{pmatrix} \cr 
+								&= P\begin{pmatrix}
+									1/2 & 0\cr 
+									0&3/2
+								\end{pmatrix}
+							\end{array}
 						\] 
-						が得られる.</li>
+						より
+						\[
+							P^{-1}AP = \begin{pmatrix} 
+								1/2 & 0 \cr 
+								0 & 3/2 
+							\end{pmatrix} = \begin{pmatrix} 
+								\lambda_1 & 0 \cr 
+								0 & \lambda_2 
+							\end{pmatrix}
+						\]
+						と, 対角化の結果が先ほどと一致する.</li>
 					<li>
 						固有値 $\lambda_1$ と $\lambda_2$ (および対応する固有ベクトル $\mathbf{v}_1$ と $\mathbf{v}_2$) の順序は入れ替えても良い. 
 						例えば $\lambda_1 = 3/2$, $\lambda_2 = 1/2$, 対応する固有ベクトルを 
@@ -810,7 +883,7 @@
 							\mathbf{v}_1 = \begin{pmatrix} 
 								1 \cr 
 								1
-							\end{pmatrix},\qquad \mathbf{v}_2 = \begin{pmatrix} 
+							\end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix} 
 								1 \cr 
 								-1 
 							\end{pmatrix} 
@@ -818,7 +891,7 @@
 						としたときは, 
 						\[
 							P = \begin{pmatrix} 
-								\mathbf{v}_1 & \mathbf{v}_2 
+								\mathbf{v}_1, \mathbf{v}_2 
 							\end{pmatrix} = \begin{pmatrix} 
 								1 & 1 \cr 
 								1 & -1 
@@ -826,21 +899,25 @@
 						\]
 						について, 
 						\[
-							AP = \begin{pmatrix} 
-								3/2 & 1/2 \cr 
-								3/2 & -1/2 
-							\end{pmatrix} = \begin{pmatrix} 
-								1 & 1 \cr 
-								1 & -1 
-							\end{pmatrix}\begin{pmatrix} 
-								3/2 & 0 \cr 
-								0 & 1/2 
-							\end{pmatrix} = P\begin{pmatrix} 
-								3/2 & 0 \cr 
-								0 & 1/2 
-							\end{pmatrix}
+							\begin{array}{rl}
+								AP &= \begin{pmatrix} 
+									3/2 & 1/2 \cr 
+									3/2 & -1/2 
+								\end{pmatrix} \cr 
+								&= \begin{pmatrix} 
+									1 & 1 \cr 
+									1 & -1 
+								\end{pmatrix}\begin{pmatrix} 
+									3/2 & 0 \cr 
+									0 & 1/2 
+								\end{pmatrix} \cr 
+								&= P\begin{pmatrix} 
+									3/2 & 0 \cr 
+									0 & 1/2 
+								\end{pmatrix}
+							\end{array}
 						\]
-						および 
+						より
 						\[
 							P^{-1}AP = \begin{pmatrix} 
 								3/2 & 0 \cr 
@@ -856,26 +933,26 @@
 			<hr>
 
 			<p>対角化の応用した計算例として, 対角化可能行列 $A$ に対して $A^k$ を計算してみる. 
-			まず, 対角行列 $\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}$ に対し,
+			まず, 対角行列 $\begin{pmatrix}\lambda_1&0\cr 0&\lambda_2\end{pmatrix}$ に対し,
 			\[
 				\begin{pmatrix}
-					\lambda _ 1&0\cr 
-					0&\lambda _ 2
+					\lambda_1&0\cr 
+					0&\lambda_2
 				\end{pmatrix}^k = \begin{pmatrix}
-					\lambda _ 1^k&0\cr 
-					0&\lambda _ 2^k
+					\lambda_1^k&0\cr 
+					0&\lambda_2^k
 				\end{pmatrix}
 			\] 
 			が成立する. 
 			従って, $P^{-1}AP = \begin{pmatrix}
-				\lambda _ 1&0\cr 
-				0&\lambda _ 2
+				\lambda_1&0\cr 
+				0&\lambda_2
 			\end{pmatrix}$ と対角化が可能な行列 $A$ に対して,
 			\[
 				\begin{array}{rl}
-					A^k &= P(P^{-1}AP)(P^{-1}AP) \dots (P^{-1}AP)P^{-1}\cr
-					&= P\begin{pmatrix}\lambda _ 1&0\cr 0&\lambda _ 2\end{pmatrix}^k P^{-1}\cr
-					&= P\begin{pmatrix}\lambda _ 1^k&0\cr 0&\lambda _ 2^k\end{pmatrix}P^{-1}
+					A^k &= P\underbrace{(P^{-1}AP)(P^{-1}AP) \dots (P^{-1}AP)}_{k\text{個}}P^{-1}\cr
+					&= P\begin{pmatrix}\lambda_1&0\cr 0&\lambda_2\end{pmatrix}^k P^{-1}\cr
+					&= P\begin{pmatrix}\lambda_1^k&0\cr 0&\lambda_2^k\end{pmatrix}P^{-1}
 				\end{array}
 			\] 
 			と計算することができる.</p>
@@ -885,59 +962,54 @@
 					A = \begin{pmatrix}
 						1&1/2\cr 
 						1/2&1
-					\end{pmatrix}, \qquad \mathbf{v} = \begin{pmatrix}
-						a\cr 
-						b
 					\end{pmatrix}.
 				\]
-				行列 $A$ の固有値は $\lambda _ 1 = 1/2$ と $\lambda _ 2 = 3/2$ であり, 対応する固有ベクトルは, 例えば 
+				いま, $A^k$ を対角化を用いて計算してみよう. 
+				行列 $A$ の固有値は $\lambda_1 = 1/2$ と $\lambda_2 = 3/2$ であり, 対応する固有ベクトルは, 例えば 
 				\[
-					\mathbf{v} _ 1 = \begin{pmatrix}
+					\mathbf{v}_1 = \begin{pmatrix}
 						1\cr 
 						-1
-					\end{pmatrix},\qquad \mathbf{v} _ 2 = \begin{pmatrix}
+					\end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix}
 						1\cr 
 						1
 					\end{pmatrix}
 				\] 
-				であった. いま, $A^k\mathbf{v}$ を $2$ 通りの方法で計算してみよう.</p>
-				<ul>
-					<li>まず, $\mathbf{v} = \dfrac{a-b}{2}\mathbf{v} _ 1 + \dfrac{a+b}{2}\mathbf{v} _ 2$ であることに注目して計算してみる. 
-					\[
-						\begin{array}{rl}
-							A^k\mathbf{v} &= \dfrac{a-b}{2}A^k\mathbf{v} _ 1 + \dfrac{a+b}{2}A^k\mathbf{v} _ 2\cr
-							&= \dfrac{a-b}{2}\lambda _ 1^k\mathbf{v} _ 1 + \dfrac{a+b}{2}\lambda _ 2^k\mathbf{v} _ 2\cr
-							&= \dfrac{1}{2}\begin{pmatrix}\lambda _ 1^k(a-b)+\lambda _ 2^k(a+b)\cr -\lambda _ 1^k(a-b) + \lambda _ 2^k(a+b)\end{pmatrix}.
-						\end{array}
-					\]</li>
-					<li>次に, 行列 $A$ の対角化を用いて計算してみる.
-					\[
-						P = \begin{pmatrix}
-							1&1\cr 
-							-1&1
-						\end{pmatrix},\qquad P^{-1} = \begin{pmatrix}
-							1/2 & -1/2\cr 
-							1/2&1/2
+				であった. 
+				そこで, 
+				\[
+					P = \begin{pmatrix}
+						1&1\cr 
+						-1&1
+					\end{pmatrix},\quad P^{-1} = \begin{pmatrix}
+						1/2 & -1/2\cr 
+						1/2&1/2
+					\end{pmatrix}
+				\] 
+				とおくと,
+				\[	
+					\begin{array}{rl}
+						A^k &= P(P^{-1}AP)^kP^{-1} \cr 
+						&= P\begin{pmatrix} 
+							\lambda_1 & 0 \cr 
+							0 & \lambda_2 
+						\end{pmatrix}^k P^{-1} \cr
+						&= P\begin{pmatrix}
+							\lambda_1^k&0\cr 
+							0&\lambda_2^k
+						\end{pmatrix}P^{-1} \cr 
+						&= \dfrac{1}{2}\begin{pmatrix}
+							\lambda_1^k+\lambda_2^k & -\lambda_1^k+\lambda_2^k\cr 
+							-\lambda_1^k+\lambda_2^k& \lambda_1^k+\lambda_2^k
+						\end{pmatrix} \cr 
+						&= \dfrac{1}{2^{k+1}}\begin{pmatrix} 
+							1+3^k & -1+3^k \cr 
+							-1+3^k & 1+3^k 
 						\end{pmatrix}
-					\] 
-					を用いて,
-					\[
-						A^k = P\begin{pmatrix}
-							\lambda _ 1^k&0\cr 
-							0&\lambda _ 2^k
-						\end{pmatrix}P^{-1} = \dfrac{1}{2}\begin{pmatrix}
-							\lambda _ 1^k+\lambda _ 2^k & -\lambda _ 1^k+\lambda _ 2^k\cr 
-							-\lambda _ 1^k+\lambda _ 2^k& \lambda _ 1^k+\lambda _ 2^k
-						\end{pmatrix}
-					\] 
-					が得られるため,
-					\[
-						A^k\mathbf{v} = \dfrac{1}{2}\begin{pmatrix}
-							a(\lambda _ 1^k+\lambda _ 2^k) + b(-\lambda _ 1^k+\lambda _ 2^k)\cr 
-							a(-\lambda _ 1^k+\lambda _ 2^k) + b(\lambda _ 1^k+\lambda _ 2^k)
-						\end{pmatrix}.
-					\]</li>
-					</ul>
+					\end{array}
+				\] 
+				と計算することができる.
+				</p>
 			</div><!-- / #example -->
 
 		</section>
