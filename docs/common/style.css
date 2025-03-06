@@ -201,7 +201,8 @@ hr {
 }
 
 .wave {
-    text-decoration: underline wavy;
+    text-decoration: underline;
+    text-decoration-style: wavy;
 }
 
 /* mathjax: display math */
