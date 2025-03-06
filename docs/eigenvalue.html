@@ -380,14 +380,14 @@
 			\] 
 			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの複素数倍は全て固有値 $\lambda$ に対応する固有ベクトルとなる.</p>
 			
-			<div class="remark">
+			<div class="remark" id="rem_characteristic_polynomial">
 				<p>正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを<b>特性多項式</b> (<b>characteristic polynomial</b>) もしくは<b>固有多項式</b>という. 
 				方程式 $\det(\lambda I-A)= 0$ のことは<b>固有方程式</b>と呼ぶことがある. さらに, 固有多項式の解を<b>特性根</b>と呼ぶことがある.</p>
 			</div><!-- / #remark -->
 
 			上の結果を定理としてまとめておこう:
 
-			<div class="theorem">
+			<div class="theorem" id="thm_eigenvalue">
 				<p>正方行列 $A$ に対する固有方程式 
 					\[
 						\det(\lambda I-A) = 0
@@ -600,7 +600,7 @@
 				</ul>					
 			</div><!-- / #example -->
 
-			<div class="remark">
+			<div class="remark" id="rem_how_to_find_eigenvector">
 				$A\in\mathbb{R}^{2\times 2}$ が 実数の固有値 $\lambda$ をもつならば, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
 				従って, 固有値 $\lambda$ に対して, $\lambda I-A$ は必ず
 				\[
@@ -741,8 +741,9 @@
 			この操作が行列の<b>対角化</b>と呼ばれるものである.</p>
 			<p>この結果を, 定理としてまとめておく.</p>
 
-			<div class="theorem" data-name="$2$ 次正方行列の対角化">
-				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ を持つとき, 対応する固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列 $P = \begin{pmatrix}\mathbf{v}_1, \mathbf {v}_2\end{pmatrix}$ を用いて
+			<div class="theorem" data-name="$2$ 次正方行列の対角化" id="thm_diagonalization">
+				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ を持つとき, 行列 $A$ は対角化可能である. 
+					具体的には, 対応する固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列 $P = \begin{pmatrix}\mathbf{v}_1, \mathbf {v}_2\end{pmatrix}$ を用いて
 				\[
 					P^{-1}AP = P^{-1}P\begin{pmatrix}
 						\lambda_1&0\cr 
@@ -1017,6 +1018,44 @@
 		<hr>
 
 		<section><h2>練習問題</h2>
+
+			<div class="problem">
+                $2$ つの行列 $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times m}$ に対して, $\lambda\neq0$ が行列 $AB\in\mathbb{R}^{m\times m}$ の固有値ならば, $\lambda$ は $BA\in\mathbb{R}^{n\times n}$ の固有値でもあることを証明せよ.
+            </div><!-- /problem -->
+
+			<div class="problem">
+                <p>行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            -6 & -4 \cr 
+                            8 & 6 
+                        \end{pmatrix}
+                    \]
+                    の固有値を求め, それぞれに対応する固有ベクトルの例を一つずつ挙げよ. また行列 $A$ を対角化せよ.</p>
+            </div>
+
+			<div class="problem">
+                <p>実数 $a$ に対して, 行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            2a & -1 \cr 
+                            4 & 2 
+                        \end{pmatrix}
+                    \]
+                    が異なる $2$ つの実数の固有値を持つような $a$ の条件を求めよ. 
+                    また, この条件が満たされるときに行列 $A$ の固有値を求め, それぞれに対応する固有ベクトルの例を一つずつ挙げ, さらに行列 $A$ を対角化せよ.</p>
+            </div>
+
+			<div class="problem">
+                <p>行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            11 & -24 \cr 
+                            4 & -9 
+                        \end{pmatrix}
+                    \]
+                    に対して, $A^n$ を計算せよ. </p>
+            </div><!-- /problem -->
 
             <a href="exercises.html#section5_answer">解答例</a>
         </section>
