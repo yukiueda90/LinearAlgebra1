@@ -62,7 +62,7 @@
                     \end{pmatrix}
                 \]
                 である. 
-                一方で, <a href="matrix.html#def_identity_matrix">単位行列</a>とは対角成分のみが $1$, それ以外の成分が $0$ である行列である. 
+                一方で, <a href="matrix.html#def_identity_matrix">単位行列</a>とは対角成分のみが $1$, それ以外の成分が $0$ である正方行列である. 
                 従って, 
                 \[
                     \begin{pmatrix} 
@@ -182,7 +182,7 @@
             </div><!-- /problem -->
 
             <p>
-                記号のわかりやすさのため, 
+                わかりやすさのため, 
                 \[
                     B = A^{\operatorname{T}},\quad C = (A^{-1})^{\operatorname{T}}
                 \]
@@ -517,7 +517,7 @@
             \]</p>
 
             <div class="remark">
-                <p>この問題に対しては, 行の入れ替えを用いたり特定の変形を後回しにするなど, 推奨の手順とは異なる変形の方が計算が楽になる: 
+                <p>この問題に対しては, 行の入れ替えを用いたり特定の変形を後回しにするなど, 推奨の手順とは異なる変形の方が計算が楽になる. 例えば,  
                     \[
                         \begin{array}{rll} 
                             &\left(\begin{array}{ccc:c} 
@@ -653,7 +653,7 @@
                     <li><a href="determinant.html#thm_determinant_reduction">$R_{i,j,\lambda}$ に関する不変性</a>,</li>
                     <li><a href="determinant.html#lem_determinant_size_reduction">行列サイズ削減</a></li>
                 </ul>
-                を使うことを推奨する.
+                を使うことを推奨する. 例えば, 
             </p>
             \[
                 \begin{array}{rll}
@@ -777,7 +777,7 @@
                 \]
             </div><!-- /remark -->
 
-            <p>この問題に関しては, 行列の成分に文字が含まれているものの行列サイズ削減を用いて計算した方が楽だろう:
+            <p>この問題に関しては, 行列の成分に文字が含まれているものの行列サイズ削減を用いて計算した方が楽だろう. 例えば,
                 \[
                     \begin{array}{rll} 
                         &\det\begin{pmatrix} 
@@ -858,7 +858,7 @@
             \[
                     \text{行列 $A$ が正則}\iff \det A\neq 0
             \]
-            である. 従って, $c\neq0$ かつ $ae-bd\neq0$ のとき $A$ は正則である. 
+            である. 従って, $c(ae-bd)\neq 0$ のとき, つまり $c\neq0$ かつ $ae-bd\neq0$ のとき $A$ は正則である. 
             </p>
             <p>次に, <a href="determinant.html#thm_Cramer_rule">クラメルの公式</a>を用いて連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{b}$ を解いてみよう:
                 \[
@@ -894,6 +894,7 @@
                         d & 0 & e 
                     \end{pmatrix}} = \dfrac{ac-cd}{c(ae-bd)} = \dfrac{a-d}{ae-bd}.
                 \]
+                行列 $A$ が正則であるという条件から, 各分数の分母は $0$ でないことに注意.
                 このように, 成分に文字が含まれる行列に関する連立 $1$ 次方程式を計算する際に, クラメルの公式が便利なことがある.
             </p>
 
@@ -903,87 +904,117 @@
         <hr>
 
         <section id="section4_answer"><h2>4: 線型結合</h2>
+            
+            <div class="problem">
+                <p>実数 $a$, $b$, $c$, $d$ に対して, 
+                    \[
+                        \mathbf{v}_1 = \begin{pmatrix} 
+                            a \cr 
+                            2 
+                        \end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix} 
+                            1 \cr b 
+                        \end{pmatrix},\quad \mathbf{v} = \begin{pmatrix} 
+                            c \cr 
+                            d 
+                        \end{pmatrix}
+                    \]
+                    とする.
+                </p>
+                <ul>
+                    <li>$2$ つのベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ を線型独立にするような $a$, $b$ の満たす条件を求めよ.</li>
+                    <li>上の条件が満たされるとき, ベクトル $\mathbf{v}$ を $2$ つのベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ の線型結合で表現せよ.</li>
+                </ul>
+            </div>
 
-        <div class="problem">
-            <p>次の連立 $1$ 次方程式を解け: 
+            <p>第 $j$ 列ベクトルが $\mathbf{v}_j$ である行列を $V$ とおく, つまり 
                 \[
-                    \begin{pmatrix}
-                        1 & -4 & 0 & -7 \cr 
-                        1 & -3 & 1 & -5
-                    \end{pmatrix}\begin{pmatrix} 
-                        x_1 \cr 
-                        x_2 \cr 
-                        x_3 \cr 
-                        x_4 
-                    \end{pmatrix} = \begin{pmatrix} 
-                        0 \cr 
-                        0 
+                    V = (\mathbf{v}_1, \mathbf{v}_2) = \begin{pmatrix} 
+                        a & 1\cr 
+                        2 & b 
                     \end{pmatrix}.
                 \]
+                <a href="linear_combination.html#thm_invertible_and_linear_independence">線型独立性と正則性</a>についての性質および<a href="determinant.html#thm_determinant_and_invertible">行列式の性質</a>より 
+                \[
+                    \mathbf{v}_1,\ \mathbf{v}_2\text{ が線型独立} \iff V\text{ が正則} \iff \det V\neq0
+                \]
+                が成立する. 従って, $\det V = ab-2 \neq0$ を満たす $a$, $b$ に対して $\mathbf{v}_1$, $\mathbf{v}_2$ は線型独立である. 
             </p>
-        </div><!-- /problem -->
+            <p>次に, $\mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2$ を満たす $c_1$, $c_2$ を求めるには, 連立 $1$ 次方程式
+                \[
+                    V\begin{pmatrix} 
+                        c_1 \cr 
+                        c_2 
+                    \end{pmatrix} = \mathbf{v}
+                \]
+                を解けば良い. <a href="determinant.html#thm_Cramer_rule">クラメルの公式</a>を用いると 
+                \[
+                    c_1 = \dfrac{\det\begin{pmatrix} 
+                        c & 1 \cr 
+                        d & b 
+                    \end{pmatrix}}{\det V} = \dfrac{bc-d}{ab-2},
+                \]
+                \[
+                    c_2 = \dfrac{\det\begin{pmatrix} 
+                        a & c \cr 
+                        2 & d 
+                    \end{pmatrix}}{\det V} = \dfrac{ad-2c}{ab-2}
+                \]
+                が得られる.
+            </p>
 
-        <p>掃き出し法を考える: 拡大行列に対する行基本変形により
-            \[
-                \left(\begin{array}{cccc:c}
-                    1 & -4 & 0 & -7 & 0 \cr 
-                    1 & -3 & 1 & -5 & 0 
-                \end{array}\right) \longrightarrow \left(\begin{array}{cccc:c}
-                    1 & 0 & 4 & 1 & 0 \cr 
-                    0 & 1 & 1 & 2 & 0 
-                \end{array}\right)
-            \]
-            という行簡約階段形にすることができる. 従って, この行簡約階段形に対応する 
-            \[
-                \left\{\begin{array}{rl} 
-                    x_1 + 4x_3 + x_4 &= 0, \cr 
-                    x_2 + x_3 + 2x_4 &= 0
-                \end{array}\right.
-            \]
-            という式を満たす $x_1$, $x_2$, $x_3$, $x_4$ は全て解となる. </p>
-        <p>解を線型結合の形で表すならば, 上の行簡約階段形において主成分に対応していない $x_3$, $x_4$ をそれぞれ 
-            \[
-                x_3 = s,\qquad x_4 = t
-            \]
-            とおくことを推奨する. 
-            このとき, 
-            \[
-                \left\{\begin{array}{rl} 
-                    x_1 &= -4s-t, \cr 
-                    x_2 &= -s-2t
-                \end{array}\right.
-            \]
-            となるため, 
-            \[
-                \begin{pmatrix} 
-                    x_1 \cr 
-                    x_2 \cr 
-                    x_3 \cr 
-                    x_4 
-                \end{pmatrix} = s\begin{pmatrix} 
-                    -4 \cr 
-                    -1 \cr 
-                    1 \cr 
-                    0 
-                \end{pmatrix} + t\begin{pmatrix} 
-                    -1 \cr 
-                    -2 \cr 
-                    0 \cr 
-                    1 
-                \end{pmatrix}
-            \]
-            という表記を得ることができる.
-        </p>
-            
-        <div class="remark">
-            <p>この問題に対しては, 例えば $x_1=s$, $x_2 = t$ などとおいても線型結合による表記を得ることができる: 
+            <div class="problem">
+                <p>次の連立 $1$ 次方程式を解け: 
+                    \[
+                        \begin{pmatrix}
+                            1 & -4 & 0 & -7 \cr 
+                            1 & -3 & 1 & -5
+                        \end{pmatrix}\begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            0 \cr 
+                            0 
+                        \end{pmatrix}.
+                    \]
+                </p>
+            </div><!-- /problem -->
+
+            <p>まず, 左辺の行列は正方行列ではないので特に正則行列では無い. 
+                加えて, 右辺が $\mathbf{0}$ であることから, <a href="elementary_operation.html#thm_homogeneous_linear_system">斉次連立 $1$ 次方程式の性質</a>より非自明な解が存在する. 
+                このような場合, 線型結合を用いて解を表すことができるのだった. </p>
+            <p>実際に<a href="elementary_operation.html#thm_Gauss_elimination">掃き出し法</a>を用いて計算してみよう. 拡大行列に対する行基本変形により
+                \[
+                    \left(\begin{array}{cccc:c}
+                        1 & -4 & 0 & -7 & 0 \cr 
+                        1 & -3 & 1 & -5 & 0 
+                    \end{array}\right) \longrightarrow \left(\begin{array}{cccc:c}
+                        1 & 0 & 4 & 1 & 0 \cr 
+                        0 & 1 & 1 & 2 & 0 
+                    \end{array}\right)
+                \]
+                という行簡約階段形にすることができる. 従って, この行簡約階段形に対応する 
                 \[
                     \left\{\begin{array}{rl} 
-                        4x_3 + x_4 &= -s, \cr 
-                        x_3 + 2x_4 &= -t. 
-                    \end{array}\right.  
+                        x_1 + 4x_3 + x_4 &= 0, \cr 
+                        x_2 + x_3 + 2x_4 &= 0
+                    \end{array}\right.
                 \]
-                これを解いて $x_3 = -2/7 s + t/7$, $x_4 = s/7-4/7t$ が得られるため, $s/7$ と $t/7$ を改めて $s$, $t$ とおくと 
+                という式を満たす $x_1$, $x_2$, $x_3$, $x_4$ は全て解となる. </p>
+            <p>解を線型結合の形で表すならば, 上の行簡約階段形において主成分に対応するもの<span class="wave">以外</span>, つまり $x_3$, $x_4$ をそれぞれ 
+                \[
+                    x_3 = s,\quad x_4 = t
+                \]
+                とおくことを推奨する. 
+                このとき, 
+                \[
+                    \left\{\begin{array}{rl} 
+                        x_1 &= -4s-t, \cr 
+                        x_2 &= -s-2t
+                    \end{array}\right.
+                \]
+                となるため, 
                 \[
                     \begin{pmatrix} 
                         x_1 \cr 
@@ -991,143 +1022,326 @@
                         x_3 \cr 
                         x_4 
                     \end{pmatrix} = s\begin{pmatrix} 
+                        -4 \cr 
+                        -1 \cr 
                         1 \cr 
-                        0 \cr 
-                        -2 \cr 
-                        1 
+                        0 
                     \end{pmatrix} + t\begin{pmatrix} 
+                        -1 \cr 
+                        -2 \cr 
                         0 \cr 
-                        1 \cr 
-                        1 \cr 
-                        -4 
-                    \end{pmatrix}.
+                        1 
+                    \end{pmatrix}\quad (\text{$s$, $t\in\mathbb{R}$ は任意})
                 \]
-                上と異なる表記が得られるが, 線型結合で表されるベクトル全体は一致するため, こちらも答えとして正しい. </p>
-        </div><!-- /remark -->
+                という線型結合による表記を得ることができる.
+            </p>
+                
+            <div class="remark">
+                <p>この問題に対しては, 例えば $x_1=s$, $x_2 = t$ などとおいても線型結合による表記を得ることができる: 
+                    \[
+                        \left\{\begin{array}{rl} 
+                            4x_3 + x_4 &= -s, \cr 
+                            x_3 + 2x_4 &= -t. 
+                        \end{array}\right.  
+                    \]
+                    これを解いて $x_3 = -2s/7  + t/7$, $x_4 = s/7-4t/7$ が得られるため, $s/7$ と $t/7$ を改めて $\widetilde{s}$, $\widetilde{t}$ とおくと 
+                    \[
+                        \begin{pmatrix} 
+                            x_1 \cr 
+                            x_2 \cr 
+                            x_3 \cr 
+                            x_4 
+                        \end{pmatrix} = \widetilde{s}\begin{pmatrix} 
+                            7 \cr 
+                            0 \cr 
+                            -2 \cr 
+                            1 
+                        \end{pmatrix} + \widetilde{t}\begin{pmatrix} 
+                            0 \cr 
+                            7 \cr 
+                            1 \cr 
+                            -4 
+                        \end{pmatrix}\quad (\text{$\widetilde{s}$, $\widetilde{t}\in\mathbb{R}$ は任意}).
+                    \]
+                    上と異なる表記が得られるが, 線型結合で表されるベクトル全体は一致するため, こちらも答えとして正しい. </p>
+            </div><!-- /remark -->
 
-        <div class="problem">
-            <p>行列 
+        </section>
+
+        <hr>
+
+        <section id="section5-answer"><h2>5: 固有値と固有ベクトル</h2>
+
+            <div class="problem">
+                $2$ つの行列 $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times m}$ に対して, $\lambda\neq0$ が行列 $AB\in\mathbb{R}^{m\times m}$ の固有値ならば, $\lambda$ は $BA\in\mathbb{R}^{n\times n}$ の固有値でもあることを証明せよ.
+            </div><!-- /problem -->
+
+            <p>
+                $\lambda\neq0$ が $AB$ の<a href="eigenvalue.html#def_eigen_pair">固有値</a>であるとき, 
                 \[
-                    A = \begin{pmatrix} 
-                        -6 & -4 \cr 
-                        8 & 6 
+                    AB\mathbf{v} = \lambda \mathbf{v}
+                \]
+                を満たす固有ベクトル $\mathbf{v}\neq\mathbf{0}$ が存在する ($\mathbf{v}\in\mathbb{R}^{m\times 1}$). これに左から $B$ を掛けることで, 
+                \[
+                    BA(B\mathbf{v}) = \lambda (B\mathbf{v})
+                \]
+                となるため, あとは $B\mathbf{v}\neq\mathbf{0}$ を示せば, $\lambda$ が (対応する固有ベクトルが $B\mathbf{v}\in\mathbb{R}^{n\times 1}$ であるような) $BA$ の固有値であることが証明される. 
+            </p>
+            <p>$B\mathbf{v}\neq\mathbf{0}$ であることを証明しよう. 
+                $\lambda\neq0$ であることから
+                \[
+                    AB\mathbf{v} = \lambda\mathbf{v} \neq \mathbf{0}
+                \]
+                であり, つまり $A(B\mathbf{v})\neq\mathbf{0}$ である. 従って, 特に $B\mathbf{v}\neq\mathbf{0}$ である.
+            </p>
+
+
+            <div class="problem">
+                <p>行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            -6 & -4 \cr 
+                            8 & 6 
+                        \end{pmatrix}
+                    \]
+                    の固有値を求め, それぞれに対応する固有ベクトルの例を一つずつ挙げよ. また行列 $A$ を対角化せよ.</p>
+            </div>
+
+            <p>固有値は<a href="eigenvalue.html#rem_characteristic_polynomial">固有方程式</a> 
+                \[  
+                    \begin{array}{rl}   
+                        0 &= \det(\lambda I-A) \cr 
+                        &= \det\begin{pmatrix} 
+                            \lambda+6 & 4 \cr 
+                            -8 & \lambda-6 
+                        \end{pmatrix} \cr 
+                        &= \lambda^2-4 = (\lambda+2)(\lambda-2)
+                    \end{array}
+                \]
+                の解 $\lambda_1 = -2$, $\lambda_2=2$ である (<a href="eigenvalue.html#thm_eigenvalue">参考</a>). 対応する固有ベクトルは 
+                \[
+                    \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
+                        4 & 4 \cr 
+                        -8 & -8 
+                    \end{pmatrix}\mathbf{v}_1,
+                \] 
+                \[
+                    \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
+                        8 & 4 \cr 
+                        -8 & -4 
+                    \end{pmatrix}\mathbf{v}_2
+                \]
+                の解となる $\mathbf{0}$ でないベクトルであり, 例えば 
+                \[
+                    \mathbf{v}_1 = \begin{pmatrix}
+                        1 \cr 
+                        -1
+                    \end{pmatrix}, \qquad \mathbf{v}_2 = \begin{pmatrix} 
+                        1 \cr 
+                        -2 
+                    \end{pmatrix} 
+                \]
+                はそれぞれ対応する固有ベクトルである. 
+                いま, $\lambda_1\neq\lambda_2$ より $A\in\mathbb{R}^{2\times 2}$ は異なる $2$ つの実数の固有値を持つ. 
+                <a href="eigenvalue.html#thm_diagonalization">従って対角化可能であり</a>, 固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列 $P=\begin{pmatrix}\mathbf{v}_1,\mathbf{v}_2\end{pmatrix}$ に対して
+                \[
+                    P^{-1}AP = \begin{pmatrix} 
+                        \lambda_1 & 0 \cr 
+                        0 & \lambda_2 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        -2 & 0 \cr 
+                        0 & 2 
+                    \end{pmatrix}
+                \]     
+                が得られる. 
+            </p>
+
+            <div class="problem">
+                <p>実数 $a$ に対して, 行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            2a & -1 \cr 
+                            4 & 2 
+                        \end{pmatrix}
+                    \]
+                    が異なる $2$ つの実数の固有値を持つような $a$ の条件を求めよ. 
+                    また, この条件が満たされるときに行列 $A$ の固有値を求め, それぞれに対応する固有ベクトルの例を一つずつ挙げ, さらに行列 $A$ を対角化せよ.</p>
+            </div>
+
+            <p>行列 $A$ の固有値は固有方程式
+                \[
+                    \begin{array}{rl} 
+                        0 &= \det(\lambda I-A) \cr 
+                        &= \det\begin{pmatrix} 
+                            \lambda-2a & 1 \cr 
+                            -4 & \lambda-2 
+                        \end{pmatrix} \cr 
+                        &= \lambda^2 - 2(a+1)\lambda + 4(a+1)
+                    \end{array}
+                \]
+                の解である. $2$ 次方程式の解の公式より, この方程式が異なる $2$ つの実数の解を持つ条件は, 
+                \[
+                    (a+1)^2 - 4(a+1) > 0
+                \]
+                であり, これを整理して $a\lt -1$, $3\lt a$ が得られる. また, このとき固有値は 
+                \[
+                    a+1\pm \sqrt{(a+1)^2-4(a+1)}
+                \]
+                である. これらを $\lambda_1$, $\lambda_2$ とおく: 
+                \[
+                    \lambda_1 = a+1-\sqrt{(a+1)(a-3)}, 
+                \]
+                \[
+                    \lambda_2 = a+1-\sqrt{(a+1)(a-3)}.
+                \]
+                </p>
+                <p>
+                このとき, 対応する固有ベクトルはそれぞれ 
+                \[
+                    (\lambda_1 I-A)\mathbf{v}_1=\mathbf{0},\quad (\lambda_2 I-A)\mathbf{v}_2=\mathbf{0}
+                \]
+                を満たす $\mathbf{0}$ でないベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ である. いま, 
+                \[
+                    \lambda_1 I-A = \begin{pmatrix} 
+                        \lambda_1 -2a & 1 \cr 
+                        -4 & \lambda_1 - 2
                     \end{pmatrix}
                 \]
-                の固有値を求め, 対応する固有ベクトルの例を一つずつ挙げよ. また行列 $A$ を対角化せよ.</p>
-        </div>
-
-        <p>固有値は固有方程式 
-            \[
-                0 = \det(\lambda I-A) = \det\begin{pmatrix} 
-                    \lambda+6 & 4 \cr 
-                    -8 & \lambda-6 
-                \end{pmatrix} = \lambda^2-4 = (\lambda+2)(\lambda-2)
-            \]
-            の解 $\lambda_1 = -2$, $\lambda_2=2$ である. 対応する固有ベクトルは 
-            \[
-                \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
-                    4 & 4 \cr 
-                    -8 & -8 
-                \end{pmatrix}\mathbf{v}_1,\qquad \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
-                    8 & 4 \cr 
-                    -8 & -4 
-                \end{pmatrix}\mathbf{v}_2
-            \]
-            の解となる $\mathbf{0}$ でないベクトルであり, 例えば 
-            \[
-                \mathbf{v}_1 = \begin{pmatrix}
-                    1 \cr 
-                    -1
-                \end{pmatrix}, \qquad \mathbf{v}_2 = \begin{pmatrix} 
-                    1 \cr 
-                    -2 
-                \end{pmatrix} 
-            \]
-            はそれぞれ対応する固有ベクトルである. いま, $\lambda_1\neq\lambda_2$ より $A$ は対角化可能であり, $P=\begin{pmatrix}\mathbf{v}_1&\mathbf{v}_2\end{pmatrix}$ に対して
-            \[
-                P^{-1}AP = \begin{pmatrix} 
-                    \lambda_1 & 0 \cr 
-                    0 & \lambda_2 
-                \end{pmatrix} = \begin{pmatrix} 
-                    -2 & 0 \cr 
-                    0 & 2 
-                \end{pmatrix}.
-            \]     
-        </p>
-
-        <div class="problem">
-            <p>行列 
+                であるが, $\lambda_1$ は固有方程式の解なので $\det (\lambda_1 I-A) = 0$ であり, <a href="linear_combination.html#thm_invertible_and_linear_independence">線型独立性と正則性</a>についての性質より, $\lambda_1 I-A$ の $2$ つの行ベクトル 
                 \[
-                    A = \begin{pmatrix} 
-                        11 & -24 \cr 
-                        4 & -9 
+                    (\lambda_1 - 2a, 1),\quad (-4, \lambda_1 - 2)
+                \]
+                は線型独立<span class="wave">ではない</span>. 従って, ある実数 $c$ を用いて 
+                \[
+                    (-4, \lambda_1 - 2) = c(\lambda_1 - 2a, 1)
+                \]
+                と表すことができる. このことから, 例えば 
+                \[
+                    \mathbf{v}_1 = \begin{pmatrix} 
+                        1 \cr 
+                        -\lambda_1 + 2a
+                    \end{pmatrix} = \begin{pmatrix} 
+                        1 \cr 
+                        a-1+\sqrt{(a+1)(a-3)} 
                     \end{pmatrix}
                 \]
-                に対して, $A^n$ を計算せよ. </p>
-        </div><!-- /problem -->
+                とするとこれは $(\lambda_1 I-A)\mathbf{v}_1=\mathbf{0}$ を満たす, つまり固有値 $\lambda_1$ に対応する固有ベクトルである (<a href="eigenvalue.html#rem_how_to_find_eigenvector">参考</a>). 
+                同様に, 例えば 
+                \[
+                    \mathbf{v}_2 = \begin{pmatrix} 
+                        1 \cr 
+                        -\lambda_2 + 2a 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        1 \cr 
+                        a-1+\sqrt{(a+1)(a-3)}
+                    \end{pmatrix}
+                \]
+                は固有値 $\lambda_2$ に対応する固有ベクトルである.
+            </p>
+            <p>最後に, 上に述べた $a$ の条件の下で行列 $A\in\mathbb{R}^{2\times 2}$ は異なる $2$ つの固有値を持つ, 従って対角化可能であり, 第 $j$ 列ベクトルが $\mathbf{v}_j$ である行列 $P$ に対して 
+                \[
+                    P^{-1}AP = \begin{pmatrix} 
+                        \lambda_1 & 0 \cr 
+                        0 & \lambda_2 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        a+1-\sqrt{(a+1)(a-3)} & 0 \cr 
+                        0 & a+1+\sqrt{(a+1)(a-3)}
+                    \end{pmatrix}
+                \]
+                が得られる. 
+            </p>
 
-        <p>行列 $A$ の対角化を用いて計算する. まず, 
-            \[
-                0=\det(\lambda I-A) = (\lambda-11)(\lambda+9)+96 = \lambda^2-2\lambda -3 = (\lambda-3)(\lambda+1)
-            \]
-            を解いて固有値 $\lambda_1=-1$, $\lambda_2=3$ が得られる. 次に, 
-            \[
-                \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
-                    -12 & 24 \cr 
-                    -4 & 8 
-                \end{pmatrix}\mathbf{v}_1, \qquad \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
-                    -8 & 24 \cr 
-                    -4 & 12 
-                \end{pmatrix}\mathbf{v}_2
-            \]
-            を満たす $\mathbf{0}$ でないベクトルが対応する固有値であり, 例えば
-            \[
-                \mathbf{v}_1 = \begin{pmatrix} 
-                    2 \cr 
-                    1
-                \end{pmatrix},\qquad \mathbf{v}_2 = \begin{pmatrix} 
-                    3 \cr 
-                    1 
-                \end{pmatrix}
-            \]
-            である. ここで, $\lambda_1\neq\lambda_2$ なので行列 $A$ は対角化可能であり, $P=\begin{pmatrix}\mathbf{v}_1&\mathbf{v}_2\end{pmatrix}$ とおくと, 
-            \[
-                P = \begin{pmatrix} 
-                    2 & 3 \cr 
-                    1 & 1 
-                \end{pmatrix},\qquad P^{-1} = \begin{pmatrix} 
-                    -1 & 3 \cr 
-                    1 & -2
-                \end{pmatrix},\qquad P^{-1}AP = \begin{pmatrix} 
-                    \lambda_1 & 0 \cr 
-                    0 & \lambda_2 
-                \end{pmatrix} = \begin{pmatrix} 
-                    -1 & 0 \cr 
-                    0 & 3 
-                \end{pmatrix}.
-            \]
-            従って, 
-            \[
-                \begin{array}{rl} 
-                    A^n &= P(P^{-1}AP)(P^{-1}AP)\dots(P^{-1}AP)P^{-1} \cr 
-                    &= P(P^{-1}AP)^nP^{-1} \cr 
-                    &= \begin{pmatrix} 
+            <div class="problem">
+                <p>行列 
+                    \[
+                        A = \begin{pmatrix} 
+                            11 & -24 \cr 
+                            4 & -9 
+                        \end{pmatrix}
+                    \]
+                    に対して, $A^n$ を計算せよ. </p>
+            </div><!-- /problem -->
+
+            <p>行列 $A$ の対角化を用いて計算する. まず, 固有方程式
+                \[
+                    \begin{array}{rl}    
+                        0 &= \det(\lambda I-A) \cr 
+                        &= (\lambda-11)(\lambda+9)+96 \cr 
+                        &= \lambda^2-2\lambda -3 \cr
+                        &= (\lambda-3)(\lambda+1)
+                    \end{array}
+                \]
+                を解いて固有値 $\lambda_1=-1$, $\lambda_2=3$ が得られる. 次に, 
+                \[
+                    \mathbf{0} = (\lambda_1 I-A)\mathbf{v}_1 = \begin{pmatrix} 
+                        -12 & 24 \cr 
+                        -4 & 8 
+                    \end{pmatrix}\mathbf{v}_1,
+                \] 
+                \[  
+                    \mathbf{0} = (\lambda_2 I-A)\mathbf{v}_2 = \begin{pmatrix} 
+                        -8 & 24 \cr 
+                        -4 & 12 
+                    \end{pmatrix}\mathbf{v}_2
+                \]
+                を満たす $\mathbf{0}$ でないベクトル $\mathbf{v}_1$, $\mathbf{v}_2$ が固有値 $\lambda_1$, $\lambda_2$ にそれぞれ対応する固有値であり, 例えば
+                \[
+                    \mathbf{v}_1 = \begin{pmatrix} 
+                        2 \cr 
+                        1
+                    \end{pmatrix},\quad \mathbf{v}_2 = \begin{pmatrix} 
+                        3 \cr 
+                        1 
+                    \end{pmatrix}
+                \]
+                である. ここで, $\lambda_1\neq\lambda_2$ なので行列 $A\in\mathbb{R}^{2\times2}$ は異なる $2$ つの実数の固有値を持つ, 従って対角化可能である. 
+                固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列を $P=\begin{pmatrix}\mathbf{v}_1, \mathbf{v}_2\end{pmatrix}$ とおくと, 
+                \[
+                    P = \begin{pmatrix} 
                         2 & 3 \cr 
                         1 & 1 
-                    \end{pmatrix}\begin{pmatrix} 
-                        (-1)^n & 0 \cr 
-                        0 & 3^n 
-                    \end{pmatrix}\begin{pmatrix} 
+                    \end{pmatrix},\quad P^{-1} = \begin{pmatrix} 
                         -1 & 3 \cr 
-                        1 & -2 
-                    \end{pmatrix} \cr 
-                    &= \begin{pmatrix} 
-                        2(-1)^{n+1}+3^{n+1} & 6(-1)^n-2\cdot 3^{n+1} \cr 
-                        (-1)^{n+1}+3^n & 3(-1)^n - 2\cdot 3^n 
-                    \end{pmatrix}.
-                \end{array}
-            \]
-        </p>
+                        1 & -2
+                    \end{pmatrix},
+                \] 
+                \[
+                    P^{-1}AP = \begin{pmatrix} 
+                        \lambda_1 & 0 \cr 
+                        0 & \lambda_2 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        -1 & 0 \cr 
+                        0 & 3 
+                    \end{pmatrix}
+                \]
+                である. 従って, 
+                \[
+                    \begin{array}{rl} 
+                        A^n &= P(P^{-1}AP)(P^{-1}AP)\dots(P^{-1}AP)P^{-1} \cr 
+                        &= P(P^{-1}AP)^nP^{-1} \cr 
+                        &= P\begin{pmatrix} 
+                            -1 & 0 \cr 
+                            0 & 3 
+                        \end{pmatrix}^nP^{-1} \cr
+                        &= \begin{pmatrix} 
+                            2 & 3 \cr 
+                            1 & 1 
+                        \end{pmatrix}\begin{pmatrix} 
+                            (-1)^n & 0 \cr 
+                            0 & 3^n 
+                        \end{pmatrix}\begin{pmatrix} 
+                            -1 & 3 \cr 
+                            1 & -2 
+                        \end{pmatrix} \cr 
+                        &= \begin{pmatrix} 
+                            2(-1)^{n+1}+3^{n+1} & 6(-1)^n-2\cdot 3^{n+1} \cr 
+                            (-1)^{n+1}+3^n & 3(-1)^n - 2\cdot 3^n 
+                        \end{pmatrix}
+                    \end{array}
+                \]
+                が得られる.
+            </p>
+        </section>
 
     </article></main>
     </div>
