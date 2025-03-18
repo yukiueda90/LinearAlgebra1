@@ -1215,7 +1215,7 @@
                 \[
                     (-4, \lambda_1 - 2) = c(\lambda_1 - 2a, 1)
                 \]
-                と表すことができる. このことから, 例えば 
+                と表すことができる. このことから, 例えば $\lambda_1 I-A$ の第 $1$ 行に注目して (つまり $(\lambda_1 I-A)\mathbf{v}_1$ の第 $1$ 成分が $0$ となるように)
                 \[
                     \mathbf{v}_1 = \begin{pmatrix} 
                         1 \cr 
@@ -1225,8 +1225,28 @@
                         a-1+\sqrt{(a+1)(a-3)} 
                     \end{pmatrix}
                 \]
-                とするとこれは $(\lambda_1 I-A)\mathbf{v}_1=\mathbf{0}$ を満たす, つまり固有値 $\lambda_1$ に対応する固有ベクトルである (<a href="eigenvalue.html#rem_how_to_find_eigenvector">参考</a>). 
-                同様に, 例えば 
+                と定めると, これは 
+                \[
+                    \begin{array}{rl}
+                        (\lambda_1 I-A)\mathbf{v}_1 &= \begin{pmatrix} 
+                            \lambda_1 - 2a & 1 \cr 
+                            -4 & \lambda_1 -2 
+                        \end{pmatrix}\begin{pmatrix} 
+                            1 \cr 
+                            -\lambda_1+2a 
+                        \end{pmatrix} \cr 
+                        &= \begin{pmatrix} 
+                            \lambda_1 - 2a & 1 \cr 
+                            c(\lambda_1 - 2a) & c 
+                        \end{pmatrix}\begin{pmatrix} 
+                            1 \cr 
+                            -\lambda_1+2a 
+                        \end{pmatrix} \cr 
+                        &= \mathbf{0},
+                    \end{array}
+                \]
+                つまり $(\lambda_1 I-A)\mathbf{v}_1=\mathbf{0}$ を満たす. 従ってこの $\mathbf{v}_1$ が固有値 $\lambda_1$ に対応する固有ベクトルである (<a href="eigenvalue.html#rem_how_to_find_eigenvector">参考</a>). 
+                同様に, 例えば $\lambda_2 I-A$ の第 $1$ 行に注目して
                 \[
                     \mathbf{v}_2 = \begin{pmatrix} 
                         1 \cr 
@@ -1236,7 +1256,7 @@
                         a-1+\sqrt{(a+1)(a-3)}
                     \end{pmatrix}
                 \]
-                は固有値 $\lambda_2$ に対応する固有ベクトルである.
+                と定めると, これは $(\lambda_2 I-A)\mathbf{v}_2 = \mathbf{0}$ を満たすので, この $\mathbf{v}_2$ が固有値 $\lambda_2$ に対応する固有ベクトルである.
             </p>
             <p>最後に, 上に述べた $a$ の条件の下で行列 $A\in\mathbb{R}^{2\times 2}$ は異なる $2$ つの固有値を持つ, 従って対角化可能であり, 第 $j$ 列ベクトルが $\mathbf{v}_j$ である行列 $P$ に対して 
                 \[
