@@ -100,7 +100,13 @@
             <div class="definition" data-name="ベクトル">
                 <ul>
                     <li>$1\times n$ 型の行列を<b>行ベクトル</b> (<b>row vector</b>) もしくは<b>横ベクトル</b>という.</li>
+                    <ul>
+                        <li>行列 $A\in\mathbb{R}^{m\times n}$ の第 $i$ 行は $1\times n$ 型の行列, つまり行ベクトルになるが, これを $A$ の<b>第 $i$ 行ベクトル</b>という. </li>
+                    </ul>
                     <li>$m\times 1$ 型の行列を<b>列ベクトル</b> (<b>column vector</b>) もしくは<b>縦ベクトル</b>という.</li>
+                    <ul>
+                        <li>行列 $A\in\mathbb{R}^{m\times n}$ の第 $j$ 列は $m\times 1$ 型の行列, つまり列ベクトルになるが, これを $A$ の<b>第 $j$ 列ベクトル</b>という. </li>
+                    </ul>
                     <li>$1\times 1$ 型の行列は, そのただ $1$ つの成分である実数 (もしくは複素数) と同一視される.</li>
                 </ul>
             </div><!-- /definition-->
@@ -120,8 +126,6 @@
 
             <div class="remark">
                 <p>
-                    $m\times n$ 型行列 $A$ の第 $i$ 行は $1\times n$ 型行列, つまり行ベクトルになる. 
-                    この行ベクトルを行列 $A$ の第 $i$ 行ベクトルという.
                     例えば, 行列
                 </p> 
                 \[
@@ -147,9 +151,8 @@
                         \mathbf{a}_1 \cr \mathbf{a}_2 \cr \vdots \cr \mathbf{a}_m
                     \end{pmatrix}.
                 \] 
-                <p>と表記することがある.</p>
+                <p>と表記することがある. 列ベクトルについても, 同様の表記を用いることがある.</p>
                 <div class="resize" style="width:300px"><img src='./images/matrix_3.png'></div>
-                <p>同様に, 行列 $A$ の第 $j$ 列は列ベクトルであり, これを行列 $A$ の第 $j$ 列ベクトルという.</p>
             </div><!-- /remark -->
 
             <hr>
