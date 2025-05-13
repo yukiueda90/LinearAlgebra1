@@ -30,121 +30,171 @@
     <main role="main"><article id="section2"><h1>2: 行列の基本変形と応用</h1>
         <section id="section2-1"><h2>2.1: 導入</h2>
             <p>例として, 以下の連立$1$次方程式を考える:
-            \[
-                \left\lbrace\begin{array}{rll}
-                    x+2y &= 20, &(1) \cr
-                    3x+4y &= 46. &(2)
-                \end{array}\right.
-            \] 
-            これはベクトルを用いると (<a href="matrix.html#def_matrix_equality">行列の等号</a>より) 以下のように表現することができる:
-            \[
-                \begin{pmatrix} 
-                    x+2y \cr 
-                    3x + 4y 
-                \end{pmatrix} = \begin{pmatrix} 
-                    20 \cr 
-                    46 
-                \end{pmatrix}.
-            \]
-            さらに, 左辺のベクトルは<a href="matrix.html#def_matrix_product">行列積</a>を用いて表すことができるため, 以下の方程式は元の連立 $1$ 次方程式を同じものになる:
-            \[
-                \begin{pmatrix}
-                    1&2\cr 
-                    3&4
-                \end{pmatrix}\begin{pmatrix}
-                    x\cr 
-                    y
-                \end{pmatrix} = \begin{pmatrix}
-                    20\cr 
-                    46
-                \end{pmatrix}.
-            \]
-            このように, 連立 $1$ 次方程式は対応する行列 $A$ と列ベクトル $\mathbf{b}$ を用いて, 「$A\mathbf{x} = \mathbf{b}$ を満たす列ベクトル $\mathbf{x}$ を求めよ」 という問題と同一視することができる.
-            これは行列の基本的な応用の $1$ つである.</p>
-
-            <p>上の連立 $1$ 次方程式は, </p>
-            \[
-                A = \begin{pmatrix}
-                    1&2\cr 
-                    3&4
-                \end{pmatrix},\quad \mathbf{x} = \begin{pmatrix} 
-                    x \cr 
-                    y 
-                \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
-                    20 \cr 
-                    46 
-                \end{pmatrix}
-            \]
-            <p>とすると, $A\mathbf{x}=\mathbf{b}$ と同一視される. ここで, 左辺にある行列 $A$ の逆行列が
-            \[
-                A^{-1}=\begin{pmatrix}
-                    -2&1\cr 
-                    3/2&-1/2
-                \end{pmatrix}
-            \] 
-            であることを用いると,
-            \[
-                \begin{array}{rl}
-                    \mathbf{x} &= I\mathbf{x} \cr 
-                    &= A^{-1}A\mathbf{x} \cr
-                    &= A^{-1}\mathbf{b} \cr 
-                    &= \begin{pmatrix}
-                        -2&1\cr 
-                        3/2&-1/2
-                    \end{pmatrix}\begin{pmatrix} 
-                        20 \cr 
-                        46 
-                    \end{pmatrix} \cr
-                    &= \begin{pmatrix}
-                        6\cr 
-                        7
-                    \end{pmatrix}
-                \end{array}
-            \] 
-            と計算することで, 連立$1$次方程式を解くことができる. 
-            すなわち, 行列 $A$ の逆行列を求めることは, 連立 $1$ 次方程式の解法の一つである.</p>
-
-            <p>一方で, この連立$1$次方程式は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加えることで $(1)$ 式から $y$ の項を消去する, といった操作 (いわゆる<b>変数消去</b>) を用いて解くこともできる. 
-            実際に変数消去を用いて,
-            \[
-                \begin{array}{rl}
-                    &\left\lbrace\begin{array}{rll}
-                        x+2y &= 20, &(1) \cr
-                        3x+4y &= 46. &(2)
-                    \end{array}\right. \cr 
-                    \leadsto & \left\lbrace\begin{array}{rll}
-                        x+2y &= 20, &(1)\cr
-                        x &= 6. &(2)^\prime
+                \[
+                    \left\lbrace\begin{array}{rll}
+                        x+y &= 5, &(1) \cr
+                        2x+3y &= 13. &(2)
                     \end{array}\right.
-                \end{array}
-            \] と変形して, $x=6$ を得ることができるが, 同様の操作は行列と列ベクトルを用いた表記に対しても可能である:
-            \[  
-                \begin{array}{rl}
-                    & \begin{pmatrix}
-                        1&2\cr 
-                        3&4
-                    \end{pmatrix}\begin{pmatrix}
-                        x\cr 
-                        y
-                    \end{pmatrix} = \begin{pmatrix}
-                        20\cr 
-                        46
-                    \end{pmatrix} \cr 
-                    \leadsto & \begin{pmatrix}
-                        1&2\cr 
-                        1&0
-                    \end{pmatrix}\begin{pmatrix}
-                        x\cr 
-                        y
-                    \end{pmatrix} = \begin{pmatrix}
-                        20\cr 
-                        6
+                \] この連立$1$次方程式は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加えることで $(1)$ 式から $y$ の項を消去する, といった操作 (いわゆる<b>変数消去</b>) を用いて解くことができる. 
+                実際に変数消去を用いて,
+                \[
+                    \begin{array}{rl}
+                        &\left\lbrace\begin{array}{rll}
+                            x+y &= 5, &(1) \cr
+                            2x+3y &= 13. &(2)
+                        \end{array}\right. \cr 
+                        \leadsto & \left\lbrace\begin{array}{rll}
+                            x+y &= 5, &(1)\cr
+                            y &= 3. &(2)^\prime = (2) - 2\times (1)
+                        \end{array}\right. \cr 
+                        \leadsto & \left\lbrace\begin{array}{rll}
+                            x &= 2, &(1)^\prime = (1) - (2)^\prime\cr
+                            y &= 3. &(2)^\prime
+                        \end{array}\right.
+                    \end{array}
+                \] と変形して, $x=2$, $y=3$ を得ることができる. 
+            </p>
+            <p>
+                一方で, この連立$1$次方程式はベクトルを用いると (<a href="matrix.html#def_matrix_equality">行列の等号</a>より) 以下のように表現することができる:
+                \[
+                    \begin{pmatrix} 
+                        x+y \cr 
+                        2x + 3y 
+                    \end{pmatrix} = \begin{pmatrix} 
+                        5 \cr 
+                        13 
                     \end{pmatrix}.
-                \end{array}
-            \] 
-            連立 $1$ 次方程式を解く際に用いられるこのような操作は, 行列に対しても, その性質を保ちつつ簡単な形に変形する操作としてしばしば用いられるものである.</p>
-
-            <p>この章では, 行列の<b>基本変形</b>と呼ばれる特定の変形, 及びそこから得られる行列の性質について解説し, またそれらの応用として連立 $1$ 次方程式を解く, すなわち逆行列を計算する手順について紹介する.</p>
+                \]
+                さらに, 左辺のベクトルは<a href="matrix.html#def_matrix_product">行列積</a>を用いて表すことができるため, 以下の方程式は元の連立 $1$ 次方程式を同じものになる:
+                \[
+                    \begin{pmatrix}
+                        1&1\cr 
+                        2&3
+                    \end{pmatrix}\begin{pmatrix}
+                        x\cr 
+                        y
+                    \end{pmatrix} = \begin{pmatrix}
+                        5\cr 
+                        13
+                    \end{pmatrix}.
+                \]
+                ここで, 
+                \[
+                    A = \begin{pmatrix}
+                        1&1\cr 
+                        2&3
+                    \end{pmatrix},\quad \mathbf{x} = \begin{pmatrix} 
+                        x \cr 
+                        y 
+                    \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+                        5 \cr 
+                        13 
+                    \end{pmatrix}
+                \]
+                とすると, 連立 $1$ 次方程式は対応する行列 $A$ と列ベクトル $\mathbf{b}$ を用いて, 「$A\mathbf{x} = \mathbf{b}$ を満たす列ベクトル $\mathbf{x}$ を求めよ」 という問題と同一視することができる (この同一視に基づき, 「$A\mathbf{x} = \mathbf{b}$ を満たす列ベクトル $\mathbf{x}$ を求めよ」という問題も連立 $1$ 次方程式と呼ぶことにする).
+                これは行列の基本的な応用の $1$ つである.
+            </p>
+            <p>
+                いま, 
+                \[
+                    B = \begin{pmatrix} 
+                        3 & -1 \cr 
+                        -2 & 1 
+                    \end{pmatrix}
+                \]
+                とすると, $AB = I$ を確かめることができるため $B=A^{-1}$ である (<a href="rem_invertible_matrix">参照</a>). つまり, 行列 $A$ の逆行列が存在する. 
+                これを用いると, 
+                \[
+                    \begin{array}{rl}
+                        \mathbf{x} &= I\mathbf{x} \cr 
+                        &= A^{-1}A\mathbf{x} \cr
+                        &= A^{-1}\mathbf{b} \cr 
+                        &= \begin{pmatrix}
+                            3&-1\cr 
+                            -2&1
+                        \end{pmatrix}\begin{pmatrix} 
+                            5 \cr 
+                            13 
+                        \end{pmatrix} \cr
+                        &= \begin{pmatrix}
+                            2\cr 
+                            3
+                        \end{pmatrix}
+                    \end{array}
+                \] 
+                と計算することで, 連立$1$次方程式を解くことができる. 
+                すなわち, 行列 $A$ の逆行列を求めることは, 連立 $1$ 次方程式の解法の一つである.
+            </p>
+            <p>ところで, 変数消去を用いた計算の際は, 例えば $(2)$ 式に $(1)$ 式の $-2$ 倍を加える, といった操作により
+                \[
+                    \begin{array}{rl}
+                        &\left\lbrace\begin{array}{rll}
+                            x+y &= 5, &(1) \cr
+                            2x+3y &= 13. &(2)
+                        \end{array}\right. \cr 
+                        \leadsto & \left\lbrace\begin{array}{rll}
+                            x+y &= 5, &(1)\cr
+                            y &= 3. &(2)^\prime = (2) - 2\times (1)
+                        \end{array}\right. \cr 
+                        \leadsto & \left\lbrace\begin{array}{rll}
+                            x &= 2, &(1)^\prime = (1) - (2)^\prime\cr
+                            y &= 3. &(2)^\prime
+                        \end{array}\right.
+                    \end{array}
+                \]
+                と式変形していたが, 行列を用いて表現した際にも, 第 $2$ 行に第 $1$ 行の $-2$ 倍を加える, といった操作で同じ変形を表すことができる:
+                \[  
+                    \begin{array}{rl}
+                        & \begin{pmatrix}
+                            1&1\cr 
+                            2&3
+                        \end{pmatrix}\begin{pmatrix}
+                            x\cr 
+                            y
+                        \end{pmatrix} = \begin{pmatrix}
+                            5\cr 
+                            13
+                        \end{pmatrix} \cr 
+                        \leadsto & \begin{pmatrix}
+                            1&2\cr 
+                            0&1
+                        \end{pmatrix}\begin{pmatrix}
+                            x\cr 
+                            y
+                        \end{pmatrix} = \begin{pmatrix}
+                            5\cr 
+                            3
+                        \end{pmatrix} \cr 
+                        \leadsto & \begin{pmatrix} 
+                            1&0 \cr 
+                            0&1 
+                        \end{pmatrix}\begin{pmatrix} 
+                            x\cr 
+                            y 
+                        \end{pmatrix} = \begin{pmatrix} 
+                            2\cr 
+                            3 
+                        \end{pmatrix}.
+                    \end{array}
+                \] 
+                行列に対するこのような操作は<b>基本変形</b>と呼ばれるものであり, この例のように連立 $1$ 次方程式の解の計算 (このような計算方法を<b>ガウスの消去法</b>という) など, 様々な応用を持つものである.
+            </p>
+            <p>
+                行列 $A$ が
+                \[
+                    A = \begin{pmatrix} 
+                        1&1 \cr 
+                        2&3 
+                    \end{pmatrix}
+                \] という形をしている時は, 上で見たように基本変形により単位行列に変形することができる (これにより $A\mathbf{x} = \mathbf{b}$ の解 $\mathbf{x}$ はただ一つに定まる). 
+                ただし, どのような行列でも基本変形で単位行列に変形できるわけではない.
+                実は, ある行列を基本変形で単位行列に変形できることと, その行列が正則である (つまり逆行列を持つ) こととは同値である. 
+            </p>
+            <p>
+                この章では, 行列の<b>基本変形</b>と呼ばれる特定の変形, 及びこれに関連する<b>基本行列</b>の性質について解説し, またそれらの応用として連立 $1$ 次方程式を解く, すなわち逆行列を計算する手順について紹介する.
+                コンピュータシミュレーションなどへの応用の際には, 巨大な行列を用いて表される連立 $1$ 次方程式を考えることになるが, ここでは手計算が可能な程度の規模, つまりサイズの小さい行列のみ具体例として取り上げることにする. 
+            </p>
+            
         </section>
 
         <section id="section2-2"><h2>2.2: 基本変形</h2>
@@ -908,7 +958,7 @@
             \[
                 \begin{array}{rl} 
                     A^{-1} &= R_{1,2,-2}Q_{2,-1/2}R_{2,1,-3} \cr 
-                    &= Q_{2,-1/2}R_{1,2,1}R_{2,1,-3}I
+                    &= R_{1,2,-2}Q_{2,-1/2}R_{2,1,-3}I
                 \end{array}
             \] 
             ということに他ならない. 言い換えると, 次が成立する:</p>
