@@ -131,6 +131,14 @@
                 が成立するとき, $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ は<b>線形独立</b> (<b>linearly independent</b>) であるという.
             </div><!-- / #definition -->
 
+            <div class="remark">
+                この定義より, ベクトル $\mathbf{v}_1$, $\mathbf{v}_2$, $\dots$, $\mathbf{v}_n$ が線型独立<span class="wave">でない</span>ならば, 
+                \[
+                    c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \dots + c_n\mathbf{v}_n = \mathbf{0}
+                \]
+                を満たすような, $c_1 = c_2 = \dots = c_n = 0$ でない $c_1$, $c_2$, $\dots$, $c_n$ の選び方が存在する. 
+            </div><!-- /remark -->
+
             <div class="example">
                 <p>\[
                     \mathbf{v}_1 = \begin{pmatrix} 
@@ -288,6 +296,38 @@
             <p>このことは, 線型独立性を用いて以下のように説明することができる:</p> 
             <p>異なる $2$ つの列 (もしくは行) が等しいならば, 行列 $A$ の各列ベクトル (もしくは各行ベクトル) が線形独立ではないため, $A$ は正則ではない. 
             従って $\det A =0$ である.</p>
+
+            <div class="theorem" data-name="斉次連立 $1$ 次方程式の解" id="thm_homogeneous_linear_system_proof">
+                <p>$n$ 次正方行列 $A$ についての斉次連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{0}$ について, 以下が成立する: </p>
+                \[
+                    A \text{が正則} \iff \text{非自明な解は存在しない.}
+                \]
+            </div><!-- /theorem -->
+            <div class="proof">
+                <ul>
+                    <li>$(\implies)$ 行列 $A$ が正則ならば $A^{-1}$ が存在するので,
+                        \[
+                            \mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{0} = \mathbf{0},
+                        \]
+                        つまり $\mathbf{x}=\mathbf{0}$ 以外の解は存在しない. 
+                    </li>
+                    <li>$(\impliedby)$ 対偶を示す:&emsp; $A\in\mathbb{R}^{n\times n}$ が正則でないとき, $A\mathbf{x}=\mathbf{0}$ に $\mathbf{x}=\mathbf{0}$ 以外の解が存在することを示せば良い.<br>
+                    <p>行列 $A$ の第 $i$ 列ベクトルを $\mathbf{a}_i$ とおき, $\mathbf{x}$ の第 $j$ 行を $x_j$ とおく.
+                        このとき, 
+                        \[
+                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n
+                        \]
+                        である. いま, $A$ は正則でないので (<a href="#thm_invertible_and_linear_independence">線型独立性と正則性</a>の関係より) $n$ 個のベクトル $\mathbf{a}_1$, $\mathbf{a}_2$, $\dots$, $\mathbf{a}_n$ は線型独立ではない. 
+                        従って, (<a href="#def_linear_independent">線型独立の定義</a>より)
+                        \[
+                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n = \mathbf{0}
+                        \]
+                        を満たすような, $x_1 = x_2 = \dots = x_n =0$ でない $\mathbf{x}$ が存在する. 
+                    </p></li>
+                </ul>
+                    
+            </div><!-- / #proof -->
+
 
             <div class="theorem">
                 <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
