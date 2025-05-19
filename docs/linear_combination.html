@@ -195,22 +195,55 @@
                 \[
                     V\mathbf{c} = \mathbf{0} \iff \mathbf{c} = \mathbf{0}
                 \]
-                ここで<a href="elementary_operation.html#thm_homogeneous_linear_system">斉次 $1$ 次方程式系の議論</a>を思い出すと, 上が成立することは正方行列 $V$ が正則行列であることと同値である. 実際, $V^{-1}$ が存在するならば
+                ここで<a href="elementary_operation.html#thm_homogeneous_linear_system">斉次 $1$ 次方程式系の議論</a>を思い出すと, 上が成立することは正方行列 $V$ が正則行列であることと同値である. 
+                実際, $V$ が正則ならば, $V^{-1}$ が存在するので
                 \[
                     V\mathbf{c} = \mathbf{0}\implies \mathbf{c} = V^{-1}V\mathbf{c} = V^{-1}\mathbf{0} = \mathbf{0}
                 \]
-                である. 一方で $V$ が正則でない場合は, ある条件を満たす全ての $\mathbf{c}$ が $V\mathbf{c}=\mathbf{0}$ の解となってしまうのだった. 
-                そのような $\mathbf{c}$ には, $\mathbf{0}$ でないものも含まれるため, 正方行列 $V$ が正則でないならば $V$ の各列ベクトルは線形独立ではない.
+                である ($V\mathbf{c}=\mathbf{0}\impliedby \mathbf{c}=\mathbf{0}$ は明らか). 
+                一方で, $V\mathbf{c}=\mathbf{0}\iff \mathbf{c}=\mathbf{0}$ であるときに $V$ が正則であることの証明はまだしていなかったので, 線型独立性を定義したこのタイミングで改めて解説する.
             </p>
-            <p>以上の事実を, 後から参照しやすいようにまとめておく:</p>
 
-            <div class="theorem" data-name="線型独立性と正則性" id="thm_invertible_and_linear_independence">
+            <div class="theorem" data-name="正則性の必要十分条件" id="thm_invertible_and_linear_independence">
                 $n$ 次正方行列 $A = \begin{pmatrix}\mathbf{a}_1&\mathbf{a}_2&\dots&\mathbf{a}_n\end{pmatrix}$ に対して,
                 \[
-                    A\text{ が正則} \iff \mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立}
+                    \begin{array}{rl} 
+                        A\text{ が正則} &\iff \operatorname{rank}A = n \cr
+                        &\iff \det A \neq 0 \cr
+                        &\iff \mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立} \cr 
+                        &\iff A\mathbf{x}=\mathbf{0} \text{ の非自明な解は存在しない}
+                    \end{array}
                 \]
                 が成立する, ここで各 $\mathbf{a}_j$ は $A$ の第 $j$ 列ベクトルである.
             </div><!-- / #theorem -->
+
+            <div class="proof">
+                <ul>
+                    <li>$A\text{ が正則} \iff \operatorname{rank}A = n \iff \det A\neq0$ は既に証明済み.</li>
+                    <li>$(A\text{ が正則}\implies A\mathbf{x}=\mathbf{0} \text{ の非自明な解は存在しない})$ 
+                        行列 $A$ が正則ならば $A^{-1}$ が存在するので,
+                        \[
+                            A\mathbf{x}=0\implies \mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{0} = \mathbf{0},
+                        \]
+                        つまり $\mathbf{x}=\mathbf{0}$ 以外の解は存在しない. 
+                    </li>
+                    <li>$(A\mathbf{x}=\mathbf{0} \text{ の非自明な解は存在しない} \iff \mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立})$
+                        列ベクトル $\mathbf{x}$ の第 $j$ 成分を $x_j$ とおくと, 
+                        \[
+                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n
+                        \] となるので, これと $\mathbf{x}=\mathbf{0}$ が同値であることは, $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}$ が線型独立であることを意味する. 
+                    </li>
+                    <li>$(\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立} \implies \operatorname{rank}A = n)$
+                        行列 $A$ の列基本変形により現れ得るすべての列ベクトルは,
+                        \[
+                            c_1\mathbf{a}_1 + c_2\mathbf{a}_2 + \dots + c_n\mathbf{a}_n
+                        \]
+                        という線型結合で表すことができる, ただし, 列基本変形では $c_1=c_2=\dots=c_n=0$ とすることはできない. 
+                        従って $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}$ が線型独立ならば, 正方行列 $A$ に対する列基本変形で $\mathbf{0}$ となる列は現れない. 
+                        これは $A^{\operatorname{T}}$ に対する行基本変形で得られる行簡約階段形は, $\mathbf{0}$ という行ベクトルを持たない (主成分の個数が $n$ である) こと同値であり, 従って $\operatorname{rank} A = \operatorname{rank}A^{\operatorname{T}} = n$ である.
+                    </li>
+                </ul>
+            </div><!-- /proof -->
 
             <div class="remark">
                 <p>$\det A^{\operatorname{T}} = \det A$ であることから, 以下も成立する:</p>
@@ -297,38 +330,6 @@
             <p>異なる $2$ つの列 (もしくは行) が等しいならば, 行列 $A$ の各列ベクトル (もしくは各行ベクトル) が線形独立ではないため, $A$ は正則ではない. 
             従って $\det A =0$ である.</p>
 
-            <div class="theorem" data-name="斉次連立 $1$ 次方程式の解" id="thm_homogeneous_linear_system_proof">
-                <p>$n$ 次正方行列 $A$ についての斉次連立 $1$ 次方程式 $A\mathbf{x}=\mathbf{0}$ について, 以下が成立する: </p>
-                \[
-                    A \text{が正則} \iff \text{非自明な解は存在しない.}
-                \]
-            </div><!-- /theorem -->
-            <div class="proof">
-                <ul>
-                    <li>$(\implies)$ 行列 $A$ が正則ならば $A^{-1}$ が存在するので,
-                        \[
-                            \mathbf{x} = A^{-1}A\mathbf{x} = A^{-1}\mathbf{0} = \mathbf{0},
-                        \]
-                        つまり $\mathbf{x}=\mathbf{0}$ 以外の解は存在しない. 
-                    </li>
-                    <li>$(\impliedby)$ 対偶を示す:&emsp; $A\in\mathbb{R}^{n\times n}$ が正則でないとき, $A\mathbf{x}=\mathbf{0}$ に $\mathbf{x}=\mathbf{0}$ 以外の解が存在することを示せば良い.<br>
-                    <p>行列 $A$ の第 $i$ 列ベクトルを $\mathbf{a}_i$ とおき, $\mathbf{x}$ の第 $j$ 行を $x_j$ とおく.
-                        このとき, 
-                        \[
-                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n
-                        \]
-                        である. いま, $A$ は正則でないので (<a href="#thm_invertible_and_linear_independence">線型独立性と正則性</a>の関係より) $n$ 個のベクトル $\mathbf{a}_1$, $\mathbf{a}_2$, $\dots$, $\mathbf{a}_n$ は線型独立ではない. 
-                        従って, (<a href="#def_linear_independent">線型独立の定義</a>より)
-                        \[
-                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n = \mathbf{0}
-                        \]
-                        を満たすような, $x_1 = x_2 = \dots = x_n =0$ でない $\mathbf{x}$ が存在する. 
-                    </p></li>
-                </ul>
-                    
-            </div><!-- / #proof -->
-
-
             <div class="theorem">
                 <p>$A$ を $n$ 次正方行列とする. このとき, 以下が成立する:
                 \[
@@ -336,41 +337,21 @@
                 \]</p>
             </div><!-- / #theorem -->
             
-            <p>このことは, 線型独立性を用いて以下のように説明することができる:</p> 
-            <p>$\operatorname{rank}A = n$, すなわち正方行列 $A$ がフルランクであることは, 行基本変形のみ (もしくは列基本変形のみ) で行列 $A$ を単位行列にすることができることを意味しているのだった. 
-                行基本変形は
-                <ul>
-                    <li>第 $i$ 行と第 $j$ 行を入れ替える.</li>
-                    <li>第 $i$ 行に $0$ でない数を掛ける.</li>
-                    <li>第 $i$ 行に第 $j$ 行のスカラー倍を加える.</li>
-                </ul>
-                という操作の組み合わせであったが, これは行列 $A$ の各第 $i$ 行ベクトル $\mathbf{a}_i$ を 
+            <p>このことは, 行列 $A$ の 各行ベクトル (もしくは列ベクトル) $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{1\times n}$ が線型独立であることと同値である. 
+            </p>
+            <p>実際, 行列 $A$ の階数は行列 $A$ に対する行基本変形により得られる行簡約階段形の主成分の個数と一致するのだった. 
+                仮に行列 $A$ の行ベクトルが線型独立では無く, 例えば 
                 \[
-                    c_1\mathbf{a}_1 + c_2\mathbf{a}_2 + \dots + c_n\mathbf{a}_n
+                    \mathbf{a}_n = c_1\mathbf{a}_1 + c_2\mathbf{a}_2 + \dots + c_{n-1}\mathbf{a}_{n-1}
                 \]
-                に取り替える操作とみなすことができる, ただし 
-                \[
-                    c_1 = c_2 = \dots = c_n = 0
-                \] 
-                とすることは, 行基本変形では認められない.
-                このことから, 
-                \[
-                    \begin{array}{l}
-                        &\text{$A$ が正則} \cr
-                        \iff &\mathbf{a}_1,\ \mathbf{a}_2, \ \dots, \ \mathbf{a}_n\text{ が線型独立}\cr 
-                        \iff & \left(c_1\mathbf{a}_1 + c_2\mathbf{a}_2 + \dots + c_n\mathbf{a}_n = \mathbf{0} \iff c_1 = c_2 = \dots c_n = 0\right)\cr
-                        \iff & \text{行列 $A$ に対する行基本変形では, どの行も $\mathbf{0}$ にできない} \cr 
-                        \iff &\operatorname{rank}A = n
-                    \end{array}
-                \] 
-                が得られる.
+                などと表すことができるならば, 行列 $A$ に対して, 第 $n$ 行に第 $i$ 行の $-c_i$ 倍を加える, という行基本変形を $i=1,2,\dots, n-1$ について行うことで成分が $0$ である行が得られる (つまり主成分の個数を減らすことができる). 
+            </p>
+            <p>このように, 行列 $A$ の行ベクトルの $k$ 個までが線型独立ならば, $n-k$ 個の行ついては行基本変形により成分をすべて $0$ にすることができる. 
+                このことは, 行列 $A$ の階数は行列 $A$ の線型独立である行ベクトル (もしくは列ベクトル) の個数と一致する, と説明することができる.  
             </p>
 
-            <p>
-                逆に, $m\times n$ 型行列 $A$ の階数が $m$ よりも小さくなるなら, $A$ の行ベクトルのいくつかは行基本変形で $\mathbf{0}$ となってしまう, すなわち他の行の線型結合で表すことができる, ということを意味している.
-                $m\times n$ 型行列 $A$ の階数が $n$ より小さい場合は, 列ベクトルに対して同様のことが言える.
-            </p>
 
+            
             <div class="example">
                 \[
                     A = \begin{pmatrix} 
