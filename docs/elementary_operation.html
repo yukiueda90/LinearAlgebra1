@@ -860,14 +860,14 @@
                 <div class="resize" style="width: 300px"><img src='./images/reduced_row_echelon.png'></div>
             </div><!-- /example -->
 
-            <div class="remark">
+            <div class="remark" id="rem_row_reduction_procedure2">
                 <p>行列 $A$ に対して, 行基本変形により得られる行簡約階段形はただ一つに定まり, 行基本変形の順序には依存しない.
                     具体的な計算手順としては, <a href="#rem_row_reduction_procedure">正則行列を単位行列に変形する手順</a>と同様の手順を推奨する. 
                     具体的には, $i = 1, 2, \dots, n$ の順に,</p>
                 <ul>
                     <li>必要ならば第 $i$ 行とそれ以降の行の入れ替えを行い, ① と ② が満たされるようにする,</li>
                     <li>第 $i$ 行を第 $i$ 行の主成分 ($\neq0$) で割ることで, ③ が満たされるようにする,</li>
-                    <li>行基本変形により, 第 $i$ 列を主成分を除いて全て $0$ にする (④ が満たされるようにする)</li>
+                    <li>行基本変形により, 第 $i$ 行の主成分が含まれる列を, 主成分を除いて全て $0$ にする (④ が満たされるようにする)</li>
                 </ul>
                 <p>という手順で計算することを推奨する.</p>    
             </div><!-- / #remark -->
