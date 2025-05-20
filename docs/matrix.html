@@ -646,7 +646,7 @@
 
         <section id="section1-3"><h2>1.3: 正方行列など</h2>
 
-            <p>ここでは, 特定の性質を満たす行列の名称と, その性質を紹介する.</p>
+            <p>ここでは, 特定の性質を満たす行列の名称や表記と, その性質を紹介する.</p>
 
             <div class="definition" data-name="零行列">
                 <p>全ての成分が $0$ である行列を<b>零行列</b> (<b>zero matrix</b>) といい, $O$ と表記する.</p>
@@ -847,118 +847,6 @@
 
             <div class="example">
                 \[
-                    A=\begin{pmatrix}
-                        1&2&3\cr 
-                        4&5&6\cr 
-                        7&8&9
-                    \end{pmatrix}, \quad 
-                    B=\begin{pmatrix}
-                        2&3\cr
-                        4&5\cr
-                        6&7
-                    \end{pmatrix}.
-                \]
-                <ul>
-                    <li>例えば, 行列 $A$ を, $2$ 行目と $3$ 行目の間, 及び $2$ 列目と $3$ 列目の間で区切り, これに合わせて $B$ を $2$ 行目と $3$ 行目の間で区切ることを考える:
-                        \[
-                            A=\left(\begin{array}{cc:c}
-                                1&2&3\cr 
-                                4&5&6\cr
-                                \hdashline 
-                                7&8&9
-                            \end{array}\right) = \begin{pmatrix}
-                                A_{11}&A_{12}\cr 
-                                A_{21}&A_{22}
-                            \end{pmatrix},
-                        \] 
-                        \[
-                            B=\begin{pmatrix}
-                                2&3\cr
-                                4&5\cr
-                                \hdashline 
-                                6&7
-                            \end{pmatrix} = \begin{pmatrix}
-                                B_{11}\cr 
-                                B_{21}
-                            \end{pmatrix}.
-                        \]
-                    </li>
-                    <ul>
-                        <li>この区分けを用いた場合, 形式的に $A$ は $2\times2$ 型, $B$ は $2\times1$ 型と思うことで行列積 $AB$ を計算できる.</li>
-                    </ul>
-                    <li>このとき, 
-                        \[
-                            AB = \begin{pmatrix}
-                                A_{11}B_{11}+A_{12}B_{21}\cr 
-                                A_{21}B_{11}+A_{22}B_{21}
-                            \end{pmatrix}
-                        \]\[ = \begin{pmatrix}
-                                28&34\cr 
-                                64&79\cr
-                                \hdashline 
-                                100&124
-                            \end{pmatrix}
-                        \] 
-                        と表現することができる.</li> 
-                        <ul>
-                            <li>実際に計算してみると,
-                            \[
-                                A_{11}B_{11} = \begin{pmatrix}
-                                    10&13\cr 
-                                    28&37
-                                \end{pmatrix},
-                            \]  
-                            \[
-                                A_{12}B_{21} = \begin{pmatrix}
-                                    18&21\cr 
-                                    36&42
-                                \end{pmatrix},
-                            \]
-                            \[
-                                A_{21}B_{11} = \begin{pmatrix}
-                                    46&61
-                                \end{pmatrix},
-                            \]
-                            \[
-                                A_{22}B_{21} = \begin{pmatrix}
-                                    54&63
-                                \end{pmatrix}
-                            \] 
-                            となる.</li>
-                        </ul>
-                    <!-- <li>異なる区分けを用いても同じ結果が得られる. 例えば $A$ の区分けとして先ほどと同じものを考え, 
-                        $B = \left(\begin{array}{c:c}
-                            2&3\cr 
-                            4&5\cr
-                            \hdashline 
-                            6&7
-                        \end{array}\right) = \begin{pmatrix}
-                            B_{11}&B_{12}\cr 
-                            B_{21}&B_{22}
-                        \end{pmatrix}$ と思った場合も, 形式的に $2\times 2$ 型行列同士の行列積と思って
-                        \[
-                            AB = \begin{pmatrix}
-                                A_{11}B_{11}+A_{12}B_{21}&A_{11}B_{12}+A_{12}B_{22}\cr 
-                                A_{21}B_{11}+A_{22}B_{21}&A_{21}B_{12}+A_{22}B_{22}
-                            \end{pmatrix} = \left(\begin{array}{c:c}
-                                28&34\cr 
-                                64&79\cr
-                                \hdashline 
-                                100&124
-                            \end{array}\right)
-                        \] とみなすことができる.</li>
-                    <li>一方で, 例えば $B = \left(\begin{array}{c:c}
-                            2&3\cr 
-                            4&5\cr 
-                            6&7
-                        \end{array}\right) = (B_ {11}, B_ {12})$ と区切ってしまうと, $2\times 2$ 型の行列と列ベクトルとの行列積は定義されないため, この区分けに基づく行列積の計算はできない.</li> -->
-                </ul>
-            </div><!-- /example -->
-
-            <p>区分けによる表記は, 単純な計算テクニックとしてはあまり有用ではない. しかしながら, 行列の区分けの一部が零行列や単位行列となる場合に, この表記を用いることがある:</p>
-
-            <div class="example">
-                \[
                     A = \begin{pmatrix}
                         2&0&0\cr 
                         0&2&0\cr 
@@ -971,39 +859,96 @@
                     \end{pmatrix}.
                 \]
                 <ul>
-                    <li>行列 $A$ に対して, $A=\left(\begin{array}{cc:c}
+                    <li>行列 $A$ に対して, 例えば $A=\left(\begin{array}{cc:c}
                             2&0&0 \cr 
                             0&2&0 \cr 
                             \hdashline 
                             1&2&3
                         \end{array}\right) = \begin{pmatrix}
-                            2I&O\cr 
-                            A^\prime & 3
-                        \end{pmatrix}$ という区分けを考える, ここで $A'=(1,2)$. </li>
+                            2I&\mathbf{0}\cr 
+                            \mathbf{a} & 3
+                        \end{pmatrix}$ という区分けを考える, ただし $\mathbf{a}=(1,2)$. </li>
                     <li>対応して, ${\boldsymbol{x}} = \begin{pmatrix}
                             x_ 1\cr 
                             x_ 2\cr
                             \hdashline 
                             x_ 3
+                        \end{pmatrix} = \begin{pmatrix} 
+                            \widehat{\mathbf{x}} \cr 
+                            x_3 
                         \end{pmatrix}$ という区分けを考える.</li>
                     <li>このとき, 
                         \[
-                            A\mathbf{x} = \begin{pmatrix}
-                                2I\begin{pmatrix}
-                                    x_1\cr 
-                                    x_2
-                                \end{pmatrix} + Ox_3\cr 
-                                A^\prime\begin{pmatrix}
-                                    x_1\cr 
-                                    x_2
-                                \end{pmatrix}+3x_3
-                            \end{pmatrix}
-                        \]\[\qquad = \begin{pmatrix}
-                                2x_1\cr 
-                                2x_2\cr 
-                                x _ 1+2x _ 2+3x _ 3
-                            \end{pmatrix}.
+                            \begin{array}{rl}
+                                A\mathbf{x} &= \begin{pmatrix}
+                                    2I & \mathbf{0} \cr 
+                                    \mathbf{a} & 3 
+                                \end{pmatrix} \begin{pmatrix} 
+                                    \widehat{\mathbf{x}} \cr 
+                                    x_3 
+                                \end{pmatrix} \cr 
+                                &= \begin{pmatrix} 
+                                    2I\widehat{\mathbf{x}} + \mathbf{0}x_3 \cr 
+                                    \mathbf{a}\widehat{\mathbf{x}} + 3x_3 
+                                \end{pmatrix} \cr 
+                                &= \begin{pmatrix} 
+                                    2\widehat{x} \cr 
+                                    (x_1+2x_2) + 3x_3
+                                \end{pmatrix} \cr 
+                                &= \left(\begin{array}{c}
+                                    2x_1 \cr 
+                                    2x_2 \cr 
+                                    \hdashline 
+                                    x_1+2x_2+3x_3
+                                \end{array}\right)
+                            \end{array}
                         \]</li>
+                    のように行列積を計算することができる.
+                </ul>
+            </div><!-- /example -->
+            <div class="example">
+                \[
+                    A = \begin{pmatrix}
+                        a_{11}&a_{12}\cr 
+                        a_{21}&a_{22}\cr 
+                    \end{pmatrix},\quad 
+                    \mathbf{x} = \begin{pmatrix}
+                        x\cr 
+                        y
+                    \end{pmatrix}.
+                \]
+                <ul>
+                    <li>行列 $A$ の第 $j$ 列を $\mathbf{a}_j$ とすると, $A=\left(\begin{array}{c:c}
+                            \mathbf{a}_1 & \mathbf{a}_2
+                        \end{array}\right)$ という区分けが得られる. </li>
+                    <li>このとき, 
+                        \[  
+                            \begin{array}{rl} 
+                                A\mathbf{x} &= (\mathbf{a}_1, \mathbf{a}_2)\begin{pmatrix}
+                                    x \cr 
+                                    y    
+                                \end{pmatrix} \cr 
+                                &= \mathbf{a}_1x + \mathbf{a}_2y 
+                            \end{array}
+                        \]
+                        という表記が得られる. 実際, 
+                        \[  
+                            \begin{array}{rl}
+                                \mathbf{a}_1x + \mathbf{a}_2y &= \begin{pmatrix} 
+                                    a_{11} \cr 
+                                    a_{21} 
+                                \end{pmatrix}x + \begin{pmatrix} 
+                                    a_{12} \cr 
+                                    a_{22} 
+                                \end{pmatrix}y \cr 
+                                &= \begin{pmatrix} 
+                                    a_{11}x + a_{12}y \cr 
+                                    a_{21}x + a_{22}y 
+                                \end{pmatrix}
+                            \end{array}
+                        \]
+                        であり, 区分けを用いず $A\mathbf{x}$ を計算したときと同じ結果が得られることを確認できる.
+                    </li>
                 </ul>
             </div><!-- /example -->
 
@@ -1111,14 +1056,14 @@
                     <li>行列 $AB$ と $(B^{-1}A^{-1})$ について, 行列積の結合則より 
                         \[
                             \begin{array}{rl}
-                                (AB)(B^{-1}A^{-1}) &= ABB^{-1}A^{-1} \cr 
+                                (AB)(B^{-1}A^{-1}) &= A(BB^{-1})A^{-1} \cr 
                                 &= AIA^{-1} \cr 
                                 &= AA^{-1}=I,
                             \end{array}
                         \]
                         \[
                             \begin{array}{rl}
-                                (B^{-1}A^{-1})(AB) &= B^{-1}A^{-1}AB \cr
+                                (B^{-1}A^{-1})(AB) &= B^{-1}(A^{-1}A)B \cr
                                 &= B^{-1}IB \cr
                                 &= B^{-1}B=I.
                             \end{array}
@@ -1152,6 +1097,32 @@
                 </ul>
             </div><!-- /example -->
 
+        </section>
+
+        <hr>
+
+        <section><h2>まとめ</h2> 
+            行列とは何かを説明し, 行列の演算や操作 (和, 差, スカラー倍, 行列積, 転置など) について紹介した. 
+            また, 行列演算および操作の性質と, いくつかの特別な行列について紹介した. 
+            特に, 行列の演算については, 実数 (複素数) の演算と同様の性質が成り立つ: 例えば実数に対して
+            \[
+                \begin{array}{c} 
+                    a+b = b+a,\quad (ab)c = a(bc),\cr 
+                    a\times 0 = 0\times a = 0,\quad a\times 1 = 1\times a = a, \cr 
+                    a^{-1} \text{ が存在するならば } a\times a^{-1} = a^{-1}\times a = 1
+                \end{array}
+            \]
+            が成り立つが, 行列に対しても同様に 
+            \[
+                \begin{array}{c} 
+                    A+B = B+A, \quad (AB)C = A(BC), \cr 
+                    AO = OA = O,\quad AI = IA = A, \cr 
+                    A^{-1} \text{ が存在するならば } AA^{-1} = A^{-1}A = I
+                \end{array}
+            \]
+            が成立することを紹介した. ただし, 行列の場合は, 型が適切でなければ行列の和や積は定義できないこと, 行列積の交換はできないこと (一般には $AB\neq BA$ であること), 転置のような行列特有の操作があることなどに注意が必要である. 
+            また, 実数 $a$ の逆数 $a^{-1}$ が存在する必要十分条件は $a\neq0$ であるが, 正方行列 $A$ に対し逆行列 $A^{-1}$ が存在する (つまり $A$ が正則である) 必要十分条件についてはまだ紹介していない. 
+            逆行列が存在する必要十分条件, および与えられた行列に対する逆行列の計算方法について説明することは, この資料全体を通じての大きなテーマの一つであり, 以降複数の章において言及する. 
         </section>
 
         <hr>
