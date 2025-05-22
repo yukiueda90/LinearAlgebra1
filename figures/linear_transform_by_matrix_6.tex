@@ -1,0 +1,48 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+\begin{tikzpicture}[baseline]
+    \begin{axis}[
+name=plot1,
+scale=0.8,xmin=-0.15,xmax=2.05,ymin=-0.15,ymax=4.05,
+legend style={at={(axis cs: 1,0)}, anchor=south east},
+unit vector ratio = {1,1},
+axis lines = middle,
+xlabel = {$x$}, ylabel = {$y$}, % axis labels
+]
+\draw[line width = 3,->,>=stealth,color=gray] (axis cs:0,0) -- (axis cs:1.,0.);
+\draw[line width = 3,->,>=stealth,color=gray] (axis cs:0,0) -- (axis cs:0.,1.);
+\draw[ultra thick,->,>=stealth] (axis cs:0,0) -- (axis cs:1,3);
+\draw[ultra thick,->,>=stealth] (axis cs:0,0) -- (axis cs:2,4);
+\draw[ultra thick,densely dashed] (axis cs:1,3) -- (axis cs:2,4);
+\draw[ultra thick,densely dashed,color=gray] (axis cs:1,0) -- (axis cs:0,1);
+
+\end{axis} 
+% \end{tikzpicture}
+%     \begin{tikzpicture}[baseline]
+\begin{axis}[
+at={($(plot1.east)+(.5cm,0)$)},anchor=west,
+scale=0.8,xmin=-0.15,xmax=2.05,ymin=-0.15,ymax=4.05,
+legend style={at={(axis cs: 1,0)}, anchor=south east},
+unit vector ratio = {1,1},
+axis lines = middle,
+xlabel = {$x$}, ylabel = {$y$}, % axis labels
+]
+
+\draw[line width = 3,->,>=stealth,color=gray] (axis cs:0,0) -- (axis cs:1.,0.);
+\draw[line width = 3,->,>=stealth,color=gray] (axis cs:0,0) -- (axis cs:0.,1.);
+\draw[ultra thick,->,>=stealth] (axis cs:0,0) -- (axis cs:1,2);
+\draw[ultra thick,->,>=stealth] (axis cs:0,0) -- (axis cs:2,4);
+\draw[ultra thick,densely dashed,color=gray] (axis cs:1,0) -- (axis cs:0,1);
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
