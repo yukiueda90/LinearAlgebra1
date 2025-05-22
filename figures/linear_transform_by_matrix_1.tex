@@ -1,0 +1,28 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+\begin{tikzpicture}[baseline]
+\begin{axis}[
+scale=0.6,xmin=-0.1,xmax=1.48,ymin=-0.1,ymax=1.48,
+legend style={at={(axis cs: 1,0)}, anchor=south east},
+unit vector ratio = {1,1},
+axis lines = middle,
+xlabel = {$x$}, ylabel = {$y$}, % axis labels
+]
+\draw[line width = 3,->,>=stealth,color=gray] (axis cs:0,0) -- (axis cs:1.25,1.);
+\draw[ultra thick,->,>=stealth] (axis cs:0,0) -- (axis cs:1,0.5);
+\node at (axis cs: 1,0.35) {$\mathbf{v}$};
+\node at (axis cs: 1.25,1.15) {$A\mathbf{v}$};
+%\addplot[black,mark=none]gnuplot{y=x};
+%\addplot[black,mark=none]gnuplot{"data_bubble60h.txt" index 432};
+%\addplot[magenta,mark=none]gnuplot{"data_bubble60zeta.txt" index 432};
+%\legend{bubble height $h$, liquid height $\zeta$}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usefonttheme{professionalfonts}
+\usepackage{luatexja}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+\usepackage{colortbl,array,xcolor}
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+
+\begin{document}
+\begin{tikzpicture}
+    \definecolor{tab_red}{HTML}{d62728}
+    \definecolor{tab_blue}{HTML}{1f77b4}
+    \definecolor{tab_green}{HTML}{2ca02c}
+    \definecolor{tab_brown}{HTML}{8c564b}
+    %\draw[help lines] (0,0) grid (10,3);
+
+    \path[fill=tab_blue!30] (3.40,0.35) rectangle (3.75,1.70);
+    \path[fill=tab_blue!30] (4.50,0.35) rectangle (4.85,1.70);
+    \draw[color=tab_brown, very thick] (3.35,1.80) -- (3.35,1.25) -- (4.40,1.25) -- (4.40,0.80) -- (5.80,0.80);
+    \draw[color=tab_red, very thick] (3.58, 1.53) circle[radius=0.2];
+    \draw[color=tab_red, very thick] (4.68, 1.03) circle[radius=0.2];
+    \node[anchor=west] (matrix) at (3,1.0) {
+        $\begin{pmatrix} 
+            1 & 2 & 0 & 2/5 \cr 
+            0 & 0 & 1 & 6/5 \cr 
+            0 & 0 & 0 & 0 
+        \end{pmatrix}$
+    };
+    \node[anchor=west] at (3.2, 0.02) {\scriptsize ①, ②: 階段状の区切りよりも左下は全て $0$.};
+    \node[anchor=west] at (3.2, -0.37) {\scriptsize ③: 主成分 (区切りの段差にあたる箇所) が全て $1$.};
+    \node[anchor=west] at (3.2, -0.72) {\scriptsize ④: 主成分の上下は全て $0$.};
+    
+\end{tikzpicture}
+\end{document}

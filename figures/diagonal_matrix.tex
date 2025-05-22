@@ -1,0 +1,35 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usefonttheme{professionalfonts}
+\usepackage{luatexja}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+\usepackage{colortbl,array,xcolor}
+\usepackage{amsmath,amsfonts}
+
+\begin{document}
+\begin{tikzpicture}
+    \definecolor{tab_red}{HTML}{d62728}
+    \definecolor{tab_blue}{HTML}{1f77b4}
+    \definecolor{tab_green}{HTML}{2ca02c}
+    %\draw[help lines] (0,0) grid (4,3);
+    \path[fill=tab_red!30] (0.35,1.70) -- (0.35,2.00) --  (0.8,2.00) -- (3.60,0.30) -- (3.60,0.00) -- (3.15,0.00) -- cycle;
+    
+
+    \node (matrix) at (2,1) {
+        $\begin{pmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \cr 
+            a_{21} & a_{22} & \dots & a_{2n} \cr
+            \vdots & \vdots & \ddots & \vdots \cr 
+            a_{n1} & a_{n2} & \dots & a_{nn}
+        \end{pmatrix}$
+    };
+    \node at (0.7, 2.3) {
+        対角成分
+    };
+\end{tikzpicture}
+\end{document}

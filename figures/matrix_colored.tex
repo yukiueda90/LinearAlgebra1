@@ -1,0 +1,32 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usefonttheme{professionalfonts}
+\usepackage{luatexja}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+\usepackage{colortbl,array,xcolor}
+\usepackage{amsmath,amsfonts}
+
+\begin{document}
+\begin{tikzpicture}
+    %\draw[help lines] (0,0) grid (8,4);
+    \node (row1) at (1.0,2.25) {
+        第 $1$ 行 
+    };
+    \node (row2) at (1.0,1.75) {
+        第 $2$ 行 
+    };
+    \draw[thick,-stealth] (1.7,2.25) -- (2.3,2.25);
+    \draw[thick,-stealth] (1.7,1.75) -- (2.3,1.75);
+    \node (matrix) at (3.5,2) {
+        $\left(\begin{array}{ccc}
+            \rowcolor{red!30} a_{11} & a_{12} \cr 
+            a_{21} & a_{22}
+        \end{array}\right)$
+    };
+\end{tikzpicture}
+\end{document}
