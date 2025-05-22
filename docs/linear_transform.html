@@ -49,13 +49,8 @@
 
             <div class="remark">
                 <p>特に, 任意のベクトルを $\mathbf{0}$ に移す変換は線形変換である. 
-                    このような線形変換を<b>零写像</b>という.
+                    このような線形変換を<b>零写像</b>という. 
                 </p>
-                <p>線形変換 $f$ が零写像でないならば
-                \[
-                    f(\mathbf{v}) = \mathbf{0} \iff \mathbf{v} = \mathbf{0}
-                \]
-                が成立する.</p>
             </div><!-- /remark -->
 
             <div class="example">
@@ -99,10 +94,10 @@
                 \[
                     f(\mathbf{v}) = \begin{pmatrix}f(\mathbf{e}_1), f(\mathbf{e}_2), \dots, f(\mathbf{e}_m)\end{pmatrix}\mathbf{v} = A\mathbf{v}
                 \] 
-                が得られるのである. このように, ベクトルをベクトルに移す線形変換は行列と同一視することができる. この行列 $A$ を<b>表現行列</b>という.</p>
+                が得られるのである. このように, ベクトルをベクトルに移す線形変換は行列と同一視することができる. 線形変換と同一視される行列 $A$ を<b>表現行列</b>という.</p>
 
             <div class="remark">
-                <p>上では標準基底を用いた場合のみ言及している. 
+                <p>一般には, 表現行列は<b>基底</b>を指定した際に定まるものであるが, 上では標準基底を用いた場合のみ考えている. 
                     異なる<b>基底</b>を用いた場合には, 同じ線形変換 $f$ に対する表現行列であっても, 標準基底を用いた場合と異なるものになるが, ここでは深入りしない. </p>
             </div><!-- /remark -->
 
@@ -124,29 +119,16 @@
                 また, $f$ の表現行列を $A$, $g$ の表現行列を $B$ とおくと, $h=f\circ g$ の表現行列は $AB$ となる.</p>
             <p>最後に<b>逆変換</b>を紹介する. 線形変換 $f$ の表現行列は (標準基底を用いた場合) 
             \[
-                A = \begin{pmatrix}f(\mathbf{e}_1), f(\mathbf{e}_2), \dots, f(\mathbf{e}_m)\end{pmatrix}
+                A = \begin{pmatrix}f(\mathbf{e}_1), f(\mathbf{e}_2), \dots, f(\mathbf{e}_m)\end{pmatrix} \in \mathbb{R}^{n\times m}
             \]
-            と表すことができるが, ここで $\mathbf{e}_1$, $\mathbf{e}_2$, $\dots$, $\mathbf{e}_m$ は<a href="linear_combination.html#def_linear_independent">線型独立</a>なので 
-            \[
-                c_1\mathbf{e}_1 + c_2\mathbf{e}_2 + \dots + c_m\mathbf{e}_m = \mathbf{0} \iff c_1=c_2=\dots=c_m = 0
-            \]
-            が成立する. ここで線形変換 $f$ が零写像でないとすると,
-            \[
-                \begin{array}{rl}
-                    c_1f(\mathbf{e}_1) + c_2f(\mathbf{e}_2) + \dots + c_mf(\mathbf{e}_m) = \mathbf{0} &\iff f(c_1\mathbf{e}_1 + c_2\mathbf{e}_2 + \dots + c_m\mathbf{e}_m) = \mathbf{0} \cr
-                    &\iff c_1\mathbf{e}_1 + c_2\mathbf{e}_2 + \dots + c_m\mathbf{e}_m = \mathbf{0} \cr
-                    &\iff c_1=c_2=\dots=c_m=0
-                \end{array}
-            \]
-            となるため, $f(\mathbf{e}_1)$, $f(\mathbf{e}_2)$, $\dots$, $f(\mathbf{e}_m)$ も線型独立である. 
-            従って, もしも $n=m$ ならば正方行列 $A$ は (<a href="linear_combination.html#thm_invertible_and_linear_independence">この定理</a>より) 正則になる.
-            そのため, $g(\mathbf{v}) = A^{-1}\mathbf{v}$ という線形変換は, 
+            と表すことができ, このとき $f(\mathbf{v}) = A\mathbf{v}$ となるのだった. 
+            もしもこの表現行列 $A$ が正則ならば, $g(\mathbf{v}) = A^{-1}\mathbf{v}$ という線形変換は, 
             \[
                 f(g(\mathbf{v})) = \mathbf{v},\quad g(f(\mathbf{v})) = \mathbf{v}
             \]
-            を満たす. このような線形変換 $g$ を $f$ の逆変換という. 上の構成から, $f$ があるベクトルを同じサイズのベクトルに移す, 零写像でない線形変換であれば, 必ず逆変換が存在する. 
+            を満たす. この性質を満たす線形変換 $g$ を $f$ の逆変換という. 逆変換を持つ線形変換 (つまり表現行列が正則である線形変換) は<b>可逆</b>であるという.
             </p>
-
+        
         </section>
 
         <hr>
@@ -159,15 +141,36 @@
             <p>さて, $xy$ 平面上の図形は $\mathbb{R}^2$ の部分集合として記述することが可能である.
                 特に, 図形に対する線形変換を考える際には, しばしば以下のような図形を用いる:
                 \[
-                    \Delta^n = \left\{(x_1,\dots, x_n)\in\mathbb{R}^n \mid x_1,\dots,x_n>0,\ \displaystyle\sum_{i=1}^nx_i < 1\right\}.
+                    \Delta^n = \left\{(x_1,\dots, x_n)\in\mathbb{R}^n \mid x_1,\dots,x_n \gt 0,\ \displaystyle\sum_{i=1}^nx_i \lt 1\right\}.
                 \]
-                $n=2$ の場合は, $\Delta^2$ は $xy$ 平面上の $3$ つの直線 $x=0$, $y=0$, $x+y=1$ で囲まれる部分であり, つまり 
-                \[
-                    P_0 = (0,0),\quad P_1 = (1,0),\quad P_2=(0,1)
-                \]
-                を頂点とする直角 $2$ 等辺三角形の内部となる. このような図形 $\Delta^n\subset\mathbb{R}^n$ を<b>標準単体</b> (<b>standard simplex</b>), <b>単位単体</b> (<b>unit simplex</b>) もしくは単に<b>単体</b> (<b>simplex</b>) という.
+                このような図形 $\Delta^n\subset\mathbb{R}^n$ を<b>標準単体</b> (<b>standard simplex</b>) もしくは <b>単位単体</b> (<b>unit simplex</b>) という.
             </p>
+
+            <div class="example">
+                <p>$n=2$ の場合は, $\Delta^2$ は $xy$ 平面上の $3$ つの直線 $x=0$, $y=0$, $x+y=1$ で囲まれる部分であり, つまり 
+                    \[
+                        \mathbf{0} = \begin{pmatrix} 
+                            0 \cr 
+                            0 
+                        \end{pmatrix},\quad \mathbf{e}_1 = \begin{pmatrix} 
+                            1 \cr 
+                            0
+                        \end{pmatrix},\quad \mathbf{e}_2 = \begin{pmatrix} 
+                            0 \cr 
+                            1
+                        \end{pmatrix}
+                    \]
+                    を頂点とする直角 $2$ 等辺三角形の内部となる. また, 
+                    \[
+                        \Delta^2 = \left\{c_1\mathbf{e}_1 + c_2\mathbf{e}_2\in\mathbb{R}^2 \mid c_1, c_2\gt 0,\ c_1+c_2\lt 1\right\}
+                    \]
+                    と表すことができる.
+                </p>
+            </div><!-- /example -->
             
+            <p>次に, このような図形に対する変換の一例として, <b>アフィン変換</b>を紹介する.
+            </p>
+
             <div class="definition" data-name="アフィン変換">
                 ベクトル $\mathbf{x}\in\mathbb{R}^n$ に対して, 行列 $A\in\mathbb{R}^{n\times n}$ とベクトル $\mathbf{b}\in\mathbb{R}^n$ を用いて
                 \[
@@ -176,13 +179,16 @@
                 と表される写像 $f$ を<b>アフィン変換</b> (<b>affine transform</b>) という.
             </div><!-- /definition -->
             <p>
-                アフィン変換は $xy$ 平面上のベクトル $\mathbf{x}$ を, やはり $xy$ 平面上のベクトル $f(\mathbf{x})$ に移す写像である.
-                そこで, ある図形を表す集合 $K\subset\mathbb{R}^2$ について, $\mathbf{x}\in K$ を アフィン変換により移したものを考えてみる:
+                簡単のため, $n=2$ の場合を考える. 
+                ある図形を表す集合 $K\subset\mathbb{R}^2$ について, $\mathbf{x}\in K$ を アフィン変換により移したものを考えてみる:
                 \[
                     K' = \{f(\mathbf{x})\in\mathbb{R}^2 \mid \mathbf{x}\in K\}
                 \]
-                この $K'$ も $xy$ 平面上の図形を表しているとみなせるため, これによりアフィン変換は『図形を図形に移す』とみなすことにする.
-                このとき, 以下の変形は全てアフィン変換により表現することができる. 
+                この $K'$ も $xy$ 平面上の図形を表しているとみなせるため, これによりアフィン変換は『図形を図形に移す』変換であるとみなすことができる.
+            </p>
+
+            <p>
+                例えば, 以下の変形は全てアフィン変換により表現することができる. 
                 <ul>
                     <li>回転: 
                         \[
@@ -253,7 +259,7 @@
                         \]
                     </li>
                 </ul>
-                単体 $\Delta^2$ をアフィン変換により変形したものを以下に図示する: それぞれ点線で描かれた三角形が変形前の単体を表しており, 実線で描かれたものが変形後の図形である.
+                標準単体 $\Delta^2$ をアフィン変換により変形したものを以下に図示する: それぞれ点線で描かれた三角形が変形前の単体を表しており, 実線で描かれたものが変形後の図形である.
             </p>
             
             <div class="resize"><img src='./images/affine_rotation.png'></div>
@@ -314,6 +320,65 @@
                 このように, アフィン変換は行列の形で表現することができ, 従ってアフィン変換の合成は, 対応する行列の積を計算することにより表現することができる.
                 画像処理などに用いられる複雑な変形であっても, それがアフィン変換の合成により表すことができるならば, 行列の計算に帰着させることができるのである.
             </p>
+        </section>
+
+        <section id="AppendixA-3"><h2>A.3: 正則行列の図形的解釈</h2>
+        <p>簡単のため, 上で紹介したアフィン変換から並行移動を除いた
+            \[
+                f(\mathbf{x}) = A\mathbf{x} \qquad (\mathbf{x}\in\mathbb{R}^n,\ A\in\mathbb{R}^{n\times n})
+            \]
+            を考えてみよう. これは『図形を図形に写す』と解釈することができるのだった. 以降, 線形変換 $f$ と行列 $A$ とを同一視し, 『行列 $A$ により図形を図形に移す』などと表現することにする.
+        </p>
+
+        <div class="example">
+            <p>標準単体 $\Delta^2$ を線形変換 $f$ で移した図形は, $f$ の線形性に注意すると
+                \[
+                    \left\{c_1f(\mathbf{e}_1) + c_2f(\mathbf{e}_2)\in\mathbb{R}^2 \mid c_1,c_2\gt 0,\ c_1+c_2\lt 1\right\}
+                \]
+                と表される. これは, 
+                \[
+                    \mathbf{0},\quad f(\mathbf{e}_1),\quad f(\mathbf{e}_2)
+                \]
+                を頂点とする三角形の内部となる. 
+            </p>
+        </div><!-- /example -->
+
+        <p>ここで, 行列 $A$ が正則であるか否かにより, 『図形を図形に移す』操作にどのような違いがあるかを考えてみよう. 
+            標準基底を用いることで, 
+            \[
+                A = (f(\mathbf{e}_1), f(\mathbf{e}_2), \dots, f(\mathbf{e}_n))
+            \]
+            と表すことができるが, ここで正方行列 $A$ が正則であることは, $f(\mathbf{e}_1)$, $f(\mathbf{e}_2)$, $\dots$, $f(\mathbf{e}_m)$ が<a href="linear_combination.html#def_linear_independent">線型独立</a>であることと同値である (<a href="linear_combination.html#thm_invertible_and_linear_independence">正則性の必要十分条件</a>). 
+            例えば, $n=2$ の場合を考えると, 
+            \[
+                f(\mathbf{e}_1) = cf(\mathbf{e}_2)
+            \]
+            となっていれば (つまりベクトル $f(\mathbf{e}_1)$ と $f(\mathbf{e}_2)$ が同じ向きを持つならば) $f(\mathbf{e}_1), f(\mathbf{e}_2)$ は線型独立<span class='wave'>ではない</span>.
+            このとき, 
+            \[
+                \mathbf{0},\quad f(\mathbf{e}_1),\quad f(\mathbf{e}_2)
+            \]
+            の $3$ 点をつなぐと線分となってしまい, 三角形にならない. 
+            直感的には, 標準単体のような図形を移した時に &quot;潰してしまう&quot; 行列は正則ではない. 
+            逆に, 図形を "潰さない" 行列は正則行列である. 
+        </p>
+
+        <div class="example">
+            <p>\[
+                    A = \begin{pmatrix} 
+                        1 & 2 \cr 
+                        3 & 4 
+                    \end{pmatrix},\quad B = \begin{pmatrix} 
+                        1 & 2 \cr 
+                        2 & 4 
+                    \end{pmatrix}.
+                \]
+                いま, 行列 $A$ は正則であるが, 行列 $B$ は正則ではない. 
+                実際に, 標準基底 $\mathbf{e}_1$, $\mathbf{e}_2$ を (つまり 標準単体 $\Delta^2$ を) 行列 $A$, $B$ で移したものを以下に図示する:
+            </p>
+
+        </div><!-- /example -->
+
         </section>
         
     </article></main>
