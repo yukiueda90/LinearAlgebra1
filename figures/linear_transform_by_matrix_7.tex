@@ -1,0 +1,43 @@
+% !TEX TS-program = pdfLaTeX+shellescape
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[class=beamer,tikz]{standalone}
+\setbeamertemplate{navigation symbols}{} % For delete the navigation symbols
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+\begin{tikzpicture}[baseline]
+    \begin{axis}[
+name=plot1,
+scale=0.8,xmin=-3.05,xmax=3.05,ymin=-5.45,ymax=5.45,
+legend style={at={(axis cs: 1,0)}, anchor=south east},
+unit vector ratio = {1,1},
+axis lines = middle,
+xlabel = {$x$}, ylabel = {$y$}, % axis labels
+]
+\draw[line width=3, color=gray] (0,0) circle [radius=1.];
+\addplot+[ultra thick, mark=none, samples = 100,domain = 0:360, color=black]
+   ({cos(x)+2*sin(x)},{3*cos(x)+4*sin(x)});
+
+\end{axis} 
+% \end{tikzpicture}
+%     \begin{tikzpicture}[baseline]
+\begin{axis}[
+at={($(plot1.east)+(.5cm,0)$)},anchor=west,
+scale=0.8,xmin=-3.05,xmax=3.05,ymin=-5.45,ymax=5.45,
+legend style={at={(axis cs: 1,0)}, anchor=south east},
+unit vector ratio = {1,1},
+axis lines = middle,
+xlabel = {$x$}, ylabel = {$y$}, % axis labels
+]
+\draw[line width=3, color=gray] (0,0) circle [radius=1.];
+\addplot+[ultra thick, mark=none, samples = 50,domain = 0:360, color=black]
+   ({cos(x)+2*sin(x)},{2*cos(x)+4*sin(x)});
+
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
