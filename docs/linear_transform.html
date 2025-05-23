@@ -97,8 +97,8 @@
                 が得られるのである. このように, ベクトルをベクトルに移す線形変換は行列と同一視することができる. 線形変換と同一視される行列 $A$ を<b>表現行列</b>という.</p>
 
             <div class="remark">
-                <p>一般には, 表現行列は<b>基底</b>を指定した際に定まるものであるが, 上では標準基底を用いた場合のみ考えている. 
-                    異なる<b>基底</b>を用いた場合には, 同じ線形変換 $f$ に対する表現行列であっても, 標準基底を用いた場合と異なるものになるが, ここでは深入りしない. </p>
+                <p>一般には, 表現行列は各ベクトル空間に指定した<b>基底</b>に応じて定まるものであるが, 上では標準基底を用いた場合のみ考えている. 
+                    異なる<b>基底</b>を用いた場合には, 同じ線形変換 $f$ に対する表現行列であっても異なるものになるが, ここでは深入りしない. </p>
             </div><!-- /remark -->
 
             <hr>
@@ -343,6 +343,19 @@
             </p>
         </div><!-- /example -->
 
+        <div class="example">
+            <p>$n$ 次元球体の内部は
+                \[
+                    \left\{x_1\mathbf{e}_1 + x_2\mathbf{e}_2 + \dots + x_n\mathbf{e}_n \in\mathbb{R}^n \mid \displaystyle\sum_{i=1}^n x_i^2 \lt 1\right\}
+                \]
+                と表され, これを線形変換 $f$ で移した図形は 
+                \[
+                    \left\{x_1f(\mathbf{e}_1) + x_2f(\mathbf{e}_2) + \dots + x_nf(\mathbf{e}_n)\in \mathbb{R}^n \mid \displaystyle\sum_{i=1}^n x_i^2 \lt 1\right\}
+                \]
+                となる. 
+            </p>
+        </div><!-- /example -->
+
         <p>ここで, 行列 $A$ が正則であるか否かにより, 『図形を図形に移す』操作にどのような違いがあるかを考えてみよう. 
             標準基底を用いることで, 
             \[
@@ -354,13 +367,19 @@
                 f(\mathbf{e}_1) = cf(\mathbf{e}_2)
             \]
             となっていれば (つまりベクトル $f(\mathbf{e}_1)$ と $f(\mathbf{e}_2)$ が同じ向きを持つならば) $f(\mathbf{e}_1), f(\mathbf{e}_2)$ は線型独立<span class='wave'>ではない</span>.
-            このとき, 
+            このとき, 標準単体 $\Delta^2$ を移した図形は, 
             \[
                 \mathbf{0},\quad f(\mathbf{e}_1),\quad f(\mathbf{e}_2)
             \]
             の $3$ 点をつなぐと線分となってしまい, 三角形にならない. 
             直感的には, 標準単体のような図形を移した時に &quot;潰してしまう&quot; 行列は正則ではない. 
             逆に, 図形を "潰さない" 行列は正則行列である. 
+        </p>
+
+        <hr>
+
+        <p>
+            上の説明に基づき, 正方行列に対する <a href="linear_combination.html#thm_invertible_and_linear_independence">正則性の必要十分条件</a> に対する図形的な解釈を (数学的に厳密なものではないが) 解説する.
         </p>
 
         <div class="example">
@@ -376,7 +395,103 @@
                 いま, 行列 $A$ は正則であるが, 行列 $B$ は正則ではない. 
                 実際に, 標準基底 $\mathbf{e}_1$, $\mathbf{e}_2$ を (つまり 標準単体 $\Delta^2$ を) 行列 $A$, $B$ で移したものを以下に図示する:
             </p>
+            <div class="resize"><img src='./images/linear_transform_by_matrix_6-1.png'></div>
+            <p>行列 $A$ による線形変換で標準基底を移したベクトルが線型独立でない場合, この線形変換は図形を &quot;潰してしまう&quot; ことになり, 変形前の図形の情報が失われてしまう (元の図形を復元することができなくなってしまう). 
+                これは, 線形変換が可逆ではない (逆行列が存在しない) ことを意味しており,
+                \[
+                    A \text{ が正則} \iff A\text{ の列ベクトルが線型独立}
+                \]
+                に対応している. 
+            </p>
+        </div><!-- /example -->
 
+        <div class="example">
+            <p>いま, 標準単体 $\Delta^2$ を行列 
+                \[
+                    A = \begin{pmatrix} 
+                        a & b \cr 
+                        c & d 
+                    \end{pmatrix}
+                \] 
+                で移した図形は, 
+                \[
+                    \mathbf{0},\quad \mathbf{a} = \begin{pmatrix} 
+                        a \cr 
+                        c 
+                    \end{pmatrix},\quad \mathbf{b} = \begin{pmatrix} 
+                        b \cr 
+                        d 
+                    \end{pmatrix}
+                \]
+                を頂点とする三角形となる. 
+                標準単体 $\Delta^2$ の面積は $1/2$ だが, この三角形の面積は (幾何ベクトル $\vec{a}$, $\vec{b}$ と列ベクトル $\mathbf{a}$, $\mathbf{b}$ を同一視して表記すると)
+                \[
+                    \begin{array}{rl} 
+                        \dfrac{1}{2}\sqrt{|\mathbf{a}|^2|\mathbf{b}|^2 - (\mathbf{a}\cdot\mathbf{b})^2} &= \dfrac{1}{2}\sqrt{(a^2+c^2)(b^2+d^2) - (ab+cd)^2} \cr 
+                        &= \dfrac{1}{2}|ad-bc|
+                    \end{array}
+                \]
+                となり, つまり標準単体の面積の $|\det A|$ 倍である. 
+                もしも $\det A=0$ ならば, 標準単体を行列 $A$ で移した図形の面積は $0$ であり, これは $A$ による線形変換は図形を潰してしまうことを意味している. 
+                このことは, 
+                \[
+                    A\text{ が正則} \iff \det A\neq 0
+                \]
+                に対応している. 
+            </p>
+        </div><!-- /example -->
+
+        <div class="example">
+            <p>上と同じ行列で, 円盤 
+                \[
+                    \left\{x\mathbf{e}_1 + y\mathbf{e}_2\in\mathbb{R}^2 \mid x^2+y^2 \lt 1\right\}
+                \]
+                を移した図形を以下に図示する:
+            </p>
+            <div class="resize"><img src='./images/linear_transform_by_matrix_7-1.png'></div>
+            <p>正則行列による線形変換では, $\mathbf{0}$ 以外の点を $\mathbf{0}$ に移すことがない (逆に, 正則でない行列は, $\mathbf{0}$ 以外の点を $\mathbf{0}$ に集中させることで図形を潰している). 
+                このことは, 
+                \[
+                    A \text{ が正則} \iff A\mathbf{x} = \mathbf{0} \text{ が非自明な解を持たない}
+                \]
+                に対応している. 
+            </p>
+        </div><!-- /example -->
+
+        <div class="example">
+            <p>行列 
+                \[
+                    A = \begin{pmatrix} 
+                        1 & 0 & 0 \cr 
+                        0 & 1 & 0 \cr 
+                        0 & 0 & 1 
+                    \end{pmatrix},\quad B = \begin{pmatrix} 
+                        1 & 0 & 0 \cr 
+                        0 & 1 & 0 \cr 
+                        0 & 1 & 0 
+                    \end{pmatrix},\quad C = \begin{pmatrix} 
+                        1 & 0 & 0 \cr 
+                        1 & 0 & 0 \cr 
+                        1 & 0 & 0 
+                    \end{pmatrix}
+                \]
+                とする. このとき, $\operatorname{rank}A = 3$, $\operatorname{rank}B = 2$, $\operatorname{rank}C = 1$ である.
+                これらの行列で, 球 
+                \[
+                    \left\{x\mathbf{e}_1 + y\mathbf{e}_2 + z\mathbf{e}_3\in\mathbb{R}^3 \mid x^2+y^2+z^2 \lt 1\right\}
+                \]
+                を移した図形を以下に図示する:
+            </p>
+            <div class="resize"><img src='./images/linear_transform_by_matrix_8-crop-1.png'></div>
+            <p>球は行列 $B$ により平面となり, 行列 $C$ により線になる (いずれも体積が $0$ であることが, $\det B=\det C=0$ に対応している). 
+                元の図形は $3$ 次元の立体としての情報を持っていたが, 行列 $B$ により $2$ 次元の図形となり (つまり $1$ 次元分の情報を失い), 行列 $C$ により $1$ 次元の図形となっている ($2$ 次元分の情報を失っている). 
+                このように, 行列の階数は『その行列による線形変換がどれだけの次元の情報を維持できるか』を表しているとみなすことができる. $1$ つでも次元の情報を失うと図形は潰れてしまうため, フルランクでない行列は正則ではない. 
+                このことが, $n$ 次正方行列 $A$ に対して
+                \[
+                    A\text{ が正則} \iff \operatorname{rank}A = n 
+                \]
+                に対応している. 
+            </p>
         </div><!-- /example -->
 
         </section>
