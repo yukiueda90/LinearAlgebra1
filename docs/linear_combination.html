@@ -230,8 +230,8 @@
                     <li>$(A\mathbf{x}=\mathbf{0} \text{ の非自明な解は存在しない} \iff \mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立})$
                         列ベクトル $\mathbf{x}$ の第 $j$ 成分を $x_j$ とおくと, 
                         \[
-                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n
-                        \] となるので, これと $\mathbf{x}=\mathbf{0}$ が同値であることは, $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}$ が線型独立であることを意味する. 
+                            A\mathbf{x} = x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \dots + x_n\mathbf{a}_n = \mathbf{0}
+                        \] となるので, これが非自明な解を持たない (つまり $\mathbf{x}=\mathbf{0}$ と同値である) ことは, $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}$ が線型独立であることを意味する. 
                     </li>
                     <li>$(\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}\text{ が線型独立} \implies \operatorname{rank}A = n)$
                         行列 $A$ の列基本変形により現れ得るすべての列ベクトルは,
@@ -240,7 +240,7 @@
                         \]
                         という線型結合で表すことができる, ただし, 列基本変形では $c_1=c_2=\dots=c_n=0$ とすることはできない. 
                         従って $\mathbf{a}_1,\ \mathbf{a}_2,\ \dots, \ \mathbf{a}_n\in\mathbb{R}^{n\times 1}$ が線型独立ならば, 正方行列 $A$ に対する列基本変形で $\mathbf{0}$ となる列は現れない. 
-                        これは $A^{\operatorname{T}}$ に対する行基本変形で得られる行簡約階段形は, $\mathbf{0}$ という行ベクトルを持たない (主成分の個数が $n$ である) こと同値であり, 従って $\operatorname{rank} A = \operatorname{rank}A^{\operatorname{T}} = n$ である.
+                        これは $A^{\operatorname{T}}$ に対する行基本変形で得られる行簡約階段形は, $\mathbf{0}$ という行ベクトルを持たない (主成分の個数が $n$ である) こと同値であり, 従って $\operatorname{rank} A = n$ である.
                     </li>
                 </ul>
             </div><!-- /proof -->
@@ -866,6 +866,18 @@
                 </p>
             </div><!-- /example -->
 
+        </section>
+
+        <hr>
+
+        <section><h2>まとめ</h2> 
+        <p>ベクトルの線型結合と線型独立性について紹介し, これらを用いて行列の正則性や連立 $1$ 次方程式の解の表現を説明した.    
+        </p>
+        <p>特に線型独立性は重要な概念であり, ここでは線型独立という言葉を用いて正方行列の正則性と必要十分である主要な条件を説明することができることを紹介した.  
+            線型結合と線型独立性は線形関数 (線型写像) と密接に関連するものであり, 線形代数の抽象的な議論において重要な役割を果たすことになる. 
+            この資料においては, 主に行列に対する具体的な計算を紹介しているため, 重要性がわかりづらいかもしれないが, 例えば正方行列の正則性と必要十分である主要な条件は線型独立という言葉を用いて説明することができる. 
+            また, <a href="determinant.html">5: 固有値と固有ベクトル</a> においても, これらの概念を応用することになる. 
+        </p>
         </section>
 
         <hr>
