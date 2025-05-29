@@ -48,7 +48,7 @@
             <div class="remark">
                 <ul>
                     <li>以降, 断りの無い限り, 行列は大文字のアルファベットで表記する.</li>
-                    <li>行列 $A$ の $(i,j)$ 成分は 小文字のアルファベットを用いて $ a_{ij} $ や $a_{i,j}$ と表したり, $A_{ij}$ や $(A)_{ij}$ と表記されることがある.</li>
+                    <li>行列 $A$ の $(i,j)$ 成分は小文字のアルファベットを用いて $ a_{ij} $ や $a_{i,j}$ と表したり, $A_{ij}$ や $(A)_{ij}$ と表記されることがある.</li>
                     <li>また, $(i,j)$ 成分が $a_{ij}$ である行列を $(a_{ij})$ や $(a_{ij})_{1\le i\le m,\ 1\le j\le n}$ などと表すことがある.</li>
                     <ul>
                         <li>上と合わせて $A=(a_{ij})$ などと表記することがある.</li>
@@ -304,7 +304,7 @@
                 \[
                     \displaystyle\sum_{k=1}^m a_{ik}b_{kj}
                 \] 
-                である $\ell \times n$ 型行列を $A$ と $B$ の<b>積</b>といい, $AB$ と表記する.</p>
+                である $\ell \times n$ 型行列を, 行列 $A$ と $B$ の<b>積</b> (<b>行列積</b>) といい, $AB$ と表記する.</p>
             </div><!-- /definition -->
 
             <div class="remark">
@@ -456,6 +456,7 @@
                         \] 
                         であり, これはベクトルの内積と一致しない.</li>
                     <li>ベクトルの内積と一致するのは, $(\text{行ベクトル})(\text{列ベクトル})$ という形をしたベクトル同士の行列積であり, 上のように $(\text{列ベクトル})(\text{行ベクトル})$ という形の積に関してはこの限りでは無い.</li>
+                    <li>ちなみに, $2$ つのベクトルに対するこの形の積は <b>テンソル積</b> と呼ばれるものの一種であり, 特に <b>直積</b> もしくは <b>外積</b> (<b>outer product</b>) と呼ばれる.</li>
                 </ul>
                 <div class="resize" style="width: 250px"><img src='./images/matrix_product_3.png'></div>
             </div><!-- /example -->
@@ -522,7 +523,7 @@
 
             <hr>
 
-            <p>複素行列 (特に各成分が実数でない場合) に対しては, 各成分の複素共役をとることがある:</p>
+            <p>複素行列 (特に各成分が実数でない場合) に対しては, 各成分の複素共役 (虚部の符号が反転したもの) をとることがある:</p>
 
             <div class="definition" data-name="複素共役行列">
                 <p>行列 $A$ の各成分を, その複素共役で置き換えた行列を<b>複素共役行列</b>といい, $\overline{A}$ と表記する.</p>
@@ -541,7 +542,7 @@
                 
             <hr>
 
-            <p>次に, 行列の<b>転置</b>という操作を紹介しよう. これは, 行列の行と列を入れ替える操作である:</p>
+            <p>次に, 行列の<b>転置</b>という操作を紹介しよう. これは, 行列の行と列を入れ替える操作であり, &quot;$1$ つの数&quot; (実数や複素数) には無い行列に特有のものである:</p>
 
             <div class="definition" data-name="転置行列" id="def_transpose">
                 <p>行列 $A=(a_{ij})$ に対し, 第 $(i,j)$ 成分が $a_{ji}$ である行列を $A$ の<b>転置行列</b> (もしくは単に<b>転置</b>) といい, $A^{\operatorname{T}}$ (もしくは ${}^tA$) と表記する. 行列の転置行列をとる操作を<b>転置</b> (<b>transpose</b>) という.</p>
@@ -589,7 +590,7 @@
             </div><!-- /theorem -->
 
             <div class="proof">
-                <p>最後の式のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は行列 $AB$ の $(j,i)$ 成分に等しいため 
+                <p>$(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ のみ証明する: $A=(a_{ik})\in\mathbb{R}^{\ell\times m}$, $B=(b_{kj})\in\mathbb{R}^{m\times n}$ とすると, $(AB)^{\operatorname{T}}$ の $(i,j)$ 成分は行列 $AB$ の $(j,i)$ 成分に等しいため 
                 \[
                     \sum_{k=1}^ma_{jk}b_{ki}
                 \] 
@@ -605,7 +606,7 @@
                         & = \displaystyle\sum_{k=1}^m a_{jk} b_{ki}.
                     \end{array}
                 \]
-                これが任意の $i$, $j$ に対して成立するため, $2$ つの行列 $(AB)^{\operatorname{T}}$ と $B^{\operatorname{T}}A^{\operatorname{T}}$ の全ての成分が等しい, つまり $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が成立する.</p>
+                これが任意の $i$, $j$ に対して成立するため, $2$ つの行列 $(AB)^{\operatorname{T}}$ と $B^{\operatorname{T}}A^{\operatorname{T}}$ の全ての成分は等しい, つまり $(AB)^{\operatorname{T}} = B^{\operatorname{T}}A^{\operatorname{T}}$ が成立する.</p>
             </div><!-- /proof -->
 
             <div class="example">
