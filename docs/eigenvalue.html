@@ -602,15 +602,15 @@
 			</div><!-- / #example -->
 
 			<div class="remark" id="rem_how_to_find_eigenvector">
-				$A\in\mathbb{R}^{2\times 2}$ が 実数の固有値 $\lambda$ をもつならば, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
-				従って, 固有値 $\lambda$ に対して, $\lambda I-A$ は必ず
+				$A\in\mathbb{R}^{2\times 2}$ の固有値 $\lambda$ に対して, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
+				従って, 固有値 $\lambda\in\mathbb{C}$ に対して, $\lambda I-A$ は必ず
 				\[
 					\lambda I-A = \begin{pmatrix} 
 						a & b \cr 
 						ca & cb 
-					\end{pmatrix} \in\mathbb{R}^{2\times 2}
+					\end{pmatrix} \in\mathbb{C}^{2\times 2}
 				\]
-				のような形になり, このとき例えば $\begin{pmatrix}b \cr -a\end{pmatrix}$ が固有値 $\lambda$ に対応する固有ベクトルとなる. 
+				のような形になり, このとき $(\lambda I-A)\mathbf{v}$ の第 $1$ 成分が $0$ となるように, 例えば $\mathbf{v} = \begin{pmatrix}b \cr -a\end{pmatrix}$ とすると, この $\mathbf{v}$ は固有値 $\lambda$ に対応する固有ベクトルとなる. 
 				このように, $2$ 次正方行列の固有ベクトルは容易に見つけることができる.
 			</div><!-- #remark -->
 
