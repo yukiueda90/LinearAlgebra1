@@ -689,13 +689,17 @@
 			</div><!-- / #theorem -->
 
 			<div class="proof">
-				行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ に対応する固有ベクトルを $\mathbf{v}_1$, $\mathbf{v}_2\in\mathbb{R}^2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
-				いま, $\mathbf{v}_1$ と $\mathbf{v}_2$ が<a href="linear_combination.html#def_linear_independent">線型独立</a>でないならば, $\mathbf{v} _1 = c\mathbf{v}_2$ を満たす $c\neq0$ が存在する. 
-				従って,
-				\[
-					c\lambda_1\mathbf{v}_2 = \lambda_1\mathbf{v}_1 = A\mathbf{v}_1 = A(c\mathbf{v}_2) = c\lambda_2\mathbf{v}_2 
-				\]
-				が成立するが, $\mathbf{v}_2\neq\mathbf{0}$ および $c\neq0$ より $\lambda_1=\lambda_2$ となるため矛盾する. 従って, $\mathbf{v}_1$ と $\mathbf{v}_2$ は線型独立である.
+				<p>
+					行列 $A\in\mathbb{R}^{2\times 2}$ の異なる $2$ つの固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ に対応する固有ベクトルを $\mathbf{v}_1$, $\mathbf{v}_2\in\mathbb{R}^2$ とおく (どちらも $\mathbf{0}$ ではないことに注意). 
+				</p>
+				<p>
+					(背理法) いま, $\mathbf{v}_1$ と $\mathbf{v}_2$ が<a href="linear_combination.html#def_linear_independent">線型独立</a>でないと仮定すると, $\mathbf{v} _1 = c\mathbf{v}_2$ を満たす $c\neq0$ が存在する. 
+					従って,
+					\[
+						c\lambda_1\mathbf{v}_2 = \lambda_1\mathbf{v}_1 = A\mathbf{v}_1 = A(c\mathbf{v}_2) = c\lambda_2\mathbf{v}_2 
+					\]
+					が成立するが, $\mathbf{v}_2\neq\mathbf{0}$ および $c\neq0$ より $\lambda_1=\lambda_2$ となるため矛盾する. 従って, $\mathbf{v}_1$ と $\mathbf{v}_2$ は線型独立である.
+				</p>
 			</div><!-- / #proof -->
 
 			<div class="remark">
