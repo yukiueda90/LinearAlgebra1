@@ -1008,7 +1008,7 @@
 					<li>この行列の行列式を, 行列サイズ削減を用いて計算しようとしてみる. </li>
 					<li>例えば, 第 $1$ 列と第 $2$ 列を交換して</li>
 					\[
-						\det A = \det \begin{pmatrix}
+						\det A = -\det \begin{pmatrix}
 							a & 0 & b & c \cr 
 							0 & -a & d & e \cr 
 							-d & -b & 0 & f \cr 
@@ -1018,13 +1018,13 @@
 					<li><span class="wave">もしも $a\neq0$ ならば</span>, 第 $3$ 行に第 $1$ 行の $d/a$ 倍を加え, 第 $4$ 行に第 $1$ 行の $e/a$ 倍を加えることで </li>
 					\[
 						\begin{array}{rl} 
-							\det A &= \det \begin{pmatrix}
+							\det A &= -\det \begin{pmatrix}
 								a & 0 & b & c \cr 
 								0 & -a & d & e \cr 
 								0 & -b & bd/a & cd/a + f \cr 
 								0 & -c & be/a-f & ce/a 
 							\end{pmatrix} \cr 
-							&= a \det\begin{pmatrix} 
+							&= -a \det\begin{pmatrix} 
 								-a & d & e \cr 
 								-b & bd/a & cd/a + f \cr 
 								-c & be/a-f & ce/a 
