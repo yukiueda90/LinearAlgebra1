@@ -379,7 +379,7 @@
 			\[
 				(\lambda I-A)\mathbf{v} = 0
 			\] 
-			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの複素数倍は全て固有値 $\lambda$ に対応する固有ベクトルとなる.</p>
+			を満たすような $\mathbf{v}\neq\mathbf{0}$ を一つ見つければ, それの ($0$ でない) 複素数倍は全て固有値 $\lambda$ に対応する固有ベクトルとなる.</p>
 			
 			<div class="remark" id="rem_characteristic_polynomial">
 				<p>正方行列 $A$ に対して, $\det(\lambda I-A)$ のことを<b>特性多項式</b> (<b>characteristic polynomial</b>) もしくは<b>固有多項式</b>という. 
@@ -394,45 +394,30 @@
 						\det(\lambda I-A) = 0
 					\]
 					の解 $\lambda\in\mathbb{C}$ は, 行列 $A$ の固有値となる.
+					また, 各固有値 $\lambda_i$ に対して, 
+					\[
+						(\lambda_i I-A)\mathbf{v}_i = 0
+					\] を満たす $\mathbf{v}_i\neq 0$ について, その $0$ でない任意の複素数倍は全て行列 $A$ の (固有値 $\lambda_i$ に対応する) 固有ベクトルである.
 				</p>
 			</div><!-- / #theorem -->
 
-			<div class="remark">
-				<p>以下では $A$ が $2$ 次正方行列である場合のみを具体例として扱うが, 上の結果を含むいくつかの定理は一般に $n$ 次正方行列 $A$ に対して成立する.
-					また, $n$ 次正方行列 $A$ の特性多項式は $\lambda$ についての $n$ 次多項式となり, (代数学の基本定理より) 複素数の解や重解を許せば必ず解が $n$ 個存在する.
-				</p>
-			</div><!-- / #remark -->
-
-			固有値には様々な性質が知られているが, ここでは行列式との関連を見てみよう.
-			
-			<div class="theorem">
-				<p>$n$ 次正方行列 $A$ の固有値を $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n\in\mathbb{C}$ とする (重複するものがあってもよい).
-					このとき,
-					\[
-						\det A = \lambda_1\lambda_2\dots \lambda_n
-					\]
-					が成立する.
-				</p>
-			</div><!-- /theorem -->
-
-			<div class="proof">
-				固有値は固有方程式 $\det(\lambda I-A)=0$ の解であった.
-				これは
+			<div class="remark" id="rem_how_to_find_eigenvector">
+				$A\in\mathbb{R}^{2\times 2}$ の固有値 $\lambda$ に対して, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
+				従って, 固有値 $\lambda\in\mathbb{C}$ に対して, $\lambda I-A$ は必ず
 				\[
-					\det(\lambda I-A) = (\lambda-\lambda_1)(\lambda-\lambda_2)\dots (\lambda-\lambda_n)
+					\lambda I-A = \begin{pmatrix} 
+						a & b \cr 
+						ca & cb 
+					\end{pmatrix} \in\mathbb{C}^{2\times 2}
 				\]
-				であることに他ならない. 
-				この式に $\lambda=0$ を代入すると, 
-				\[
-					\det(-A) = (-1)^n\lambda_1\lambda_2\dots\lambda_n
-				\]
-				が得られるが, 左辺は<a href="determinant.html#thm_scalar_multiplication_determinant">行列式の性質</a>より $(-1)^n\det A$ に等しいので欲しい式が得られる.
-			</div><!-- /proof -->
+				のような形になり, このとき $(\lambda I-A)\mathbf{v}$ の第 $1$ 成分が $0$ となるように, 例えば $\mathbf{v} = \begin{pmatrix}b \cr -a\end{pmatrix}$ とすると, この $\mathbf{v}$ は固有値 $\lambda$ に対応する固有ベクトルとなる. 
+				このように, $2$ 次正方行列の固有ベクトルは (成分が文字で表される場合でも) 容易に見つけることができる.
+			</div><!-- #remark -->
 
 			<hr>
 
-			<p>固有値と固有ベクトルを求める計算の具体例をいくつか挙げる. 
-			まず, $2$ つの実数の固有値が得られる場合を見てみる.</p>
+			<p>固有値と固有ベクトルを求める計算の具体例をいくつか見てみよう. 
+			まず, $2$ つの実数の固有値が得られる例を挙げる.</p>
 
 			<div class="example">
 				<p>\[
@@ -601,18 +586,42 @@
 				</ul>					
 			</div><!-- / #example -->
 
-			<div class="remark" id="rem_how_to_find_eigenvector">
-				$A\in\mathbb{R}^{2\times 2}$ の固有値 $\lambda$ に対して, $\lambda I-A$ は正則行列ではないため, $\lambda I-A$ の<a href="linear_combination.html#thm_invertible_and_linear_independence">各行ベクトルは線形独立ではない</a>ことがわかる. 
-				従って, 固有値 $\lambda\in\mathbb{C}$ に対して, $\lambda I-A$ は必ず
+			<div class="remark">
+				<p>ここでは $A$ が $2$ 次正方行列である場合のみを扱うが, 固有方程式の解が固有値になるという性質は, 一般に $n$ 次正方行列 $A$ に対して成立する.
+					いま, $n$ 次正方行列 $A$ の固有方程式は $\lambda$ についての $n$ 次方程式となり, (代数学の基本定理より) 複素数の解や重解を許せば必ず解が $n$ 個存在する. 
+					ただし, 方程式の解を厳密に求めることは, $n=2$ の場合を除き一般には容易ではない. 
+					$n=3, 4$ の場合は, $n$ 次方程式の解の公式が知られているが, 解の記述は非常に複雑なものになる. 
+					また, $n\ge 5$ の場合には, $n$ 次方程式の (代数的な) 解の公式は存在しない (解を各項の係数の, 有限回の四則演算と根号を取る操作の組み合わせで記述できない) ことが知られている.  
+				</p>
+			</div><!-- / #remark -->
+
+			固有方程式に関連し, 固有値の性質の一つとして行列式との関係を示す.
+			
+			<div class="theorem">
+				<p>$n$ 次正方行列 $A$ の固有値を $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n\in\mathbb{C}$ とする (重複するものがあってもよい).
+					このとき,
+					\[
+						\det A = \lambda_1\lambda_2\dots \lambda_n
+					\]
+					が成立する.
+				</p>
+			</div><!-- /theorem -->
+
+			<div class="proof">
+				固有値は固有方程式 $\det(\lambda I-A)=0$ の解であった.
+				行列式の定義より, これは $\lambda$ についての $n$ 次方程式であり, $\lambda^n$ の係数は $1$ である.
+				これと, この方程式の解が $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n$ であることから, 
 				\[
-					\lambda I-A = \begin{pmatrix} 
-						a & b \cr 
-						ca & cb 
-					\end{pmatrix} \in\mathbb{C}^{2\times 2}
+					\det(\lambda I-A) = (\lambda-\lambda_1)(\lambda-\lambda_2)\dots (\lambda-\lambda_n)
 				\]
-				のような形になり, このとき $(\lambda I-A)\mathbf{v}$ の第 $1$ 成分が $0$ となるように, 例えば $\mathbf{v} = \begin{pmatrix}b \cr -a\end{pmatrix}$ とすると, この $\mathbf{v}$ は固有値 $\lambda$ に対応する固有ベクトルとなる. 
-				このように, $2$ 次正方行列の固有ベクトルは容易に見つけることができる.
-			</div><!-- #remark -->
+				が得られる. 
+				この式に $\lambda=0$ を代入すると, 
+				\[
+					\det(-A) = (-1)^n\lambda_1\lambda_2\dots\lambda_n
+				\]
+				が得られるが, 左辺は<a href="determinant.html#thm_scalar_multiplication_determinant">行列式の性質</a>より $(-1)^n\det A$ に等しいので欲しい式が得られる.
+			</div><!-- /proof -->
+
 
 		</section>
 
