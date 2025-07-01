@@ -498,7 +498,10 @@
 						\]</li>
 					<li>従って ($2$ 次方程式の解の公式を用いて) 
 						\[
-							\det(\lambda I-A)=0\iff \lambda = \cos\alpha \pm \sqrt{\cos^2\alpha - 1} = \cos\alpha \pm i \sin\alpha
+							\begin{array}{rl}
+								\det(\lambda I-A)=0\iff \lambda &= \cos\alpha \pm \sqrt{\cos^2\alpha - 1} \cr 
+								&= \cos\alpha \pm i \sin\alpha
+							\end{array}
 						\] 
 						となり, 
 						\[
@@ -756,7 +759,7 @@
 			<p>この結果を, 定理としてまとめておく.</p>
 
 			<div class="theorem" data-name="$2$ 次正方行列の対角化" id="thm_diagonalization">
-				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ を持つとき, 行列 $A$ は対角化可能である. 
+				<p>行列 $A\in\mathbb{R}^{2\times 2}$ が異なる $2$ つの実数の固有値 $\lambda_1$, $\lambda_2\in\mathbb{R}$ を持つとき, 行列 $A$ は実対角行列と相似である. 
 					具体的には, 固有値 $\lambda_j$ に対応する固有ベクトル $\mathbf{v}_j$ を第 $j$ 列ベクトルに持つ行列 $P = \begin{pmatrix}\mathbf{v}_1, \mathbf {v}_2\end{pmatrix}$ を用いて
 				\[
 					P^{-1}AP = P^{-1}P\begin{pmatrix}
@@ -778,10 +781,10 @@
 			<div class="remark">
 				<p>どのような正方行列でも対角化可能であるとは限らない. 実際, 上の議論から次の成立がわかる:
 				\[
-					A \text{ の固有値が全て実数で全て異なる} \implies A \text{ の固有ベクトルは実ベクトルで線型独立} \iff A\text{ は対角化可能}. 
+					A \text{ の固有値が全て実数で全て異なる} \implies A \text{ の固有ベクトルは実ベクトルで線型独立} \iff A\text{ は実対角行列と相似}. 
 				\]
 				つまり, 固有方程式が重解を持つような行列の場合 (つまり行列 $A$ が重複する固有値を持つ場合), 対角化できないことがある. 
-				また, $A$ の固有値に実数でないものが含まれる場合には, 実は $A$ は対角化できないことが知られている.</p>	
+				また, $A$ の固有値に実数でないものが含まれる場合には, $A$ に相似な実対角行列は存在しない ($A$ を対角化すると複素行列になる).</p>	
 			</div><!-- / #remark -->
 
 			<div class="example">
